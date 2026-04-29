@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(command -v pdftotext)",
+      "Bash(command -v pdftoppm)",
+      "Bash(command -v python)",
+      "Bash(command -v python3)",
+      "Bash(python -c \"import PyPDF2\")",
+      "Bash(python -c \"import pypdf\")",
+      "Bash(python -c \"import pdfplumber\")",
+      "Bash(python -c \"import fitz\")",
+      "Bash(mv formulas/dft.md formulas/dft-formula.md)",
+      "Bash(mv formulas/idft.md formulas/idft-formula.md)",
+      "Bash(mv formulas/twiddle-factor.md formulas/twiddle-factor-formula.md)",
+      "Bash(mv mistakes/fft.md mistakes/fft-gotchas.md)",
+      "Read(//c/c/Users/Jayden Le/Desktop/cracked/wiki/**)",
+      "Bash(command -v soffice)",
+      "Bash(command -v libreoffice)",
+      "Bash(command -v unzip)",
+      "Bash(unzip -l \"38 Covariance and Correlation Coeff.pptx\")",
+      "Bash(mkdir -p eee-404 eee-350)",
+      "Bash(mv *.pdf eee-404/)",
+      "Bash(mv *.pptx eee-350/)",
+      "Read(//c/c/Users/Jayden Le/Desktop/cracked/raw/slides/**)",
+      "Bash(xargs -n1 basename)"
+    ]
+  }
+}

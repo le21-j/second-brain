@@ -1,0 +1,6 @@
+# Canvas API config for the weekly dashboard.
+# Token can be regenerated at: Canvas → Account → Settings → "+ New Access Token"
+# Treat this file like a credential — don't commit to a shared repo.
+
+CANVAS_DOMAIN=https://canvas.asu.edu
+CANVAS_TOKEN=7236~r76tvZ6UFJEDXa4NcvMWA8QkFzKMuUKcXvJRVK2YV268t6FGZ4BDzcQQG4XvmJPL
