@@ -119,6 +119,7 @@ Code living at [`aircomp-regret-pluto/`](../aircomp-regret-pluto/) — 4× Adalm
 
 ## Concepts — EEE 404 (FFT / DSP)
 
+### FFT & Fourier transforms
 - [[dtft]], [[dft]], [[fft]] — Discrete-Time Fourier Transform / Discrete / Fast Fourier Transform
 - [[twiddle-factor]], [[butterfly]], [[decimation-in-time]], [[bit-reversed-order]] — FFT mechanics
 - [[fft-scaling]] — overflow prevention
@@ -126,8 +127,21 @@ Code living at [`aircomp-regret-pluto/`](../aircomp-regret-pluto/) — 4× Adalm
 - [[idft]], [[real-valued-fft]] — inverse + real-signal optimization
 - [[fixed-point-arithmetic]] — Q15 embedded arithmetic
 - [[complex-multiplication]], [[dft-computation-complexity]]
+- [[dft-properties]], [[parseval-theorem]] — algebra of the DFT (NEW 2026-04-29)
 - [[stft]], [[window-function]], [[spectral-leakage]], [[window-resolution-criterion]] — time-frequency
 - [[rectangular-window]], [[hamming-window]], [[hann-window]], [[bartlett-window]]
+
+### Z-transform + filter implementation (NEW 2026-04-29 from Modules 7+8)
+- [[z-transform]], [[region-of-convergence]] — Z-domain + ROC rules
+- [[difference-equation]], [[fir-vs-iir]] — time-domain LTI form + classifier
+- [[direct-form-i]], [[direct-form-ii]] — block-diagram realisations
+
+### Neural networks (NEW 2026-04-29 from Module 6)
+- [[neuron]] — atomic forward-pass building block
+- [[mlp]] — multi-layer perceptron architecture
+- [[relu]] — default activation (with the negative-pre-activation trap)
+- [[forward-propagation]] — layer-by-layer inference
+- [[backpropagation]] — training (already existed; reinforced)
 
 ## Concepts — EEE 335 (Analog & Digital Circuits)
 
@@ -274,6 +288,10 @@ Code living at [`aircomp-regret-pluto/`](../aircomp-regret-pluto/) — 4× Adalm
 Per-question lab/HW walkthroughs (concept-first, then steps). Filed under `wiki/walkthroughs/`. The headline teaching artifacts when ingesting an assignment.
 
 ### EEE 404
+- **[[eee-404-exam-2-walkthrough]]** — full per-problem walkthrough of all 4 Exam 2 practice problems (MLP forward pass; Z-transform/ROC/DF-II; sampling/DFT/FFT sizing; 4-pt DFT direct + FFT butterfly + IFFT). Thursday 4/30 exam.
+- **[[eee-404-exam-2-study-guide]]** — companion topic checklist + master equation sheet for the 8.5×11 cheat sheet
+- **[[eee-404-ec-ml-walkthrough]]** — EC ML lab walkthrough + report skeleton (XOR-XOR on STM32; due Fri 5/2; 10 EC pts)
+- **[[eee-404-ec-quantum-walkthrough]]** — EC Quantum lab walkthrough + report skeleton (QFT vs DFT in J-DSP; due Fri 5/2; 20 EC pts)
 - [[eee-404-hw5-walkthrough]] — full per-problem HW5 walkthrough (DTFT, Hamming/rectangular resolution, FFT butterflies, STM32 real-time budget) with collapsible derivation drop-downs
 - [[eee-404-lab-7-fill-in-walkthrough]] — every FILL_IN_BLANK explained
 
@@ -335,6 +353,10 @@ Standalone worked examples (one-off teaching examples, not full assignments). Fi
 ### EEE 404
 - [[slides-fft-core-equations]], [[slides-fft-idft]], [[slides-fft-implementation]], [[slides-fft-interpretation]], [[slides-fft-real-valued-signal]], [[slides-window-functions]], [[lab-7-fft]]
 - [[homework-2026-04-27-eee-404-hw5]] — HW5: DTFT of cosines, window resolution, butterfly count, STM32 real-time budget
+- **NEW 2026-04-29:** [[summary-eee-404-m6-neural-networks]], [[summary-eee-404-m7-frequency-domain]], [[summary-eee-404-m8-difference-equation]], [[summary-eee-404-m10-butterfly]], [[summary-eee-404-m11-effect-of-window-and-speech]] — Module 6/7/8/10/11 lecture-deck summaries
+- **NEW 2026-04-29:** [[summary-eee-404-exam-2-review]] — Exam 2 practice exam handout summary
+- **NEW 2026-04-29:** [[summary-eee-404-ec-ml-lab]] — EC ML lab source summary
+- **NEW 2026-04-29:** [[summary-eee-404-ec-quantum-lab]] — EC Quantum lab source summary
 
 ### EEE 304
 - [[lab-eee-304-lab-4-am-modulation]] — Lab 4: AM modulation + coherent vs envelope demodulation (Simulink + tada.wav fill-in-the-blanks)
@@ -373,6 +395,8 @@ Standalone worked examples (one-off teaching examples, not full assignments). Fi
 - [[slides-46.5-descriptive-stats]] — sample statistics, histogram
 - [[slides-47-stochastic-processes]] — RP intro, white/colored noise, Poisson, Markov
 - [[homework-2026-04-23-eee-350-hw7]] — **HW7** significance testing + MMSE/LMSE
+- **NEW 2026-04-29:** [[summary-eee-350-m8-bernoulli-poisson-gaussian-rp]] — Module 8 (Week 15): Gaussian RPs + Bernoulli + Poisson processes (slides 47.5, 48, 49)
+- **NEW 2026-04-29:** [[summary-eee-350-backfill-modules-1-5]] — catalog of slides 1–37.5 (Modules 1–5) backfilled from Canvas; raw `.pptx` files all on disk in `raw/slides/eee-350/`
 
 ### Daily research Q&A
 - [[daily-2026-04-23-sdr-toolchain-questions]] — ⏸️ in-progress: WSL2 / Pluto toolchain walkthrough (paused at Vivado install)

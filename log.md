@@ -13,6 +13,53 @@ Ops: `ingest` · `query` · `practice` · `walkthrough` · `lint` · `setup`
 
 ---
 
+## [2026-04-29] ingest + walkthrough | EEE 404 Exam 2 + EC labs + missing slides for eee-404 / eee-350
+
+Big batch session. Three deliverables for the user, plus the wiki ingest.
+
+**Canvas pulls (raw):**
+- `raw/other/eee-404-exam-2-review.pdf` — practice exam (4 problems, full answer key)
+- `raw/labs/eee-404/ec-ml-*` — EC ML lab PDF + code (main.c, embeddedML.c, embeddedML.h)
+- `raw/labs/eee-404/ec-quantum-*` — EC Quantum lab PDF + table template (.docx)
+- `raw/labs/eee-404/report-template-*` — generic Lab/Project Report Template (PDF + DOCX)
+- `raw/slides/eee-404/` — 15 new PDFs covering Modules 6 (NN ×6), 7 (Freq Domain ×5), 8 (Diff Eq ×1), 10 (butterfly fill-in ×1), 11 (Effect of Window + Speech ×2)
+- `raw/slides/eee-350/` — 43 new .pptx files covering Modules 1–5 (slides 1–37.5) and Module 8 (slides 47.5, 48, 49)
+
+**Walkthroughs created (the headline teaching artifacts):**
+- [[eee-404-exam-2-walkthrough]] — per-problem deep-dive on all 4 practice exam questions (MLP forward; Z-transform/ROC/DF-II; sampling/DFT/FFT sizing; 4-pt DFT direct + butterfly + IFFT). Bold headline answers, collapsible derivations.
+- [[eee-404-exam-2-study-guide]] — companion topic checklist + master equation sheet (8 sections; cheat-sheet skeleton with suggested 3-column layout for the 8.5×11 sheet).
+- [[eee-404-ec-ml-walkthrough]] — XOR-XOR lab walkthrough; truth table comparison; full code diff (only `y[1]` and `ground_truth[1]` lines change); IDE/SWV setup steps; complete fillable report skeleton.
+- [[eee-404-ec-quantum-walkthrough]] — QFT vs DFT speech compression; 14-row simulation table to fill; 5 predicted trends to use as sanity checks; complete fillable report skeleton.
+
+**Concept pages created (12, all NEW):**
+- Module 6: [[neuron]], [[mlp]], [[relu]], [[forward-propagation]]
+- Modules 7+8: [[z-transform]], [[region-of-convergence]], [[difference-equation]], [[fir-vs-iir]], [[direct-form-i]], [[direct-form-ii]]
+- DFT properties: [[dft-properties]], [[parseval-theorem]]
+
+**Source summaries created (8):**
+- [[summary-eee-404-exam-2-review]]
+- [[summary-eee-404-ec-ml-lab]], [[summary-eee-404-ec-quantum-lab]]
+- [[summary-eee-404-m6-neural-networks]] (covers all 6 NN slide decks)
+- [[summary-eee-404-m7-frequency-domain]] (covers all 5 Module 7 decks)
+- [[summary-eee-404-m8-difference-equation]]
+- [[summary-eee-404-m10-butterfly]] (fill-in for the missing Module 10 deck)
+- [[summary-eee-404-m11-effect-of-window-and-speech]]
+- [[summary-eee-350-m8-bernoulli-poisson-gaussian-rp]]
+- [[summary-eee-350-backfill-modules-1-5]] (catalog of all backfilled slides 1–37.5)
+
+**Course pages updated:**
+- [[eee-404]] — added Module 6/7/8 concept roadmap, exam 2 + EC lab callouts, expanded Sources Filed and Walkthroughs sections
+- [[eee-350]] — added Module 8 (Bernoulli/Poisson/Gaussian) arc and the backfill catalog reference; updated Sources Filed to group by Module
+
+**Index.md updated:**
+- New EEE 404 concept block (Z-transform / filter-implementation / NN)
+- New walkthrough entries (4 EEE 404 deliverables)
+- New summaries entries (8 new summaries across EEE 404 + EEE 350)
+
+**Critical user-facing reminders:**
+- Exam 2 is **Thursday 2026-04-30**, closed-book except 8.5×11 sheet, calculator OK, 150 pts. Coverage: Modules 6/7/10/11 + HW3/4/5.
+- Both EC labs due **2026-05-02 06:59 UTC** (Friday 5/1 23:59 PT).
+
 ## [2026-04-21] setup | Vault initialized as LLM Wiki
 - Created folder structure: `raw/{slides,articles,homework,textbook,other,assets}` and `wiki/{courses,concepts,people,formulas,examples,practice,mistakes,summaries}`.
 - Wrote `CLAUDE.md` — schema, page templates, operations, and conventions.
