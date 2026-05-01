@@ -13,6 +13,71 @@ Ops: `ingest` · `query` · `practice` · `walkthrough` · `lint` · `setup`
 
 ---
 
+## [2026-04-30] query | EEE 335 L36 — deriving $C_M$ and $C_L$ via Socratic session
+
+- Resolved confusion: why $C_{gd2} \parallel C_{gd4}$ at the output node — both far ends are AC ground (input node via $R_S \approx 0$, mirror node via diode-connected $1/g_{m3}$).
+- Locked in three core ideas: (1) AC ground = LOW Z (not high Z) per $v = iZ$; (2) node Z $\neq$ gate input Z (node Z is parallel combination of everything connected); (3) diode-connected drain Z = $1/g_m$ (gate-to-drain feedback collapses $r_o$).
+- Created `wiki/mistakes/diff-amp-frequency-response.md` — known gotchas (gate vs node Z, $v=iZ$ direction, diode-connected drain Z, $C_{gd2} \parallel C_{gd4}$ approximation, diode-connected $C_{gd}$ shorted) + Jayden's personal log entry for the session.
+- Created `wiki/practice/eee-335-l36-cm-cl-set-01.md` — three problems graded easy → hard: (1) which cap is shorted in a diode-connected MOSFET; (2) build $C_M$ and $C_L$ from parasitics with AC-ground justifications; (3) what breaks if the input source is high-Z (Miller multiplication, bandwidth collapse). To be attempted later.
+- `index.md` updated — added the new mistake page and practice page entries.
+
+## [2026-04-30] setup | Fix agent loading + move teacher to global + add slash commands
+
+- **Diagnosed:** new agent files (pluto-engineer, phy-ml-coach, teacher) were silently rejected by Claude Code's YAML parser because their `description:` field contained unquoted `[[wiki-links]]` and embedded double-quoted strings. Lyra didn't have these, which is why only it loaded.
+- **Fix:** rewrote each `description:` field as a double-quoted YAML scalar with no `[[...]]` brackets and no embedded `"..."` titles. Detail moved to body content, where it was already.
+- **Moved teacher to user/global scope:** `~/.claude/agents/teacher.md`. Removed the project copy. Pluto-engineer and phy-ml-coach stay at project scope (they reference `aircomp-regret-pluto/` and the wiki — not portable).
+- **Created slash commands** so `/teacher`, `/pluto-engineer`, `/phy-ml-coach` work as direct invocations:
+  - `~/.claude/commands/teacher.md` (global, matches teacher's scope)
+  - `.claude/commands/pluto-engineer.md` (project)
+  - `.claude/commands/phy-ml-coach.md` (project)
+  - Each uses `$ARGUMENTS` to forward the user's invocation text into the agent prompt.
+- **Updated CLAUDE.md "Custom agents" section** to document the new scopes, three invocation patterns (slash command / `@`-mention / `/agents` UI), the reload-on-edit gotcha, and the YAML frontmatter validation gotcha (so future-me doesn't repeat this).
+- **For the user:** running `/agents` once will now rescan and load the three repaired agents.
+
+## [2026-04-29] ingest | Two YouTube videos on using AI as a learning tool (Giles + Sung)
+
+- **Raw sources saved:**
+  - `raw/articles/2026-04-29-giles-oxford-ai-learning.md` — Giles' "Oxford Researchers Discovered How to Use AI To Learn Like A Genius" (250 lines including frontmatter)
+  - `raw/articles/2026-04-29-sung-ai-learning-faster.md` — Justin Sung's "How to Learn FASTER using AI (without damaging your brain)" (1,149 lines including frontmatter)
+  - Both deduped from yt-dlp auto-captions via `awk '!seen[$0]++'`
+- **Summary pages:**
+  - [[article-2026-04-29-giles-oxford-ai-learning]] — TL;DR + 10 takeaways + 3 worked-example prompts (Socratic momentum drill, proposition extraction, 20-key-terms-in-5-categories)
+  - [[article-2026-04-29-sung-ai-learning-faster]] — TL;DR + 11 takeaways + 3 worked examples (research-summary trap, survey-question that changed the answer, calculator analogy)
+- **New concept pages** (load-bearing for `.claude/agents/teacher.md`):
+  - [[retrieval-practice]] — example-first (chain rule re-read vs retrieve), Karpicke & Roediger 2008, fluency illusion, "how to apply this week" tied to Exam 2 prep
+  - [[blooms-taxonomy]] — example-first (chain rule at every level), AI/human boundary at the top-3 / bottom-3 split, the Sung gating rule made explicit
+  - [[ai-learning-risk-complexity]] — example-first (variance formula vs neural-receiver SOTA — same shape, different risk), the two-graph framework, the 80/90 rule, week-relevant gating tables
+- **Index updated:**
+  - New section "Concepts — Learning meta (study skills + AI tutoring)" inserted between EEE 350 concepts and Formulas
+  - New subsection "Learning meta" added to Summaries
+- **Why this matters for the wiki:** every operating rule in `.claude/agents/teacher.md` now has a citable wiki anchor. The teacher agent can `[[wiki-link]]` to its rationale instead of re-explaining itself.
+- **Pages touched:** `raw/articles/{2}.md` (new), `wiki/summaries/{2}.md` (new), `wiki/concepts/{3}.md` (new), `index.md` (2 edits).
+
+## [2026-04-29] setup | Wiki-style global formatting + 3 new sub-agents (pluto-engineer, phy-ml-coach, teacher)
+
+- **Created `~/.claude/CLAUDE.md`** (user scope, applies to all projects) — defaults substantive answers to wiki-page structure (one-line answer → example first → idea → formal → why → gotchas → related), mandates LaTeX for all math, formatting rules for tables/code/callouts/wiki-links/collapsibles. Terminal renders most of it; LaTeX shows raw but stays forward-compatible with Obsidian / docs / wiki.
+- **Created `.claude/agents/pluto-engineer.md`** — 6G signal-processing researcher persona for `aircomp-regret-pluto/`. Lifted from the existing CLAUDE.md "Implementation agent" section, reframed in second person + self-contained. Hardware budget table, FPGA/ARM split, code-style rules, committed engineering decisions.
+- **Created `.claude/agents/phy-ml-coach.md`** — Physical-Layer ML Roadmap coach for [[python-ml-wireless]]. Lifted from CLAUDE.md "Physical-Layer ML Roadmap persona" section. Targets NVIDIA Sionna intern + Wi-Lab PhD; portfolio-first; reproduce-before-innovate; canonical toolchain table.
+- **Created `.claude/agents/teacher.md`** — AI tutor synthesized from (a) Giles' Oxford-AI method video (retrieval practice, Socratic questioning, multi-level explanations, Bloom's taxonomy ladder, proposition-extraction reading workflow) + (b) Justin Sung's risk-vs-complexity / Bloom's-top-3 framework + (c) Jayden's example-first learning style + (d) the wiki schema's existing teaching artifacts (`wiki/practice/`, `wiki/mistakes/`). Refuses to just answer — forces retrieval, escalates Bloom's level, auto-files attempts and misconceptions back to the wiki.
+- **Updated CLAUDE.md "Custom agents" section** — registered all three new agents alongside `lyra`. Added pointers at the top of each existing persona section noting the agent-file equivalent. Note about user-scope vs project-scope formatting rules.
+- **Tools used**: installed `yt-dlp` via Homebrew (was missing); pulled auto-captions for both videos to `/tmp/yt-transcripts/` (TPLPpz6dD3A: 1,712 words; 4gQIAXjraLo: 7,456 words after dedupe).
+- Pages touched: `~/.claude/CLAUDE.md` (new), `.claude/agents/{pluto-engineer,phy-ml-coach,teacher}.md` (new), `CLAUDE.md` (3 edits).
+
+## [2026-04-29] query | What is impulse response in difference equations? Is it H(z) = Y(z)/X(z)?
+
+- Disambiguated $h[n]$ (time-domain sequence) vs $H(z)$ (Z-domain transfer function) — same information, two domains, related by Z-transform pair.
+- Worked the same 1st-order IIR ($y[n] = x[n] - \tfrac{1}{2} y[n-1]$) two ways: time-domain iteration with $\delta[n]$ vs Z-transform with table lookup. Both yielded $h[n] = (-\tfrac{1}{2})^n u[n]$.
+- Surfaced practical guidance: time-domain iteration faster for FIR / short responses; Z-transform faster for IIR with rational $H(z)$.
+- Offered to file [[impulse-response]] as a new concept page since it threads through Modules 7, 8, 10 and is exam-relevant tomorrow.
+
+## [2026-04-29] query | What is feed-forward propagation in MLPs?
+
+- Answered from existing wiki pages — [[forward-propagation]], [[mlp]], [[neuron]] (all filed earlier today from EEE 404 Module 6).
+- Disambiguated "feed-forward" (architecture, no recurrence) vs "forward propagation" (the layer-by-layer computation).
+- Walked the 2-2-2 example from Exam 2 Practice P1 (inputs $X_1=0.05, X_2=0.10$, ReLU): $H_1=0.185$, $H_2=0.30$, $Y_1=0.6025$, $Y_2=0$.
+- Surfaced exam relevance — Exam 2 P1 is exactly forward propagation; offered to generate a fresh practice set with new weights.
+- No new pages created; existing concept pages already covered the topic in full.
+
 ## [2026-04-29] ingest + walkthrough | EEE 404 Exam 2 + EC labs + missing slides for eee-404 / eee-350
 
 Big batch session. Three deliverables for the user, plus the wiki ingest.
@@ -327,3 +392,7 @@ Big batch session. Three deliverables for the user, plus the wiki ingest.
 - **Course page:** [[eee-341]] replaced stub with full populated version — roadmap promoted from plain text to wiki-links, sources-filed section lists all 49 lectures grouped by module.
 - **`index.md`:** added `### EEE 341` line under Walkthroughs and `## Concepts — EEE 341 (Electromagnetics)` subsection under Concepts (20 entries grouped by module).
 - All math in LaTeX per CLAUDE.md rule; no per-slide summary files (concepts cite source PDFs directly in frontmatter).
+
+## [2026-04-30] setup | Deferred routine config — Wi-Lab cold email to Alkhateeb
+- Saved deferred RemoteTrigger config (Opus 4.7, Gmail connector, second-brain repo, full self-contained prompt) to [[daily-2026-04-30-alkhateeb-email-routine-config]] for one-shot firing in ~Apr 2027 once Phase 3 portfolio (LWM/DeepMIMO/Sionna repo) is live.
+- `run_once_at` left blank by user request — re-fire when ready by pasting body into `RemoteTrigger create`.

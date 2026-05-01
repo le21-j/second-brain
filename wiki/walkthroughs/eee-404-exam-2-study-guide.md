@@ -87,14 +87,14 @@ $$x[n] = \frac{1}{N}\sum_{k=0}^{N-1} X[k]\,e^{+j 2\pi k n / N},\quad n = 0, 1, \
 
 **DFT properties (the most-likely-to-appear ones):**
 
-| Property | Formula |
-|---|---|
-| Linearity | $\alpha x_1 + \beta x_2 \leftrightarrow \alpha X_1 + \beta X_2$ |
-| Time shift (circular) | $x[(n - n_0)_N] \leftrightarrow X[k] e^{-j 2\pi k n_0 / N}$ |
-| Frequency shift | $x[n] e^{j 2\pi k_0 n / N} \leftrightarrow X[(k - k_0)_N]$ |
-| Circular convolution | $x_1 \circledast x_2 \leftrightarrow X_1[k] X_2[k]$ |
-| Parseval | $\sum_n |x[n]|^2 = \frac{1}{N}\sum_k |X[k]|^2$ |
-| Conjugate symmetry (real) | $X[N - k] = X^*[k]$ |
+| Property                  | Formula                                                         |      |                        |      |     |
+| ------------------------- | --------------------------------------------------------------- | ---- | ---------------------- | ---- | --- |
+| Linearity                 | $\alpha x_1 + \beta x_2 \leftrightarrow \alpha X_1 + \beta X_2$ |      |                        |      |     |
+| Time shift (circular)     | $x[(n - n_0)_N] \leftrightarrow X[k] e^{-j 2\pi k n_0 / N}$     |      |                        |      |     |
+| Frequency shift           | $x[n] e^{j 2\pi k_0 n / N} \leftrightarrow X[(k - k_0)_N]$      |      |                        |      |     |
+| Circular convolution      | $x_1 \circledast x_2 \leftrightarrow X_1[k] X_2[k]$             |      |                        |      |     |
+| Parseval                  | $\sum_n                                                         | x[n] | ^2 = \frac{1}{N}\sum_k | X[k] | ^2$ |
+| Conjugate symmetry (real) | $X[N - k] = X^*[k]$                                             |      |                        |      |     |
 
 > [!warning] **Sampling-in-freq aliasing.** Sampling $X(e^{j\omega})$ at $N$ points (= the DFT) corresponds to **periodic extension** of $x[n]$ with period $N$ in time. If $L > N$, periods overlap = **time aliasing** = bad reconstruction. Always $N \geq L$.
 
@@ -127,13 +127,13 @@ $$H(z) = \frac{Y(z)}{X(z)} = \frac{\sum_{k=0}^{M} b_k z^{-k}}{1 + \sum_{k=1}^{N}
 
 **ROC rules table:**
 
-| Sequence type | ROC |
-|---|---|
-| Right-sided / causal | $\{|z| > r_{\max}\}$ (outside outermost pole) |
-| Left-sided / anti-causal | $\{|z| < r_{\min}\}$ (inside innermost pole) |
-| Two-sided | annulus between two pole rings |
-| **DTFT exists** | ROC includes the unit circle $|z| = 1$ |
-| **Causal AND stable** | all poles **strictly inside** the unit circle |
+| Sequence type            | ROC                                           |     |                                        |
+| ------------------------ | --------------------------------------------- | --- | -------------------------------------- |
+| Right-sided / causal     | $\{                                           | z   | > r_{\max}\}$ (outside outermost pole) |
+| Left-sided / anti-causal | $\{                                           | z   | < r_{\min}\}$ (inside innermost pole)  |
+| Two-sided                | annulus between two pole rings                |     |                                        |
+| **DTFT exists**          | ROC includes the unit circle $                | z   | = 1$                                   |
+| **Causal AND stable**    | all poles **strictly inside** the unit circle |     |                                        |
 
 > [!tip] **Causal+stable rule of thumb:** every pole at $|z| < 1$ ✓. Even one pole at $|z| \geq 1$ → unstable causal system.
 

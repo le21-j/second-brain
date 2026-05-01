@@ -272,6 +272,12 @@ Code living at [`aircomp-regret-pluto/`](../aircomp-regret-pluto/) — 4× Adalm
 - [[white-gaussian-process]], [[colored-noise]]
 - [[poisson-process]], [[markov-chain]]
 
+## Concepts — Learning meta (study skills + AI tutoring)
+
+- [[retrieval-practice]] — testing yourself beats re-reading; the test *is* the learning, not just the assessment
+- [[blooms-taxonomy]] — 6-level cognitive hierarchy; AI handles bottom 3 (memorize / understand / apply), humans must own top 3 (analyze / evaluate / create)
+- [[ai-learning-risk-complexity]] — Sung's framework: as topic complexity rises, LLM accuracy falls and 10% errors compound — make the gating decision upfront
+
 ## Formulas
 
 - [[dft-formula]] — forward + expanded
@@ -339,13 +345,19 @@ Standalone worked examples (one-off teaching examples, not full assignments). Fi
 - [[prob-fundamentals-set-01]] — EEE 350 moments / multivariate / conditional
 - [[asymptotics-set-01]] — EEE 350 Chebyshev / LLN / CLT
 - [[inference-set-01]] — EEE 350 Bayesian / MLE / hypothesis testing
+- [[eee-335-l36-cm-cl-set-01]] — EEE 335 L36: $C_M$ / $C_L$ at mirror + output nodes (diode-connected cap, parasitic enumeration, high-Z source Miller breakdown)
 
 ## Mistakes
 
 - [[fft-gotchas]] — FFT / DSP common mistakes
 - [[prob-gotchas]] — probability / statistics common mistakes
+- [[diff-amp-frequency-response]] — EEE 335 diff-amp + current-mirror frequency-response gotchas (AC-ground reasoning, gate vs node Z, $C_{gd2} \parallel C_{gd4}$ approximation)
 
 ## Summaries
+
+### Learning meta (study skills + AI tutoring)
+- [[article-2026-04-29-giles-oxford-ai-learning]] — *Giles.* Use AI as a Socratic tutor: retrieval practice, multi-level explanations, Bloom's-calibrated practice, no-embarrassment iterative re-explanation, proposition-extraction reading workflow
+- [[article-2026-04-29-sung-ai-learning-faster]] — *Justin Sung.* Risk-vs-complexity gating + Bloom's top-3 belongs to humans (deeper diagnostic; survey-driven; the AI-feels-helpful illusion dismantled)
 
 ### Physical-Layer ML Roadmap
 - [[article-2026-04-23-physical-layer-ml-roadmap]] — the 14-month roadmap (NVIDIA + Wi-Lab)

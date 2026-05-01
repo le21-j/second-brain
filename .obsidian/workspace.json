@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "0ca92925d486d265",
+        "id": "76268fb0352c421c",
         "type": "tabs",
         "children": [
           {
-            "id": "6796d3f4712f5d66",
+            "id": "ae40986c41cc6acc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/walkthroughs/eee-341-lab-5-walkthrough.md",
+                "file": "wiki/people/alkhateeb.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "eee-341-lab-5-walkthrough"
+              "title": "alkhateeb"
             }
           }
         ]
@@ -180,34 +180,34 @@
       "bases:Create new base": false
     }
   },
-  "active": "6796d3f4712f5d66",
+  "active": "ae40986c41cc6acc",
   "lastOpenFiles": [
+    "wiki/summaries/daily-2026-04-30-alkhateeb-email-routine-config.md",
+    "wireless-intelligence-lab.md",
+    "wiki/people/alkhateeb.md",
+    "wiki/courses/python-ml-wireless.md",
+    "wiki/mistakes/prob-gotchas.md",
+    "wiki/mistakes/diff-amp-frequency-response.md",
+    "wiki/mistakes/fft-gotchas.md",
+    "wiki/practice/eee-335-l36-cm-cl-set-01.md",
+    "wiki/formulas/twiddle-factor-formula.md",
+    "wiki/courses/eee-404.md",
+    "wiki/concepts/differential-pair.md",
+    "wiki/courses/eee-335.md",
+    "wiki/walkthroughs/eee-404-exam-2-study-guide.md",
+    "wiki/walkthroughs/eee-404-exam-2-walkthrough.md",
+    "wiki/concepts/ai-learning-risk-complexity.md",
+    "wiki/concepts/blooms-taxonomy.md",
+    "wiki/concepts/retrieval-practice.md",
+    "wiki/summaries/article-2026-04-29-sung-ai-learning-faster.md",
+    "wiki/summaries/article-2026-04-29-giles-oxford-ai-learning.md",
+    "raw/articles/2026-04-29-sung-ai-learning-faster.md",
+    "raw/articles/2026-04-29-giles-oxford-ai-learning.md",
+    "wiki/walkthroughs/eee-341-lab-5-walkthrough.md",
     "wiki/summaries/summary-eee-350-m8-bernoulli-poisson-gaussian-rp.md",
     "wiki/summaries/summary-eee-350-backfill-modules-1-5.md",
     "wiki/summaries/summary-eee-404-m11-effect-of-window-and-speech.md",
     "wiki/summaries/summary-eee-404-m10-butterfly.md",
-    "wiki/summaries/summary-eee-404-m8-difference-equation.md",
-    "wiki/summaries/summary-eee-404-m7-frequency-domain.md",
-    "wiki/summaries/summary-eee-404-m6-neural-networks.md",
-    "wiki/summaries/summary-eee-404-ec-quantum-lab.md",
-    "wiki/summaries/summary-eee-404-ec-ml-lab.md",
-    "wiki/summaries/summary-eee-404-exam-2-review.md",
-    "wiki/concepts/parseval-theorem.md",
-    "wiki/concepts/dft-properties.md",
-    "wiki/concepts/direct-form-ii.md",
-    "wiki/concepts/direct-form-i.md",
-    "wiki/concepts/fir-vs-iir.md",
-    "wiki/concepts/difference-equation.md",
-    "wiki/concepts/region-of-convergence.md",
-    "wiki/concepts/z-transform.md",
-    "wiki/concepts/forward-propagation.md",
-    "wiki/concepts/relu.md",
-    "wiki/concepts/mlp.md",
-    "wiki/concepts/neuron.md",
-    "wiki/walkthroughs/eee-404-ec-quantum-walkthrough.md",
-    "wiki/walkthroughs/eee-404-ec-ml-walkthrough.md",
-    "wiki/walkthroughs/eee-404-exam-2-study-guide.md",
-    "wiki/walkthroughs/eee-404-exam-2-walkthrough.md",
     "raw/slides/eee-350/49 Poisson Processes.pptx",
     "raw/slides/eee-350/48 Bernoulli Process.pptx",
     "raw/slides/eee-350/47.5 Gaussian Random Processes.pptx",

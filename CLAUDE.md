@@ -391,6 +391,8 @@ After the header, 2–6 bullets listing what was touched. Keep entries short —
 
 ## Implementation agent — 6G researcher persona
 
+> **This persona now also lives as a dedicated sub-agent at `.claude/agents/pluto-engineer.md`.** Invoke via `Agent(subagent_type="pluto-engineer")` for clean context isolation. The full content below is preserved as the project-level reference; the agent file is the same content reframed in the second person and self-contained.
+
 When working inside `implementation/` (the AirComp + regret-learning code targeting 4 Adalm Pluto SDRs), adopt this persona:
 
 **Role.** You are a 6G signal-processing researcher with a decade of embedded DSP + protocol engineering. You ship code that runs on constrained hardware and is reviewed by other engineers. You trust the wiki — especially [[system-pipeline]], [[signal-design-gaps]], [[regretful-learning]], and [[paper-experimental-ota-fl]] — as the authoritative spec. When the wiki and a paper disagree, cite both, pick one, and note the decision in the module docstring.
@@ -438,6 +440,8 @@ When working inside `implementation/` (the AirComp + regret-learning code target
 **When you open a file in `implementation/`, the first thing you do is re-read these rules.**
 
 ## Python / ML / wireless-comm context — the Physical-Layer ML Roadmap persona
+
+> **This persona now also lives as a dedicated sub-agent at `.claude/agents/phy-ml-coach.md`.** Invoke via `Agent(subagent_type="phy-ml-coach")` for clean context isolation. The full content below is preserved as the project-level reference; the agent file is the same content reframed in the second person and self-contained.
 
 When Jayden asks a question about **Python, machine learning, deep learning, reinforcement learning, or wireless communications** (anything that isn't strictly an EEE 404 DSP / EEE 350 probability / AirComp implementation question), adopt this persona. The persona mirrors the "Implementation agent" block above in structure.
 
@@ -512,10 +516,41 @@ Shows: assignments due (with status + points), next-48-hour priorities (with aut
 
 ## Custom agents
 
-Sub-agents live in `.claude/agents/<name>.md`. Currently registered:
-- **`lyra`** — Master-level prompt optimization specialist. Invoke when a request is rough/vague and would benefit from being shaped before the main agent acts. Wiki-aware: scans `wiki/` for relevant pages and bakes `[[wiki-link]]` references into the optimized prompt so downstream agents reach for class-taught framings.
+Sub-agents live in two scopes:
 
-Invoke an agent with the `Agent` tool and `subagent_type: "lyra"` (etc.).
+- **Project scope** — `.claude/agents/<name>.md` — wiki-aware, references this project's filesystem.
+- **User scope** — `~/.claude/agents/<name>.md` — available in every project.
+
+When the same name exists in both, **project scope wins** (project version overrides user version in this project).
+
+### Registered agents
+
+- **`lyra`** *(project)* — Master-level prompt optimization specialist. Invoke when a request is rough/vague and would benefit from being shaped before the main agent acts. Wiki-aware: scans `wiki/` for relevant pages and bakes `[[wiki-link]]` references into the optimized prompt so downstream agents reach for class-taught framings.
+- **`pluto-engineer`** *(project)* — 6G signal-processing researcher persona for the AirComp + regret-learning project (`aircomp-regret-pluto/`). Hardware-aware DSP, FPGA HDL, ARM-side C, embedded Linux, AXI/IIO/UIO debugging, Vivado/Vitis/PetaLinux toolchain. Project-scoped because it references specific filesystem paths. Mirrors the "Implementation agent" persona section above.
+- **`phy-ml-coach`** *(project)* — Physical-Layer ML Roadmap coach for the [[python-ml-wireless]] track (NVIDIA Sionna + Wi-Lab @ ASU targets). Wiki-first; portfolio-first; reproduce-before-innovate. Project-scoped because it references this wiki. Mirrors the "Physical-Layer ML Roadmap" persona section above.
+- **`teacher`** *(user/global — `~/.claude/agents/teacher.md`)* — AI tutor synthesized from research-backed pedagogy (retrieval practice, Socratic questioning, Bloom's top-3, multi-level explanations) plus the Giles + Justin Sung YouTube videos. Refuses to just answer — forces the student to think. Auto-files practice attempts to `wiki/practice/` and misconceptions to `wiki/mistakes/{topic}.md` when used inside this wiki. **Globally available** — works in every project.
+
+### How to invoke
+
+Three patterns, ordered from most-typed to least:
+
+1. **Slash command** — type `/teacher <topic>`, `/pluto-engineer <task>`, `/phy-ml-coach <question>` directly. Slash commands live at `.claude/commands/<name>.md` (project) or `~/.claude/commands/<name>.md` (user). They wrap the agent invocation. The `/teacher` command is global; the other two are project-scoped.
+2. **`@`-mention inline** — type `@agent-teacher <topic>` (or `@agent-pluto-engineer ...`) anywhere in a message. Claude Code routes to the named agent.
+3. **`/agents` UI** — opens the agent picker dialog; select from the list. This also reloads the agent list from disk (useful after creating or editing an agent file).
+
+The `Agent` tool with `subagent_type: "<name>"` is the underlying mechanism the main Claude uses; you wouldn't type that directly.
+
+### Reload-after-edit gotcha
+
+Sub-agents are loaded **at session start.** If you create or edit an agent file mid-session, run `/agents` to rescan — it'll pick up the changes without a full restart.
+
+### Frontmatter validation gotcha *(diagnosed 2026-04-30)*
+
+Claude Code's YAML parser silently drops agent files whose `description:` field contains unquoted `[[wiki-links]]`, embedded double-quoted titles, or other YAML-special characters. **Always quote the description in double quotes** if it contains anything beyond plain prose with apostrophes — otherwise the file appears to be saved fine but the agent never shows up in `/agents`. See the existing four agent files for safe templates.
+
+### Global response-style rules
+
+Live in `~/.claude/CLAUDE.md` (user scope). Project-specific overrides go in this file.
 
 ## First-time setup checklist (done once, kept here as record)
 

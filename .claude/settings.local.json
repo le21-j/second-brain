@@ -22,7 +22,8 @@
       "Bash(mv *.pdf eee-404/)",
       "Bash(mv *.pptx eee-350/)",
       "Read(//c/c/Users/Jayden Le/Desktop/cracked/raw/slides/**)",
-      "Bash(xargs -n1 basename)"
+      "Bash(xargs -n1 basename)",
+      "Bash(claude update *)"
     ]
   }
 }
