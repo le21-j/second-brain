@@ -52,6 +52,10 @@ Code living at [`aircomp-regret-pluto/`](../aircomp-regret-pluto/) — 4× Adalm
 **Target labs**
 - [[alkhateeb]] — Wi-Lab director (ASU), primary PhD target
 - [[hoydis]] — NVIDIA Sionna lead, primary NVIDIA research contact
+- [[aitaoudia]] — NVIDIA Sionna co-lead (NEW 2026-05-01) — Hoydis's closest collaborator
+- [[cammerer]] — NVIDIA Sionna NRX lead (NEW 2026-05-01) — Stuttgart pedigree, owns the NRX repo
+- [[wiesmayr]] — ETH PhD with NVIDIA-internship-then-coauthorship trajectory (NEW 2026-05-01) — first author of NRX-2024 + SALAD-2025; the example of the role Jayden is targeting
+- [[alikhani]] — Wi-Lab PhD student (NEW 2026-05-01) — first author of LWM/LWM-Spectro/LWM-Temporal
 - [[morais]] — Wi-Lab alum at NVIDIA, strategic preparatory contact
 - [[oshea]] — DeepSig, co-author of seminal PHY-ML paper
 - [[heath]] — UT Austin / NCSU, Alkhateeb's PhD advisor
@@ -75,11 +79,14 @@ Code living at [`aircomp-regret-pluto/`](../aircomp-regret-pluto/) — 4× Adalm
 
 ### Wireless + ML core
 - [[physical-layer-ml]] — umbrella concept
-- [[sionna]] — NVIDIA's differentiable link-level + ray-tracing simulator
+- [[sionna]] — NVIDIA's differentiable link-level simulator (umbrella)
+- [[sionna-rt]] — **NEW 2026-05-01** — Sionna's differentiable ray-tracing module (vs the umbrella)
+- [[nvidia-aodt]] — **NEW 2026-05-01** — NVIDIA Aerial Omniverse Digital Twin (productized cousin of Sionna)
 - [[deepmimo]] — Wi-Lab ray-traced channel dataset
 - [[deepsense-6g]] — multi-modal real-world sensing-comm dataset
 - [[large-wireless-model]] — Wi-Lab foundation model (LWM)
 - [[neural-receiver]] — NVIDIA's 5G NR neural receiver
+- [[neural-decoder]] — **NEW 2026-05-01** — distinct from neural-receiver; the BP-replacement subblock (Cammerer's PhD line)
 - [[autoencoder-phy]] — O'Shea/Hoydis 2017 E2E autoencoder
 - [[csi-feedback]] — CsiNet and descendants
 - [[differentiable-ray-tracing]] — Sionna RT + calibration
@@ -102,6 +109,64 @@ Code living at [`aircomp-regret-pluto/`](../aircomp-regret-pluto/) — 4× Adalm
 - [[reinforcement-learning]]
 - [[backpropagation]]
 - [[autograd]]
+
+### Optimization, loss functions, regularization (NEW 2026-05-01 — Phase 1 foundations sprint)
+- [[gradient-descent]] — walk downhill; the algorithm behind every DL training step
+- [[stochastic-gradient-descent]] — minibatch GD; the actual default
+- [[adam-optimizer]] — adaptive per-parameter learning rate; the modern default
+- [[cross-entropy-loss]] — the classification loss; pairs with [[softmax]]
+- [[mse-loss]] — the regression loss; NMSE is its wireless variant
+- [[softmax]] — logits → probability distribution
+- [[regularization]] — L1/L2 penalties; weight decay; the umbrella for fighting [[overfitting-bias-variance]]
+- [[dropout]] — stochastic activation zeroing; implicit Bayesian ensemble
+- [[batch-normalization]] — normalize per minibatch; enables 10× larger LR
+- [[overfitting-bias-variance]] — generalization error decomposition; double descent
+
+### Wireless basics (NEW 2026-05-01 — Phase 1–2 foundations sprint)
+- [[qam-modulation]] — $\log_2 M$ bits per symbol; 5G data-channel modulation
+- [[ldpc-codes]] — sparse parity-check + belief propagation; 5G data-channel code
+- [[ber-bler]] — performance metrics; $10^{-2}$ BLER point is the 5G design target
+- [[mimo-basics]] — spatial multiplexing / diversity / beamforming; channel matrix $\mathbf{H}$
+- [[mmwave-mimo]] — sparse + hybrid + blockage-prone variant; the SHARED Wi-Lab/Sionna problem
+- [[fading-channels]] — Rayleigh / Rician / 3GPP UMi/UMa; multipath delay + Doppler
+- [[matched-filter]] — optimal SNR linear filter for known waveforms
+- [[equalization]] — undo ISI; ZF / LMMSE / DFE / neural
+- [[belief-propagation]] — DSP↔ML identity bridge; sum-product on factor graph = neural BP / GNN message-passing
+
+### Reinforcement learning atoms (NEW 2026-05-01 — Phase 3 M7–M8 sprint)
+> **Reading priority for NVIDIA-intern goal:** [[ppo]] + [[sac]] + [[gae]] + [[policy-gradient]] are load-bearing for any Phase 3 wireless-RL deliverable. [[q-learning]] + [[dqn]] are pedagogical foundations. [[sarsa]] + [[bandit-regret]] are background reference (read once, don't dwell).
+- [[policy-gradient]] — directly parameterize $\pi_\theta$; gradient ascent on expected return
+- [[reinforce]] — Monte-Carlo policy gradient (the simplest member)
+- [[actor-critic]] — adds value-function critic for variance reduction
+- [[gae]] — Generalized Advantage Estimation; the variance-reduction trick powering PPO/A2C
+- [[ppo]] — modern on-policy default with clipped trust region
+- [[sac]] — **Soft Actor-Critic; off-policy continuous-action default for wireless RL**
+- [[q-learning]] — off-policy TD; learns $Q^*$ directly
+- [[dqn]] — Q-learning + neural network + replay buffer + target network *(discrete-action baseline; see [[sac]] for wireless)*
+- [[sarsa]] — on-policy cousin *(read for Sutton-Barto Ch 6 completeness; not portfolio-priority)*
+- [[bandit-regret]] — Sutton-Barto Ch 2 stateless RL *(background reference — direct ancestor of [[regretful-learning]] AirComp work)*
+
+### Industrial / deployment / wireless-protocol concepts (load-bearing for NVIDIA-intern goal)
+> **Reading priority:** the first three are first-technical-screen-probe-level. The rest are supporting.
+- [[5g-nr-pusch-structure]] — **NEW 2026-05-01 (Lyra audit)** — DM-RS / TBS / HARQ timing / 3GPP TR refs; **the first technical-screen probe**.
+- [[sionna-api-cheatsheet]] — **NEW 2026-05-01 (Lyra audit)** — Sionna 2.x API surface; the operational prep artifact for the M7 NRX reproduction.
+- [[onnx]] — PyTorch → TensorRT bridge format (deployment-chain).
+- [[tensorrt]] — NVIDIA's GPU inference compiler (FP16/INT8) — extended with **INT8 calibration workflow** (Lyra audit fix).
+- [[quantization-aware-training]] — **NEW 2026-05-01 (Lyra audit)** — PTQ vs QAT; recovers Wiesmayr-2024 NRX 0.5 dB on Jetson.
+- [[mixed-precision-training]] — FP16 / BF16 / FP8; M3 ResNet-18-with-AMP backbone.
+- [[link-adaptation]] — MCS selection per slot; OLLA classical, [[paper-wiesmayr-salad-2025|SALAD]] modern.
+- [[harq]] — Hybrid ARQ; provides ACK/NACK feedback that drives link adaptation.
+- [[scaling-laws]] — Kaplan / Chinchilla; load-bearing for M11 LWM extension.
+- [[ofdm-phy-basics]] — subcarriers / CP / pilot grid; M2 OFDM-from-scratch foundation.
+- [[ris]] — Reconfigurable Intelligent Surface *(Wi-Lab MILCOM demo; secondary for NVIDIA goal)*.
+- [[o-ran]] — Open RAN architecture; xApps / E2 interface.
+- [[umap]] — non-linear dim reduction *(only used by [[paper-morais-similarity-2026]]; background)*.
+
+### Channel coding + FL + DT-calibration (NEW 2026-05-01)
+- [[polar-codes]] — **5G NR control-channel code; Cammerer's PhD line origin** (mandatory pre-cold-email read).
+- [[digital-twin-calibration]] — **closed-loop concept wrapping [[paper-diff-rt-calibration-2024]]; M10 capstone technical core.**
+- [[federated-learning]] — FedAvg + OTA-FL umbrella *(load-bearing for AirComp track / [[system-pipeline]]; secondary for NVIDIA-Sionna-team goal)*.
+- [[reed-muller-codes]] — polar's algebraic ancestor *(background reference — read after polar-codes, not portfolio-priority)*.
 
 ## Concepts — EEE 304 (Communication Systems)
 
@@ -318,6 +383,9 @@ Per-question lab/HW walkthroughs (concept-first, then steps). Filed under `wiki/
 ### EEE 341
 - [[eee-341-final-walkthrough]] — full per-module final exam study guide with collapsible derivations + cheat-sheet formula table (Modules 1–6: Maxwell + BCs, plane waves, reflection/refraction, transmission lines + Smith chart, waveguides + cavity resonators, antennas + Friis)
 
+### Physical-Layer ML Roadmap (NEW 2026-05-01 — Tier-6)
+- [[nrx-reproduction-walkthrough]] — **the M7 capstone: step-by-step NRX reproduction guide** for [[paper-nrx-cammerer-2023]] / [[paper-nrx-wiesmayr-2024]]. 6-stage process from "read the papers" to "ready to send the cold email." The headline teaching artifact for the entire roadmap.
+
 ## Examples
 
 Standalone worked examples (one-off teaching examples, not full assignments). Filed under `wiki/examples/`.
@@ -346,12 +414,14 @@ Standalone worked examples (one-off teaching examples, not full assignments). Fi
 - [[asymptotics-set-01]] — EEE 350 Chebyshev / LLN / CLT
 - [[inference-set-01]] — EEE 350 Bayesian / MLE / hypothesis testing
 - [[eee-335-l36-cm-cl-set-01]] — EEE 335 L36: $C_M$ / $C_L$ at mirror + output nodes (diode-connected cap, parasitic enumeration, high-Z source Miller breakdown)
+- [[generalization-set-01]] — **NEW 2026-05-01** — Zhang 2017 random-labels prediction (structured vs random data, train-test gap as diagnostic, mutual information $I(X;Y)$)
 
 ## Mistakes
 
 - [[fft-gotchas]] — FFT / DSP common mistakes
 - [[prob-gotchas]] — probability / statistics common mistakes
 - [[diff-amp-frequency-response]] — EEE 335 diff-amp + current-mirror frequency-response gotchas (AC-ground reasoning, gate vs node Z, $C_{gd2} \parallel C_{gd4}$ approximation)
+- [[mistakes/generalization]] — **NEW 2026-05-01** — generalization gotchas (training accuracy ≠ understanding; random-label test accuracy is chance-level $1/K$, not $0\%$)
 
 ## Summaries
 
@@ -361,6 +431,46 @@ Standalone worked examples (one-off teaching examples, not full assignments). Fi
 
 ### Physical-Layer ML Roadmap
 - [[article-2026-04-23-physical-layer-ml-roadmap]] — the 14-month roadmap (NVIDIA + Wi-Lab)
+
+### Physical-Layer ML Roadmap — textbooks (NEW 2026-05-01)
+**Full summaries (PDFs ingested):**
+- [[textbook-prince-understanding-deep-learning]] — Prince UDL v5.0.3, the **primary DL textbook** (Phase 1–2)
+- [[textbook-sutton-barto-rl]] — Sutton-Barto 2nd ed, the **RL canon** (Phase 3)
+- [[textbook-mackay-itila]] — MacKay Information Theory, **LDPC chapters 47–50** (Phase 3)
+- [[textbook-parr-matrix-calculus]] — Parr-Howard *Matrix Calculus*, one-sitting backprop math (Phase 1)
+
+**Reference-card stubs (no PDF mirrored — Tier-1 lint-fix sweep, NEW 2026-05-01):**
+- [[textbook-pysdr-lichtman]] — PySDR (Lichtman), the single most wireless-relevant free resource. Phase 1 M2 OFDM-from-scratch backbone.
+- [[textbook-bishop-prml]] — Bishop PRML, the DSP↔ML identity bridge (Ch 13 HMM/Kalman + Ch 8 graphical models)
+- [[textbook-goodfellow-deep-learning]] — Goodfellow/Bengio/Courville, theoretical reference (Ch 5–10 + 14–15)
+- [[textbook-deep-learning-with-pytorch]] — Stevens et al., PyTorch internals (Ch 1–8)
+- [[textbook-from-python-to-numpy]] — Rougier, NumPy vectorization (Phase 1 M2)
+- [[textbook-deep-learning-with-python-chollet]] — Chollet, TensorFlow/Keras (Phase 2 M6 — Sionna prep)
+- [[textbook-d2l-dive-into-deep-learning]] — Zhang et al., code-first companion to Prince
+- [[textbook-murphy-pml-intro]] — Murphy, modern probabilistic ML encyclopedia
+- [[textbook-ml-with-pytorch-scikit-learn]] — Raschka, sklearn → PyTorch bridge
+- [[textbook-scientific-visualization-matplotlib]] — Rougier, publication-figure portfolio rule
+
+### Physical-Layer ML Roadmap — papers
+**Phase 1–3 ingested (2026-05-01):**
+- **Foundational PHY-ML:** [[paper-oshea-hoydis-2017-autoencoder]], [[paper-aitaoudia-hoydis-2020-ofdm]], [[paper-dorner-2018-otaair]] — autoencoder-PHY thread.
+- **NVIDIA Sionna:** [[paper-sionna-2022]], [[paper-sionna-rt-2023]] — the simulator + differentiable RT.
+- **NVIDIA neural receivers:** [[paper-nrx-cammerer-2023]], [[paper-nrx-wiesmayr-2024]] — NRX line; Wiesmayr is the standard-compliant real-time version.
+- **Wi-Lab DeepMIMO/DeepSense/LWM:** [[paper-deepmimo-2019]], [[paper-deepsense-6g-2023]], [[paper-lwm-2024]], [[paper-digital-twin-vision-2023]] — Alkhateeb's full stack.
+- **Subdomain canon:** [[paper-csinet-wen-2018]] (CSI feedback), [[paper-radioml-oshea-2018]] (modulation classification + RadioML 2018.01A), [[paper-channel-charting-studer-2018]] (self-supervised positioning).
+
+**Phase 4 ingested (NEW 2026-05-01 — Tier-1 sweep):**
+- **Sionna RT calibration (M10):** [[paper-diff-rt-calibration-2024]] — Hoydis et al. 2024 IEEE TMLCN; gradient-based RT calibration on real DICHASUS measurements. **The method paper for the Phase 4 M10 NVIDIA-portfolio capstone.**
+- **Wi-Lab 2026 LWM sequels (M12 reading):** [[paper-lwm-spectro-2026]] (Kim/Alikhani/Alkhateeb — MoE foundation model for I/Q spectrograms) + [[paper-lwm-temporal-2026]] (Alikhani/Malhotra/Hamidi-Rad/Alkhateeb — sparse spatio-temporal attention for channel trajectories).
+
+**Phase 4 ingested (NEW 2026-05-01 — Tier-2 sweep, 6 papers):**
+- **NVIDIA Aerial 2025 flagship line:** [[paper-sionna-research-kit-2025]] (Cammerer et al. — Jetson + Sionna + TensorRT 5G testbed) + [[paper-wiesmayr-salad-2025]] (Wiesmayr et al. — ACK/NACK-only link adaptation, beats OLLA by 15%).
+- **Wi-Lab sim-to-real / digital-twin operationalization:** [[paper-morais-similarity-2026]] (Morais/Alikhani/Alkhateeb — task-aware dataset distance metric, Pearson > 0.85 with transfer performance) + [[paper-luo-dt-csi-feedback-2025]] (Luo/Khosravirad/Alkhateeb — site-specific digital twins for CSI compression with fidelity decomposition).
+- **Wi-Lab V2V + RIS hardware:** [[paper-deepsense-v2v-2024]] (Morais/Charan/Alkhateeb — 120 km mmWave V2V dataset) + [[paper-osman-ris-oran-2025]] (Osman/Shekhawat/Alkhateeb — 1024-element 28-GHz RIS in 5G O-RAN, MILCOM 2025 Best Demo).
+
+**Tier-3 ingested (NEW 2026-05-01 — foundational papers + RL coverage):**
+- **Cammerer-cold-email prereq:** [[paper-gruber-2017-channel-decoding]] — Gruber/Cammerer/Hoydis/ten Brink 2017 (CISS); the foundational neural-decoder paper that started Cammerer's PhD line.
+- **Phase 2 M6 generative trio:** [[paper-kingma-2013-vae]] (VAE) + [[paper-goodfellow-2014-gan]] (GAN) + [[paper-ho-2020-ddpm]] (DDPM diffusion) — the three foundational generative-modeling papers M6 reproduction needs.
 
 ### EEE 404
 - [[slides-fft-core-equations]], [[slides-fft-idft]], [[slides-fft-implementation]], [[slides-fft-interpretation]], [[slides-fft-real-valued-signal]], [[slides-window-functions]], [[lab-7-fft]]

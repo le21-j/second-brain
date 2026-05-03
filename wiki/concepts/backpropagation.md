@@ -93,12 +93,12 @@ where $\bar{\mathbf{v}}$ denotes the adjoint of $\mathbf{v}$ (i.e., $\partial L 
 ## Reading order
 
 1. Karpathy, "Micrograd" notebook — https://github.com/karpathy/micrograd. **Build autograd from scratch in 100 lines.** Best pedagogy anywhere.
-2. [[matrix-calculus-for-deep-learning]] — one-sitting.
-3. Goodfellow [[goodfellow-deep-learning]] Ch 6.5.
-4. Prince [[prince-understanding-deep-learning]] Ch 7.
+2. [[textbook-parr-matrix-calculus]] — one-sitting.
+3. Goodfellow [[textbook-goodfellow-deep-learning]] Ch 6.5.
+4. Prince [[textbook-prince-understanding-deep-learning]] Ch 7.
 
 ## Related
 - [[autograd]]
 - [[pytorch]]
-- [[matrix-calculus-for-deep-learning]]
+- [[textbook-parr-matrix-calculus]]
 - [[python-ml-wireless]]

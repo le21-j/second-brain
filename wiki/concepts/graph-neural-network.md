@@ -81,7 +81,7 @@ where $\tilde A = A + I$ (self-loops), $\tilde D$ is the degree matrix, $\sigma$
 ## Reading order (per roadmap)
 
 1. **Stanford CS224W** (https://web.stanford.edu/class/cs224w/) — the canonical course.
-2. Prince [[prince-understanding-deep-learning]] Ch 13 — GNN chapter.
+2. Prince [[textbook-prince-understanding-deep-learning]] Ch 13 — GNN chapter.
 3. PyTorch Geometric docs — https://pytorch-geometric.readthedocs.io/.
 4. Eisen et al. 2018 (arxiv:1807.08088) — wireless-specific entry point.
 

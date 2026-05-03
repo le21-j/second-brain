@@ -11,7 +11,7 @@ updated: 2026-04-23
 
 **Current:** ARC Prize; independent AI research.
 **Previous:** Google Research (creator and lead of **Keras**, 2015).
-**Books:** *Deep Learning with Python* (2nd ed., Manning 2021) — see [[deep-learning-with-python-chollet]].
+**Books:** *Deep Learning with Python* (2nd ed., Manning 2021) — see [[textbook-deep-learning-with-python-chollet]].
 
 ## Why he matters to Jayden
 
@@ -25,6 +25,6 @@ Chollet is the **authoritative TensorFlow/Keras teacher** — he wrote Keras. Th
 - Public writing on AI that's more cautious about LLM capability claims than is common.
 
 ## Related
-- [[deep-learning-with-python-chollet]]
+- [[textbook-deep-learning-with-python-chollet]]
 - [[sionna]]
 - [[python-ml-wireless]]

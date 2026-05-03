@@ -138,7 +138,7 @@ A **Sionna project on GitHub** is the single strongest intern-application signal
 - [[differentiable-ray-tracing]]
 - [[wireless-digital-twin]]
 - [[hoydis]] — lead
-- [[deep-learning-with-python-chollet]] — for the legacy TF API
+- [[textbook-deep-learning-with-python-chollet]] — for the legacy TF API
 
 ## Practice
 - Phase 3 Month 7 deliverable: tutorials Parts 1–4 on GPU $+$ modified neural receiver.

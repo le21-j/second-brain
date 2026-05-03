@@ -296,6 +296,7 @@ A dedicated gap analysis against 2024–2026 6G research lives in **[[signal-des
 ---
 
 ## Related
+- [[federated-learning]] — **the umbrella ML paradigm this pipeline implements** (specifically OTA-FL, the analog-aggregation flavor); cold-email-relevant cross-pollination with the broader [[python-ml-wireless]] roadmap.
 - [[paper-unregrettable-hpsr]] — the algorithmic anchor
 - [[paper-aircomp-feel-demo]] — the practical protocol template
 - [[paper-aircomp-survey]] — theoretical background

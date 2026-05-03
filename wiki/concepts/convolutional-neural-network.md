@@ -100,10 +100,10 @@ for output channel $m$. Note "convolution" in the DL sense is really **cross-cor
 
 ## Reading order (per roadmap)
 
-1. Prince [[prince-understanding-deep-learning]] Ch 10–11.
+1. Prince [[textbook-prince-understanding-deep-learning]] Ch 10–11.
 2. Stanford CS231n (notes + Assignment 2 — "the single best exercise for your research goal").
 3. Papers in chronological order: LeNet-5 $\to$ AlexNet $\to$ VGG $\to$ ResNet (arxiv:1512.03385) $\to$ DenseNet $\to$ MobileNetV2 $\to$ EfficientNet $\to$ ConvNeXt.
-4. [[deep-learning-with-pytorch]] Ch 8 for the internals.
+4. [[textbook-deep-learning-with-pytorch]] Ch 8 for the internals.
 
 ## Related
 - [[transformer]]

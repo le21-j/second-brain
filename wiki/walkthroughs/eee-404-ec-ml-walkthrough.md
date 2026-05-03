@@ -1,6 +1,6 @@
 ---
 title: EEE 404 Extra-Credit Lab — Neural Network Training (XOR-XOR) — Walkthrough + Report Skeleton
-type: example
+type: walkthrough
 course: [[eee-404]]
 tags: [eee-404, lab, extra-credit, walkthrough, neural-network, mlp, embedded-ml, stm32, training, backpropagation]
 sources: [[summary-eee-404-ec-ml-lab]]
@@ -96,15 +96,15 @@ This block runs all 8 input combinations through `run_ann` and accumulates the m
 ### Step 1 — Update the truth table
 
 | $X_1$ | $X_2$ | $X_3$ | Out1 = $X_1 \oplus X_2$ | Out2 = $X_2 \oplus X_3$ | Same as XOR-AND? |
-|---|---|---|---|---|---|
-| 0 | 0 | 0 | 0 | **0** | ✓ |
-| 0 | 0 | 1 | 0 | **1** | (was 0) |
-| 0 | 1 | 0 | 1 | **1** | (was 0) |
-| 0 | 1 | 1 | 1 | **0** | (was 1) |
-| 1 | 0 | 0 | 1 | **0** | ✓ |
-| 1 | 0 | 1 | 1 | **1** | (was 0) |
-| 1 | 1 | 0 | 0 | **1** | (was 0) |
-| 1 | 1 | 1 | 0 | **0** | (was 1) |
+| ----- | ----- | ----- | ----------------------- | ----------------------- | ---------------- |
+| 0     | 0     | 0     | 0                       | **0**                   | ✓                |
+| 0     | 0     | 1     | 0                       | **1**                   | (was 0)          |
+| 0     | 1     | 0     | 1                       | **1**                   | (was 0)          |
+| 0     | 1     | 1     | 1                       | **0**                   | (was 1)          |
+| 1     | 0     | 0     | 1                       | **0**                   | ✓                |
+| 1     | 0     | 1     | 1                       | **1**                   | (was 0)          |
+| 1     | 1     | 0     | 0                       | **1**                   | (was 0)          |
+| 1     | 1     | 1     | 0                       | **0**                   | (was 1)          |
 
 > [!tip] **Out1 column is identical** in both tables — only **Out2** changes. So your edits all touch `y[1]` (in `generate_xorand`) or `ground_truth[1]` (in the test cases). `y[0]` and `ground_truth[0]` lines stay exactly the same.
 

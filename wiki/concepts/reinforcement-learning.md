@@ -54,17 +54,19 @@ $$
 
 ### Algorithms, in the order the roadmap teaches
 
-1. **Tabular Q-learning** (Sutton & Barto Ch 6) — small state spaces.
-2. **DQN** (Mnih 2015) — deep Q-network; replay buffer $+$ target network; Atari breakthrough.
-3. **REINFORCE** (Williams 1992) — the policy gradient.
-4. **PPO** (Schulman 2017) — current workhorse; clipped objective, easy to tune.
-5. **SAC** (Haarnoja 2018) — off-policy actor-critic with entropy regularization; standard for continuous control.
+1. **[[q-learning]]** (Sutton & Barto Ch 6) — tabular off-policy TD; small state spaces. Cousin: [[sarsa]] (on-policy).
+2. **[[dqn]]** (Mnih 2015) — deep Q-network; replay buffer + target network; Atari breakthrough.
+3. **[[policy-gradient]]** umbrella — directly parameterize $\pi_\theta$.
+4. **[[reinforce]]** (Williams 1992) — the simplest policy-gradient algorithm.
+5. **[[actor-critic]]** — adds a learned value baseline (A2C / A3C).
+6. **[[ppo]]** (Schulman 2017) — current workhorse; clipped trust region.
+7. **[[sac]]** (Haarnoja 2018) — off-policy actor-critic with entropy regularization; **the standard for continuous-control wireless deliverables.**
 
 ### Wireless applications
 
 - **Beam management** — state $=$ UE position/prior beams, action $=$ which beam, reward $=$ SINR. See [[beam-prediction]] for the supervised version; RL handles the sequential/exploration case.
 - **Power control** — state $=$ channel $+$ queue, action $=$ power level, reward $=$ throughput $-$ cost. Classical Nasir & Guo 2018 (arxiv:1808.00490). Connects to [[regretful-learning]].
-- **Link adaptation** — MCS selection. SALAD (Wiesmayr et al. 2025, arxiv:2510.05784) is the NVIDIA take.
+- **Link adaptation** — MCS selection. [[link-adaptation]] concept page; SALAD (Wiesmayr et al. 2025, [[paper-wiesmayr-salad-2025]]) is the NVIDIA take.
 - **Resource allocation over unlicensed spectrum** — Challita, Dong, Saad 2018 (IEEE TWC).
 
 ## Formal definition (Q-learning update)
@@ -92,14 +94,18 @@ With function approximation (DQN), $Q_\theta(s, a)$ is a neural network; use a *
 
 ## Reading order (per roadmap)
 
-1. [[sutton-barto-rl]] — Chapters 1–8 (tabular), 9–11 (approximate), 13 (policy gradient).
+1. [[textbook-sutton-barto-rl]] — Chapters 1–8 (tabular), 9–11 (approximate), 13 (policy gradient).
 2. David Silver's RL course on YouTube.
 3. OpenAI Spinning Up — https://spinningup.openai.com/ — algorithm reference.
 4. Hugging Face Deep RL Course — https://huggingface.co/learn/deep-rl-course/.
 5. **CleanRL** — https://github.com/vwxyzjn/cleanrl — single-file reference implementations.
 
 ## Related
-- [[regretful-learning]]
-- [[sutton-barto-rl]]
+- [[bandit-regret]] — the stateless special case (Sutton-Barto Ch 2 first chapter).
+- [[regretful-learning]] — multi-agent regret-matching (Jayden's existing AirComp work).
+- **Atomic algorithm pages:** [[q-learning]], [[sarsa]], [[policy-gradient]], [[reinforce]], [[actor-critic]], [[ppo]], [[sac]], [[dqn]].
+- [[gae]] — the variance-reduction trick across modern PG methods.
+- [[link-adaptation]] — wireless application; [[paper-wiesmayr-salad-2025|SALAD]] is a Bayesian-RL approach.
+- [[textbook-sutton-barto-rl]]
 - [[beam-prediction]]
 - [[python-ml-wireless]]

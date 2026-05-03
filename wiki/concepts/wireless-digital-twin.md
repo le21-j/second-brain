@@ -94,7 +94,10 @@ This theme connects multiple Phase 3–4 projects:
 
 ## Related
 - [[sionna]] — the RT engine.
+- [[sionna-rt]] — the differentiable-RT module that powers calibration.
 - [[differentiable-ray-tracing]] — the calibration mechanism.
+- [[digital-twin-calibration]] — the closed-loop concept that fits the twin to real measurements.
+- [[nvidia-aodt]] — the productized cousin (Aerial Omniverse Digital Twin).
 - [[deepmimo]] — the channel format + historical precursor.
 - [[deepsense-6g]] — the real-world measurement side.
 - [[csi-feedback]] — downstream task (twin-aided CSI feedback).

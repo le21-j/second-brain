@@ -3,7 +3,7 @@ title: Variational autoencoder (VAE)
 type: concept
 course: [[python-ml-wireless]]
 tags: [vae, generative, dl, latent, kingma]
-sources: [[article-2026-04-23-physical-layer-ml-roadmap]]
+sources: [[paper-kingma-2013-vae]], [[article-2026-04-23-physical-layer-ml-roadmap]]
 created: 2026-04-23
 updated: 2026-04-26
 ---
@@ -77,7 +77,7 @@ Now the stochasticity is in $\boldsymbol{\epsilon}$ (external to the graph); $\m
 
 1. [Lilian Weng's VAE post](https://lilianweng.github.io/posts/2018-08-12-vae/) — the best pedagogical treatment.
 2. Kingma & Welling 2013 (arxiv:1312.6114).
-3. Prince Ch 17 ([[prince-understanding-deep-learning]]).
+3. Prince Ch 17 ([[textbook-prince-understanding-deep-learning]]).
 4. PyTorch-VAE reference implementations: https://github.com/AntixK/PyTorch-VAE.
 
 ## Related

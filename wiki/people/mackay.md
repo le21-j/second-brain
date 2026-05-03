@@ -10,7 +10,7 @@ updated: 2026-04-23
 # David MacKay
 
 **Affiliation:** Professor of Natural Philosophy, Cambridge University (deceased 2016).
-**Author of:** *Information Theory, Inference, and Learning Algorithms* (Cambridge, 2003) — free at https://www.inference.org.uk/mackay/itila/book.html. See [[mackay-information-theory]].
+**Author of:** *Information Theory, Inference, and Learning Algorithms* (Cambridge, 2003) — free at https://www.inference.org.uk/mackay/itila/book.html. See [[textbook-mackay-itila]].
 
 ## Why he matters to Jayden
 
@@ -23,7 +23,7 @@ Two reasons:
 Later in life, MacKay turned to energy policy (*Sustainable Energy — Without the Hot Air*, 2008), a separate but widely-read book.
 
 ## Related
-- [[mackay-information-theory]]
+- [[textbook-mackay-itila]]
 - [[belief-propagation]]
 - [[ldpc-codes]]
 - [[python-ml-wireless]]

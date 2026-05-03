@@ -121,6 +121,8 @@ See [[pre-flash-test-pyramid]] for the 6-layer test hierarchy used to verify thi
 
 ## Related
 - [[aircomp-basics]] — the system this is solving
+- [[federated-learning]] — the broader ML paradigm this work specializes (OTA-FL flavor of FL).
+- [[bandit-regret]] — the **single-agent special case**; Sutton-Barto Ch 2 ancestor; the path Jayden's research lives on
 - [[correlated-equilibrium]] — the equilibrium concept
 - [[system-pipeline]] — the end-to-end implementation
 - [[hmc-psi-rebuild]] — $\psi$ rebuild semantics (vs Hedge additive); $\mu$ delay; exploration floor

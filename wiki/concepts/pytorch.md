@@ -94,7 +94,7 @@ For each tensor created with `requires_grad=True`, PyTorch records a **dynamic a
 ## Research ties / reading order
 
 1. PyTorch 60 Minute Blitz — official tutorial.
-2. [[deep-learning-with-pytorch]] Ch 1–8 — Stevens/Antiga/Viehmann, PyTorch internals.
+2. [[textbook-deep-learning-with-pytorch]] Ch 1–8 — Stevens/Antiga/Viehmann, PyTorch internals.
 3. Daniel Bourke's `learnpytorch.io`.
 4. Sebastian Raschka's "PyTorch in One Hour" for a refresher.
 5. [Karpathy Zero-to-Hero](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ) — watch all episodes.
@@ -104,6 +104,6 @@ For each tensor created with `requires_grad=True`, PyTorch records a **dynamic a
 - [[backpropagation]]
 - [[numpy-vectorization]]
 - [[sionna]] — built on PyTorch from 2.x
-- [[deep-learning-with-pytorch]]
-- [[ml-with-pytorch-scikit-learn]]
+- [[textbook-deep-learning-with-pytorch]]
+- [[textbook-ml-with-pytorch-scikit-learn]]
 - [[python-ml-wireless]]

@@ -105,7 +105,7 @@ $$
 2. Karpathy's **"Let's build GPT from scratch"** — https://www.youtube.com/watch?v=kCc8FmEb1nY. Code-along.
 3. **"Attention Is All You Need"** — https://arxiv.org/abs/1706.03762. Canon.
 4. **The Annotated Transformer** — http://nlp.seas.harvard.edu/annotated-transformer/. Paper + PyTorch code side-by-side.
-5. Prince [[prince-understanding-deep-learning]] Ch 12.
+5. Prince [[textbook-prince-understanding-deep-learning]] Ch 12.
 
 ## Related
 - [[attention-mechanism]]

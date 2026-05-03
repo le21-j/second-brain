@@ -17,7 +17,7 @@ updated: 2026-04-23
 ## Why he matters to Jayden
 
 Raschka's signature is **clarity** — he writes tutorials and books at the exact level where sklearn fluency meets PyTorch. The roadmap uses his work at three points:
-- **Book:** [[ml-with-pytorch-scikit-learn]] — Ch 1–10 bridges sklearn → PyTorch.
+- **Book:** [[textbook-ml-with-pytorch-scikit-learn]] — Ch 1–10 bridges sklearn → PyTorch.
 - **"PyTorch in One Hour"** — https://sebastianraschka.com/teaching/pytorch-1h/ — an excellent dense refresher.
 - **Newsletter** — ongoing coverage of the ML literature with implementation-level detail.
 
@@ -28,6 +28,6 @@ Raschka's signature is **clarity** — he writes tutorials and books at the exac
 - **Honest comparisons.** He doesn't oversell; when a classical ML baseline works, he says so.
 
 ## Related
-- [[ml-with-pytorch-scikit-learn]]
+- [[textbook-ml-with-pytorch-scikit-learn]]
 - [[pytorch]]
 - [[python-ml-wireless]]

@@ -14,9 +14,9 @@ updated: 2026-04-23
 
 ## Why he matters to Jayden
 
-Murphy's 2022 rewrite — [[murphy-pml-intro]] — is the modern encyclopedic replacement for Bishop PRML. Roadmap treats it as **reference, not a linear read**. Use it when you need a chapter on something specific (e.g., Bayesian deep learning, causality, neural ODEs) that Bishop predates.
+Murphy's 2022 rewrite — [[textbook-murphy-pml-intro]] — is the modern encyclopedic replacement for Bishop PRML. Roadmap treats it as **reference, not a linear read**. Use it when you need a chapter on something specific (e.g., Bayesian deep learning, causality, neural ODEs) that Bishop predates.
 
 ## Related
-- [[murphy-pml-intro]]
-- [[bishop-prml]]
+- [[textbook-murphy-pml-intro]]
+- [[textbook-bishop-prml]]
 - [[python-ml-wireless]]

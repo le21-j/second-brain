@@ -60,7 +60,7 @@ updated: 2026-04-28
 >
 > 1. **EEE 335 Lab 5** (Differential Amplifiers) — the description warns "students have reported this lab takes some time, please start early." Block 4–6 hours.
 > 2. **EEE 335 Course Eval** — 5 minutes for 1 free point.
-> 3. **EEE 404 Exam 2 review block 2** — work through [[lab-7-fill-in-walkthrough]] and [[eee-404-hw5-walkthrough]] as exam-style practice. Last evening before the exam.
+> 3. **EEE 404 Exam 2 review block 2** — work through [[eee-404-lab-7-fill-in-walkthrough]] and [[eee-404-hw5-walkthrough]] as exam-style practice. Last evening before the exam.
 
 ### Thu 4/30 — exam day (heavy)
 

@@ -84,7 +84,7 @@ Given a function $f: \mathbb{R}^n \to \mathbb{R}^m$ decomposed as a DAG of eleme
 
 1. Karpathy's **micrograd** — https://github.com/karpathy/micrograd. Build autograd from scratch.
 2. PyTorch autograd docs — https://pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html.
-3. [[deep-learning-with-pytorch]] Ch 5.
+3. [[textbook-deep-learning-with-pytorch]] Ch 5.
 4. The JAX docs if you're adventurous.
 
 ## Related

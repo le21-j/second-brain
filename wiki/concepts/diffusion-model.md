@@ -3,7 +3,7 @@ title: Diffusion model
 type: concept
 course: [[python-ml-wireless]]
 tags: [diffusion, generative, dl, ddpm, score-matching]
-sources: [[article-2026-04-23-physical-layer-ml-roadmap]]
+sources: [[paper-ho-2020-ddpm]], [[article-2026-04-23-physical-layer-ml-roadmap]]
 created: 2026-04-23
 updated: 2026-04-26
 ---
@@ -107,7 +107,7 @@ $$
 1. [Lilian Weng's diffusion post](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/).
 2. Ho, Jain, Abbeel 2020 — DDPM.
 3. Hugging Face Diffusion Course — https://huggingface.co/learn/diffusion-course.
-4. Prince Ch 18 ([[prince-understanding-deep-learning]]) — the clearest textbook treatment.
+4. Prince Ch 18 ([[textbook-prince-understanding-deep-learning]]) — the clearest textbook treatment.
 
 ## Related
 - [[variational-autoencoder]]

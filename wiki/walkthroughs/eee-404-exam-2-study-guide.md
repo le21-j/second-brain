@@ -1,6 +1,6 @@
 ---
 title: EEE 404 Exam 2 — Study Guide & Cheat Sheet Skeleton
-type: example
+type: walkthrough
 course: [[eee-404]]
 tags: [eee-404, exam, study-guide, formula-sheet, cheat-sheet, mlp, dtft, dft, fft, z-transform, windowing]
 sources: [[summary-eee-404-exam-2-review]]

@@ -3,7 +3,7 @@ title: Generative adversarial network (GAN)
 type: concept
 course: [[python-ml-wireless]]
 tags: [gan, generative, dl, goodfellow]
-sources: [[article-2026-04-23-physical-layer-ml-roadmap]]
+sources: [[paper-goodfellow-2014-gan]], [[article-2026-04-23-physical-layer-ml-roadmap]]
 created: 2026-04-23
 updated: 2026-04-26
 ---
@@ -66,12 +66,12 @@ If both networks are flexible enough, the optimal $D$ is $p_\text{data} / (p_\te
 
 ## Reading order
 
-1. Goodfellow 2014 (arxiv:1406.2661) — the paper.
+1. **[[paper-goodfellow-2014-gan]]** — the paper.
 2. DCGAN + WGAN-GP skim.
-3. Prince Ch 15 ([[prince-understanding-deep-learning]]).
+3. Prince Ch 15 ([[textbook-prince-understanding-deep-learning]]).
 
 ## Related
 - [[variational-autoencoder]]
 - [[diffusion-model]]
-- [[ian-goodfellow]]
+- [[goodfellow]]
 - [[python-ml-wireless]]

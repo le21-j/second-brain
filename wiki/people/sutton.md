@@ -14,7 +14,7 @@ updated: 2026-04-23
 
 ## Why he matters to Jayden
 
-**The RL canon is Sutton + Barto.** See [[sutton-barto-rl]]. The roadmap treats this book as the primary RL text (Phase 3 M7–8).
+**The RL canon is Sutton + Barto.** See [[textbook-sutton-barto-rl]]. The roadmap treats this book as the primary RL text (Phase 3 M7–8).
 
 Sutton's big-picture essays are worth reading alongside the book:
 - "The Bitter Lesson" (2019) — compute-scaling always wins over hand-designed priors. Influential short essay.
@@ -25,7 +25,7 @@ Sutton's big-picture essays are worth reading alongside the book:
 Ch 2 of the book (multi-armed bandits) is the conceptual ancestor of **regret matching** (Hart & Mas-Colell) — the algorithm in [[regretful-learning]] that powers Jayden's AirComp pipeline. If you can articulate "regret matching is to bandits what counterfactual utility is to observed reward," you understand both.
 
 ## Related
-- [[sutton-barto-rl]]
+- [[textbook-sutton-barto-rl]]
 - [[reinforcement-learning]]
 - [[regretful-learning]]
 - [[python-ml-wireless]]

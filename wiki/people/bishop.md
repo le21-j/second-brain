@@ -15,7 +15,7 @@ updated: 2026-04-23
 
 ## Why he matters to Jayden
 
-PRML is the book that bridges DSP-style probabilistic reasoning and modern ML. See [[bishop-prml]] for chapter-by-chapter pointers.
+PRML is the book that bridges DSP-style probabilistic reasoning and modern ML. See [[textbook-bishop-prml]] for chapter-by-chapter pointers.
 
 Key identities from PRML that pay dividends for DSP applicants:
 - Ridge regression = Bayesian linear regression = MMSE estimator (Ch 3).
@@ -24,6 +24,6 @@ Key identities from PRML that pay dividends for DSP applicants:
 - EM / variational inference (Ch 9–10) — the derivation pipeline for VAEs.
 
 ## Related
-- [[bishop-prml]]
-- [[murphy-pml-intro]] — modern replacement.
+- [[textbook-bishop-prml]]
+- [[textbook-murphy-pml-intro]] — modern replacement.
 - [[python-ml-wireless]]

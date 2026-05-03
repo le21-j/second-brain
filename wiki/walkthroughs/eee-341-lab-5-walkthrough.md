@@ -1,6 +1,6 @@
 ---
 title: EEE 341 Lab 5 — Antenna Measurement (EZNEC) Walkthrough
-type: example
+type: walkthrough
 course: [[eee-341]]
 tags: [eee-341, lab, walkthrough, antenna, dipole, eznec, swr, array, cardioid, friis]
 sources: [[homework-2026-04-28-eee-341-lab-5]]

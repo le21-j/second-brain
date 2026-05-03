@@ -1,6 +1,6 @@
 ---
 title: Example — Lab 7 FILL_IN_BLANKs Walkthrough
-type: example
+type: walkthrough
 course:
   - - eee-404
 tags:

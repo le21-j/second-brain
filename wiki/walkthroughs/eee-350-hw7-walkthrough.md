@@ -1,6 +1,6 @@
 ---
 title: EEE 350 HW7 — Significance Testing & MMSE/LMSE Estimation (Walkthrough)
-type: example
+type: walkthrough
 course: [[eee-350]]
 tags: [eee-350, homework, walkthrough, significance-test, lmse, mmse, estimation, hypothesis-testing]
 sources: [[homework-2026-04-23-eee-350-hw7]]

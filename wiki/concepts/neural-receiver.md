@@ -88,14 +88,17 @@ At inference, the LLRs $L_\theta(\mathbf{Y})$ feed directly into the standard-co
 - **Upstream:** [[autoencoder-phy]] (O'Shea & Hoydis 2017), ViterbiNet (Shlezinger 2019).
 
 ## Portfolio move (Phase 3 Month 7)
-Reproduce Sionna Tutorial Part 4 (Advanced Neural Receiver), then swap a CNN for a small transformer block, report BLER curves on CDL-A and UMi. This is a $3$-week project and it is the single strongest intern-app signal.
+**See [[nrx-reproduction-walkthrough]]** — the full 6-stage step-by-step reproduction guide. The walkthrough is the headline executable artifact for the entire roadmap; this concept page intentionally defers to it instead of duplicating.
 
 ## Related
-- [[sionna]] — the simulator.
+- [[nrx-reproduction-walkthrough]] — **the M7 capstone walkthrough.**
+- [[5g-nr-pusch-structure]] — the standard-compliant grid the NRX consumes.
+- [[sionna]], [[sionna-api-cheatsheet]] — the simulator + how to assemble the training loop.
+- [[neural-decoder]] — the post-NRX decoding subblock (or, in some architectures, the back end of a joint NRX).
 - [[physical-layer-ml]] — umbrella.
 - [[autoencoder-phy]] — the "E2E" relative.
 - [[differentiable-ray-tracing]] — site-specific extension.
-- [[hoydis]]
+- [[hoydis]], [[cammerer]], [[aitaoudia]], [[wiesmayr]] — NVIDIA-target authors.
 - [[python-ml-wireless]]
 
 ## Practice

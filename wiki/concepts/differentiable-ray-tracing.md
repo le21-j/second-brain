@@ -96,11 +96,13 @@ Train a **site-specific neural receiver** in Sionna RT:
 5. Report BLER gain of site-specific vs generic.
 
 ## Related
-- [[sionna]]
+- [[sionna]], [[sionna-rt]]
 - [[wireless-digital-twin]]
+- [[digital-twin-calibration]] — the closed-loop concept that uses differentiable RT for inverse rendering.
 - [[deepmimo]]
 - [[neural-receiver]]
-- [[hoydis]]
+- [[paper-diff-rt-calibration-2024]] — the load-bearing calibration paper.
+- [[hoydis]], [[cammerer]], [[aitaoudia]]
 - [[python-ml-wireless]]
 
 ## Practice

@@ -1,6 +1,6 @@
 ---
 title: EEE 304 Lab 4 — AM Modulation/Demodulation Walkthrough
-type: example
+type: walkthrough
 course: [[eee-304]]
 tags: [eee-304, lab, walkthrough, am, modulation, demodulation, simulink, butterworth, communication]
 sources: [[lab-eee-304-lab-4-am-modulation]]

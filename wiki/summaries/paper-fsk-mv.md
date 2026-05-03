@@ -30,4 +30,4 @@ Original FSK-MV paper: each ED transmits the sign of its local gradient by activ
 
 ## Related
 - [[paper-aircomp-feel-demo]] — the SDR demo that implements this scheme
-- [[paper-noncoherent-dgd]] — decentralized extension
+- [[paper-ncota-dgd]] — decentralized extension

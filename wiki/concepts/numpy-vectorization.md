@@ -54,7 +54,7 @@ The three skills that matter:
 
 ### The transform sequence (Rougier's approach)
 
-The pedagogy in [[from-python-to-numpy]] is to look at a loop and **systematically transform** it:
+The pedagogy in [[textbook-from-python-to-numpy]] is to look at a loop and **systematically transform** it:
 
 1. Identify the loop's body — what scalar operation happens per iteration?
 2. Rewrite it on whole arrays — replace scalar indices with array indexing.
@@ -98,12 +98,12 @@ Learning broadcasting solidly pays for itself inside an hour.
 ## Reading order
 
 1. CS231n NumPy tutorial — one dense hour.
-2. [[from-python-to-numpy]] — Rougier; the definitive free text on vectorization.
+2. [[textbook-from-python-to-numpy]] — Rougier; the definitive free text on vectorization.
 3. Rougier's 100 NumPy exercises (1-star and 2-star).
 4. Anytime you write a Python `for` loop over a NumPy array — **stop and ask whether you can vectorize it.**
 
 ## Related
 - [[pytorch]] — same vectorization mental model (tensors instead of ndarrays).
-- [[from-python-to-numpy]]
-- [[scientific-visualization-matplotlib]]
+- [[textbook-from-python-to-numpy]]
+- [[textbook-scientific-visualization-matplotlib]]
 - [[python-ml-wireless]]

@@ -95,7 +95,7 @@ Everything in [[eee-404]] — especially [[dft]], [[fft]], [[twiddle-factor]], [
 
 ## Research ties / reading order
 
-1. PySDR Chapter 12 (OFDM) — [[pysdr-lichtman]] — the gentle introduction.
+1. PySDR Chapter 12 (OFDM) — [[textbook-pysdr-lichtman]] — the gentle introduction.
 2. Sionna Tutorial Part 2 (OFDM primer) — code-first.
 3. 3GPP TS 38.211 for the NR standard details (only when you need actual resource-grid specifics).
 4. Bölcskei, Healey, Paulraj — classical OFDM MIMO tutorials.
@@ -109,7 +109,7 @@ Phase 1 Month 2: **OFDM-from-scratch in NumPy** — bits $\to$ QAM $\to$ IFFT $\
 - [[csi-feedback]]
 - [[channel-estimation]]
 - [[modulation-classification]]
-- [[pysdr-lichtman]]
+- [[textbook-pysdr-lichtman]]
 - [[python-ml-wireless]]
 
 ## Practice

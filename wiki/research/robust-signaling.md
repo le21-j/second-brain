@@ -82,5 +82,6 @@ Signaling bits (in the data field):
 ## Related
 - [[paper-aircomp-feel-demo]] — the template lifted here
 - [[system-pipeline]] — how these fit into the end-to-end protocol
+- [[polar-codes]] — 5G NR's control-channel code; one candidate for the AirComp control-plane FEC.
 - [[zadoff-chu-sequence]] — ZC properties
 - [[golay-complementary-pair]] — Golay properties

@@ -1,6 +1,6 @@
 ---
 title: EEE 404 Exam 2 — Practice Exam Walkthrough
-type: example
+type: walkthrough
 course: [[eee-404]]
 tags: [eee-404, exam, walkthrough, mlp, dtft, dft, fft, z-transform, difference-equation, butterfly, windowing]
 sources: [[summary-eee-404-exam-2-review]]

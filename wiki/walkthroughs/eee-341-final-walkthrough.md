@@ -1,6 +1,6 @@
 ---
 title: EEE 341 — Final Exam Walkthrough & Study Guide
-type: example
+type: walkthrough
 course: [[eee-341]]
 tags: [eee-341, walkthrough, final-exam, electromagnetics]
 sources: [[eee-341]]

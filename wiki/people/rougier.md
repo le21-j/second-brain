@@ -17,8 +17,8 @@ updated: 2026-04-23
 
 **The premier scientific-Python educator.** Two open-access books on the roadmap:
 
-1. **"From Python to NumPy"** — https://www.labri.fr/perso/nrougier/from-python-to-numpy/. **The single best free resource on vectorization**, which the roadmap calls out as exactly the skill Jayden needs for DSP + ML prototyping. See [[from-python-to-numpy]] and [[numpy-vectorization]].
-2. **"Scientific Visualization: Python + Matplotlib"** — https://github.com/rougier/scientific-visualization-book. Open-access gold standard for making publication-quality figures. See [[scientific-visualization-matplotlib]].
+1. **"From Python to NumPy"** — https://www.labri.fr/perso/nrougier/from-python-to-numpy/. **The single best free resource on vectorization**, which the roadmap calls out as exactly the skill Jayden needs for DSP + ML prototyping. See [[textbook-from-python-to-numpy]] and [[numpy-vectorization]].
+2. **"Scientific Visualization: Python + Matplotlib"** — https://github.com/rougier/scientific-visualization-book. Open-access gold standard for making publication-quality figures. See [[textbook-scientific-visualization-matplotlib]].
 3. **100 NumPy Exercises** — https://github.com/rougier/numpy-100. Drill source. Aim for all one-star and two-thirds of two-star.
 
 ## Why Rougier's approach works
@@ -28,7 +28,7 @@ updated: 2026-04-23
 - **Pedagogy is the work.** He publishes on scientific-Python pedagogy as a research output; the books are artifacts of that research.
 
 ## Related
-- [[from-python-to-numpy]]
-- [[scientific-visualization-matplotlib]]
+- [[textbook-from-python-to-numpy]]
+- [[textbook-scientific-visualization-matplotlib]]
 - [[numpy-vectorization]]
 - [[python-ml-wireless]]

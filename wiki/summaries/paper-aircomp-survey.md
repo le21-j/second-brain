@@ -44,6 +44,7 @@ Comprehensive survey of practical AirComp: what functions are computable (nomogr
 - Standardization path: the survey names IEEE 802.11 AI/ML TIG and 3GPP 22.876 as potential homes. Jayden's WiFi-inspired protocol design is aligned with this trajectory.
 
 ## Related
+- [[federated-learning]] — the broader ML paradigm AirComp specializes (OTA-FL is one flavor of FL).
 - [[system-pipeline]] — the research design
 - [[paper-unregrettable-hpsr]] — the specific algorithm being implemented
 - [[paper-aircomp-feel-demo]] — the closest practical analog (SDR demonstration)

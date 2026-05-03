@@ -14,7 +14,7 @@ updated: 2026-04-23
 
 ## Why he matters to Jayden
 
-See [[pysdr-lichtman]] — chapter 12 (OFDM) is the starting point for the Phase 1 M2 "OFDM from scratch" project; chapter 16 (ML for RF) is the gentle on-ramp to the PHY-ML literature. PySDR is CC-licensed, open-source (https://github.com/777arc/PySDR), and continuously updated.
+See [[textbook-pysdr-lichtman]] — chapter 12 (OFDM) is the starting point for the Phase 1 M2 "OFDM from scratch" project; chapter 16 (ML for RF) is the gentle on-ramp to the PHY-ML literature. PySDR is CC-licensed, open-source (https://github.com/777arc/PySDR), and continuously updated.
 
 ## What makes PySDR special
 
@@ -24,7 +24,7 @@ See [[pysdr-lichtman]] — chapter 12 (OFDM) is the starting point for the Phase
 - **One-person maintained.** Which is to say, it's what one person's careful pedagogy produces — high-quality, internally consistent, no committee compromises.
 
 ## Related
-- [[pysdr-lichtman]]
+- [[textbook-pysdr-lichtman]]
 - [[ofdm]]
 - [[python-ml-wireless]]
 - [[system-pipeline]] — the AirComp project uses Pluto SDRs covered in PySDR.

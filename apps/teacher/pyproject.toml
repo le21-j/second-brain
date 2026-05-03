@@ -1,0 +1,15 @@
+[project]
+name = "teacher-app"
+version = "0.1.0"
+description = "Local web UI for Jayden's Socratic teacher agent — better Markdown + LaTeX rendering than the terminal"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=0.42.0",
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.0.0",
+]
+
+[tool.uv]
+package = false
