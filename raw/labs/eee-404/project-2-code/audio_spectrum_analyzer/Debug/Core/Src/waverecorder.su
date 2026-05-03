@@ -1,0 +1,7 @@
+../Core/Src/waverecorder.c:61:9:WaveRecorderStart	16	static
+../Core/Src/waverecorder.c:71:10:WaveRecorderStop	8	static
+../Core/Src/waverecorder.c:81:6:WaveRecorderProcess	8	static
+../Core/Src/waverecorder.c:92:6:BSP_AUDIO_IN_TransferComplete_CallBack	8	static
+../Core/Src/waverecorder.c:111:6:BSP_AUDIO_IN_HalfTransfer_CallBack	8	static
+../Core/Src/waverecorder.c:127:6:Process_Out	40	static
+../Core/Src/waverecorder.c:203:6:apply_window	24	static

@@ -1,0 +1,7 @@
+../Core/Src/waverecorder.c:61:9:WaveRecorderStart	1
+../Core/Src/waverecorder.c:71:10:WaveRecorderStop	1
+../Core/Src/waverecorder.c:81:6:WaveRecorderProcess	1
+../Core/Src/waverecorder.c:92:6:BSP_AUDIO_IN_TransferComplete_CallBack	1
+../Core/Src/waverecorder.c:111:6:BSP_AUDIO_IN_HalfTransfer_CallBack	1
+../Core/Src/waverecorder.c:127:6:Process_Out	10
+../Core/Src/waverecorder.c:203:6:apply_window	1

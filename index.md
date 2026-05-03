@@ -195,6 +195,9 @@ Code living at [`aircomp-regret-pluto/`](../aircomp-regret-pluto/) — 4× Adalm
 - [[dft-properties]], [[parseval-theorem]] — algebra of the DFT (NEW 2026-04-29)
 - [[stft]], [[window-function]], [[spectral-leakage]], [[window-resolution-criterion]] — time-frequency
 - [[rectangular-window]], [[hamming-window]], [[hann-window]], [[bartlett-window]]
+- [[autocorrelation-pitch-detection]] — pitch via $\mathrm{IFFT}(|\mathrm{FFT}|^2)$ (NEW 2026-05-02 from Project 2)
+- [[formant]] — vocal-tract resonances; spectral envelope peaks (NEW 2026-05-02 from Project 2)
+- [[cmsis-dsp-fft]] — `arm_rfft_fast_f32` API + packed output (NEW 2026-05-02 from Project 2)
 
 ### Z-transform + filter implementation (NEW 2026-04-29 from Modules 7+8)
 - [[z-transform]], [[region-of-convergence]] — Z-domain + ROC rules
@@ -359,6 +362,7 @@ Code living at [`aircomp-regret-pluto/`](../aircomp-regret-pluto/) — 4× Adalm
 Per-question lab/HW walkthroughs (concept-first, then steps). Filed under `wiki/walkthroughs/`. The headline teaching artifacts when ingesting an assignment.
 
 ### EEE 404
+- **[[eee-404-project-2-walkthrough]]** — Project 2 walkthrough: vowel analysis (`max_index`, autocorrelation pitch detection, formant reading) + real-time spectrum analyzer (4 FILL_IN_BLANKs + `apply_window`, window comparison). Due Mon 5/4.
 - **[[eee-404-exam-2-walkthrough]]** — full per-problem walkthrough of all 4 Exam 2 practice problems (MLP forward pass; Z-transform/ROC/DF-II; sampling/DFT/FFT sizing; 4-pt DFT direct + FFT butterfly + IFFT). Thursday 4/30 exam.
 - **[[eee-404-exam-2-study-guide]]** — companion topic checklist + master equation sheet for the 8.5×11 cheat sheet
 - **[[eee-404-ec-ml-walkthrough]]** — EC ML lab walkthrough + report skeleton (XOR-XOR on STM32; due Fri 5/2; 10 EC pts)
@@ -479,6 +483,7 @@ Standalone worked examples (one-off teaching examples, not full assignments). Fi
 - **NEW 2026-04-29:** [[summary-eee-404-exam-2-review]] — Exam 2 practice exam handout summary
 - **NEW 2026-04-29:** [[summary-eee-404-ec-ml-lab]] — EC ML lab source summary
 - **NEW 2026-04-29:** [[summary-eee-404-ec-quantum-lab]] — EC Quantum lab source summary
+- **NEW 2026-05-02:** [[lab-eee-404-project-2-fft-applications]] — Project 2 source summary: vowel analysis + real-time spectrum analyzer
 
 ### EEE 304
 - [[lab-eee-304-lab-4-am-modulation]] — Lab 4: AM modulation + coherent vs envelope demodulation (Simulink + tada.wav fill-in-the-blanks)

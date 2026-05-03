@@ -1,0 +1,11 @@
+../Core/Src/cs43l22.c:133:10:cs43l22_Init	6
+../Core/Src/cs43l22.c:217:10:cs43l22_ReadID	1
+../Core/Src/cs43l22.c:231:10:cs43l22_Play	2
+../Core/Src/cs43l22.c:254:10:cs43l22_Pause	1
+../Core/Src/cs43l22.c:273:10:cs43l22_Resume	2
+../Core/Src/cs43l22.c:301:10:cs43l22_Stop	1
+../Core/Src/cs43l22.c:322:10:cs43l22_SetVolume	3
+../Core/Src/cs43l22.c:349:10:cs43l22_SetFrequency	1
+../Core/Src/cs43l22.c:361:10:cs43l22_SetMute	2
+../Core/Src/cs43l22.c:386:10:cs43l22_SetOutputMode	5
+../Core/Src/cs43l22.c:427:16:CODEC_IO_Write	1
