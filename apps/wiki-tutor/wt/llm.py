@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import asyncio
 import os
+import tempfile
 from collections.abc import AsyncIterator
 from pathlib import Path
 
@@ -85,6 +86,7 @@ class LLMSession:
         self.agent_name = agent_name
         self.system_prompt = load_system_prompt(self.wiki_root, self.agent_name)
         self._client: ClaudeSDKClient | None = None
+        self._system_prompt_file: Path | None = None
 
     def _refresh_system_prompt(self) -> None:
         self.system_prompt = load_system_prompt(self.wiki_root, self.agent_name)
@@ -113,8 +115,11 @@ class LLMSession:
         await self.disconnect()
 
     async def connect(self) -> None:
+        # Route system_prompt through a temp file. Inlining as a CLI arg breaks
+        # on Windows when the prompt > ~32 KB (CreateProcess WinError 206).
+        self._system_prompt_file = self._write_system_prompt_file()
         options = ClaudeAgentOptions(
-            system_prompt=self.system_prompt,
+            system_prompt={"type": "file", "path": str(self._system_prompt_file)},
             model=self.model,
             allowed_tools=[],
             setting_sources=[],
@@ -122,13 +127,41 @@ class LLMSession:
             max_turns=1,
         )
         self._client = ClaudeSDKClient(options=options)
-        await self._client.connect()
+        try:
+            await self._client.connect()
+        except BaseException:
+            self._cleanup_system_prompt_file()
+            self._client = None
+            raise
 
     async def disconnect(self) -> None:
         if self._client is None:
             return
-        await self._client.disconnect()
-        self._client = None
+        try:
+            await self._client.disconnect()
+        finally:
+            self._client = None
+            self._cleanup_system_prompt_file()
+
+    def _write_system_prompt_file(self) -> Path:
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            prefix="wt-system-prompt-",
+            suffix=".md",
+            delete=False,
+        ) as f:
+            f.write(self.system_prompt)
+            return Path(f.name)
+
+    def _cleanup_system_prompt_file(self) -> None:
+        if self._system_prompt_file is None:
+            return
+        try:
+            self._system_prompt_file.unlink()
+        except OSError:
+            pass
+        self._system_prompt_file = None
 
     async def reset(self) -> None:
         await self.disconnect()
