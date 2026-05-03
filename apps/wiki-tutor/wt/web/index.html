@@ -1,0 +1,2315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>wiki-tutor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+      },
+      chtml: { fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2' },
+      startup: { typeset: false },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #1a1b26;
+      --bg-elev: #24283b;
+      --bg-elev-2: #2f334d;
+      --bg-elev-3: #3b4261;
+      --fg: #c0caf5;
+      --fg-soft: #a9b1d6;
+      --fg-muted: #565f89;
+      --fg-faint: #414868;
+      --accent: #7aa2f7;
+      --accent2: #bb9af7;
+      --accent-soft: rgba(122, 162, 247, 0.12);
+      --accent2-soft: rgba(187, 154, 247, 0.12);
+      --green: #9ece6a;
+      --yellow: #e0af68;
+      --red: #f7768e;
+      --cyan: #7dcfff;
+      --orange: #ff9e64;
+
+      /* spacing scale (4px base) */
+      --sp-1: 4px;
+      --sp-2: 8px;
+      --sp-3: 12px;
+      --sp-4: 16px;
+      --sp-5: 20px;
+      --sp-6: 24px;
+
+      /* radii */
+      --r-sm: 4px;
+      --r-md: 6px;
+      --r-lg: 8px;
+
+      /* motion */
+      --ease: cubic-bezier(.4, 0, .2, 1);
+      --dur: 140ms;
+
+      /* fonts */
+      --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
+    }
+    html, body { height: 100%; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-ui);
+      font-feature-settings: 'cv11', 'ss01', 'ss03';
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .prose { line-height: 1.7; max-width: 78ch; font-size: 0.95rem; }
+    .prose h1 { font-size: 1.75rem; font-weight: 700; margin: 1.6rem 0 0.8rem; color: #fff; letter-spacing: -0.01em; line-height: 1.25; }
+    .prose h2 { font-size: 1.35rem; font-weight: 700; margin: 1.6rem 0 0.7rem; color: #fff; letter-spacing: -0.005em; border-bottom: 1px solid var(--bg-elev-2); padding-bottom: 0.4rem; line-height: 1.3; }
+    .prose h3 { font-size: 1.1rem; font-weight: 600; margin: 1.2rem 0 0.5rem; color: #e8eafe; line-height: 1.35; }
+    .prose h4 { font-size: 0.98rem; font-weight: 600; margin: 0.9rem 0 0.4rem; color: #e8eafe; }
+    .prose p { margin: 0.65rem 0; }
+    .prose ul, .prose ol { margin: 0.65rem 0; padding-left: 1.5rem; }
+    .prose li { margin: 0.25rem 0; }
+    .prose code:not(pre code) {
+      background: var(--bg-elev);
+      padding: 0.12rem 0.4rem;
+      border-radius: var(--r-sm);
+      font-size: 0.88em;
+      color: var(--orange);
+      font-family: var(--font-mono);
+      font-feature-settings: 'liga' 0, 'calt' 0;
+    }
+    .prose pre {
+      background: #11121a !important;
+      padding: 0.95rem 1.1rem;
+      border-radius: var(--r-md);
+      overflow-x: auto;
+      margin: 0.9rem 0;
+      font-family: var(--font-mono);
+      font-feature-settings: 'liga' 0, 'calt' 0;
+      font-size: 0.86em;
+      line-height: 1.55;
+      border: 1px solid var(--bg-elev-2);
+    }
+    .prose blockquote { border-left: 3px solid var(--fg-muted); padding-left: 1rem; opacity: 0.85; margin: 0.6rem 0; }
+    .prose table { border-collapse: collapse; margin: 0.8rem 0; font-size: 0.92em; }
+    .prose th, .prose td { border: 1px solid var(--bg-elev-2); padding: 0.4rem 0.7rem; text-align: left; }
+    .prose th { background: var(--bg-elev); font-weight: 600; }
+    .prose strong { color: #fff; font-weight: 600; }
+    .prose em { color: #e8eafe; }
+    .prose hr { border: 0; border-top: 1px solid var(--bg-elev-2); margin: 1.5rem 0; }
+    .prose a { color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent); }
+    .prose a:hover { color: var(--accent2); border-bottom-style: solid; }
+
+    .wiki-link { color: var(--accent); cursor: pointer; border-bottom: 1px dotted var(--accent); }
+    .wiki-link:hover { color: var(--accent2); border-bottom-color: var(--accent2); }
+    .wiki-link.dead { color: var(--fg-muted); border-bottom-style: solid; cursor: default; }
+
+    .callout { border-left: 4px solid; padding: 0.7rem 1rem; margin: 0.9rem 0; border-radius: 0 6px 6px 0; background: rgba(255,255,255,0.025); }
+    .callout-title { font-weight: 600; margin-bottom: 0.4rem; font-size: 0.95em; display: flex; align-items: center; gap: 0.4rem; }
+    .callout-note, .callout-info { border-color: var(--accent); }
+    .callout-tip, .callout-hint, .callout-success { border-color: var(--green); }
+    .callout-warning, .callout-caution, .callout-important { border-color: var(--yellow); }
+    .callout-danger, .callout-failure, .callout-bug { border-color: var(--red); }
+    .callout-example, .callout-abstract, .callout-summary { border-color: var(--cyan); }
+    .callout-question, .callout-todo, .callout-quote { border-color: var(--accent2); }
+
+    mark { background: rgba(224, 175, 104, 0.25); color: #fff; padding: 0 0.2rem; border-radius: 2px; }
+
+    .embed { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.1rem 0.5rem; border-radius: 4px; background: var(--bg-elev); font-size: 0.92em; }
+
+    .tab {
+      padding: 0.55rem 0.8rem;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--fg-muted);
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      max-width: 220px;
+      transition: color var(--dur) var(--ease), background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+    .tab:hover { color: var(--fg-soft); background: var(--accent-soft); }
+    .tab .tab-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 160px; }
+    .tab.active { border-bottom-color: var(--accent); color: var(--fg); }
+    .tab.tab-chat { color: var(--accent2); font-weight: 600; }
+    .tab.tab-chat.active { border-bottom-color: var(--accent2); color: #fff; }
+    .tab-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: var(--r-sm);
+      color: var(--fg-muted);
+      opacity: 0.7;
+      cursor: pointer;
+      font-size: 0.8rem;
+      line-height: 1;
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease), opacity var(--dur) var(--ease);
+    }
+    .tab-action:hover { opacity: 1; background: var(--bg-elev-2); color: var(--accent2); }
+    .tab-close:hover { color: var(--red); background: rgba(247, 118, 142, 0.12); }
+
+    .chat-turn { padding: 0.85rem 1.1rem; margin: 0.7rem 0; border-radius: var(--r-md); position: relative; }
+    .chat-turn-user {
+      background: var(--accent-soft);
+      border-left: 3px solid var(--accent);
+    }
+    .chat-turn-assistant {
+      border-left: 3px solid var(--accent2);
+      background: linear-gradient(90deg, var(--accent2-soft) 0%, transparent 60%);
+    }
+    .chat-turn .role {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--fg-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.45rem;
+    }
+    .chat-turn-user .role { color: var(--accent); }
+    .chat-turn-assistant .role { color: var(--accent2); }
+    .chat-turn .role .role-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.08rem 0.45rem;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      text-transform: lowercase;
+      background: var(--bg-elev);
+      color: var(--fg-soft);
+      border: 1px solid var(--bg-elev-2);
+    }
+    .chat-turn .body > :first-child { margin-top: 0; }
+    .chat-turn .body > :last-child { margin-bottom: 0; }
+
+    .thinking { display: inline-flex; gap: 4px; align-items: center; padding: 0.2rem 0; }
+    .thinking span {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent2);
+      opacity: 0.4;
+      animation: thinkingPulse 1.2s infinite var(--ease);
+    }
+    .thinking span:nth-child(2) { animation-delay: 0.18s; }
+    .thinking span:nth-child(3) { animation-delay: 0.36s; }
+    @keyframes thinkingPulse {
+      0%, 100% { opacity: 0.3; transform: scale(0.85); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+
+    .side-item {
+      padding: 0.5rem 0.65rem;
+      border-radius: var(--r-md);
+      cursor: pointer;
+      font-size: 0.86rem;
+      border: 1px solid transparent;
+      transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+    .side-item:hover { background: var(--bg-elev); border-color: var(--bg-elev-2); }
+    .side-item .stem { color: var(--accent); font-weight: 500; line-height: 1.35; }
+    .side-item .desc { color: var(--fg-muted); font-size: 0.76rem; margin-top: 0.2rem; line-height: 1.4; }
+    .side-item .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 0.3rem; }
+    .chip {
+      display: inline-block;
+      padding: 0.04rem 0.4rem;
+      border-radius: 999px;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      background: var(--bg-elev-2);
+      color: var(--fg-soft);
+      border: 1px solid var(--bg-elev-3);
+      line-height: 1.5;
+    }
+    .chip-type { color: var(--cyan); border-color: rgba(125, 207, 255, 0.25); background: rgba(125, 207, 255, 0.08); }
+    .chip-course { color: var(--green); border-color: rgba(158, 206, 106, 0.25); background: rgba(158, 206, 106, 0.08); }
+
+    .pin-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 0.5rem 0.65rem;
+      border-radius: var(--r-md);
+      cursor: pointer;
+      font-size: 0.84rem;
+      border-left: 2px solid var(--accent2);
+      background: var(--bg-elev);
+      transition: background var(--dur) var(--ease), transform var(--dur) var(--ease);
+    }
+    .pin-item:hover { background: var(--bg-elev-2); }
+    .pin-item .pin-text { flex: 1; line-height: 1.4; word-break: break-word; }
+    .pin-num { color: var(--accent2); font-weight: 600; font-feature-settings: 'tnum'; flex-shrink: 0; }
+    .pin-remove {
+      flex-shrink: 0;
+      color: var(--fg-muted);
+      cursor: pointer;
+      width: 16px; height: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--r-sm);
+      font-size: 0.75rem;
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+    }
+    .pin-remove:hover { color: var(--red); background: rgba(247, 118, 142, 0.12); }
+
+    .empty-state {
+      padding: 1.2rem 0.5rem;
+      text-align: center;
+      color: var(--fg-muted);
+      font-size: 0.78rem;
+      line-height: 1.5;
+    }
+    .empty-state .empty-icon { font-size: 1.4rem; opacity: 0.5; margin-bottom: 0.4rem; }
+    .empty-state .empty-hint { font-style: italic; }
+
+    input[type="text"], select {
+      background: var(--bg-elev);
+      color: var(--fg);
+      border: 1px solid var(--bg-elev-2);
+      padding: 0.45rem 0.65rem;
+      border-radius: var(--r-md);
+      font-size: 0.85rem;
+      font-family: var(--font-ui);
+      width: 100%;
+      outline: none;
+      transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), background var(--dur) var(--ease);
+    }
+    input[type="text"]:hover, select:hover { border-color: var(--bg-elev-3); }
+    input[type="text"]:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(122, 162, 247, 0.18);
+      background: var(--bg);
+    }
+    input::placeholder { color: var(--fg-muted); }
+    select {
+      cursor: pointer;
+      padding: 0.35rem 1.6rem 0.35rem 0.6rem;
+      width: auto;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%237aa2f7' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 4.5l3 3 3-3'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.005em;
+    }
+    select option { background: var(--bg-elev); color: var(--fg); }
+
+    /* Global focus ring for keyboard navigation */
+    button:focus-visible,
+    .icon-btn:focus-visible,
+    .tab:focus-visible,
+    .side-item:focus-visible,
+    .pin-item:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .scroll { scrollbar-width: thin; scrollbar-color: var(--bg-elev-2) transparent; overflow-y: auto; }
+    .scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+    .scroll::-webkit-scrollbar-track { background: transparent; }
+    .scroll::-webkit-scrollbar-thumb { background: var(--bg-elev-2); border-radius: var(--r-sm); }
+    .scroll::-webkit-scrollbar-thumb:hover { background: var(--bg-elev-3); }
+
+    .system-msg {
+      color: var(--fg-muted);
+      font-style: italic;
+      font-size: 0.82rem;
+      padding: 0.4rem 1rem;
+      border-left: 2px solid var(--bg-elev-2);
+      margin: 0.4rem 0;
+    }
+
+    /* Header */
+    header.app-header {
+      background: var(--bg);
+      border-bottom: 1px solid var(--bg-elev-2);
+      padding: 0.5rem 1rem;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-4);
+    }
+    .brand { display: flex; align-items: baseline; gap: 0.6rem; min-width: 0; }
+    .brand-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--fg);
+      letter-spacing: -0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .brand-subtitle {
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      color: var(--fg-muted);
+      font-weight: 400;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .control-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.2rem 0.4rem 0.2rem 0.55rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--bg-elev-2);
+      border-radius: var(--r-md);
+    }
+    .control-group label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--fg-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .control-group select {
+      background: transparent;
+      border: none;
+      padding: 0.2rem 1.2rem 0.2rem 0.2rem;
+      color: var(--fg-soft);
+      font-size: 0.8rem;
+      background-position: right 0.1rem center;
+    }
+    .control-group select:focus { box-shadow: none; background: transparent; }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.3rem 0.7rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--bg-elev-2);
+      border-radius: 999px;
+      font-size: 0.74rem;
+      color: var(--fg-soft);
+      font-feature-settings: 'tnum';
+      white-space: nowrap;
+    }
+    .status-pill .status-dot { margin: 0; }
+    .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--fg-muted); vertical-align: middle; box-shadow: 0 0 0 0 currentColor; }
+    .status-dot.ready { background: var(--green); box-shadow: 0 0 6px rgba(158, 206, 106, 0.5); }
+    .status-dot.error { background: var(--red); box-shadow: 0 0 6px rgba(247, 118, 142, 0.5); }
+    .status-dot.busy { background: var(--yellow); animation: pulse 1.4s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.85); } }
+
+    /* Sidebar headings */
+    .pane-heading {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.1rem 0.2rem 0.4rem;
+      border-bottom: 1px solid var(--bg-elev-2);
+      margin-bottom: 0.1rem;
+    }
+    .pane-heading.left { color: var(--accent); }
+    .pane-heading.right { color: var(--accent2); }
+
+    /* Splitters — 6px hit zone, hairline visible by default, grip dots on hover */
+    .splitter-v {
+      position: relative;
+      width: 6px;
+      cursor: col-resize;
+      background: transparent;
+      flex-shrink: 0;
+      transition: background var(--dur) var(--ease);
+    }
+    .splitter-v::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; left: 50%;
+      width: 1px;
+      transform: translateX(-50%);
+      background: var(--bg-elev-2);
+      transition: background var(--dur) var(--ease);
+    }
+    .splitter-v::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 4px;
+      height: 28px;
+      background-image: radial-gradient(circle, var(--fg-muted) 1px, transparent 1.2px);
+      background-size: 4px 6px;
+      background-repeat: repeat-y;
+      opacity: 0;
+      transition: opacity var(--dur) var(--ease);
+      pointer-events: none;
+    }
+    .splitter-v:hover::before, .splitter-v.dragging::before { background: var(--accent); }
+    .splitter-v:hover::after, .splitter-v.dragging::after { opacity: 0.85; }
+    .splitter-v[data-splitter="pin"]::before { background: var(--accent2); opacity: 0.4; }
+    .splitter-v[data-splitter="pin"]:hover::before, .splitter-v[data-splitter="pin"].dragging::before { background: var(--accent2); opacity: 1; }
+
+    .layout { display: flex; flex: 1; overflow: hidden; min-height: 0; }
+    .layout > aside { overflow-y: auto; padding: var(--sp-3); flex-shrink: 0; }
+    #left-pane { background: var(--bg); }
+    #right-pane { background: var(--bg); }
+
+    /* Center: tabs+pinned area | input */
+    #center-pane { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+    #ws-content { flex: 1; display: flex; min-height: 0; min-width: 0; overflow: hidden; }
+    #ws-tabs-area { flex: 1; display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+    #ws-pinned-area {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 0;
+      background: var(--bg);
+      flex-shrink: 0;
+      box-shadow: inset 1px 0 0 var(--accent2-soft);
+    }
+    #tabs {
+      display: flex;
+      border-bottom: 1px solid var(--bg-elev-2);
+      overflow-x: auto;
+      flex-shrink: 0;
+      padding: 0 0.4rem;
+      background: var(--bg);
+    }
+    #tabs::-webkit-scrollbar { height: 0; }
+    #tab-panes { flex: 1; min-height: 0; }
+    #tab-panes > .tab-pane { display: none; height: 100%; overflow-y: auto; padding: 1.4rem 1.8rem; }
+    #tab-panes > .tab-pane.active { display: block; }
+    .pinned-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.55rem 0.85rem;
+      border-bottom: 1px solid var(--bg-elev-2);
+      background: linear-gradient(90deg, var(--accent2-soft) 0%, var(--bg-elev) 80%);
+      flex-shrink: 0;
+    }
+    .pinned-title {
+      font-weight: 600;
+      color: var(--accent2);
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      letter-spacing: -0.005em;
+    }
+    .pinned-title::before {
+      content: '📌';
+      font-size: 0.8rem;
+    }
+    .pinned-actions { display: flex; gap: 0.3rem; }
+    .icon-btn {
+      background: none;
+      border: 1px solid transparent;
+      color: var(--fg-muted);
+      cursor: pointer;
+      padding: 0.25rem 0.45rem;
+      border-radius: var(--r-sm);
+      font-size: 0.9rem;
+      line-height: 1;
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+    .icon-btn:hover { color: var(--fg); background: var(--bg-elev-2); border-color: var(--bg-elev-3); }
+    #pinned-content { flex: 1; overflow-y: auto; padding: 1.4rem 1.8rem; }
+    #prompt-bar {
+      border-top: 1px solid var(--bg-elev-2);
+      padding: 0.65rem 0.85rem;
+      flex-shrink: 0;
+      background: var(--bg);
+    }
+    #prompt {
+      font-size: 0.92rem;
+      padding: 0.6rem 0.85rem;
+    }
+
+    /* === Selection-pin floating button === */
+    #selection-pin-btn {
+      position: fixed;
+      z-index: 1000;
+      display: none;
+      background: var(--accent2);
+      color: #1a1b26;
+      font-weight: 600;
+      font-size: 0.78rem;
+      padding: 0.35rem 0.6rem;
+      border-radius: var(--r-md);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: transform var(--dur) var(--ease);
+      gap: 0.3rem;
+      align-items: center;
+    }
+    #selection-pin-btn:hover { transform: translateY(-1px); }
+    #selection-pin-btn.show { display: inline-flex; }
+
+    /* === Pin highlights inside content === */
+    .pin-highlight {
+      background: rgba(187, 154, 247, 0.25);
+      border-bottom: 2px solid var(--accent2);
+      cursor: pointer;
+      padding: 0 1px;
+      transition: background var(--dur) var(--ease);
+    }
+    .pin-highlight:hover { background: rgba(187, 154, 247, 0.45); }
+    .pin-highlight.flash { animation: pin-flash 1.4s ease-out; }
+    @keyframes pin-flash {
+      0%   { background: rgba(187, 154, 247, 0.85); box-shadow: 0 0 0 4px rgba(187, 154, 247, 0.55); }
+      100% { background: rgba(187, 154, 247, 0.25); box-shadow: 0 0 0 0 transparent; }
+    }
+    .pin-highlight::before {
+      content: attr(data-pin-num);
+      display: inline-block;
+      background: var(--accent2);
+      color: #1a1b26;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0 0.3rem;
+      border-radius: 8px;
+      margin-right: 0.25rem;
+      vertical-align: super;
+      line-height: 1.4;
+    }
+
+    /* === Annotation bubbles (toggle) === */
+    .tab-pane.show-bubbles .pin-highlight {
+      box-shadow: 0 0 0 2px var(--accent2);
+    }
+    .pin-bubble {
+      position: absolute;
+      max-width: 280px;
+      background: var(--bg-elev);
+      color: var(--fg);
+      border: 1px solid var(--accent2);
+      border-radius: var(--r-md);
+      padding: 0.5rem 0.7rem;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+      pointer-events: auto;
+      z-index: 50;
+    }
+    .pin-bubble .pin-bubble-num {
+      display: inline-block;
+      background: var(--accent2);
+      color: #1a1b26;
+      font-weight: 700;
+      font-size: 0.7rem;
+      padding: 0 0.35rem;
+      border-radius: 8px;
+      margin-right: 0.4rem;
+    }
+    .pin-bubble .pin-bubble-text { color: var(--fg-soft); }
+
+    /* === Notes editor === */
+    .note-tab-pane {
+      display: flex !important;
+      flex-direction: column;
+      height: 100%;
+      max-width: none !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+    }
+    .note-tab-pane.active { display: flex !important; }
+    .note-toolbar {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      padding: var(--sp-3) var(--sp-4);
+      border-bottom: 1px solid var(--bg-elev-2);
+      background: var(--bg);
+      flex-shrink: 0;
+    }
+    .note-title {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--fg);
+      font-size: 1.1rem;
+      font-weight: 600;
+      outline: none;
+      padding: 0.2rem 0;
+    }
+    .note-title:focus { color: #fff; }
+    .note-status {
+      font-size: 0.72rem;
+      color: var(--fg-muted);
+      font-style: italic;
+    }
+    .note-mode-toggle {
+      background: var(--bg-elev);
+      border: 1px solid var(--bg-elev-2);
+      color: var(--fg-soft);
+      cursor: pointer;
+      padding: 0.3rem 0.7rem;
+      border-radius: var(--r-sm);
+      font-size: 0.78rem;
+    }
+    .note-mode-toggle:hover { background: var(--bg-elev-2); color: var(--fg); }
+    .note-mode-toggle.active { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+    .note-body {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      overflow: hidden;
+    }
+    .note-body.split { grid-template-columns: 1fr 1fr; }
+    .note-editor {
+      width: 100%;
+      height: 100%;
+      background: var(--bg);
+      color: var(--fg);
+      border: none;
+      outline: none;
+      resize: none;
+      padding: var(--sp-4) var(--sp-5);
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      font-feature-settings: 'liga' 0, 'calt' 0;
+    }
+    .note-preview {
+      overflow-y: auto;
+      padding: var(--sp-4) var(--sp-5);
+      border-left: 1px solid var(--bg-elev-2);
+      background: var(--bg);
+    }
+
+    /* === Focus mode === */
+    body.focus-mode > header,
+    body.focus-mode #left-pane,
+    body.focus-mode #right-pane,
+    body.focus-mode .splitter-v[data-splitter="left"],
+    body.focus-mode .splitter-v[data-splitter="right"] { display: none !important; }
+    body.focus-mode #tabs { padding-right: 60px; }
+    body.focus-mode #focus-toggle.exit-btn {
+      position: fixed;
+      top: 8px;
+      right: 14px;
+      z-index: 200;
+    }
+    .header-action {
+      background: var(--bg-elev);
+      border: 1px solid var(--bg-elev-2);
+      color: var(--fg-soft);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.35rem 0.7rem;
+      border-radius: var(--r-md);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+    }
+    .header-action:hover { background: var(--bg-elev-2); color: var(--fg); }
+    .header-action.active { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+    .new-note-btn {
+      margin-left: auto;
+      margin-right: var(--sp-2);
+      align-self: center;
+      background: transparent;
+      border: 1px dashed var(--bg-elev-3);
+      color: var(--fg-muted);
+      font-size: 0.78rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: var(--r-sm);
+      cursor: pointer;
+    }
+    .new-note-btn:hover { color: var(--accent2); border-color: var(--accent2); }
+
+    .pin-source {
+      width: 100%;
+      font-size: 0.7rem;
+      color: var(--accent2);
+      margin-top: 0.2rem;
+      opacity: 0.85;
+    }
+    .pin-item:hover .pin-source { opacity: 1; }
+
+    .note-mode-toggle.latex-btn,
+    .note-mode-toggle.latex-btn-display {
+      background: linear-gradient(135deg, var(--accent2-soft), var(--accent-soft));
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+    .note-mode-toggle.latex-btn:hover,
+    .note-mode-toggle.latex-btn-display:hover {
+      background: var(--accent2);
+      color: #1a1b26;
+    }
+    .note-toolbar-sep {
+      width: 1px;
+      height: 22px;
+      background: var(--bg-elev-3);
+      margin: 0 4px;
+    }
+
+    /* === History panel === */
+    .history-section {
+      margin-top: auto;
+      padding-top: var(--sp-3);
+      border-top: 1px solid var(--bg-elev-2);
+    }
+    .history-header {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      color: var(--fg-soft);
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 0.2rem 0;
+      user-select: none;
+    }
+    .history-header:hover { color: var(--fg); }
+    .history-header .chev {
+      transition: transform var(--dur) var(--ease);
+      font-size: 0.7rem;
+      color: var(--fg-muted);
+    }
+    .history-section.open .history-header .chev { transform: rotate(90deg); }
+    .history-list {
+      display: none;
+      flex-direction: column;
+      gap: 2px;
+      margin-top: 0.4rem;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+    .history-section.open .history-list { display: flex; }
+    .history-item {
+      padding: 0.35rem 0.5rem;
+      border-radius: var(--r-sm);
+      cursor: pointer;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .history-item:hover { background: var(--bg-elev); }
+    .history-item.today { color: var(--accent); font-weight: 500; }
+    .history-item .meta {
+      font-size: 0.7rem;
+      color: var(--fg-muted);
+      display: flex;
+      gap: 0.4rem;
+    }
+    .history-item .meta .badge {
+      background: var(--bg-elev);
+      padding: 0 0.3rem;
+      border-radius: 3px;
+      font-size: 0.65rem;
+    }
+
+    /* === Past-day tab === */
+    .past-day-pane {
+      display: flex !important;
+      flex-direction: column;
+      max-width: none !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+    }
+    .past-day-toolbar {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      padding: var(--sp-3) var(--sp-4);
+      border-bottom: 1px solid var(--bg-elev-2);
+      background: var(--bg);
+      flex-shrink: 0;
+    }
+    .past-day-title {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 1rem;
+    }
+    .past-day-stats {
+      font-size: 0.75rem;
+      color: var(--fg-muted);
+    }
+    .past-day-action {
+      margin-left: auto;
+      background: var(--accent2-soft);
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+      cursor: pointer;
+      padding: 0.35rem 0.7rem;
+      border-radius: var(--r-sm);
+      font-size: 0.78rem;
+    }
+    .past-day-action:hover { background: var(--accent2); color: #1a1b26; }
+    .past-day-body { flex: 1; overflow-y: auto; padding: var(--sp-4) var(--sp-5); }
+    .past-day-section { margin: var(--sp-5) 0; }
+    .past-day-section h3 {
+      font-size: 0.95rem;
+      color: var(--fg-soft);
+      margin-bottom: var(--sp-2);
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--bg-elev-2);
+    }
+    .past-pin {
+      padding: 0.5rem 0.7rem;
+      background: var(--bg-elev);
+      border-left: 2px solid var(--accent2);
+      border-radius: var(--r-sm);
+      margin-bottom: 0.4rem;
+      font-size: 0.85rem;
+    }
+    .past-pin .source { font-size: 0.7rem; color: var(--accent2); margin-top: 0.2rem; }
+
+    /* === Research tab === */
+    .research-pane { display: flex !important; flex-direction: column; max-width: none !important; padding: 0 !important; overflow: hidden !important; }
+    .research-header {
+      padding: var(--sp-3) var(--sp-4);
+      border-bottom: 1px solid var(--bg-elev-2);
+      background: var(--bg);
+      flex-shrink: 0;
+    }
+    .research-agent-chip {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: var(--cyan);
+      color: #1a1b26;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .research-query {
+      font-weight: 500;
+      color: var(--fg);
+      font-size: 0.95rem;
+    }
+    .research-body { flex: 1; overflow-y: auto; padding: var(--sp-4) var(--sp-5); }
+    .research-body.prose { max-width: 78ch; margin-left: auto; margin-right: auto; }
+  </style>
+</head>
+<body class="h-screen flex flex-col">
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-title">📚 wiki-tutor</span>
+      <span class="brand-subtitle" id="brand-subtitle">obsidian + tutor</span>
+    </div>
+    <div class="header-controls">
+      <div class="control-group">
+        <label for="model-select">model</label>
+        <select id="model-select"></select>
+      </div>
+      <div class="control-group">
+        <label for="agent-select">agent</label>
+        <select id="agent-select"></select>
+      </div>
+    </div>
+    <button class="header-action" id="focus-toggle" title="Focus mode (hide sidebars)">⛶ focus</button>
+    <button class="header-action" id="bubbles-toggle" title="Show pin bubbles on the active tab">💬 pins</button>
+    <div class="status-pill"><span class="status-dot" id="status-dot"></span><span id="status-text">connecting…</span></div>
+  </header>
+  <button id="selection-pin-btn">📌 Pin selection</button>
+
+  <div class="layout">
+    <!-- LEFT: Wiki sidebar -->
+    <aside id="left-pane" class="scroll flex flex-col gap-3" style="width: 260px;">
+      <div class="pane-heading left"><span>Wiki</span></div>
+      <input id="wiki-search" type="text" placeholder="search index…">
+      <div id="wiki-results" class="flex flex-col gap-1"></div>
+    </aside>
+    <div class="splitter-v" data-splitter="left"></div>
+
+    <!-- CENTER -->
+    <main id="center-pane">
+      <div id="ws-content">
+        <div id="ws-tabs-area">
+          <div id="tabs-row" style="display:flex; align-items:stretch;">
+            <div id="tabs" style="flex:1;"></div>
+            <button class="new-note-btn" id="new-note-btn" title="Create a new note">+ Note</button>
+          </div>
+          <div id="tab-panes"></div>
+        </div>
+        <div class="splitter-v" data-splitter="pin" style="display:none;"></div>
+        <div id="ws-pinned-area" style="display:none; width: 50%;">
+          <div class="pinned-header">
+            <span class="pinned-title" id="pinned-title"></span>
+            <div class="pinned-actions">
+              <button class="icon-btn" id="unpin-btn" title="Unpin (move back to tab)">⤢</button>
+              <button class="icon-btn" id="close-pin-btn" title="Close pinned page">✕</button>
+            </div>
+          </div>
+          <div id="pinned-content" class="prose scroll"></div>
+        </div>
+      </div>
+      <div id="prompt-bar">
+        <input id="prompt" type="text" placeholder="Ask the tutor or type / for commands…" autofocus>
+      </div>
+    </main>
+    <div class="splitter-v" data-splitter="right"></div>
+
+    <!-- RIGHT: Pinboard + History -->
+    <aside id="right-pane" class="scroll flex flex-col gap-3" style="width: 280px;">
+      <div class="pane-heading right"><span>Pinboard</span></div>
+      <input id="pin-input" type="text" placeholder="pin a thought…">
+      <div id="pin-list" class="flex flex-col gap-1"></div>
+      <div class="history-section" id="history-section">
+        <div class="history-header" id="history-toggle">
+          <span class="chev">▶</span>
+          <span>🗓️ History</span>
+          <span class="text-xs ml-auto opacity-60" id="history-count"></span>
+        </div>
+        <div class="history-list" id="history-list"></div>
+      </div>
+    </aside>
+  </div>
+
+<script>
+const CALLOUT_ICONS = {
+  note: '📝', info: 'ℹ️', tip: '💡', hint: '💡',
+  important: '❗', warning: '⚠️', caution: '⚠️', danger: '🔥',
+  example: '🔬', question: '❓', todo: '✅', done: '✔️',
+  abstract: '📑', summary: '📑', tldr: '📑', quote: '💬',
+  success: '✔️', failure: '❌', bug: '🐛',
+};
+
+const state = {
+  tabs: [{ id: 'chat', label: 'Chat ✦', kind: 'chat' }],
+  activeTab: 'chat',
+  chatHistory: [],
+  pins: [],
+  pinnedPage: null, // { stem, content }
+  ws: null,
+  ready: false,
+  busy: false,
+  currentAssistantBody: '',
+  currentAssistantEl: null,
+  model: 'claude-sonnet-4-6',
+  agent: 'teacher',
+  _showBubbles: false,
+  _selRaf: null,
+  sessionDate: null,
+  _saveTimer: null,
+  currentResearchTabId: null,
+  currentResearchEl: null,
+  currentResearchBody: '',
+};
+
+function todayISO() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function isResearchAgent(name) {
+  return /research|literature|analyst|researcher|search-specialist|trend-analyst/i.test(name || '');
+}
+
+// --- Persistent layout ---
+const LS_KEY = 'wt.layout.v1';
+function saveLayout() {
+  localStorage.setItem(LS_KEY, JSON.stringify({
+    left: document.getElementById('left-pane').offsetWidth,
+    right: document.getElementById('right-pane').offsetWidth,
+    pin: document.getElementById('ws-pinned-area').offsetWidth || null,
+  }));
+}
+function loadLayout() {
+  try {
+    const v = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+    if (v.left) document.getElementById('left-pane').style.width = Math.max(160, Math.min(500, v.left)) + 'px';
+    if (v.right) document.getElementById('right-pane').style.width = Math.max(160, Math.min(500, v.right)) + 'px';
+    if (v.pin) document.getElementById('ws-pinned-area').style.width = Math.max(220, v.pin) + 'px';
+  } catch (_) {}
+}
+
+function setupSplitter(el) {
+  let dragging = false;
+  let startX = 0;
+  let startW = 0;
+  let target = null;
+  let direction = 1; // +1: shrink target as mouse moves left; -1: opposite
+  el.addEventListener('mousedown', (ev) => {
+    const which = el.dataset.splitter;
+    if (which === 'left') { target = document.getElementById('left-pane'); direction = -1; }
+    else if (which === 'right') { target = document.getElementById('right-pane'); direction = 1; }
+    else if (which === 'pin') { target = document.getElementById('ws-pinned-area'); direction = 1; }
+    if (!target) return;
+    dragging = true;
+    startX = ev.clientX;
+    startW = target.offsetWidth;
+    el.classList.add('dragging');
+    document.body.style.cursor = 'col-resize';
+    ev.preventDefault();
+  });
+  document.addEventListener('mousemove', (ev) => {
+    if (!dragging || !target) return;
+    const dx = ev.clientX - startX;
+    let w = startW + (direction * dx);
+    w = Math.max(160, Math.min(800, w));
+    target.style.width = w + 'px';
+  });
+  document.addEventListener('mouseup', () => {
+    if (!dragging) return;
+    dragging = false;
+    el.classList.remove('dragging');
+    document.body.style.cursor = '';
+    saveLayout();
+  });
+}
+
+// --- Util ---
+function setStatus(text, kind) {
+  document.getElementById('status-text').textContent = text;
+  const dot = document.getElementById('status-dot');
+  dot.className = 'status-dot' + (kind ? ' ' + kind : '');
+}
+
+function escapeHtml(s) {
+  return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function preprocessObsidian(md) {
+  md = md.replace(/^>[ \t]*\[!(\w+)\]([+-]?)[ \t]*(.*?)((?:\n>.*)*)/gm, (_, type, _fold, title, body) => {
+    const t = type.toLowerCase();
+    const icon = CALLOUT_ICONS[t] || '📌';
+    const cleanBody = body.split('\n').map(l => l.replace(/^>[ \t]?/, '').trimEnd()).filter(l => l !== '').join('\n');
+    const titleHtml = `<div class="callout-title">${icon} <span>${escapeHtml(title.trim() || t.toUpperCase())}</span></div>`;
+    let bodyHtml = '';
+    if (cleanBody.trim()) {
+      bodyHtml = '<div class="callout-body">' + marked.parse(cleanBody) + '</div>';
+    }
+    return `<div class="callout callout-${t}">${titleHtml}${bodyHtml}</div>`;
+  });
+  md = md.replace(/==([^=\n]+)==/g, '<mark>$1</mark>');
+  md = md.replace(/!\[\[([^\]|\n]+)(?:\|([^\]\n]+))?\]\]/g, (_, stem, label) => {
+    const safe = escapeHtml(stem.trim());
+    return `<span class="embed">📄 <a class="wiki-link" data-stem="${safe}">${escapeHtml((label || stem).trim())}</a></span>`;
+  });
+  md = md.replace(/(?<!\!)\[\[([^\]|\n]+)(?:\|([^\]\n]+))?\]\]/g, (_, stem, label) => {
+    const safe = escapeHtml(stem.trim());
+    return `<a class="wiki-link" data-stem="${safe}">${escapeHtml((label || stem).trim())}</a>`;
+  });
+  md = md.replace(/\s\^[a-zA-Z0-9-]+\b/g, '');
+  return md;
+}
+
+marked.setOptions({
+  gfm: true,
+  breaks: false,
+  highlight: function(code, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try { return hljs.highlight(code, { language: lang }).value; } catch (_) {}
+    }
+    return hljs.highlightAuto(code).value;
+  }
+});
+
+function renderMarkdown(md) { return marked.parse(preprocessObsidian(md)); }
+function typesetMath(el) {
+  if (window.MathJax && window.MathJax.typesetPromise) {
+    window.MathJax.typesetPromise([el]).catch(e => console.error(e));
+  }
+}
+
+// --- Tabs ---
+function tabsBar() { return document.getElementById('tabs'); }
+function tabPanes() { return document.getElementById('tab-panes'); }
+
+function renderTabs() {
+  const bar = tabsBar();
+  bar.innerHTML = '';
+  state.tabs.forEach(t => {
+    const el = document.createElement('div');
+    el.className = 'tab' + (t.id === state.activeTab ? ' active' : '') + (t.kind === 'chat' ? ' tab-chat' : '');
+    el.dataset.tab = t.id;
+    el.title = t.label;
+    const label = document.createElement('span');
+    label.className = 'tab-label';
+    label.textContent = t.label;
+    el.appendChild(label);
+    if (t.kind === 'wiki') {
+      const pin = document.createElement('span');
+      pin.className = 'tab-action';
+      pin.title = 'Pin to side';
+      pin.textContent = '📌';
+      pin.onclick = (ev) => { ev.stopPropagation(); pinTabToSide(t.id); };
+      el.appendChild(pin);
+      const x = document.createElement('span');
+      x.className = 'tab-action tab-close';
+      x.title = 'Close tab';
+      x.textContent = '×';
+      x.onclick = (ev) => { ev.stopPropagation(); closeTab(t.id); };
+      el.appendChild(x);
+    }
+    el.onclick = () => setActiveTab(t.id);
+    bar.appendChild(el);
+  });
+}
+
+function setActiveTab(id) {
+  state.activeTab = id;
+  document.querySelectorAll('#tab-panes > .tab-pane').forEach(p => {
+    p.classList.toggle('active', p.dataset.tab === id);
+  });
+  renderTabs();
+}
+
+function ensureChatPane() {
+  let pane = document.querySelector('#tab-panes > [data-tab="chat"]');
+  if (!pane) {
+    pane = document.createElement('div');
+    pane.className = 'tab-pane prose mx-auto active';
+    pane.dataset.tab = 'chat';
+    tabPanes().appendChild(pane);
+  }
+  return pane;
+}
+
+function closeTab(id) {
+  if (id === 'chat') return;
+  state.tabs = state.tabs.filter(t => t.id !== id);
+  const el = document.querySelector(`#tab-panes > [data-tab="${CSS.escape(id)}"]`);
+  if (el) el.remove();
+  if (state.activeTab === id) setActiveTab('chat');
+  renderTabs();
+}
+
+async function openWikiTab(stem) {
+  if (state.pinnedPage && state.pinnedPage.stem === stem) {
+    setActiveTab('chat');
+    return;
+  }
+  const id = 'wiki:' + stem;
+  if (state.tabs.some(t => t.id === id)) {
+    setActiveTab(id);
+    return;
+  }
+  const r = await fetch('/api/page/' + encodeURIComponent(stem));
+  if (!r.ok) {
+    sysMsg(`No page found for [[${stem}]].`);
+    return;
+  }
+  const data = await r.json();
+  state.tabs.push({ id, label: stem, kind: 'wiki', content: data.content });
+  const pane = document.createElement('div');
+  pane.className = 'tab-pane prose mx-auto';
+  pane.dataset.tab = id;
+  pane.innerHTML = renderMarkdown(data.content);
+  tabPanes().appendChild(pane);
+  setActiveTab(id);
+  typesetMath(pane);
+  setTimeout(() => reapplyPinHighlights('wiki', stem), 60);
+}
+
+// --- Pin to side ---
+function pinTabToSide(tabId) {
+  const tab = state.tabs.find(t => t.id === tabId);
+  if (!tab || tab.kind !== 'wiki') return;
+  // close currently pinned, if any
+  unpinPage(false);
+  state.pinnedPage = { stem: tab.label, content: tab.content };
+  document.getElementById('pinned-title').textContent = tab.label;
+  const content = document.getElementById('pinned-content');
+  content.innerHTML = renderMarkdown(tab.content);
+  document.getElementById('ws-pinned-area').style.display = 'flex';
+  document.querySelector('[data-splitter="pin"]').style.display = '';
+  typesetMath(content);
+  // remove the tab so it doesn't duplicate
+  closeTab(tabId);
+  saveLayout();
+}
+
+function unpinPage(reopenAsTab) {
+  if (!state.pinnedPage) return;
+  const stem = state.pinnedPage.stem;
+  state.pinnedPage = null;
+  document.getElementById('ws-pinned-area').style.display = 'none';
+  document.querySelector('[data-splitter="pin"]').style.display = 'none';
+  document.getElementById('pinned-content').innerHTML = '';
+  if (reopenAsTab) openWikiTab(stem);
+}
+
+// --- Chat ---
+function ensureChatTabActive() {
+  if (state.activeTab !== 'chat') setActiveTab('chat');
+}
+
+function sysMsg(text) {
+  ensureChatTabActive();
+  const pane = ensureChatPane();
+  const div = document.createElement('div');
+  div.className = 'system-msg';
+  div.textContent = text;
+  pane.appendChild(div);
+  pane.scrollTop = pane.scrollHeight;
+}
+
+function newTurnId() { return 'turn-' + Date.now() + '-' + Math.random().toString(36).slice(2,5); }
+
+function addUserTurn(text) {
+  const pane = ensureChatPane();
+  const div = document.createElement('div');
+  div.className = 'chat-turn chat-turn-user';
+  div.dataset.turnId = newTurnId();
+  div.innerHTML = `<div class="role"><span>You</span></div><div class="body">${renderMarkdown(text)}</div>`;
+  pane.appendChild(div);
+  state.chatHistory.push({ role: 'user', body: text, turnId: div.dataset.turnId });
+  typesetMath(div);
+  pane.scrollTop = pane.scrollHeight;
+  reapplyPinHighlights('chat', div.dataset.turnId);
+}
+
+function startAssistantTurn() {
+  const pane = ensureChatPane();
+  const div = document.createElement('div');
+  div.className = 'chat-turn chat-turn-assistant';
+  div.dataset.turnId = newTurnId();
+  const safeAgent = escapeHtml(state.agent);
+  div.innerHTML = `<div class="role"><span>Assistant</span><span class="role-chip">${safeAgent}</span></div><div class="body"><span class="thinking" data-thinking="1"><span></span><span></span><span></span></span></div>`;
+  pane.appendChild(div);
+  state.currentAssistantEl = div.querySelector('.body');
+  state.currentAssistantTurnId = div.dataset.turnId;
+  state.currentAssistantBody = '';
+  pane.scrollTop = pane.scrollHeight;
+}
+
+function appendAssistantChunk(chunk) {
+  state.currentAssistantBody += chunk;
+  if (state.currentAssistantEl) {
+    state.currentAssistantEl.innerHTML = renderMarkdown(state.currentAssistantBody);
+    typesetMath(state.currentAssistantEl);
+  }
+  const pane = ensureChatPane();
+  pane.scrollTop = pane.scrollHeight;
+}
+
+function finalizeAssistantTurn() {
+  if (state.currentAssistantBody) {
+    state.chatHistory.push({
+      role: 'assistant',
+      body: state.currentAssistantBody,
+      turnId: state.currentAssistantTurnId,
+      agent: state.agent,
+    });
+    if (state.currentAssistantTurnId) reapplyPinHighlights('chat', state.currentAssistantTurnId);
+  }
+  state.currentAssistantEl = null;
+  state.currentAssistantTurnId = null;
+  state.currentAssistantBody = '';
+  state.busy = false;
+  scheduleSessionSave();
+  setStatus(`ready · ${state.agent} · ${state.model.split('-').slice(1).join('-')}`, 'ready');
+}
+
+// --- WebSocket ---
+function connectChat() {
+  const proto = location.protocol === 'https:' ? 'wss' : 'ws';
+  state.ws = new WebSocket(`${proto}://${location.host}/ws/chat`);
+  state.ws.onopen = () => setStatus('connecting…', '');
+  state.ws.onmessage = (ev) => {
+    const m = JSON.parse(ev.data);
+    if (m.type === 'ready') {
+      state.ready = true;
+      state.model = m.model || state.model;
+      state.agent = m.agent || state.agent;
+      document.getElementById('model-select').value = state.model;
+      document.getElementById('agent-select').value = state.agent;
+      setStatus(`ready · ${state.agent} · ${state.model.split('-').slice(1).join('-')}`, 'ready');
+    }
+    else if (m.type === 'chunk') {
+      if (state.currentResearchTabId) appendResearchChunk(m.text);
+      else appendAssistantChunk(m.text);
+    }
+    else if (m.type === 'done') {
+      if (state.currentResearchTabId) finalizeResearchTurn();
+      else finalizeAssistantTurn();
+    }
+    else if (m.type === 'error') {
+      sysMsg('[error] ' + m.message);
+      if (state.currentResearchTabId) finalizeResearchTurn();
+      else finalizeAssistantTurn();
+      setStatus('error', 'error');
+    }
+    else if (m.type === 'reset_done') { sysMsg('Conversation cleared.'); }
+    else if (m.type === 'reconfigured') {
+      state.model = m.model;
+      state.agent = m.agent;
+      sysMsg(`Switched to ${m.agent} on ${m.model}${isResearchAgent(m.agent) ? ' (responses now go to new tabs)' : ''}.`);
+      setStatus(`ready · ${state.agent} · ${state.model.split('-').slice(1).join('-')}`, 'ready');
+    }
+  };
+  state.ws.onclose = () => setStatus('disconnected', 'error');
+  state.ws.onerror = () => setStatus('error', 'error');
+}
+
+function sendChat(text) {
+  if (!state.ready) { sysMsg('Not connected yet — wait a moment.'); return; }
+  if (state.busy) { sysMsg('Still answering — wait for the current response to finish.'); return; }
+  state.busy = true;
+  setStatus('thinking…', 'busy');
+  if (isResearchAgent(state.agent)) {
+    startResearchTurn(text);
+  } else {
+    addUserTurn(text);
+    startAssistantTurn();
+  }
+  state.ws.send(JSON.stringify({ type: 'message', message: text }));
+}
+
+function createResearchTab(label, query, body, tabId) {
+  const id = tabId || ('research:' + Date.now() + '-' + Math.random().toString(36).slice(2,5));
+  state.tabs.push({ id, label, kind: 'research', query, body });
+  const pane = document.createElement('div');
+  pane.className = 'tab-pane research-pane';
+  pane.dataset.tab = id;
+  const safeAgent = escapeHtml(state.agent);
+  pane.innerHTML = `
+    <div class="research-header">
+      <span class="research-agent-chip">${safeAgent}</span>
+      <span class="tab-action tab-close" data-close="${id}" style="float:right;cursor:pointer;font-size:1rem;">×</span>
+      <div class="research-query">${renderMarkdown(query || '(loaded)')}</div>
+    </div>
+    <div class="research-body prose"></div>
+  `;
+  tabPanes().appendChild(pane);
+  pane.querySelector('[data-close]').onclick = () => closeTab(id);
+  const bodyEl = pane.querySelector('.research-body');
+  if (body) {
+    bodyEl.innerHTML = renderMarkdown(body);
+    typesetMath(bodyEl);
+  }
+  setActiveTab(id);
+  renderTabs();
+  return { id, pane, bodyEl };
+}
+
+function startResearchTurn(query) {
+  const label = query.slice(0, 36) + (query.length > 36 ? '…' : '');
+  const { id, bodyEl } = createResearchTab(label, query, '');
+  bodyEl.innerHTML = '<span class="thinking" data-thinking="1"><span></span><span></span><span></span></span>';
+  state.currentResearchTabId = id;
+  state.currentResearchEl = bodyEl;
+  state.currentResearchBody = '';
+}
+
+function appendResearchChunk(chunk) {
+  state.currentResearchBody += chunk;
+  if (state.currentResearchEl) {
+    state.currentResearchEl.innerHTML = renderMarkdown(state.currentResearchBody);
+    typesetMath(state.currentResearchEl);
+  }
+}
+
+function finalizeResearchTurn() {
+  if (state.currentResearchTabId && state.currentResearchBody) {
+    const tab = state.tabs.find(t => t.id === state.currentResearchTabId);
+    if (tab) tab.body = state.currentResearchBody;
+  }
+  state.currentResearchTabId = null;
+  state.currentResearchEl = null;
+  state.currentResearchBody = '';
+  scheduleSessionSave();
+  state.busy = false;
+  setStatus(`ready · ${state.agent} · ${state.model.split('-').slice(1).join('-')}`, 'ready');
+}
+
+function reconfigure() {
+  const model = document.getElementById('model-select').value;
+  const agent = document.getElementById('agent-select').value;
+  if (state.busy) { sysMsg('Wait for the current response before switching.'); return; }
+  state.ws.send(JSON.stringify({ type: 'reconfigure', model, agent }));
+}
+
+// --- Slash commands ---
+async function handleCommand(text) {
+  const [head, ...rest] = text.split(' ');
+  const tail = rest.join(' ').trim();
+  if (head === '/help') {
+    sysMsg('Commands: /wiki <q>, /open <stem>, /pin <text>, /unpin <n>, /save <topic>, /mistake <topic>, /reset, /agent <name>, /model <id>, /help');
+  } else if (head === '/wiki') {
+    if (!tail) { sysMsg('Usage: /wiki <query>'); return; }
+    document.getElementById('wiki-search').value = tail;
+    await runWikiSearch(tail);
+  } else if (head === '/open') {
+    if (!tail) { sysMsg('Usage: /open <stem>'); return; }
+    await openWikiTab(tail);
+  } else if (head === '/pin') {
+    if (!tail) { sysMsg('Usage: /pin <text>'); return; }
+    addPin(tail);
+  } else if (head === '/unpin') {
+    const n = parseInt(tail);
+    if (isNaN(n)) { sysMsg('Usage: /unpin <number>'); return; }
+    removePin(n);
+  } else if (head === '/reset') {
+    state.chatHistory = [];
+    ensureChatPane().innerHTML = '';
+    state.ws.send(JSON.stringify({ type: 'reset' }));
+  } else if (head === '/save') {
+    if (!tail) { sysMsg('Usage: /save <topic>'); return; }
+    await savePractice(tail);
+  } else if (head === '/mistake') {
+    if (!tail) { sysMsg('Usage: /mistake <topic>'); return; }
+    await saveMistake(tail);
+  } else if (head === '/agent') {
+    if (!tail) { sysMsg('Usage: /agent <name>'); return; }
+    document.getElementById('agent-select').value = tail;
+    reconfigure();
+  } else if (head === '/model') {
+    if (!tail) { sysMsg('Usage: /model <id>'); return; }
+    document.getElementById('model-select').value = tail;
+    reconfigure();
+  } else {
+    sysMsg(`Unknown command ${head}. Type /help.`);
+  }
+}
+
+function transcript() {
+  return state.chatHistory.map(t => `### ${t.role[0].toUpperCase()}${t.role.slice(1)}\n\n${t.body}\n`).join('\n');
+}
+
+async function savePractice(topic) {
+  const r = await fetch('/api/save/practice', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ topic, transcript: transcript() }),
+  });
+  const data = await r.json();
+  if (r.ok) sysMsg(`Saved practice set ${topic}-set-${String(data.n).padStart(2,'0')}.md`);
+  else sysMsg(`/save failed: ${data.error || 'unknown'}`);
+}
+
+async function saveMistake(topic) {
+  const r = await fetch('/api/save/mistake', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ topic, transcript: transcript() }),
+  });
+  const data = await r.json();
+  if (r.ok) sysMsg(`Saved/updated mistakes/${topic}.md`);
+  else sysMsg(`/mistake failed: ${data.error || 'unknown'}`);
+}
+
+// --- Wiki sidebar ---
+function emptyState(icon, hint) {
+  return `<div class="empty-state"><div class="empty-icon">${icon}</div><div class="empty-hint">${escapeHtml(hint)}</div></div>`;
+}
+
+async function runWikiSearch(q) {
+  const list = document.getElementById('wiki-results');
+  if (!q.trim()) {
+    list.innerHTML = emptyState('🔎', 'Type to search the wiki index');
+    return;
+  }
+  const r = await fetch('/api/search?q=' + encodeURIComponent(q));
+  const data = await r.json();
+  list.innerHTML = '';
+  if (data.results.length === 0) {
+    list.innerHTML = emptyState('∅', `No matches for "${q}"`);
+    return;
+  }
+  data.results.forEach(r => {
+    const d = document.createElement('div');
+    d.className = 'side-item';
+    const chips = [];
+    if (r.type) chips.push(`<span class="chip chip-type">${escapeHtml(r.type)}</span>`);
+    if (r.course) {
+      const courseList = Array.isArray(r.course) ? r.course : [r.course];
+      courseList.slice(0, 2).forEach(c => chips.push(`<span class="chip chip-course">${escapeHtml(String(c))}</span>`));
+    }
+    const chipsHtml = chips.length ? `<div class="chips">${chips.join('')}</div>` : '';
+    d.innerHTML = `<div class="stem">${escapeHtml(r.stem)}</div>${r.desc ? `<div class="desc">${escapeHtml(r.desc.slice(0,100))}</div>` : ''}${chipsHtml}`;
+    d.onclick = () => openWikiTab(r.stem);
+    list.appendChild(d);
+  });
+}
+
+// --- Pinboard ---
+function renderPins() {
+  const list = document.getElementById('pin-list');
+  list.innerHTML = '';
+  if (state.pins.length === 0) {
+    list.innerHTML = emptyState('📌', 'Pinned thoughts land here');
+    return;
+  }
+  state.pins.forEach((pin, i) => {
+    const n = i + 1;
+    const d = document.createElement('div');
+    d.className = 'pin-item';
+    const sourceLabel = pin.source
+      ? `<div class="pin-source">${pin.source.kind === 'wiki' ? '📄 ' : (pin.source.kind === 'note' ? '🗒️ ' : '💬 ')}${escapeHtml(pin.source.stem || pin.source.kind)} →</div>`
+      : '';
+    d.innerHTML = `<span class="pin-num">${n}.</span><span class="pin-text">${escapeHtml(pin.text.slice(0,140))}</span>${sourceLabel}<span class="pin-remove" data-n="${n}" title="Remove">✕</span>`;
+    d.querySelector('.pin-remove').onclick = (ev) => { ev.stopPropagation(); removePin(n); };
+    d.onclick = () => {
+      if (pin.source) {
+        jumpToPin(pin);
+      } else {
+        const inp = document.getElementById('prompt');
+        inp.value = pin.text;
+        inp.focus();
+      }
+    };
+    list.appendChild(d);
+  });
+}
+
+function addPin(text) {
+  state.pins.push({ id: 'pin-' + Date.now() + '-' + Math.random().toString(36).slice(2,7), text, source: null });
+  savePins();
+  renderPins();
+}
+
+function addAnchoredPin(text, source) {
+  const pin = {
+    id: 'pin-' + Date.now() + '-' + Math.random().toString(36).slice(2,7),
+    text, source,
+  };
+  state.pins.push(pin);
+  savePins();
+  renderPins();
+  if (source) reapplyPinHighlights(source.kind, source.stem);
+}
+function removePin(n) {
+  if (n < 1 || n > state.pins.length) return;
+  const removed = state.pins.splice(n - 1, 1)[0];
+  savePins();
+  renderPins();
+  if (removed && removed.source) reapplyPinHighlights(removed.source.kind, removed.source.stem);
+}
+
+// === Pin + session persistence (server-backed by day) ===
+const PINS_KEY = 'wt.pins.v1';
+function savePins() {
+  // Local cache mirror for fast reload
+  localStorage.setItem(PINS_KEY, JSON.stringify(state.pins));
+  scheduleSessionSave();
+}
+function loadPinsFromCache() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(PINS_KEY) || '[]');
+    state.pins = raw.map(p => typeof p === 'string'
+      ? { id: 'pin-legacy-' + Math.random().toString(36).slice(2,7), text: p, source: null }
+      : p
+    );
+  } catch (_) { state.pins = []; }
+}
+
+function scheduleSessionSave() {
+  if (state._saveTimer) clearTimeout(state._saveTimer);
+  state._saveTimer = setTimeout(saveSessionNow, 1500);
+}
+async function saveSessionNow() {
+  if (!state.sessionDate) return;
+  const research = state.tabs
+    .filter(t => t.kind === 'research')
+    .map(t => ({ tabId: t.id, label: t.label, query: t.query || '', body: t.body || '' }));
+  const payload = {
+    date: state.sessionDate,
+    chat: state.chatHistory,
+    pins: state.pins,
+    research,
+    notes: state.tabs.filter(t => t.kind === 'note').map(t => t.slug),
+  };
+  try {
+    await fetch('/api/sessions/' + state.sessionDate, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+  } catch (_) {}
+}
+
+async function loadTodaySession() {
+  state.sessionDate = todayISO();
+  try {
+    const r = await fetch('/api/sessions/' + state.sessionDate);
+    if (!r.ok) return;
+    const data = await r.json();
+    if (Array.isArray(data.pins) && data.pins.length > 0) {
+      state.pins = data.pins;
+      localStorage.setItem(PINS_KEY, JSON.stringify(state.pins));
+    }
+    if (Array.isArray(data.chat) && data.chat.length > 0) {
+      state.chatHistory = data.chat;
+      replayChatHistoryIntoPane();
+    }
+    if (Array.isArray(data.research) && data.research.length > 0) {
+      data.research.forEach(rt => createResearchTab(rt.label || rt.query || 'Research', rt.query || '', rt.body || '', rt.tabId));
+    }
+  } catch (_) {}
+}
+
+function replayChatHistoryIntoPane() {
+  const pane = ensureChatPane();
+  pane.innerHTML = '';
+  state.chatHistory.forEach(turn => {
+    const div = document.createElement('div');
+    div.className = 'chat-turn ' + (turn.role === 'user' ? 'chat-turn-user' : 'chat-turn-assistant');
+    if (turn.turnId) div.dataset.turnId = turn.turnId;
+    if (turn.role === 'user') {
+      div.innerHTML = `<div class="role"><span>You</span></div><div class="body">${renderMarkdown(turn.body || '')}</div>`;
+    } else {
+      const safeAgent = escapeHtml(turn.agent || state.agent);
+      div.innerHTML = `<div class="role"><span>Assistant</span><span class="role-chip">${safeAgent}</span></div><div class="body">${renderMarkdown(turn.body || '')}</div>`;
+    }
+    pane.appendChild(div);
+    typesetMath(div);
+    if (turn.turnId) reapplyPinHighlights('chat', turn.turnId);
+  });
+  pane.scrollTop = pane.scrollHeight;
+}
+
+// === Anchor extraction (TextQuoteAnchor: prefix/exact/suffix) ===
+const ANCHOR_PREFIX_LEN = 32;
+const ANCHOR_SUFFIX_LEN = 32;
+
+function captureAnchor(rangeContext, range) {
+  const fullText = rangeContext.textContent || '';
+  const exact = range.toString();
+  if (!exact.trim()) return null;
+  // find character offset of selection within container
+  const preRange = document.createRange();
+  preRange.selectNodeContents(rangeContext);
+  preRange.setEnd(range.startContainer, range.startOffset);
+  const offset = preRange.toString().length;
+  const prefix = fullText.slice(Math.max(0, offset - ANCHOR_PREFIX_LEN), offset);
+  const suffix = fullText.slice(offset + exact.length, offset + exact.length + ANCHOR_SUFFIX_LEN);
+  return { exact, prefix, suffix };
+}
+
+function findAnchorRange(container, anchor) {
+  const text = container.textContent || '';
+  const needle = (anchor.prefix || '') + anchor.exact + (anchor.suffix || '');
+  let idx = text.indexOf(needle);
+  let start;
+  if (idx >= 0) {
+    start = idx + (anchor.prefix || '').length;
+  } else {
+    // fallback: search exact only
+    start = text.indexOf(anchor.exact);
+    if (start < 0) return null;
+  }
+  return rangeFromOffsets(container, start, start + anchor.exact.length);
+}
+
+function rangeFromOffsets(container, start, end) {
+  const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT);
+  let pos = 0, startNode = null, startOffset = 0, endNode = null, endOffset = 0;
+  let n;
+  while ((n = walker.nextNode())) {
+    const len = n.nodeValue.length;
+    if (!startNode && pos + len >= start) {
+      startNode = n; startOffset = start - pos;
+    }
+    if (pos + len >= end) {
+      endNode = n; endOffset = end - pos;
+      break;
+    }
+    pos += len;
+  }
+  if (!startNode || !endNode) return null;
+  const r = document.createRange();
+  try { r.setStart(startNode, startOffset); r.setEnd(endNode, endOffset); } catch (_) { return null; }
+  return r;
+}
+
+// === Re-apply highlights for pins anchored to a given source ===
+function pinsForSource(kind, stem) {
+  return state.pins
+    .map((p, i) => ({ pin: p, n: i + 1 }))
+    .filter(({ pin }) => pin.source && pin.source.kind === kind && pin.source.stem === stem);
+}
+
+function getSourceContainer(kind, stem) {
+  if (kind === 'chat') {
+    return document.querySelector(`#tab-panes > [data-tab="chat"] [data-turn-id="${CSS.escape(stem)}"]`);
+  }
+  if (kind === 'wiki') {
+    const tabPane = document.querySelector(`#tab-panes > [data-tab="${CSS.escape('wiki:' + stem)}"]`);
+    if (tabPane) return tabPane;
+    if (state.pinnedPage && state.pinnedPage.stem === stem) return document.getElementById('pinned-content');
+    return null;
+  }
+  if (kind === 'note') {
+    return document.querySelector(`#tab-panes > [data-tab="${CSS.escape('note:' + stem)}"] .note-preview`);
+  }
+  if (kind === 'research') {
+    const pane = document.querySelector(`#tab-panes > [data-tab="${CSS.escape(stem)}"]`);
+    return pane ? (pane.querySelector('.research-body') || pane) : null;
+  }
+  return null;
+}
+
+function reapplyPinHighlights(kind, stem) {
+  const container = getSourceContainer(kind, stem);
+  if (!container) return;
+  // strip existing highlights
+  container.querySelectorAll('.pin-highlight').forEach(m => {
+    const parent = m.parentNode;
+    while (m.firstChild) parent.insertBefore(m.firstChild, m);
+    parent.removeChild(m);
+    parent.normalize();
+  });
+  pinsForSource(kind, stem).forEach(({ pin, n }) => {
+    const range = findAnchorRange(container, pin.source.anchor);
+    if (!range) return;
+    const mark = document.createElement('mark');
+    mark.className = 'pin-highlight';
+    mark.dataset.pinId = pin.id;
+    mark.dataset.pinNum = n;
+    try { range.surroundContents(mark); } catch (_) {
+      // selection crossed element boundaries — fall back to wrapping textNodes individually
+      try {
+        const frag = range.extractContents();
+        mark.appendChild(frag);
+        range.insertNode(mark);
+      } catch (__) {}
+    }
+  });
+  if (state._showBubbles) renderBubblesFor(kind, stem);
+}
+
+// === Jump to pin ===
+async function jumpToPin(pin) {
+  if (!pin.source) return;
+  const { kind, stem } = pin.source;
+  if (kind === 'wiki') {
+    if (state.pinnedPage && state.pinnedPage.stem === stem) {
+      // already pinned-to-side
+    } else {
+      await openWikiTab(stem);
+    }
+  } else if (kind === 'chat') {
+    setActiveTab('chat');
+  } else if (kind === 'note') {
+    openNoteTab(stem);
+  } else if (kind === 'research') {
+    if (state.tabs.some(t => t.id === stem)) setActiveTab(stem);
+    else { sysMsg('Research tab is no longer open. Pin source unavailable.'); return; }
+  }
+  // wait a tick for tab to mount, then highlight + scroll
+  setTimeout(() => {
+    reapplyPinHighlights(kind, stem);
+    const container = getSourceContainer(kind, stem);
+    if (!container) return;
+    const mark = container.querySelector(`.pin-highlight[data-pin-id="${CSS.escape(pin.id)}"]`);
+    if (mark) {
+      mark.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      mark.classList.add('flash');
+      setTimeout(() => mark.classList.remove('flash'), 1500);
+    }
+  }, 80);
+}
+
+// === Selection-pin button ===
+function getActivePane() {
+  return document.querySelector('#tab-panes > .tab-pane.active') || document.getElementById('pinned-content');
+}
+
+function findSourceFromSelection(node) {
+  let el = node && node.nodeType === Node.TEXT_NODE ? node.parentElement : node;
+  while (el) {
+    if (el.dataset && el.dataset.turnId) return { kind: 'chat', stem: el.dataset.turnId, container: el };
+    if (el.dataset && el.dataset.tab) {
+      const id = el.dataset.tab;
+      if (id === 'chat') return null;
+      if (id.startsWith('wiki:')) return { kind: 'wiki', stem: id.slice(5), container: el };
+      if (id.startsWith('note:')) return { kind: 'note', stem: id.slice(5), container: el.querySelector('.note-preview') || el };
+      if (id.startsWith('research:')) {
+        const body = el.querySelector('.research-body') || el;
+        return { kind: 'research', stem: id, container: body };
+      }
+    }
+    if (el.id === 'pinned-content' && state.pinnedPage) return { kind: 'wiki', stem: state.pinnedPage.stem, container: el };
+    el = el.parentElement;
+  }
+  return null;
+}
+
+function updateSelectionPinBtn() {
+  const btn = document.getElementById('selection-pin-btn');
+  const sel = window.getSelection();
+  if (!sel || sel.isCollapsed || !sel.toString().trim()) { btn.classList.remove('show'); return; }
+  if (sel.rangeCount === 0) { btn.classList.remove('show'); return; }
+  const range = sel.getRangeAt(0);
+  const source = findSourceFromSelection(range.startContainer);
+  if (!source) { btn.classList.remove('show'); return; }
+  const rect = range.getBoundingClientRect();
+  if (!rect || (rect.width === 0 && rect.height === 0)) { btn.classList.remove('show'); return; }
+  btn.classList.add('show');
+  btn.style.top = (rect.bottom + 6 + window.scrollY) + 'px';
+  btn.style.left = Math.max(8, rect.left + rect.width / 2 - 60 + window.scrollX) + 'px';
+  btn.onclick = () => {
+    const anchor = captureAnchor(source.container, range);
+    if (!anchor) return;
+    addAnchoredPin(anchor.exact.trim(), { kind: source.kind, stem: source.stem, anchor });
+    sel.removeAllRanges();
+    btn.classList.remove('show');
+  };
+}
+
+document.addEventListener('selectionchange', () => {
+  // throttle via rAF
+  if (state._selRaf) cancelAnimationFrame(state._selRaf);
+  state._selRaf = requestAnimationFrame(updateSelectionPinBtn);
+});
+document.addEventListener('mousedown', (ev) => {
+  if (ev.target.id !== 'selection-pin-btn') {
+    document.getElementById('selection-pin-btn').classList.remove('show');
+  }
+});
+
+// === Annotation bubbles toggle ===
+function toggleBubbles() {
+  state._showBubbles = !state._showBubbles;
+  const btn = document.getElementById('bubbles-toggle');
+  btn.classList.toggle('active', state._showBubbles);
+  // remove all bubbles
+  document.querySelectorAll('.pin-bubble').forEach(b => b.remove());
+  if (!state._showBubbles) return;
+  const pane = getActivePane();
+  if (!pane) return;
+  pane.classList.add('show-bubbles');
+  // figure out source kind/stem from active tab
+  const tabId = state.activeTab;
+  let kind, stem;
+  if (tabId === 'chat') {
+    // chat pane: show bubbles for all turn pins
+    pane.querySelectorAll('[data-turn-id]').forEach(turn => {
+      reapplyPinHighlights('chat', turn.dataset.turnId);
+      renderBubblesFor('chat', turn.dataset.turnId);
+    });
+    return;
+  }
+  if (tabId.startsWith('wiki:')) { kind = 'wiki'; stem = tabId.slice(5); }
+  else if (tabId.startsWith('note:')) { kind = 'note'; stem = tabId.slice(5); }
+  else return;
+  reapplyPinHighlights(kind, stem);
+  renderBubblesFor(kind, stem);
+}
+
+function renderBubblesFor(kind, stem) {
+  const container = getSourceContainer(kind, stem);
+  if (!container) return;
+  // Use the parent pane as positioning context
+  const pane = container.closest('.tab-pane') || container;
+  const paneRect = pane.getBoundingClientRect();
+  pane.style.position = pane.style.position || 'relative';
+  const marks = container.querySelectorAll('.pin-highlight');
+  marks.forEach(m => {
+    const r = m.getBoundingClientRect();
+    const bub = document.createElement('div');
+    bub.className = 'pin-bubble';
+    bub.dataset.forPin = m.dataset.pinId;
+    bub.style.left = (r.right - paneRect.left + 8) + 'px';
+    bub.style.top = (r.top - paneRect.top + pane.scrollTop) + 'px';
+    const pin = state.pins.find(p => p.id === m.dataset.pinId);
+    bub.innerHTML = `<span class="pin-bubble-num">${m.dataset.pinNum}</span><span class="pin-bubble-text">${escapeHtml((pin && pin.text || '').slice(0, 140))}</span>`;
+    pane.appendChild(bub);
+  });
+}
+
+// === Focus mode ===
+function toggleFocusMode() {
+  document.body.classList.toggle('focus-mode');
+  const btn = document.getElementById('focus-toggle');
+  btn.classList.toggle('active');
+  btn.textContent = document.body.classList.contains('focus-mode') ? '⛶ exit focus' : '⛶ focus';
+}
+document.addEventListener('keydown', (ev) => {
+  if (ev.key === 'Escape' && document.body.classList.contains('focus-mode')) {
+    toggleFocusMode();
+  }
+});
+
+// === Notes ===
+function newNoteSlug() {
+  const d = new Date();
+  return `note-${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}-${String(d.getHours()).padStart(2,'0')}${String(d.getMinutes()).padStart(2,'0')}`;
+}
+
+function createNoteTab(slug, title, content) {
+  const id = 'note:' + slug;
+  if (state.tabs.some(t => t.id === id)) { setActiveTab(id); return; }
+  state.tabs.push({ id, label: title || slug, kind: 'note', slug, title: title || slug, content: content || '' });
+  const pane = document.createElement('div');
+  pane.className = 'tab-pane note-tab-pane';
+  pane.dataset.tab = id;
+  pane.innerHTML = `
+    <div class="note-toolbar">
+      <input class="note-title" placeholder="note title" value="${escapeHtml(title || '')}">
+      <span class="note-status">unsaved</span>
+      <button class="note-mode-toggle latex-btn" data-mode="latex" title="Convert highlighted text to LaTeX (⌘⇧L)">✨ LaTeX</button>
+      <button class="note-mode-toggle latex-btn-display" data-mode="latex-display" title="Convert to display math (⌘⇧D)">✨ display</button>
+      <span class="note-toolbar-sep"></span>
+      <button class="note-mode-toggle" data-mode="edit">edit</button>
+      <button class="note-mode-toggle active" data-mode="split">split</button>
+      <button class="note-mode-toggle" data-mode="preview">preview</button>
+    </div>
+    <div class="note-body split">
+      <textarea class="note-editor" placeholder="# ${escapeHtml(title || 'New note')}\n\nstart typing markdown…"></textarea>
+      <div class="note-preview prose"></div>
+    </div>
+  `;
+  tabPanes().appendChild(pane);
+  const editor = pane.querySelector('.note-editor');
+  const preview = pane.querySelector('.note-preview');
+  const titleInput = pane.querySelector('.note-title');
+  const status = pane.querySelector('.note-status');
+  const body = pane.querySelector('.note-body');
+  editor.value = content || '';
+  function refreshPreview() {
+    preview.innerHTML = renderMarkdown(editor.value || '_(empty)_');
+    typesetMath(preview);
+  }
+  refreshPreview();
+  let saveTimer = null;
+  function scheduleSave() {
+    status.textContent = 'editing…';
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => saveNote(slug, titleInput.value || slug, editor.value, status, pane), 800);
+  }
+  editor.addEventListener('input', () => { refreshPreview(); scheduleSave(); });
+  titleInput.addEventListener('input', () => {
+    const t = state.tabs.find(t => t.id === id);
+    if (t) { t.label = titleInput.value || slug; renderTabs(); }
+    scheduleSave();
+  });
+  pane.querySelectorAll('.note-mode-toggle').forEach(b => {
+    if (b.dataset.mode === 'latex' || b.dataset.mode === 'latex-display') return;
+    b.onclick = () => {
+      pane.querySelectorAll('.note-mode-toggle').forEach(x => {
+        if (x.dataset.mode === 'latex' || x.dataset.mode === 'latex-display') return;
+        x.classList.remove('active');
+      });
+      b.classList.add('active');
+      const mode = b.dataset.mode;
+      body.className = 'note-body ' + (mode === 'split' ? 'split' : '');
+      pane.querySelector('.note-editor').style.display = (mode === 'preview') ? 'none' : '';
+      pane.querySelector('.note-preview').style.display = (mode === 'edit') ? 'none' : '';
+      if (mode !== 'edit') refreshPreview();
+    };
+  });
+  pane.querySelector('[data-mode="latex"]').onclick = () => convertSelectionToLatex(editor, status, refreshPreview, scheduleSave, 'inline');
+  pane.querySelector('[data-mode="latex-display"]').onclick = () => convertSelectionToLatex(editor, status, refreshPreview, scheduleSave, 'display');
+  editor.addEventListener('keydown', (ev) => {
+    if (!(ev.metaKey || ev.ctrlKey) || !ev.shiftKey) return;
+    if (ev.key.toLowerCase() === 'l') {
+      ev.preventDefault();
+      convertSelectionToLatex(editor, status, refreshPreview, scheduleSave, 'inline');
+    } else if (ev.key.toLowerCase() === 'd') {
+      ev.preventDefault();
+      convertSelectionToLatex(editor, status, refreshPreview, scheduleSave, 'display');
+    }
+  });
+  setActiveTab(id);
+  setTimeout(() => { titleInput.focus(); titleInput.select(); }, 50);
+}
+
+async function convertSelectionToLatex(editor, statusEl, refreshPreview, scheduleSave, mode) {
+  const start = editor.selectionStart;
+  const end = editor.selectionEnd;
+  const selected = editor.value.slice(start, end);
+  if (!selected.trim()) {
+    if (statusEl) statusEl.textContent = 'select text first to convert';
+    return;
+  }
+  const originalStatus = statusEl ? statusEl.textContent : '';
+  if (statusEl) statusEl.textContent = '✨ converting…';
+  editor.disabled = true;
+  try {
+    const r = await fetch('/api/convert-latex', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: selected, mode }),
+    });
+    if (!r.ok) {
+      const err = await r.json().catch(() => ({}));
+      if (statusEl) statusEl.textContent = `convert error: ${err.error || r.status}`;
+      return;
+    }
+    const data = await r.json();
+    const latex = data.latex || selected;
+    const before = editor.value.slice(0, start);
+    const after = editor.value.slice(end);
+    editor.value = before + latex + after;
+    editor.selectionStart = start;
+    editor.selectionEnd = start + latex.length;
+    refreshPreview();
+    scheduleSave();
+    if (statusEl) statusEl.textContent = '✓ converted';
+  } catch (e) {
+    if (statusEl) statusEl.textContent = `convert error: ${e.message || 'failed'}`;
+  } finally {
+    editor.disabled = false;
+    editor.focus();
+  }
+}
+
+async function saveNote(slug, title, content, statusEl, pane) {
+  if (statusEl) statusEl.textContent = 'saving…';
+  try {
+    const r = await fetch('/api/notes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug, title: title || slug, content }),
+    });
+    if (r.ok) {
+      const data = await r.json();
+      if (statusEl) statusEl.textContent = `saved · ${slug}.md`;
+    } else {
+      const err = await r.json();
+      if (statusEl) statusEl.textContent = `save error: ${err.error || 'unknown'}`;
+    }
+  } catch (e) {
+    if (statusEl) statusEl.textContent = 'save error';
+  }
+}
+
+async function openNoteTab(slug) {
+  const id = 'note:' + slug;
+  if (state.tabs.some(t => t.id === id)) { setActiveTab(id); return; }
+  // fetch existing
+  const r = await fetch('/api/page/' + encodeURIComponent('notes/' + slug)).catch(() => null);
+  let content = '';
+  let title = slug;
+  // Try notes-folder fetch via direct path
+  const r2 = await fetch('/api/page/' + encodeURIComponent(slug));
+  if (r2.ok) {
+    const data = await r2.json();
+    content = data.content;
+    const m = content.match(/^#\s+(.+)$/m);
+    if (m) title = m[1].trim();
+    content = content.replace(/^#\s+.+\n+/, '');
+  }
+  createNoteTab(slug, title, content);
+}
+
+document.getElementById('new-note-btn').onclick = () => createNoteTab(newNoteSlug(), '', '');
+document.getElementById('focus-toggle').onclick = toggleFocusMode;
+document.getElementById('bubbles-toggle').onclick = toggleBubbles;
+
+// === History panel ===
+async function loadHistory() {
+  try {
+    const r = await fetch('/api/sessions');
+    if (!r.ok) return;
+    const data = await r.json();
+    renderHistory(data.sessions || []);
+  } catch (_) {}
+}
+
+function renderHistory(sessions) {
+  const list = document.getElementById('history-list');
+  const count = document.getElementById('history-count');
+  count.textContent = sessions.length ? `${sessions.length}` : '';
+  list.innerHTML = '';
+  const today = todayISO();
+  if (sessions.length === 0) {
+    list.appendChild(emptyState('🗓️', 'no past sessions yet'));
+    return;
+  }
+  sessions.forEach(s => {
+    const d = document.createElement('div');
+    d.className = 'history-item' + (s.date === today ? ' today' : '');
+    const meta = `<div class="meta">${s.chat_turns ? `<span class="badge">${s.chat_turns} chat</span>` : ''}${s.pin_count ? `<span class="badge">${s.pin_count} pins</span>` : ''}${s.research_count ? `<span class="badge">${s.research_count} rsch</span>` : ''}</div>`;
+    d.innerHTML = `<div>${s.date}${s.date === today ? ' (today)' : ''}</div>${meta}`;
+    d.onclick = () => openPastDayTab(s.date);
+    list.appendChild(d);
+  });
+}
+
+async function openPastDayTab(date) {
+  const id = 'pastday:' + date;
+  if (state.tabs.some(t => t.id === id)) { setActiveTab(id); return; }
+  let data;
+  try {
+    const r = await fetch('/api/sessions/' + date);
+    if (!r.ok) { sysMsg(`Could not load ${date}.`); return; }
+    data = await r.json();
+  } catch (_) { sysMsg('Failed to load session.'); return; }
+
+  state.tabs.push({ id, label: `📅 ${date}`, kind: 'pastday', date });
+  const pane = document.createElement('div');
+  pane.className = 'tab-pane past-day-pane';
+  pane.dataset.tab = id;
+  const isToday = date === todayISO();
+  const pinCount = (data.pins || []).length;
+  pane.innerHTML = `
+    <div class="past-day-toolbar">
+      <span class="past-day-title">${date}${isToday ? ' (today)' : ''}</span>
+      <span class="past-day-stats">${(data.chat || []).length} chat · ${pinCount} pins · ${(data.research || []).length} research</span>
+      ${pinCount > 0 && !isToday ? `<button class="past-day-action" data-act="copy-pins">📋 Copy ${pinCount} pin${pinCount === 1 ? '' : 's'} to today</button>` : ''}
+      <span class="tab-action tab-close" style="margin-left:auto;cursor:pointer;font-size:1rem;padding:0 0.5rem;" data-act="close">×</span>
+    </div>
+    <div class="past-day-body">
+      <div class="past-day-section">
+        <h3>Chat (${(data.chat || []).length} turns)</h3>
+        <div class="past-day-chat"></div>
+      </div>
+      ${(data.research || []).length ? `<div class="past-day-section"><h3>Research tabs (${data.research.length})</h3><div class="past-day-research"></div></div>` : ''}
+      <div class="past-day-section">
+        <h3>Pins (${pinCount})</h3>
+        <div class="past-day-pins"></div>
+      </div>
+    </div>
+  `;
+  tabPanes().appendChild(pane);
+  setActiveTab(id);
+  renderTabs();
+
+  const chatDiv = pane.querySelector('.past-day-chat');
+  (data.chat || []).forEach(t => {
+    const div = document.createElement('div');
+    div.className = 'chat-turn ' + (t.role === 'user' ? 'chat-turn-user' : 'chat-turn-assistant');
+    if (t.role === 'user') {
+      div.innerHTML = `<div class="role"><span>You</span></div><div class="body">${renderMarkdown(t.body || '')}</div>`;
+    } else {
+      const safeAgent = escapeHtml(t.agent || 'assistant');
+      div.innerHTML = `<div class="role"><span>Assistant</span><span class="role-chip">${safeAgent}</span></div><div class="body">${renderMarkdown(t.body || '')}</div>`;
+    }
+    chatDiv.appendChild(div);
+    typesetMath(div);
+  });
+  const rsch = pane.querySelector('.past-day-research');
+  if (rsch) {
+    (data.research || []).forEach(rt => {
+      const div = document.createElement('div');
+      div.className = 'chat-turn chat-turn-assistant';
+      div.innerHTML = `<div class="role"><span>Research</span><span class="role-chip">${escapeHtml(rt.label || 'research')}</span></div><div class="body">${renderMarkdown(rt.body || '')}</div>`;
+      rsch.appendChild(div);
+      typesetMath(div);
+    });
+  }
+  const pinsDiv = pane.querySelector('.past-day-pins');
+  (data.pins || []).forEach((pin, i) => {
+    const div = document.createElement('div');
+    div.className = 'past-pin';
+    const src = pin.source ? `<div class="source">${pin.source.kind === 'wiki' ? '📄 ' : (pin.source.kind === 'note' ? '🗒️ ' : pin.source.kind === 'research' ? '🔬 ' : '💬 ')}${escapeHtml(pin.source.stem || pin.source.kind)}</div>` : '';
+    div.innerHTML = `<strong>${i + 1}.</strong> ${escapeHtml(pin.text || '')}${src}`;
+    pinsDiv.appendChild(div);
+  });
+
+  pane.querySelector('[data-act="close"]').onclick = () => closeTab(id);
+  const copyBtn = pane.querySelector('[data-act="copy-pins"]');
+  if (copyBtn) {
+    copyBtn.onclick = () => {
+      const fresh = (data.pins || []).map(p => ({
+        ...p,
+        id: 'pin-copy-' + Date.now() + '-' + Math.random().toString(36).slice(2,5),
+      }));
+      state.pins.push(...fresh);
+      savePins();
+      renderPins();
+      sysMsg(`Copied ${fresh.length} pin${fresh.length === 1 ? '' : 's'} from ${date} to today.`);
+      copyBtn.disabled = true;
+      copyBtn.textContent = '✓ copied';
+    };
+  }
+}
+
+document.getElementById('history-toggle').onclick = () => {
+  document.getElementById('history-section').classList.toggle('open');
+  loadHistory();
+};
+
+// --- Click delegation for wiki-links ---
+document.addEventListener('click', (ev) => {
+  const t = ev.target.closest('.wiki-link');
+  if (t && t.dataset.stem) {
+    ev.preventDefault();
+    openWikiTab(t.dataset.stem);
+  }
+});
+
+// --- Input handlers ---
+document.getElementById('prompt').addEventListener('keydown', (ev) => {
+  if (ev.key !== 'Enter') return;
+  const text = ev.target.value.trim();
+  if (!text) return;
+  ev.target.value = '';
+  if (text.startsWith('/')) handleCommand(text);
+  else sendChat(text);
+});
+
+let searchTimer = null;
+document.getElementById('wiki-search').addEventListener('input', (ev) => {
+  clearTimeout(searchTimer);
+  const q = ev.target.value;
+  searchTimer = setTimeout(() => runWikiSearch(q), 150);
+});
+
+document.getElementById('pin-input').addEventListener('keydown', (ev) => {
+  if (ev.key !== 'Enter') return;
+  const text = ev.target.value.trim();
+  if (!text) return;
+  ev.target.value = '';
+  addPin(text);
+});
+
+document.getElementById('unpin-btn').onclick = () => unpinPage(true);
+document.getElementById('close-pin-btn').onclick = () => unpinPage(false);
+
+// --- Header dropdowns ---
+async function loadConfig() {
+  const r = await fetch('/api/config');
+  const cfg = await r.json();
+  const ms = document.getElementById('model-select');
+  ms.innerHTML = cfg.models.map(m => `<option value="${m.id}">${m.label}</option>`).join('');
+  ms.value = cfg.default_model;
+  state.model = cfg.default_model;
+  const as = document.getElementById('agent-select');
+  as.innerHTML = cfg.agents.map(a => `<option value="${a}">${a}</option>`).join('');
+  as.value = cfg.default_agent;
+  state.agent = cfg.default_agent;
+  ms.addEventListener('change', reconfigure);
+  as.addEventListener('change', reconfigure);
+}
+
+// --- Boot ---
+document.querySelectorAll('.splitter-v').forEach(setupSplitter);
+loadLayout();
+loadPinsFromCache();
+state.sessionDate = todayISO();
+renderPins();
+ensureChatPane();
+renderTabs();
+renderPins();
+document.getElementById('wiki-results').innerHTML = emptyState('🔎', 'Type to search the wiki index');
+sysMsg('wiki-tutor loaded. Drag the column borders to resize. Click 📌 on any wiki tab to pin it alongside the chat.');
+loadConfig().then(async () => {
+  await loadTodaySession();
+  connectChat();
+  loadHistory();
+});
+</script>
+</body>
+</html>
