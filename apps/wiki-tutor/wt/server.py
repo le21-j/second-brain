@@ -12,10 +12,11 @@ import datetime as dt
 import re
 import socket
 import sys
+import uuid
 import webbrowser
 from pathlib import Path
 
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI, File, UploadFile, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse, JSONResponse
 from pydantic import BaseModel
 
@@ -115,6 +116,15 @@ Examples:
 
 
 SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,80}$")
+
+ALLOWED_IMAGE_MIMES = {
+    "image/png": "png",
+    "image/jpeg": "jpg",
+    "image/jpg": "jpg",
+    "image/gif": "gif",
+    "image/webp": "webp",
+}
+MAX_UPLOAD_BYTES = 10 * 1024 * 1024  # 10 MB cap on a single paste
 
 
 def create_app(model: str) -> FastAPI:
@@ -354,6 +364,26 @@ def create_app(model: str) -> FastAPI:
         tmp.write_text(_json.dumps(body, ensure_ascii=False, indent=2), encoding="utf-8")
         tmp.replace(path)
         return JSONResponse({"date": date, "saved": True})
+
+    @app.post("/api/upload")
+    async def upload_image(file: UploadFile = File(...)) -> JSONResponse:
+        ext = ALLOWED_IMAGE_MIMES.get(file.content_type or "")
+        if ext is None:
+            return JSONResponse(
+                {"error": f"unsupported type: {file.content_type}"},
+                status_code=415,
+            )
+        data = await file.read()
+        if len(data) > MAX_UPLOAD_BYTES:
+            return JSONResponse({"error": "file too large"}, status_code=413)
+        if not data:
+            return JSONResponse({"error": "empty file"}, status_code=400)
+        wiki_root = get_wiki_root()
+        uploads_dir = wiki_root / ".wt" / "uploads"
+        uploads_dir.mkdir(parents=True, exist_ok=True)
+        path = uploads_dir / f"{uuid.uuid4().hex}.{ext}"
+        path.write_bytes(data)
+        return JSONResponse({"path": str(path), "size": len(data)})
 
     @app.delete("/api/notes/{slug}")
     async def delete_note(slug: str) -> JSONResponse:

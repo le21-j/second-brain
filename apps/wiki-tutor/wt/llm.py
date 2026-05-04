@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import asyncio
 import os
+import re
 import tempfile
 from collections.abc import AsyncIterator
 from pathlib import Path
@@ -23,6 +24,35 @@ from claude_agent_sdk import (
 )
 
 from .wiki import build_context, get_wiki_root
+
+
+# Read-only fallback if the agent file has no `tools:` line — the teacher needs
+# at least these to honor "check the wiki first" without stalling.
+DEFAULT_AGENT_TOOLS = ["Read", "Glob", "Grep"]
+# Cap iterations so a runaway agent can't loop forever, but high enough that a
+# teacher can Glob → Read a few pages → respond without truncation.
+MAX_AGENT_TURNS = 10
+
+
+def parse_agent_tools(persona_path: Path) -> list[str]:
+    """Pull the comma-separated `tools:` list from an agent file's frontmatter.
+
+    The Claude Agent SDK doesn't auto-load this when we hand it a raw system
+    prompt (we set `setting_sources=[]`), so we parse it ourselves and pass
+    the result as `allowed_tools`.
+    """
+    if not persona_path.exists():
+        return list(DEFAULT_AGENT_TOOLS)
+    text = persona_path.read_text(encoding="utf-8")
+    m = re.match(r"---\s*\n(.*?)\n---", text, re.DOTALL)
+    if not m:
+        return list(DEFAULT_AGENT_TOOLS)
+    tools_match = re.search(r"^tools:\s*(.+)$", m.group(1), re.MULTILINE)
+    if not tools_match:
+        return list(DEFAULT_AGENT_TOOLS)
+    raw = tools_match.group(1).strip()
+    tools = [t.strip() for t in raw.split(",") if t.strip()]
+    return tools or list(DEFAULT_AGENT_TOOLS)
 
 
 class AuthError(RuntimeError):
@@ -85,11 +115,14 @@ class LLMSession:
         self.model = model
         self.agent_name = agent_name
         self.system_prompt = load_system_prompt(self.wiki_root, self.agent_name)
+        self.tools = parse_agent_tools(find_agent_path(self.agent_name, self.wiki_root))
         self._client: ClaudeSDKClient | None = None
         self._system_prompt_file: Path | None = None
+        self._context_injected = False
 
     def _refresh_system_prompt(self) -> None:
         self.system_prompt = load_system_prompt(self.wiki_root, self.agent_name)
+        self.tools = parse_agent_tools(find_agent_path(self.agent_name, self.wiki_root))
 
     async def reconfigure(
         self,
@@ -121,10 +154,10 @@ class LLMSession:
         options = ClaudeAgentOptions(
             system_prompt={"type": "file", "path": str(self._system_prompt_file)},
             model=self.model,
-            allowed_tools=[],
+            allowed_tools=self.tools,
             setting_sources=[],
             include_partial_messages=True,
-            max_turns=1,
+            max_turns=MAX_AGENT_TURNS,
         )
         self._client = ClaudeSDKClient(options=options)
         try:
@@ -166,17 +199,25 @@ class LLMSession:
     async def reset(self) -> None:
         await self.disconnect()
         await self.connect()
+        self._context_injected = False
 
     async def chat(self, user_message: str) -> AsyncIterator[str]:
         if self._client is None:
             raise RuntimeError("LLMSession not connected. Use `async with` or call connect().")
-        context = await asyncio.to_thread(build_context, user_message, self.wiki_root)
-        framed = (
-            f"[WIKI CONTEXT — sourced from [[index.md]]]\n"
-            f"{context}\n"
-            f"[END WIKI CONTEXT]\n\n"
-            f"{user_message}"
-        )
+        # First turn: inject lean wiki page list so the agent knows what's
+        # available. Subsequent turns: send just the user message — the agent
+        # can Read more pages on demand. Saves ~6K tokens/turn after turn 1.
+        if self._context_injected:
+            framed = user_message
+        else:
+            context = await asyncio.to_thread(build_context, user_message, self.wiki_root)
+            framed = (
+                f"[WIKI CONTEXT — sourced from [[index.md]]]\n"
+                f"{context}\n"
+                f"[END WIKI CONTEXT]\n\n"
+                f"{user_message}"
+            )
+            self._context_injected = True
         await self._client.query(framed)
         stream = self._client.receive_response()
         streamed_any = False

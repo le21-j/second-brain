@@ -128,6 +128,30 @@ def strip_frontmatter(text: str) -> str:
     return FRONTMATTER_RE.sub("", text, count=1)
 
 
+def _score_query(query_tokens: set[str], haystack: set[str]) -> int:
+    """Hybrid scoring so partial typing surfaces relevant pages.
+
+    For each query token: exact whole-token match scores 3, prefix match (a
+    haystack token starts with the query token) scores 2, substring match
+    anywhere in any haystack token scores 1. Substring/prefix matching is
+    skipped for query tokens shorter than 2 chars so a stray letter doesn't
+    match every page.
+    """
+    score = 0
+    for q in query_tokens:
+        if q in haystack:
+            score += 3
+            continue
+        if len(q) < 2:
+            continue
+        if any(h.startswith(q) for h in haystack):
+            score += 2
+            continue
+        if any(q in h for h in haystack):
+            score += 1
+    return score
+
+
 def search_index(query: str, root: Path | None = None) -> list[tuple[str, str, int]]:
     root = root or get_wiki_root()
     entries = _parse_index(root)
@@ -141,7 +165,7 @@ def search_index(query: str, root: Path | None = None) -> list[tuple[str, str, i
         if path is not None:
             corpus = f"{corpus} {_frontmatter_corpus(path)}"
         haystack = _tokenize(corpus)
-        score = sum(1 for t in tokens if t in haystack)
+        score = _score_query(tokens, haystack)
         if score == 0:
             continue
         scored.append((score, -entry.line_no, entry))
@@ -159,17 +183,26 @@ def search_index(query: str, root: Path | None = None) -> list[tuple[str, str, i
 
 
 def build_context(query: str, root: Path | None = None) -> str:
+    """Return a *lean* candidate-page list — names + one-line descriptions only.
+
+    Page bodies are NOT pre-injected; the agent has the `Read` tool and can
+    fetch what it needs. Cuts ~6K tokens/turn vs. inlining bodies, which is
+    the dominant TTFT cost on Sonnet.
+    """
     root = root or get_wiki_root()
     matches = search_index(query, root=root)
     if not matches:
-        return "No matching wiki pages found for this query.\n"
+        return "No matching wiki pages found in the index for this query.\n"
     top = matches[:TOP_K_PAGES]
-    lines: list[str] = []
-    stems_csv = ", ".join(f"[[{stem}]]" for stem, _, _ in top)
-    lines.append(f"Relevant wiki pages (injected from [[index.md]]):\n{stems_csv}\n")
-    for stem, _desc, _score in top:
-        body = read_page(stem, root=root)
-        if body is None:
-            continue
-        lines.append(f"\n--- [[{stem}]] ---\n{body}")
+    lines: list[str] = [
+        "Relevant wiki pages (from [[index.md]]) — use the Read tool to open the ones you need:",
+    ]
+    for stem, desc, _score in top:
+        snippet = desc.strip()
+        if len(snippet) > 120:
+            snippet = snippet[:117].rstrip() + "…"
+        if snippet:
+            lines.append(f"- [[{stem}]] — {snippet}")
+        else:
+            lines.append(f"- [[{stem}]]")
     return "\n".join(lines)

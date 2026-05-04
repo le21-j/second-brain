@@ -8,6 +8,8 @@ A personal **LLM Wiki / second brain** for Jayden's college coursework. He drops
 
 **Jayden's learning style:** best learns by **examples and trial-and-error**. All pedagogy here must lead with a concrete example, then abstract. Prefer generating practice problems he can attempt over long expository text.
 
+**Framework over formulas.** Every concept page, walkthrough, and source summary must teach the **small set of underlying ideas that generate all the variant formulas** — not a long list of memorized cases. A subject like "diff-amp gain" has 20+ variants (MOS vs BJT, resistor vs current-mirror load, single-ended vs differential output, with/without source degeneration, …); memorizing each breaks the moment the exam tweaks the circuit. Memorizing the **framework** (e.g., half-circuit analysis + 2–3 building-block gains + how to find $R_\text{out}$ at any node + the definitions of $A_d$, $A_{cm}$, CMRR) lets Jayden **derive** any variant in 2–3 minutes during the exam. So every page must answer: *what is the small set of patterns/definitions this concept reduces to, and how does it relate to the other concepts that combine with it to produce the named formula?* List 3–5 building blocks, not 20 memorized results. Memorize maybe 3–4 final results that come up constantly — but always know how to derive them from the framework.
+
 ## Three layers
 
 1. **Raw sources** — `raw/`. Immutable. The LLM reads them but **never modifies** anything inside `raw/`.
@@ -152,6 +154,13 @@ updated: YYYY-MM-DD
 
 ## Formal definition
 {Precise statement — definition, theorem, equation. Link to [[formulas/...]] if applicable.}
+
+## Patterns / framework
+{The "framework over formulas" section. Three things go here:
+1. **The 3–5 building blocks** this concept decomposes into (e.g., for diff-pair gain: half-circuit analysis, common-source gain, common-source-with-degeneration gain, $R_\text{out}$ rules, $A_d$/$A_{cm}$/CMRR definitions). Name them, not just describe them.
+2. **How those blocks combine** to generate the headline formulas — the *derivation skeleton* in 2–4 lines, not the algebra. The reader should be able to redo the derivation in 2–3 minutes after reading this.
+3. **What to internalize vs. what to look up.** Memorize maybe 3–4 named final results that come up constantly; everything else falls out of the framework. Be explicit: "memorize this; derive that."
+This section is the antidote to memorizing 20+ variants. If a concept page doesn't have this section, future-Jayden will pattern-match without understanding.}
 
 ## Why it matters / when you use it
 {The "so what" — what problems this unlocks, where it shows up next.}
@@ -331,7 +340,9 @@ When Jayden adds a new lab to `raw/labs/` or new homework to `raw/homework/` and
 3. **For every numbered question** in the assignment the walkthrough must:
    - **State the question** verbatim (or close paraphrase) in bold as the heading.
    - **Explain the overarching concept** the question is testing — example first per Jayden's learning style, then theory.
+   - **Name the framework** the question fits into — the **3–5 building blocks** that generate this problem and its siblings (per the "Framework over formulas" principle at the top of this file). Don't list 20 memorized formulas; list the small set of patterns the formulas come from, and which other questions in the assignment / wiki concepts use the same blocks. Include a `> [!tip] **What to internalize vs. memorize**` callout that says explicitly: "memorize these 3–4 results; derive the rest in 2–3 minutes from the framework above."
    - **Walk the concrete steps** to solve it. For labs: exact MATLAB / Simulink commands, parameter values, scope/spectrogram interpretation, what to screenshot. For homeworks: every derivation step labeled and explained, not just the final answer.
+   - **Cross-link**: end each question with "Same framework as: [[…]], [[…]]" wiki-links pointing to other walkthrough questions or concept pages that share the same 3–5 building blocks. The pattern matters more than the formula.
 4. **Formatting** (Jayden explicitly asked for these — non-negotiable):
    - **Bold** liberally for question titles, key terms, parameter names, decision points, headline answer sentences, and final-answer numbers. **Headline answers go in a leading `**Answer:**` bolded line** (or `**Final answer:**`, `**Result:**`, etc.) — bolding the *whole sentence* of the takeaway, not just an inline phrase.
    - Blockquote callouts (`> [!note]`, `> [!tip]`, `> [!warning]`, `> [!example]`) for asides like gotchas, expected scope shapes, sanity checks.

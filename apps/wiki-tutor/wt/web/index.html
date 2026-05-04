@@ -258,7 +258,24 @@
       transition: background var(--dur) var(--ease), transform var(--dur) var(--ease);
     }
     .pin-item:hover { background: var(--bg-elev-2); }
-    .pin-item .pin-text { flex: 1; line-height: 1.4; word-break: break-word; }
+    .pin-item .pin-text {
+      flex: 1;
+      line-height: 1.4;
+      word-break: break-word;
+      max-height: 220px;
+      overflow-y: auto;
+      min-width: 0;
+    }
+    /* Compact rendered markdown / math inside a pin chip */
+    .pin-item .pin-text p { margin: 0; }
+    .pin-item .pin-text p + p { margin-top: 0.3rem; }
+    .pin-item .pin-text mjx-container { font-size: 0.95em !important; }
+    .pin-item .pin-text mjx-container[display="true"] {
+      margin: 0.25rem 0 !important;
+      text-align: left !important;
+    }
+    .pin-item .pin-text code:not(pre code) { font-size: 0.85em; padding: 0 0.25rem; }
+    .pin-item .pin-text pre { margin: 0.3rem 0; padding: 0.4rem 0.55rem; font-size: 0.78rem; }
     .pin-num { color: var(--accent2); font-weight: 600; font-feature-settings: 'tnum'; flex-shrink: 0; }
     .pin-remove {
       flex-shrink: 0;
@@ -284,7 +301,7 @@
     .empty-state .empty-icon { font-size: 1.4rem; opacity: 0.5; margin-bottom: 0.4rem; }
     .empty-state .empty-hint { font-style: italic; }
 
-    input[type="text"], select {
+    input[type="text"], select, textarea {
       background: var(--bg-elev);
       color: var(--fg);
       border: 1px solid var(--bg-elev-2);
@@ -296,13 +313,13 @@
       outline: none;
       transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), background var(--dur) var(--ease);
     }
-    input[type="text"]:hover, select:hover { border-color: var(--bg-elev-3); }
-    input[type="text"]:focus, select:focus {
+    input[type="text"]:hover, select:hover, textarea:hover { border-color: var(--bg-elev-3); }
+    input[type="text"]:focus, select:focus, textarea:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 3px rgba(122, 162, 247, 0.18);
       background: var(--bg);
     }
-    input::placeholder { color: var(--fg-muted); }
+    input::placeholder, textarea::placeholder { color: var(--fg-muted); }
     select {
       cursor: pointer;
       padding: 0.35rem 1.6rem 0.35rem 0.6rem;
@@ -556,6 +573,12 @@
     #prompt {
       font-size: 0.92rem;
       padding: 0.6rem 0.85rem;
+      resize: none;
+      min-height: 38px;
+      max-height: 200px;
+      line-height: 1.45;
+      overflow-y: auto;
+      display: block;
     }
 
     /* === Selection-pin floating button === */
@@ -579,33 +602,46 @@
     #selection-pin-btn:hover { transform: translateY(-1px); }
     #selection-pin-btn.show { display: inline-flex; }
 
-    /* === Pin highlights inside content === */
+    /* === Pin / annotation marks inside content (subtle inline indicators) === */
     .pin-highlight {
-      background: rgba(187, 154, 247, 0.25);
-      border-bottom: 2px solid var(--accent2);
+      background: transparent;
+      border-bottom: 1.5px dotted var(--accent2);
       cursor: pointer;
-      padding: 0 1px;
+      padding: 0;
       transition: background var(--dur) var(--ease);
     }
-    .pin-highlight:hover { background: rgba(187, 154, 247, 0.45); }
+    .pin-highlight:hover { background: rgba(187, 154, 247, 0.18); }
     .pin-highlight.flash { animation: pin-flash 1.4s ease-out; }
     @keyframes pin-flash {
-      0%   { background: rgba(187, 154, 247, 0.85); box-shadow: 0 0 0 4px rgba(187, 154, 247, 0.55); }
-      100% { background: rgba(187, 154, 247, 0.25); box-shadow: 0 0 0 0 transparent; }
+      0%   { background: rgba(187, 154, 247, 0.55); box-shadow: 0 0 0 4px rgba(187, 154, 247, 0.35); }
+      100% { background: transparent;               box-shadow: 0 0 0 0 transparent; }
     }
-    .pin-highlight::before {
-      content: attr(data-pin-num);
-      display: inline-block;
-      background: var(--accent2);
-      color: #1a1b26;
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 0 0.3rem;
-      border-radius: 8px;
-      margin-right: 0.25rem;
-      vertical-align: super;
-      line-height: 1.4;
+    .pin-highlight::before { display: none; }
+
+    /* === Margin bubbles — small emoji chips in the side gutter === */
+    .margin-bubble {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--bg-elev);
+      border: 1.5px solid var(--bg-elev-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      cursor: pointer;
+      z-index: 8;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+      transition: transform var(--dur) var(--ease), background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+      user-select: none;
+      line-height: 1;
     }
+    .margin-bubble:hover { transform: scale(1.18); }
+    .margin-bubble.kind-pin { border-color: var(--accent2); }
+    .margin-bubble.kind-pin:hover { background: rgba(187, 154, 247, 0.18); }
+    .margin-bubble.kind-annotation { border-color: var(--yellow); }
+    .margin-bubble.kind-annotation:hover { background: rgba(224, 175, 104, 0.18); }
 
     /* === Annotation bubbles (toggle) === */
     .tab-pane.show-bubbles .pin-highlight {
@@ -756,7 +792,10 @@
       border-bottom: 1px solid var(--bg-elev-2);
       flex-shrink: 0;
       user-select: none;
+      cursor: grab;
     }
+    #chat-float-header.dragging { cursor: grabbing; }
+    #chat-float-header button { cursor: pointer; }
     #chat-float-title {
       font-weight: 600;
       color: var(--accent2);
@@ -801,6 +840,336 @@
       opacity: 0.7;
     }
     .tab.tab-chat .tab-action.tab-minimize:hover { opacity: 1; }
+
+    /* === Pasted-image previews above the prompt === */
+    #image-preview-row {
+      display: none;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      padding: 0.5rem 0.85rem 0;
+    }
+    #image-preview-row.show { display: flex; }
+    .image-preview-chip {
+      position: relative;
+      width: 56px;
+      height: 56px;
+      border-radius: var(--r-sm);
+      overflow: hidden;
+      border: 1px solid var(--bg-elev-3);
+      background: var(--bg-elev);
+    }
+    .image-preview-chip img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .image-preview-chip .remove {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      border: none;
+      font-size: 0.75rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    .image-preview-chip .remove:hover { background: var(--red); }
+    /* === Math-block hover actions (copy/pin LaTeX) === */
+    .math-wrap {
+      position: relative;
+      display: inline-block;
+      border-radius: 3px;
+      transition: background var(--dur) var(--ease);
+    }
+    .math-wrap-display {
+      display: block;
+      margin: 0.4rem 0;
+    }
+    .math-wrap:hover { background: rgba(187, 154, 247, 0.08); }
+    .math-actions {
+      position: absolute;
+      top: -12px;
+      right: -2px;
+      display: none;
+      gap: 3px;
+      z-index: 6;
+      user-select: none;
+    }
+    .math-wrap:hover .math-actions { display: inline-flex; }
+    .math-act {
+      background: var(--bg-elev);
+      color: var(--fg-soft);
+      border: 1px solid var(--bg-elev-3);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 0.72rem;
+      line-height: 1.3;
+      cursor: pointer;
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+    .math-act:hover {
+      background: var(--accent2);
+      color: #1a1b26;
+      border-color: var(--accent2);
+    }
+    .math-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent2);
+      color: #1a1b26;
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--r-md);
+      font-size: 0.82rem;
+      font-weight: 600;
+      z-index: 9999;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+      pointer-events: none;
+      animation: math-toast-fade 1.7s ease-out forwards;
+    }
+    @keyframes math-toast-fade {
+      0% { opacity: 0; transform: translate(-50%, 8px); }
+      15%, 70% { opacity: 1; transform: translate(-50%, 0); }
+      100% { opacity: 0; transform: translate(-50%, -8px); }
+    }
+
+    /* === Pin tag groups & per-pin tag chips === */
+    .tag-group { margin-bottom: 0.4rem; }
+    .tag-group-header {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.4rem;
+      cursor: pointer;
+      user-select: none;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--fg-muted);
+      border-radius: var(--r-sm);
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+    }
+    .tag-group-header:hover { background: var(--bg-elev-2); color: var(--fg-soft); }
+    .tag-group-header .chev {
+      font-size: 0.65rem;
+      transition: transform var(--dur) var(--ease);
+      color: var(--fg-faint);
+    }
+    .tag-group.collapsed .tag-group-header .chev { transform: rotate(-90deg); }
+    .tag-group-header .tag-name { flex: 1; }
+    .tag-group-header .tag-count { color: var(--fg-faint); font-feature-settings: 'tnum'; }
+    .tag-group-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 0.2rem 0;
+    }
+    .tag-group.collapsed .tag-group-body { display: none; }
+    .pin-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-top: 0.3rem;
+    }
+    .pin-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: rgba(187, 154, 247, 0.12);
+      color: var(--accent2);
+      border: 1px solid rgba(187, 154, 247, 0.25);
+      border-radius: 999px;
+      padding: 1px 7px;
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: background var(--dur) var(--ease);
+    }
+    .pin-tag:hover { background: rgba(187, 154, 247, 0.25); }
+    .pin-tag .x { opacity: 0.55; font-size: 0.85em; }
+    .pin-tag:hover .x { opacity: 1; color: var(--red); }
+    .pin-tag-add {
+      background: transparent;
+      border: 1px dashed var(--bg-elev-3);
+      color: var(--fg-muted);
+      border-radius: 999px;
+      padding: 1px 7px;
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+    .pin-tag-add:hover { color: var(--accent2); border-color: var(--accent2); }
+
+    /* === Selection menu (Pin / Annotate) — replaces old single button === */
+    #selection-menu {
+      position: fixed;
+      z-index: 1000;
+      display: none;
+      background: var(--bg-elev);
+      border: 1px solid var(--bg-elev-3);
+      border-radius: var(--r-md);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+      overflow: hidden;
+    }
+    #selection-menu.show { display: inline-flex; }
+    .selection-menu-btn {
+      background: transparent;
+      border: none;
+      color: var(--fg-soft);
+      padding: 0.4rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+    }
+    .selection-menu-btn + .selection-menu-btn { border-left: 1px solid var(--bg-elev-3); }
+    .selection-menu-btn.pin-btn:hover { background: var(--accent2-soft); color: var(--accent2); }
+    .selection-menu-btn.annotate-btn:hover { background: rgba(224, 175, 104, 0.18); color: var(--yellow); }
+
+    /* === Annotation marks inside content (subtle inline indicators) === */
+    .annotation-mark {
+      background: transparent;
+      border-bottom: 1.5px dotted var(--yellow);
+      cursor: pointer;
+      padding: 0;
+      transition: background var(--dur) var(--ease);
+    }
+    .annotation-mark:hover { background: rgba(224, 175, 104, 0.18); }
+    .annotation-mark::before { display: none; }
+
+    /* === Annotation editor — tiny moveable mini-window === */
+    #annotation-frame {
+      position: fixed;
+      right: 24px;
+      bottom: 110px;
+      width: 300px;
+      height: 220px;
+      min-width: 220px;
+      min-height: 140px;
+      max-width: 90vw;
+      max-height: 70vh;
+      background: var(--bg-elev);
+      border: 1px solid var(--yellow);
+      border-radius: var(--r-lg);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
+      z-index: 950;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      resize: both;
+    }
+    #annotation-frame.show { display: flex; }
+    #annotation-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.4rem 0.65rem;
+      background: linear-gradient(90deg, rgba(224, 175, 104, 0.18) 0%, var(--bg-elev) 90%);
+      border-bottom: 1px solid var(--bg-elev-2);
+      flex-shrink: 0;
+      user-select: none;
+      cursor: grab;
+    }
+    #annotation-header.dragging { cursor: grabbing; }
+    #annotation-title {
+      font-weight: 600;
+      color: var(--yellow);
+      font-size: 0.78rem;
+      letter-spacing: -0.005em;
+    }
+    #annotation-actions { display: flex; gap: 0.2rem; }
+    #annotation-textarea {
+      flex: 1;
+      background: var(--bg);
+      color: var(--fg);
+      border: none;
+      resize: none;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.85rem;
+      font-family: inherit;
+      line-height: 1.45;
+      outline: none;
+      min-height: 0;
+    }
+    #annotation-textarea:focus { background: var(--bg); }
+    #annotation-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.35rem 0.6rem;
+      border-top: 1px solid var(--bg-elev-2);
+      flex-shrink: 0;
+      font-size: 0.72rem;
+    }
+    #annotation-status { color: var(--fg-muted); }
+
+    /* === Inline reply box under the latest assistant turn === */
+    .inline-reply-bar {
+      margin: 0.7rem 0 0;
+      display: flex;
+      gap: 0.4rem;
+      align-items: stretch;
+    }
+    .inline-reply-input {
+      flex: 1;
+      background: var(--bg-elev);
+      color: var(--fg);
+      border: 1px solid var(--accent2-soft);
+      border-left: 3px solid var(--accent2);
+      border-radius: var(--r-sm);
+      padding: 0.5rem 0.7rem;
+      font-size: 0.9rem;
+      font-family: inherit;
+      line-height: 1.45;
+      resize: vertical;
+      min-height: 38px;
+      max-height: 220px;
+    }
+    .inline-reply-input:focus {
+      outline: none;
+      border-color: var(--accent2);
+      background: var(--bg);
+    }
+    .inline-reply-input::placeholder { color: var(--fg-muted); }
+    .inline-reply-send {
+      background: var(--accent2);
+      color: #1a1b26;
+      border: none;
+      border-radius: var(--r-sm);
+      padding: 0 0.9rem;
+      font-weight: 600;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: filter var(--dur) var(--ease);
+    }
+    .inline-reply-send:hover { filter: brightness(1.12); }
+    .inline-reply-send:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* Inline images on the user's chat turn after sending */
+    .user-attachments {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+    .user-attached-image {
+      max-width: 220px;
+      max-height: 220px;
+      border-radius: var(--r-sm);
+      border: 1px solid var(--bg-elev-3);
+      object-fit: contain;
+      background: var(--bg);
+    }
     .header-action {
       background: var(--bg-elev);
       border: 1px solid var(--bg-elev-2);
@@ -1019,7 +1388,10 @@
     <button class="header-action" id="bubbles-toggle" title="Show pin bubbles on the active tab">💬 pins</button>
     <div class="status-pill"><span class="status-dot" id="status-dot"></span><span id="status-text">connecting…</span></div>
   </header>
-  <button id="selection-pin-btn">📌 Pin selection</button>
+  <div id="selection-menu">
+    <button type="button" class="selection-menu-btn pin-btn">📌 Pin</button>
+    <button type="button" class="selection-menu-btn annotate-btn">📝 Annotate</button>
+  </div>
 
   <div class="layout">
     <!-- LEFT: Wiki sidebar -->
@@ -1053,7 +1425,8 @@
         </div>
       </div>
       <div id="prompt-bar">
-        <input id="prompt" type="text" placeholder="Ask the tutor or type / for commands…" autofocus>
+        <div id="image-preview-row"></div>
+        <textarea id="prompt" rows="1" placeholder="Ask the tutor or type / for commands…" autofocus></textarea>
       </div>
     </main>
     <div class="splitter-v" data-splitter="right"></div>
@@ -1061,7 +1434,7 @@
     <!-- RIGHT: Pinboard + History -->
     <aside id="right-pane" class="scroll flex flex-col gap-3" style="width: 280px;">
       <div class="pane-heading right"><span>Pinboard</span></div>
-      <input id="pin-input" type="text" placeholder="pin a thought…">
+      <input id="pin-input" type="text" placeholder="pin a thought… use #tag to group">
       <div id="pin-list" class="flex flex-col gap-1"></div>
       <div class="history-section" id="history-section">
         <div class="history-header" id="history-toggle">
@@ -1085,6 +1458,21 @@
     <div id="chat-float-body"></div>
   </div>
 
+  <!-- Floating annotation editor (visible when an annotation is being written) -->
+  <div id="annotation-frame">
+    <div id="annotation-header">
+      <span id="annotation-title">📝 Annotation</span>
+      <div id="annotation-actions">
+        <button class="icon-btn" id="annotation-close" title="Close (keeps annotation)">✕</button>
+      </div>
+    </div>
+    <textarea id="annotation-textarea" placeholder="Write your note about the highlighted text…"></textarea>
+    <div id="annotation-footer">
+      <button class="icon-btn" id="annotation-delete" title="Delete this annotation">🗑️ Delete</button>
+      <span id="annotation-status">saved</span>
+    </div>
+  </div>
+
 <script>
 const CALLOUT_ICONS = {
   note: '📝', info: 'ℹ️', tip: '💡', hint: '💡',
@@ -1104,6 +1492,10 @@ const state = {
   ready: false,
   busy: false,
   chatMinimized: false,
+  pendingImages: [],
+  collapsedTags: {},
+  annotations: [],
+  activeAnnotation: null,
   currentAssistantBody: '',
   currentAssistantEl: null,
   model: 'claude-sonnet-4-6',
@@ -1226,7 +1618,84 @@ marked.setOptions({
   }
 });
 
-function renderMarkdown(md) { return marked.parse(preprocessObsidian(md)); }
+// Hide LaTeX math from Marked so it doesn't eat underscores ("italic") or
+// asterisks ("bold") inside formulas. Each $..$ / $$..$$ becomes an opaque
+// placeholder; Marked passes it through; we restore the original text into
+// the rendered HTML before MathJax typesets.
+function protectMath(md, store) {
+  // Display math first so a $$..$$ isn't clipped by the inline regex.
+  md = md.replace(/\$\$([\s\S]+?)\$\$/g, (m) => {
+    const i = store.length;
+    store.push(m);
+    return `XMJMATH${i}XMJ`;
+  });
+  md = md.replace(/(?<!\\)\$([^\$\n]+?)\$/g, (m) => {
+    const i = store.length;
+    store.push(m);
+    return `XMJMATH${i}XMJ`;
+  });
+  return md;
+}
+
+function restoreMath(html, store) {
+  return html.replace(/XMJMATH(\d+)XMJ/g, (_, n) => {
+    const original = store[Number(n)] || '';
+    if (!original) return '';
+    const isDisplay = original.startsWith('$$');
+    const tag = isDisplay ? 'div' : 'span';
+    const cls = isDisplay ? 'math-wrap math-wrap-display' : 'math-wrap';
+    const safeTex = original
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+    const actions =
+      '<span class="math-actions" contenteditable="false">'
+      + '<button type="button" class="math-act" data-act="copy" title="Copy LaTeX">📋</button>'
+      + '<button type="button" class="math-act" data-act="pin"  title="Pin equation">📌</button>'
+      + '</span>';
+    return `<${tag} class="${cls}" data-tex="${safeTex}">${original}${actions}</${tag}>`;
+  });
+}
+
+function flashToast(text) {
+  document.querySelectorAll('.math-toast').forEach(t => t.remove());
+  const t = document.createElement('div');
+  t.className = 'math-toast';
+  t.textContent = text;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 1700);
+}
+
+document.addEventListener('click', (ev) => {
+  const btn = ev.target.closest && ev.target.closest('.math-act');
+  if (!btn) return;
+  ev.stopPropagation();
+  ev.preventDefault();
+  const wrap = btn.closest('.math-wrap');
+  if (!wrap) return;
+  const tex = wrap.dataset.tex || '';
+  if (!tex) return;
+  if (btn.dataset.act === 'copy') {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(tex)
+        .then(() => flashToast('Copied LaTeX'))
+        .catch(() => flashToast('Copy failed — selection only'));
+    } else {
+      flashToast('Clipboard unavailable in this browser');
+    }
+  } else if (btn.dataset.act === 'pin') {
+    addPin(tex);
+    flashToast('Pinned equation');
+  }
+});
+
+function renderMarkdown(md) {
+  const store = [];
+  const protectedMd = protectMath(md, store);
+  const html = marked.parse(preprocessObsidian(protectedMd));
+  return restoreMath(html, store);
+}
 function typesetMath(el) {
   if (window.MathJax && window.MathJax.typesetPromise) {
     window.MathJax.typesetPromise([el]).catch(e => console.error(e));
@@ -1290,7 +1759,7 @@ function setActiveTab(id) {
 }
 
 function ensureChatPane() {
-  let pane = document.querySelector('[data-tab="chat"]');
+  let pane = document.querySelector('.tab-pane[data-tab="chat"]');
   if (!pane) {
     pane = document.createElement('div');
     pane.className = 'tab-pane prose mx-auto active';
@@ -1325,6 +1794,49 @@ function restoreChat() {
   state.chatMinimized = false;
   setActiveTab('chat');
   pane.scrollTop = pane.scrollHeight;
+}
+
+function setupChatFloatDrag() {
+  const frame = document.getElementById('chat-float-frame');
+  const header = document.getElementById('chat-float-header');
+  let dragging = false;
+  let startX = 0, startY = 0, startLeft = 0, startTop = 0;
+
+  header.addEventListener('mousedown', (e) => {
+    if (e.target.closest('button')) return;
+    if (e.button !== 0) return;
+    const rect = frame.getBoundingClientRect();
+    // Switch from right/bottom anchor to left/top so we can move freely
+    frame.style.left = rect.left + 'px';
+    frame.style.top = rect.top + 'px';
+    frame.style.right = 'auto';
+    frame.style.bottom = 'auto';
+    startLeft = rect.left;
+    startTop = rect.top;
+    startX = e.clientX;
+    startY = e.clientY;
+    dragging = true;
+    header.classList.add('dragging');
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    const maxLeft = window.innerWidth - frame.offsetWidth;
+    const maxTop = window.innerHeight - frame.offsetHeight;
+    const left = Math.max(0, Math.min(maxLeft, startLeft + dx));
+    const top = Math.max(0, Math.min(maxTop, startTop + dy));
+    frame.style.left = left + 'px';
+    frame.style.top = top + 'px';
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (!dragging) return;
+    dragging = false;
+    header.classList.remove('dragging');
+  });
 }
 
 function closeTab(id) {
@@ -1409,12 +1921,18 @@ function sysMsg(text) {
 
 function newTurnId() { return 'turn-' + Date.now() + '-' + Math.random().toString(36).slice(2,5); }
 
-function addUserTurn(text) {
+function addUserTurn(text, images) {
   const pane = ensureChatPane();
   const div = document.createElement('div');
   div.className = 'chat-turn chat-turn-user';
   div.dataset.turnId = newTurnId();
-  div.innerHTML = `<div class="role"><span>You</span></div><div class="body">${renderMarkdown(text)}</div>`;
+  let imageHtml = '';
+  if (images && images.length) {
+    imageHtml = '<div class="user-attachments">' +
+      images.map(im => `<img src="${im.dataUrl}" class="user-attached-image" alt="pasted image">`).join('') +
+      '</div>';
+  }
+  div.innerHTML = `<div class="role"><span>You</span></div><div class="body">${imageHtml}${renderMarkdown(text)}</div>`;
   pane.appendChild(div);
   state.chatHistory.push({ role: 'user', body: text, turnId: div.dataset.turnId });
   typesetMath(div);
@@ -1462,6 +1980,49 @@ function finalizeAssistantTurn() {
   state.busy = false;
   scheduleSessionSave();
   setStatus(`ready · ${state.agent} · ${state.model.split('-').slice(1).join('-')}`, 'ready');
+  clearInlineReplies();
+  addInlineReplyBox();
+}
+
+function clearInlineReplies() {
+  document.querySelectorAll('.inline-reply-bar').forEach(el => el.remove());
+}
+
+function addInlineReplyBox() {
+  const pane = ensureChatPane();
+  const turns = pane.querySelectorAll('.chat-turn-assistant');
+  const latest = turns[turns.length - 1];
+  if (!latest) return;
+  if (latest.querySelector('.inline-reply-bar')) return;
+  const bar = document.createElement('div');
+  bar.className = 'inline-reply-bar';
+  const ta = document.createElement('textarea');
+  ta.className = 'inline-reply-input';
+  ta.placeholder = 'Reply to the tutor…';
+  ta.rows = 1;
+  const sendBtn = document.createElement('button');
+  sendBtn.type = 'button';
+  sendBtn.className = 'inline-reply-send';
+  sendBtn.textContent = 'Send';
+  const submit = () => {
+    const text = ta.value.trim();
+    if (!text) return;
+    if (state.busy) return;
+    ta.disabled = true;
+    sendBtn.disabled = true;
+    sendChat(text);
+  };
+  sendBtn.onclick = submit;
+  ta.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Enter' && !ev.shiftKey) {
+      ev.preventDefault();
+      submit();
+    }
+  });
+  bar.appendChild(ta);
+  bar.appendChild(sendBtn);
+  latest.appendChild(bar);
+  pane.scrollTop = pane.scrollHeight;
 }
 
 // --- WebSocket ---
@@ -1510,13 +2071,77 @@ function sendChat(text) {
   if (state.busy) { sysMsg('Still answering — wait for the current response to finish.'); return; }
   state.busy = true;
   setStatus('thinking…', 'busy');
+  const images = state.pendingImages.slice();
+  state.pendingImages.length = 0;
+  renderImagePreviews();
+  const llmMessage = images.length
+    ? images.map(im => `[Attached image: \`${im.path}\`]`).join('\n') +
+      `\n\n(Use the Read tool on the path(s) above to view each attached image before responding.)\n\n` +
+      text
+    : text;
   if (isResearchAgent(state.agent)) {
     startResearchTurn(text);
   } else {
-    addUserTurn(text);
+    addUserTurn(text, images);
     startAssistantTurn();
   }
-  state.ws.send(JSON.stringify({ type: 'message', message: text }));
+  state.ws.send(JSON.stringify({ type: 'message', message: llmMessage }));
+}
+
+async function uploadPastedImage(blob) {
+  const fd = new FormData();
+  const ext = ((blob.type || 'image/png').split('/')[1] || 'png').replace('+xml', '');
+  fd.append('file', blob, `pasted.${ext}`);
+  const r = await fetch('/api/upload', { method: 'POST', body: fd });
+  const data = await r.json();
+  if (!r.ok) throw new Error(data.error || ('upload HTTP ' + r.status));
+  return data.path;
+}
+
+function readBlobAsDataURL(blob) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result);
+    r.onerror = () => reject(new Error('FileReader failed'));
+    r.readAsDataURL(blob);
+  });
+}
+
+async function handleImagePaste(blob) {
+  let dataUrl, path;
+  try {
+    [dataUrl, path] = await Promise.all([
+      readBlobAsDataURL(blob),
+      uploadPastedImage(blob),
+    ]);
+  } catch (err) {
+    sysMsg('Image upload failed: ' + err.message);
+    return;
+  }
+  state.pendingImages.push({ path, dataUrl });
+  renderImagePreviews();
+}
+
+function renderImagePreviews() {
+  const row = document.getElementById('image-preview-row');
+  if (!row) return;
+  row.innerHTML = '';
+  state.pendingImages.forEach((img, idx) => {
+    const chip = document.createElement('div');
+    chip.className = 'image-preview-chip';
+    const im = document.createElement('img');
+    im.src = img.dataUrl;
+    im.alt = 'pasted image';
+    const rm = document.createElement('button');
+    rm.className = 'remove';
+    rm.title = 'Remove';
+    rm.textContent = '×';
+    rm.onclick = () => { state.pendingImages.splice(idx, 1); renderImagePreviews(); };
+    chip.appendChild(im);
+    chip.appendChild(rm);
+    row.appendChild(chip);
+  });
+  row.classList.toggle('show', state.pendingImages.length > 0);
 }
 
 function createResearchTab(label, query, body, tabId) {
@@ -1606,6 +2231,7 @@ async function handleCommand(text) {
   } else if (head === '/reset') {
     state.chatHistory = [];
     ensureChatPane().innerHTML = '';
+    clearInlineReplies();
     state.ws.send(JSON.stringify({ type: 'reset' }));
   } else if (head === '/save') {
     if (!tail) { sysMsg('Usage: /save <topic>'); return; }
@@ -1685,51 +2311,218 @@ async function runWikiSearch(q) {
 }
 
 // --- Pinboard ---
+const COLLAPSED_TAGS_KEY = 'wt.collapsedTags.v1';
+function loadCollapsedTags() {
+  try {
+    state.collapsedTags = JSON.parse(localStorage.getItem(COLLAPSED_TAGS_KEY) || '{}');
+  } catch (_) { state.collapsedTags = {}; }
+}
+function saveCollapsedTags() {
+  localStorage.setItem(COLLAPSED_TAGS_KEY, JSON.stringify(state.collapsedTags));
+}
+
+function normalizeTag(t) {
+  return String(t || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40);
+}
+
+function parseTagsFromText(text) {
+  const tags = [];
+  const cleaned = (text || '')
+    .replace(/(?:^|\s)#([a-zA-Z0-9][\w-]{0,40})(?=\s|$)/g, (_m, raw) => {
+      const t = normalizeTag(raw);
+      if (t && !tags.includes(t)) tags.push(t);
+      return ' ';
+    })
+    .replace(/[ \t]+/g, ' ')
+    .trim();
+  return { text: cleaned || (text || ''), tags };
+}
+
+function addTagToPin(pinId, tag) {
+  const t = normalizeTag(tag);
+  if (!t) return;
+  const pin = state.pins.find(p => p.id === pinId);
+  if (!pin) return;
+  if (!pin.tags) pin.tags = [];
+  if (!pin.tags.includes(t)) pin.tags.push(t);
+  savePins();
+  renderPins();
+}
+
+function removeTagFromPin(pinId, tag) {
+  const pin = state.pins.find(p => p.id === pinId);
+  if (!pin || !pin.tags) return;
+  pin.tags = pin.tags.filter(t => t !== tag);
+  savePins();
+  renderPins();
+}
+
+function toggleTagCollapse(tagKey) {
+  state.collapsedTags[tagKey] = !state.collapsedTags[tagKey];
+  saveCollapsedTags();
+  renderPins();
+}
+
+function groupPinsByTag(pins) {
+  const groups = new Map();
+  pins.forEach((pin, idx) => {
+    const tags = (pin.tags && pin.tags.length) ? pin.tags : [''];
+    tags.forEach(tag => {
+      if (!groups.has(tag)) groups.set(tag, []);
+      groups.get(tag).push({ pin, n: idx + 1 });
+    });
+  });
+  return groups;
+}
+
 function renderPins() {
   const list = document.getElementById('pin-list');
   list.innerHTML = '';
   if (state.pins.length === 0) {
-    list.innerHTML = emptyState('📌', 'Pinned thoughts land here');
+    list.innerHTML = emptyState('📌', 'Pinned thoughts land here. Use #tag to categorize.');
     return;
   }
-  state.pins.forEach((pin, i) => {
-    const n = i + 1;
-    const d = document.createElement('div');
-    d.className = 'pin-item';
-    const sourceLabel = pin.source
-      ? `<div class="pin-source">${pin.source.kind === 'wiki' ? '📄 ' : (pin.source.kind === 'note' ? '🗒️ ' : '💬 ')}${escapeHtml(pin.source.stem || pin.source.kind)} →</div>`
-      : '';
-    d.innerHTML = `<span class="pin-num">${n}.</span><span class="pin-text">${escapeHtml(pin.text.slice(0,140))}</span>${sourceLabel}<span class="pin-remove" data-n="${n}" title="Remove">✕</span>`;
-    d.querySelector('.pin-remove').onclick = (ev) => { ev.stopPropagation(); removePin(n); };
-    d.onclick = () => {
-      if (pin.source) {
-        jumpToPin(pin);
-      } else {
-        const inp = document.getElementById('prompt');
-        inp.value = pin.text;
-        inp.focus();
-      }
-    };
-    list.appendChild(d);
+  state.pins.forEach(p => { if (!p.tags) p.tags = []; });
+  const groups = groupPinsByTag(state.pins);
+  const tagKeys = Array.from(groups.keys()).sort((a, b) => {
+    if (a === '' && b !== '') return -1;
+    if (b === '' && a !== '') return 1;
+    return a.localeCompare(b);
+  });
+  tagKeys.forEach(tagKey => {
+    const entries = groups.get(tagKey);
+    const grp = document.createElement('div');
+    grp.className = 'tag-group';
+    if (state.collapsedTags[tagKey]) grp.classList.add('collapsed');
+
+    const header = document.createElement('div');
+    header.className = 'tag-group-header';
+    const chev = document.createElement('span');
+    chev.className = 'chev';
+    chev.textContent = '▼';
+    header.appendChild(chev);
+    const name = document.createElement('span');
+    name.className = 'tag-name';
+    name.textContent = tagKey || 'untagged';
+    header.appendChild(name);
+    const count = document.createElement('span');
+    count.className = 'tag-count';
+    count.textContent = String(entries.length);
+    header.appendChild(count);
+    header.onclick = () => toggleTagCollapse(tagKey);
+    grp.appendChild(header);
+
+    const body = document.createElement('div');
+    body.className = 'tag-group-body';
+    grp.appendChild(body);
+    entries.forEach(({ pin, n }) => body.appendChild(buildPinChip(pin, n)));
+    list.appendChild(grp);
   });
 }
 
+function buildPinChip(pin, n) {
+  const d = document.createElement('div');
+  d.className = 'pin-item';
+
+  const num = document.createElement('span');
+  num.className = 'pin-num';
+  num.textContent = `${n}.`;
+  d.appendChild(num);
+
+  const wrap = document.createElement('div');
+  wrap.style.flex = '1';
+  wrap.style.minWidth = '0';
+
+  const text = document.createElement('div');
+  text.className = 'pin-text';
+  text.innerHTML = renderMarkdown(pin.text || '');
+  wrap.appendChild(text);
+
+  if (pin.source) {
+    const src = document.createElement('div');
+    src.className = 'pin-source';
+    const icon = pin.source.kind === 'wiki' ? '📄 '
+      : (pin.source.kind === 'note' ? '🗒️ ' : '💬 ');
+    src.textContent = `${icon}${pin.source.stem || pin.source.kind} →`;
+    wrap.appendChild(src);
+  }
+
+  const tagsEl = document.createElement('div');
+  tagsEl.className = 'pin-tags';
+  (pin.tags || []).forEach(tag => {
+    const chip = document.createElement('span');
+    chip.className = 'pin-tag';
+    chip.dataset.tag = tag;
+    chip.innerHTML = `${escapeHtml(tag)} <span class="x">×</span>`;
+    chip.onclick = (ev) => { ev.stopPropagation(); removeTagFromPin(pin.id, tag); };
+    tagsEl.appendChild(chip);
+  });
+  const addBtn = document.createElement('span');
+  addBtn.className = 'pin-tag-add';
+  addBtn.textContent = '+ tag';
+  addBtn.onclick = (ev) => {
+    ev.stopPropagation();
+    const raw = prompt('Tag name (letters, digits, dash, underscore):');
+    if (raw) addTagToPin(pin.id, raw);
+  };
+  tagsEl.appendChild(addBtn);
+  wrap.appendChild(tagsEl);
+
+  d.appendChild(wrap);
+
+  const remove = document.createElement('span');
+  remove.className = 'pin-remove';
+  remove.dataset.n = String(n);
+  remove.title = 'Remove';
+  remove.textContent = '✕';
+  remove.onclick = (ev) => {
+    ev.stopPropagation();
+    const idx = state.pins.indexOf(pin);
+    if (idx >= 0) removePin(idx + 1);
+  };
+  d.appendChild(remove);
+
+  d.onclick = () => {
+    if (pin.source) {
+      jumpToPin(pin);
+    } else {
+      const inp = document.getElementById('prompt');
+      inp.value = pin.text;
+      if (typeof autosizePrompt === 'function') autosizePrompt();
+      inp.focus();
+    }
+  };
+
+  typesetMath(d);
+  return d;
+}
+
 function addPin(text) {
-  state.pins.push({ id: 'pin-' + Date.now() + '-' + Math.random().toString(36).slice(2,7), text, source: null });
+  const { text: cleaned, tags } = parseTagsFromText(text);
+  state.pins.push({
+    id: 'pin-' + Date.now() + '-' + Math.random().toString(36).slice(2,7),
+    text: cleaned,
+    tags,
+    source: null,
+  });
   savePins();
   renderPins();
 }
 
 function addAnchoredPin(text, source) {
+  const { text: cleaned, tags } = parseTagsFromText(text);
   const pin = {
     id: 'pin-' + Date.now() + '-' + Math.random().toString(36).slice(2,7),
-    text, source,
+    text: cleaned,
+    tags,
+    source,
   };
   state.pins.push(pin);
   savePins();
   renderPins();
   if (source) reapplyPinHighlights(source.kind, source.stem);
 }
+
 function removePin(n) {
   if (n < 1 || n > state.pins.length) return;
   const removed = state.pins.splice(n - 1, 1)[0];
@@ -1748,10 +2541,13 @@ function savePins() {
 function loadPinsFromCache() {
   try {
     const raw = JSON.parse(localStorage.getItem(PINS_KEY) || '[]');
-    state.pins = raw.map(p => typeof p === 'string'
-      ? { id: 'pin-legacy-' + Math.random().toString(36).slice(2,7), text: p, source: null }
-      : p
-    );
+    state.pins = raw.map(p => {
+      const obj = typeof p === 'string'
+        ? { id: 'pin-legacy-' + Math.random().toString(36).slice(2,7), text: p, source: null }
+        : p;
+      if (!Array.isArray(obj.tags)) obj.tags = [];
+      return obj;
+    });
   } catch (_) { state.pins = []; }
 }
 
@@ -1818,6 +2614,8 @@ function replayChatHistoryIntoPane() {
     if (turn.turnId) reapplyPinHighlights('chat', turn.turnId);
   });
   pane.scrollTop = pane.scrollHeight;
+  const last = state.chatHistory[state.chatHistory.length - 1];
+  if (last && last.role === 'assistant') addInlineReplyBox();
 }
 
 // === Anchor extraction (TextQuoteAnchor: prefix/exact/suffix) ===
@@ -1883,7 +2681,7 @@ function pinsForSource(kind, stem) {
 
 function getSourceContainer(kind, stem) {
   if (kind === 'chat') {
-    return document.querySelector(`[data-tab="chat"] [data-turn-id="${CSS.escape(stem)}"]`);
+    return document.querySelector(`.tab-pane[data-tab="chat"] [data-turn-id="${CSS.escape(stem)}"]`);
   }
   if (kind === 'wiki') {
     const tabPane = document.querySelector(`#tab-panes > [data-tab="${CSS.escape('wiki:' + stem)}"]`);
@@ -1901,7 +2699,78 @@ function getSourceContainer(kind, stem) {
   return null;
 }
 
+function layoutMarginBubbles(container) {
+  if (!container) return;
+  if (getComputedStyle(container).position === 'static') {
+    container.style.position = 'relative';
+  }
+  // Wipe old bubbles
+  container.querySelectorAll(':scope > .margin-bubble').forEach(b => b.remove());
+
+  const marks = Array.from(container.querySelectorAll('.pin-highlight, .annotation-mark'));
+  if (marks.length === 0) return;
+
+  const containerRect = container.getBoundingClientRect();
+  const items = marks.map(mark => {
+    const rect = mark.getBoundingClientRect();
+    if (rect.height === 0) return null;
+    return {
+      mark,
+      top: rect.top - containerRect.top + container.scrollTop,
+    };
+  }).filter(Boolean).sort((a, b) => a.top - b.top);
+
+  const BUBBLE_H = 28;
+  const overlap = (occupied, t) => occupied.some(o => Math.abs(o - t) < BUBBLE_H);
+  const right = [];
+  const left = [];
+
+  items.forEach(item => {
+    const isPin = item.mark.classList.contains('pin-highlight');
+    let side = 'right';
+    let topPx = item.top;
+    if (overlap(right, topPx)) {
+      if (!overlap(left, topPx)) {
+        side = 'left';
+      } else {
+        // Both sides crowded — stack down on right
+        const lastRight = Math.max(...right);
+        topPx = lastRight + BUBBLE_H;
+      }
+    }
+    const bubble = document.createElement('div');
+    bubble.className = 'margin-bubble kind-' + (isPin ? 'pin' : 'annotation');
+    bubble.textContent = isPin ? '📌' : '📝';
+    bubble.style.top = topPx + 'px';
+    if (side === 'right') {
+      bubble.style.right = '8px';
+      right.push(topPx);
+    } else {
+      bubble.style.left = '8px';
+      left.push(topPx);
+    }
+    bubble.title = isPin ? 'Pinned — click to highlight in place' : 'Annotation — click to edit';
+    bubble.onclick = (ev) => {
+      ev.stopPropagation();
+      ev.preventDefault();
+      item.mark.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (isPin) {
+        item.mark.classList.add('flash');
+        setTimeout(() => item.mark.classList.remove('flash'), 1500);
+      } else if (item.mark.dataset.annoId) {
+        openAnnotationEditor(item.mark.dataset.annoId);
+      }
+    };
+    container.appendChild(bubble);
+  });
+}
+
 function reapplyPinHighlights(kind, stem) {
+  // Annotations share the same anchor mechanism as pins — restore them at
+  // every callsite that restores pin highlights (tab open, chat replay,
+  // pinned-page open, etc.). Cheap to run unconditionally; no-op when there
+  // are no annotations on this kind/stem.
+  reapplyAnnotationMarks(kind, stem);
   const container = getSourceContainer(kind, stem);
   if (!container) return;
   // strip existing highlights
@@ -1928,6 +2797,7 @@ function reapplyPinHighlights(kind, stem) {
     }
   });
   if (state._showBubbles) renderBubblesFor(kind, stem);
+  layoutMarginBubbles(container);
 }
 
 // === Jump to pin ===
@@ -1987,37 +2857,231 @@ function findSourceFromSelection(node) {
   return null;
 }
 
-function updateSelectionPinBtn() {
-  const btn = document.getElementById('selection-pin-btn');
+// Capture selection text but with LaTeX preserved — replaces .math-wrap
+// elements with their data-tex source so pinned/copied math is the real
+// LaTeX, not the empty/garbled rendered-math text.
+function captureSelectionTextWithLatex(range) {
+  const frag = range.cloneContents();
+  // Drop in-band math-action buttons
+  frag.querySelectorAll && frag.querySelectorAll('.math-actions').forEach(el => el.remove());
+  // Replace each math-wrap with a text node carrying its data-tex (delimiters intact)
+  const wraps = frag.querySelectorAll ? frag.querySelectorAll('.math-wrap') : [];
+  wraps.forEach(w => {
+    const tex = w.dataset && w.dataset.tex;
+    if (tex) w.replaceWith(document.createTextNode(tex));
+  });
+  return (frag.textContent || '').replace(/\s+/g, ' ').trim();
+}
+
+function updateSelectionMenu() {
+  const menu = document.getElementById('selection-menu');
   const sel = window.getSelection();
-  if (!sel || sel.isCollapsed || !sel.toString().trim()) { btn.classList.remove('show'); return; }
-  if (sel.rangeCount === 0) { btn.classList.remove('show'); return; }
-  const range = sel.getRangeAt(0);
-  const source = findSourceFromSelection(range.startContainer);
-  if (!source) { btn.classList.remove('show'); return; }
-  const rect = range.getBoundingClientRect();
-  if (!rect || (rect.width === 0 && rect.height === 0)) { btn.classList.remove('show'); return; }
-  btn.classList.add('show');
-  btn.style.top = (rect.bottom + 6 + window.scrollY) + 'px';
-  btn.style.left = Math.max(8, rect.left + rect.width / 2 - 60 + window.scrollX) + 'px';
-  btn.onclick = () => {
+  if (!sel || sel.isCollapsed || !sel.toString().trim()) { menu.classList.remove('show'); return; }
+  if (sel.rangeCount === 0) { menu.classList.remove('show'); return; }
+  const liveRange = sel.getRangeAt(0);
+  const source = findSourceFromSelection(liveRange.startContainer);
+  if (!source) { menu.classList.remove('show'); return; }
+  const rect = liveRange.getBoundingClientRect();
+  if (!rect || (rect.width === 0 && rect.height === 0)) { menu.classList.remove('show'); return; }
+  // Snapshot the range — the live one mutates if selection changes mid-click
+  const range = liveRange.cloneRange();
+  menu.classList.add('show');
+  // Position centered just below the selection rect
+  const menuW = menu.offsetWidth || 180;
+  menu.style.top = (rect.bottom + 6 + window.scrollY) + 'px';
+  menu.style.left = Math.max(8, rect.left + rect.width / 2 - menuW / 2 + window.scrollX) + 'px';
+
+  const pinBtn = menu.querySelector('.pin-btn');
+  const annBtn = menu.querySelector('.annotate-btn');
+  pinBtn.onmousedown = (ev) => ev.preventDefault();
+  annBtn.onmousedown = (ev) => ev.preventDefault();
+  pinBtn.onclick = () => {
+    const text = captureSelectionTextWithLatex(range) || range.toString().trim();
+    if (!text) return;
+    const anchor = captureAnchor(source.container, range);
+    if (anchor) {
+      // Override exact with the LaTeX-aware capture so the pin shows real LaTeX
+      anchor.exact = text;
+      addAnchoredPin(text, { kind: source.kind, stem: source.stem, anchor });
+    } else {
+      addPin(text);
+    }
+    if (sel.rangeCount) sel.removeAllRanges();
+    menu.classList.remove('show');
+  };
+  annBtn.onclick = () => {
     const anchor = captureAnchor(source.container, range);
     if (!anchor) return;
-    addAnchoredPin(anchor.exact.trim(), { kind: source.kind, stem: source.stem, anchor });
-    sel.removeAllRanges();
-    btn.classList.remove('show');
+    const ann = createAnnotation({ kind: source.kind, stem: source.stem, anchor });
+    if (sel.rangeCount) sel.removeAllRanges();
+    menu.classList.remove('show');
+    openAnnotationEditor(ann.id);
   };
 }
 
 document.addEventListener('selectionchange', () => {
-  // throttle via rAF
   if (state._selRaf) cancelAnimationFrame(state._selRaf);
-  state._selRaf = requestAnimationFrame(updateSelectionPinBtn);
+  state._selRaf = requestAnimationFrame(updateSelectionMenu);
 });
 document.addEventListener('mousedown', (ev) => {
-  if (ev.target.id !== 'selection-pin-btn') {
-    document.getElementById('selection-pin-btn').classList.remove('show');
+  const menu = document.getElementById('selection-menu');
+  if (menu && !menu.contains(ev.target)) menu.classList.remove('show');
+});
+
+// === Annotations ===
+const ANNOTATIONS_KEY = 'wt.annotations.v1';
+function saveAnnotations() {
+  localStorage.setItem(ANNOTATIONS_KEY, JSON.stringify(state.annotations));
+  scheduleSessionSave();
+}
+function loadAnnotationsFromCache() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(ANNOTATIONS_KEY) || '[]');
+    state.annotations = Array.isArray(raw) ? raw : [];
+  } catch (_) { state.annotations = []; }
+}
+
+function createAnnotation(source) {
+  const ann = {
+    id: 'anno-' + Date.now() + '-' + Math.random().toString(36).slice(2,7),
+    source,
+    text: '',
+    created: new Date().toISOString(),
+  };
+  state.annotations.push(ann);
+  saveAnnotations();
+  applyAnnotationMark(ann);
+  const container = getSourceContainer(source.kind, source.stem);
+  if (container) layoutMarginBubbles(container);
+  return ann;
+}
+
+function applyAnnotationMark(ann) {
+  const container = getSourceContainer(ann.source.kind, ann.source.stem);
+  if (!container) return;
+  // skip if already marked (e.g., re-render)
+  if (container.querySelector(`.annotation-mark[data-anno-id="${CSS.escape(ann.id)}"]`)) return;
+  const range = findAnchorRange(container, ann.source.anchor);
+  if (!range) return;
+  const mark = document.createElement('mark');
+  mark.className = 'annotation-mark';
+  mark.dataset.annoId = ann.id;
+  try {
+    range.surroundContents(mark);
+  } catch (_) {
+    try {
+      const frag = range.extractContents();
+      mark.appendChild(frag);
+      range.insertNode(mark);
+    } catch (__) {}
   }
+}
+
+function reapplyAnnotationMarks(kind, stem) {
+  const container = getSourceContainer(kind, stem);
+  if (!container) return;
+  container.querySelectorAll('.annotation-mark').forEach(m => {
+    const parent = m.parentNode;
+    while (m.firstChild) parent.insertBefore(m.firstChild, m);
+    parent.removeChild(m);
+    parent.normalize();
+  });
+  state.annotations
+    .filter(a => a.source && a.source.kind === kind && a.source.stem === stem)
+    .forEach(applyAnnotationMark);
+}
+
+function openAnnotationEditor(annId) {
+  const ann = state.annotations.find(a => a.id === annId);
+  if (!ann) return;
+  state.activeAnnotation = annId;
+  const ta = document.getElementById('annotation-textarea');
+  ta.value = ann.text || '';
+  document.getElementById('annotation-status').textContent = ann.text ? 'saved' : '';
+  document.getElementById('annotation-frame').classList.add('show');
+  ta.focus();
+}
+
+function closeAnnotationEditor() {
+  document.getElementById('annotation-frame').classList.remove('show');
+  state.activeAnnotation = null;
+}
+
+function persistActiveAnnotationDraft() {
+  if (!state.activeAnnotation) return;
+  const ann = state.annotations.find(a => a.id === state.activeAnnotation);
+  if (!ann) return;
+  ann.text = document.getElementById('annotation-textarea').value;
+  ann.updated = new Date().toISOString();
+  saveAnnotations();
+  document.getElementById('annotation-status').textContent = 'saved';
+}
+
+function deleteActiveAnnotation() {
+  if (!state.activeAnnotation) return;
+  const id = state.activeAnnotation;
+  const ann = state.annotations.find(a => a.id === id);
+  state.annotations = state.annotations.filter(a => a.id !== id);
+  saveAnnotations();
+  const mark = document.querySelector(`.annotation-mark[data-anno-id="${CSS.escape(id)}"]`);
+  let container = null;
+  if (mark) {
+    const parent = mark.parentNode;
+    while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
+    parent.removeChild(mark);
+    parent.normalize();
+  }
+  if (ann && ann.source) {
+    container = getSourceContainer(ann.source.kind, ann.source.stem);
+    if (container) layoutMarginBubbles(container);
+  }
+  closeAnnotationEditor();
+}
+
+function setupAnnotationDrag() {
+  const frame = document.getElementById('annotation-frame');
+  const header = document.getElementById('annotation-header');
+  let dragging = false;
+  let startX = 0, startY = 0, startLeft = 0, startTop = 0;
+  header.addEventListener('mousedown', (e) => {
+    if (e.target.closest('button')) return;
+    if (e.button !== 0) return;
+    const rect = frame.getBoundingClientRect();
+    frame.style.left = rect.left + 'px';
+    frame.style.top = rect.top + 'px';
+    frame.style.right = 'auto';
+    frame.style.bottom = 'auto';
+    startLeft = rect.left;
+    startTop = rect.top;
+    startX = e.clientX;
+    startY = e.clientY;
+    dragging = true;
+    header.classList.add('dragging');
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    const maxLeft = window.innerWidth - frame.offsetWidth;
+    const maxTop = window.innerHeight - frame.offsetHeight;
+    frame.style.left = Math.max(0, Math.min(maxLeft, startLeft + dx)) + 'px';
+    frame.style.top = Math.max(0, Math.min(maxTop, startTop + dy)) + 'px';
+  });
+  document.addEventListener('mouseup', () => {
+    if (!dragging) return;
+    dragging = false;
+    header.classList.remove('dragging');
+  });
+}
+
+// Click an annotation mark → open editor
+document.addEventListener('click', (ev) => {
+  const m = ev.target.closest && ev.target.closest('.annotation-mark');
+  if (!m) return;
+  ev.stopPropagation();
+  ev.preventDefault();
+  openAnnotationEditor(m.dataset.annoId);
 });
 
 // === Annotation bubbles toggle ===
@@ -2384,13 +3448,43 @@ document.addEventListener('click', (ev) => {
 });
 
 // --- Input handlers ---
+function autosizePrompt() {
+  const el = document.getElementById('prompt');
+  if (!el) return;
+  el.style.height = 'auto';
+  el.style.height = Math.min(200, el.scrollHeight) + 'px';
+}
+
 document.getElementById('prompt').addEventListener('keydown', (ev) => {
-  if (ev.key !== 'Enter') return;
+  if (ev.key !== 'Enter' || ev.shiftKey) return;
+  ev.preventDefault();
   const text = ev.target.value.trim();
-  if (!text) return;
+  if (!text && !state.pendingImages.length) return;
   ev.target.value = '';
-  if (text.startsWith('/')) handleCommand(text);
-  else sendChat(text);
+  autosizePrompt();
+  if (text.startsWith('/')) { handleCommand(text); return; }
+  const effective = text || 'Please look at the attached image(s) and explain what you see.';
+  sendChat(effective);
+});
+
+document.getElementById('prompt').addEventListener('input', autosizePrompt);
+autosizePrompt();
+
+document.getElementById('prompt').addEventListener('paste', async (ev) => {
+  const items = ev.clipboardData && ev.clipboardData.items;
+  if (!items) return;
+  const blobs = [];
+  for (const item of items) {
+    if (item.kind !== 'file') continue;
+    if (!item.type || !item.type.startsWith('image/')) continue;
+    const blob = item.getAsFile();
+    if (blob) blobs.push(blob);
+  }
+  if (!blobs.length) return;
+  ev.preventDefault();
+  for (const blob of blobs) {
+    await handleImagePaste(blob);
+  }
 });
 
 let searchTimer = null;
@@ -2411,6 +3505,16 @@ document.getElementById('pin-input').addEventListener('keydown', (ev) => {
 document.getElementById('unpin-btn').onclick = () => unpinPage(true);
 document.getElementById('close-pin-btn').onclick = () => unpinPage(false);
 document.getElementById('chat-float-restore').onclick = restoreChat;
+setupChatFloatDrag();
+
+document.getElementById('annotation-close').onclick = closeAnnotationEditor;
+document.getElementById('annotation-delete').onclick = deleteActiveAnnotation;
+document.getElementById('annotation-textarea').addEventListener('input', () => {
+  document.getElementById('annotation-status').textContent = 'saving…';
+  if (state._annotationSaveTimer) clearTimeout(state._annotationSaveTimer);
+  state._annotationSaveTimer = setTimeout(persistActiveAnnotationDraft, 300);
+});
+setupAnnotationDrag();
 
 // --- Header dropdowns ---
 async function loadConfig() {
@@ -2431,6 +3535,8 @@ async function loadConfig() {
 // --- Boot ---
 document.querySelectorAll('.splitter-v').forEach(setupSplitter);
 loadLayout();
+loadCollapsedTags();
+loadAnnotationsFromCache();
 loadPinsFromCache();
 state.sessionDate = todayISO();
 renderPins();

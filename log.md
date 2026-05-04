@@ -582,3 +582,23 @@ Big batch session. Three deliverables for the user, plus the wiki ingest.
 - **Walkthrough page:** [[eee-404-project-2-walkthrough]] — per-task structure, leading bold `**Answer:**` lines, callouts for setup/gotchas, collapsible derivations (windowing math, Hamming sidelobe cancellation, in-place buffer reasoning). Covers all 4 FILL_IN_BLANK lines, both function bodies (`max_index`, `apply_window`), the MATLAB workflow, and the deliverables checklist.
 - **Course page updated:** [[eee-404]] — added Project 2 to "Sources filed", "Walkthroughs", and the FFT-module roadmap (entries 20-22). `updated:` bumped to 2026-05-02.
 - **Index touched:** added EEE 404 concept entries and the Project 2 summary + walkthrough cross-references.
+
+## [2026-05-04] setup | Schema update — "framework over formulas" pedagogical principle
+
+- **CLAUDE.md:** added top-level "Framework over formulas" principle right after the learning-style note. Every concept page / walkthrough / source summary must now teach the small set of underlying patterns that generate all variant formulas, not 20 memorized cases.
+- **Concept page template:** added a new `## Patterns / framework` section with a 3-part contract — list the 3–5 building blocks, sketch the derivation skeleton in 2–4 lines, and explicitly call out memorize-vs.-derive.
+- **Walkthrough Op #4:** every numbered question must now name the framework (the 3–5 building blocks the question reduces to), include a `> [!tip] What to internalize vs. memorize` callout, and cross-link to other walkthrough questions / concept pages that share the same blocks.
+- **[[eee-335-final-lecture-review]]:** added a top-level "Framework over formulas — read this before you start memorizing" section listing the 5 patterns that generate every formula in Units 4–6 (half-circuit analysis, three gain primitives, $R_\text{out}$ rules, the four definitions, "what changes if…" reflex), plus a unit→pattern table. Added a Unit-6-specific framework callout for the diff-amp variant explosion. `updated:` bumped to 2026-05-04, tag `framework-over-formulas` added.
+
+## [2026-05-04] setup | Teacher agent — added Phase A "framework outline" before Socratic questioning
+
+- **`.claude/agents/teacher.md`** — inserted new Section 2 "Framework outline before deep questioning" between retrieval-first (Section 1) and complexity gating (now Section 3). Locks in a two-phase teaching shape: (Phase A) outline the 3–5 generalized building blocks of the concept, names only, no formulas; (Phase B) Socratic drill with each question explicitly applying or combining one of the named blocks, with the block name in brackets at end of question. Includes a generalized-vs.-specific table, exit conditions for skipping Phase A (explicit override / Bloom 1–2 / no recurring pattern structure), and an instruction to reuse names from any wiki concept page's `## Patterns / framework` section.
+- Renumbered subsequent sections (3 → 4 etc.) so numbering stays sequential.
+- **Output format** rewritten to reflect the two-phase flow across Turn 1 (retrieval), Turn 2 (assessment + Phase A outline + first L1 question), Turn 3+ (Phase B drill loop), end-of-session.
+- Frontends affected: `/teacher` slash command, `@agent-teacher` mentions, agent-dropdown selection in `wt`. No code changes — teacher persona only.
+
+## [2026-05-04] setup | Teacher agent — added Phase C "closing recap" subsection
+
+- **`.claude/agents/teacher.md`** — added Phase C subsection inside Section 2 (between Phase B and the "When to skip Phase A" exit rule). On session-close signals ("I'm good" / "got it" / successful L4 answer), the teacher now produces a structured artifact in this fixed order: `## ✅ Session recap` → `### Frameworks we used` (same 3-5 named blocks from Phase A) → `### Thinking process — how the blocks combined` (3-6 line story, not algebra) → `### Final equation` (single `$$...$$` display-math line so it renders + gets the copy/pin buttons in wt) → `### What to internalize vs. memorize`. Hard rules: reuse Phase A vocabulary, no new derivations, recap before productive-metrics check.
+- **Output format** — promoted Phase C to step 11; productive metrics moved to 12; spaced-revisit + file updates to 13.
+- No code changes; agent persona only. Takes effect on next chat (LLMSession re-reads system prompt on connect).
