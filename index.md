@@ -371,6 +371,8 @@ Per-question lab/HW walkthroughs (concept-first, then steps). Filed under `wiki/
 - [[eee-404-lab-7-fill-in-walkthrough]] — every FILL_IN_BLANK explained
 
 ### EEE 304
+- **[[eee-304-lab-ec1-walkthrough]]** — extra-credit Lab EC1 (Arduino Due digital filtering, `butter` filter design at $f_s = 5$ kHz, headphone DAC output). Due 2026-05-06.
+- **[[eee-304-lab-ec2-walkthrough]]** — extra-credit Lab EC2 (LED + phototransistor feedback control with discrete-time integral controller; plant ID via exponential fit; closed-loop bandwidth $1$ rad/s and 10×). Due 2026-05-06.
 - [[eee-304-lab-4-walkthrough]] — full per-question Lab 4 walkthrough (AM modulation/demodulation in Simulink)
 - [[eee-304-hw7-walkthrough]] — full per-problem HW7 walkthrough (cascaded AM, TDM-PAM, chopper amplifier)
 
@@ -382,6 +384,7 @@ Per-question lab/HW walkthroughs (concept-first, then steps). Filed under `wiki/
 - [[eee-341-final-walkthrough]] — finals study guide
 
 ### EEE 335
+- **[[eee-335-final-lecture-review]]** — **lecture-by-lecture final review (Lectures 17–36 + CCA + CCA-HFR; analog only).** Final is **Tue May 5, 12:10–2:00 PM, SCOB 250.** Master cheat sheet + T/F drill bank + Practice Final problem-type map.
 - [[eee-335-final-walkthrough]] — full per-unit final exam study guide with collapsible derivations + cheat-sheet formula table (Units 1–6: MOSFET physics, CMOS logic, memory, IC amplifiers, frequency response, diff pair/cascode/CMRR)
 
 ### EEE 341

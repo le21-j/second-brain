@@ -13,6 +13,21 @@ Ops: `ingest` · `query` · `practice` · `walkthrough` · `lint` · `setup`
 
 ---
 
+## [2026-05-03] walkthrough | EEE 335 Final Lecture-by-Lecture Review (Lectures 17–36, Units 4–6)
+- Pulled the EEE 335 Final Exam Canvas page (course id 245462; final on Tue May 5, 12:10–2:00 PM, SCOB 250; covers Units 4–6 = Lectures 17–36 + CCA + CCA-HFR; Sedra/Smith Ch 7, 8, 9, 10)
+- Downloaded `lecture-review-units-4-6-final-spring-2026-slides.pdf` (115 pp, McDonald Spring 2026 review deck), `practice-final-exam-spring-25.pdf` (8 pp), `practice-final-exam-spring-25-solutions.pdf` (9 pp) into `raw/slides/eee-335/`
+- Wrote `wiki/walkthroughs/eee-335-final-lecture-review.md` — per-lecture review for Lectures 17–36 + CCA + CCA-HFR with: textbook section, what's tested, headline formulas, recommended practice problems (from McDonald's "Recommend Practice" callouts in the review deck), master cheat sheet, T/F drill bank, Practice Final 2025 problem-type map, time budget (1 min/pt + 5 min reading)
+- Updated `wiki/courses/eee-335.md` — promoted new walkthrough to top of Walkthroughs section
+- Updated `index.md` — bolded the new walkthrough under EEE 335 with exam date
+
+## [2026-05-03] walkthrough | EEE 304 Lab EC1 + Lab EC2 (Arduino extra-credit labs)
+- Pulled the two extra-credit labs from Canvas API (EEE 304, course id 246317, assignment ids 6968953 + 6968954)
+- Downloaded `EEE_304_Lab_EC1.pdf`, `EEE_304_Lab_EC2.pdf`, and the 5 Simulink models (`Arduino_test.slx`, `Tones_1.slx`, `Tones_2.slx`, `Calibrate_Sensor.slx`, `Closed_loop_I_Ctrl.slx`) into `raw/labs/`
+- Wrote `wiki/walkthroughs/eee-304-lab-ec1-walkthrough.md` — 5 questions (Arduino_test plot; tone-mixture identification; pin 7/8 grounding table; hardware photo; `butter` filter design at $f_s = 5$ kHz, order 4, three filters)
+- Wrote `wiki/walkthroughs/eee-304-lab-ec2-walkthrough.md` — 4 questions (calibration + exponential plant fit $a, b$; integral controller $K_I = 0.01$ for 1 rad/s and $K_I = 0.1$ for 10 rad/s; instability demo; hardware photo)
+- Updated `wiki/courses/eee-304.md` — added EC1/EC2 to Walkthroughs and Sources sections
+- Updated `index.md` — promoted both walkthroughs under EEE 304 (bold, due 2026-05-06)
+
 ## [2026-05-01] practice | generalization-set-01 — Zhang 2017 random-labels prediction
 - Created wiki/practice/generalization-set-01.md (Problem 1 = Zhang random-labels prediction; logged Jayden's attempt)
 - Created wiki/mistakes/generalization.md (2 gotchas + 1 personal entry)
