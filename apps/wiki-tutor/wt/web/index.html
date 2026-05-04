@@ -328,11 +328,14 @@
       outline-offset: 2px;
     }
 
-    .scroll { scrollbar-width: thin; scrollbar-color: var(--bg-elev-2) transparent; overflow-y: auto; }
-    .scroll::-webkit-scrollbar { width: 8px; height: 8px; }
-    .scroll::-webkit-scrollbar-track { background: transparent; }
-    .scroll::-webkit-scrollbar-thumb { background: var(--bg-elev-2); border-radius: var(--r-sm); }
-    .scroll::-webkit-scrollbar-thumb:hover { background: var(--bg-elev-3); }
+    .scroll { overflow-y: auto; }
+    /* Subtle, right-justified scrollbars across the whole app */
+    *, .scroll { scrollbar-width: thin; scrollbar-color: rgba(86, 95, 137, 0.35) transparent; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(86, 95, 137, 0.28); border-radius: 999px; transition: background var(--dur) var(--ease); }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(122, 162, 247, 0.55); }
+    ::-webkit-scrollbar-corner { background: transparent; }
 
     .system-msg {
       color: var(--fg-muted);
@@ -721,6 +724,83 @@
       right: 14px;
       z-index: 200;
     }
+
+    /* === Chat minimize / floating frame === */
+    #chat-float-frame {
+      position: fixed;
+      right: 20px;
+      bottom: 84px;
+      width: 360px;
+      height: 440px;
+      min-width: 280px;
+      min-height: 240px;
+      max-width: 90vw;
+      max-height: 80vh;
+      background: var(--bg-elev);
+      border: 1px solid var(--bg-elev-3);
+      border-radius: var(--r-lg);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
+      z-index: 900;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      resize: both;
+    }
+    #chat-float-frame.show { display: flex; }
+    #chat-float-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.45rem 0.7rem;
+      background: linear-gradient(90deg, var(--accent2-soft) 0%, var(--bg-elev) 90%);
+      border-bottom: 1px solid var(--bg-elev-2);
+      flex-shrink: 0;
+      user-select: none;
+    }
+    #chat-float-title {
+      font-weight: 600;
+      color: var(--accent2);
+      font-size: 0.85rem;
+      letter-spacing: -0.005em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    #chat-float-actions { display: flex; gap: 0.25rem; }
+    #chat-float-body {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    /* Chat pane styling while it lives inside the float frame */
+    #chat-float-body > .tab-pane {
+      display: block !important;
+      position: static !important;
+      flex: 1;
+      min-height: 0;
+      max-width: none !important;
+      margin: 0 !important;
+      padding: 0.6rem 0.85rem !important;
+      overflow-y: auto;
+      font-size: 0.88rem;
+    }
+    #chat-float-body .chat-turn {
+      padding: 0.55rem 0.7rem;
+      margin: 0.4rem 0;
+      font-size: 0.85rem;
+    }
+    #chat-float-body .chat-turn .role {
+      font-size: 0.65rem;
+      margin-bottom: 0.2rem;
+    }
+    /* Tab-strip minimize action on the chat tab */
+    .tab.tab-chat .tab-action.tab-minimize {
+      color: var(--accent2);
+      opacity: 0.7;
+    }
+    .tab.tab-chat .tab-action.tab-minimize:hover { opacity: 1; }
     .header-action {
       background: var(--bg-elev);
       border: 1px solid var(--bg-elev-2);
@@ -994,6 +1074,17 @@
     </aside>
   </div>
 
+  <!-- Floating mini tutor chat (visible when chat is minimized) -->
+  <div id="chat-float-frame">
+    <div id="chat-float-header">
+      <span id="chat-float-title">✦ Tutor</span>
+      <div id="chat-float-actions">
+        <button class="icon-btn" id="chat-float-restore" title="Restore chat as a tab">⤢</button>
+      </div>
+    </div>
+    <div id="chat-float-body"></div>
+  </div>
+
 <script>
 const CALLOUT_ICONS = {
   note: '📝', info: 'ℹ️', tip: '💡', hint: '💡',
@@ -1012,6 +1103,7 @@ const state = {
   ws: null,
   ready: false,
   busy: false,
+  chatMinimized: false,
   currentAssistantBody: '',
   currentAssistantEl: null,
   model: 'claude-sonnet-4-6',
@@ -1149,6 +1241,7 @@ function renderTabs() {
   const bar = tabsBar();
   bar.innerHTML = '';
   state.tabs.forEach(t => {
+    if (t.kind === 'chat' && state.chatMinimized) return;
     const el = document.createElement('div');
     el.className = 'tab' + (t.id === state.activeTab ? ' active' : '') + (t.kind === 'chat' ? ' tab-chat' : '');
     el.dataset.tab = t.id;
@@ -1170,6 +1263,13 @@ function renderTabs() {
       x.textContent = '×';
       x.onclick = (ev) => { ev.stopPropagation(); closeTab(t.id); };
       el.appendChild(x);
+    } else if (t.kind === 'chat') {
+      const min = document.createElement('span');
+      min.className = 'tab-action tab-minimize';
+      min.title = 'Minimize chat to a floating panel';
+      min.textContent = '▾';
+      min.onclick = (ev) => { ev.stopPropagation(); minimizeChat(); };
+      el.appendChild(min);
     }
     el.onclick = () => setActiveTab(t.id);
     bar.appendChild(el);
@@ -1177,6 +1277,11 @@ function renderTabs() {
 }
 
 function setActiveTab(id) {
+  if (id === 'chat' && state.chatMinimized) {
+    const fallback = state.tabs.find(t => t.id !== 'chat');
+    if (fallback) id = fallback.id;
+    else { state.activeTab = 'chat'; renderTabs(); return; }
+  }
   state.activeTab = id;
   document.querySelectorAll('#tab-panes > .tab-pane').forEach(p => {
     p.classList.toggle('active', p.dataset.tab === id);
@@ -1185,7 +1290,7 @@ function setActiveTab(id) {
 }
 
 function ensureChatPane() {
-  let pane = document.querySelector('#tab-panes > [data-tab="chat"]');
+  let pane = document.querySelector('[data-tab="chat"]');
   if (!pane) {
     pane = document.createElement('div');
     pane.className = 'tab-pane prose mx-auto active';
@@ -1193,6 +1298,33 @@ function ensureChatPane() {
     tabPanes().appendChild(pane);
   }
   return pane;
+}
+
+function minimizeChat() {
+  if (state.chatMinimized) return;
+  const pane = ensureChatPane();
+  document.getElementById('chat-float-body').appendChild(pane);
+  document.getElementById('chat-float-frame').classList.add('show');
+  state.chatMinimized = true;
+  if (state.activeTab === 'chat') {
+    const fallback = state.tabs.find(t => t.id !== 'chat');
+    if (fallback) state.activeTab = fallback.id;
+  }
+  document.querySelectorAll('#tab-panes > .tab-pane').forEach(p => {
+    p.classList.toggle('active', p.dataset.tab === state.activeTab);
+  });
+  renderTabs();
+  pane.scrollTop = pane.scrollHeight;
+}
+
+function restoreChat() {
+  if (!state.chatMinimized) return;
+  const pane = ensureChatPane();
+  tabPanes().appendChild(pane);
+  document.getElementById('chat-float-frame').classList.remove('show');
+  state.chatMinimized = false;
+  setActiveTab('chat');
+  pane.scrollTop = pane.scrollHeight;
 }
 
 function closeTab(id) {
@@ -1261,6 +1393,7 @@ function unpinPage(reopenAsTab) {
 
 // --- Chat ---
 function ensureChatTabActive() {
+  if (state.chatMinimized) return;
   if (state.activeTab !== 'chat') setActiveTab('chat');
 }
 
@@ -1750,7 +1883,7 @@ function pinsForSource(kind, stem) {
 
 function getSourceContainer(kind, stem) {
   if (kind === 'chat') {
-    return document.querySelector(`#tab-panes > [data-tab="chat"] [data-turn-id="${CSS.escape(stem)}"]`);
+    return document.querySelector(`[data-tab="chat"] [data-turn-id="${CSS.escape(stem)}"]`);
   }
   if (kind === 'wiki') {
     const tabPane = document.querySelector(`#tab-panes > [data-tab="${CSS.escape('wiki:' + stem)}"]`);
@@ -2277,6 +2410,7 @@ document.getElementById('pin-input').addEventListener('keydown', (ev) => {
 
 document.getElementById('unpin-btn').onclick = () => unpinPage(true);
 document.getElementById('close-pin-btn').onclick = () => unpinPage(false);
+document.getElementById('chat-float-restore').onclick = restoreChat;
 
 // --- Header dropdowns ---
 async function loadConfig() {
