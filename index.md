@@ -371,6 +371,8 @@ Per-question lab/HW walkthroughs (concept-first, then steps). Filed under `wiki/
 - [[eee-404-lab-7-fill-in-walkthrough]] — every FILL_IN_BLANK explained
 
 ### EEE 304
+- **[[eee-304-final-exam-walkthrough]] — Full numerical solutions to the actual final exam (8 problems, 350 pts) — verified end-to-end** ⭐⭐
+- **[[eee-304-final-walkthrough]] — Final Exam concept walkthrough (8 problem types, 350 pts, 150 min, open May 4 10 AM → May 6 11:59 PM)** ⭐
 - **[[eee-304-lab-ec1-walkthrough]]** — extra-credit Lab EC1 (Arduino Due digital filtering, `butter` filter design at $f_s = 5$ kHz, headphone DAC output). Due 2026-05-06.
 - **[[eee-304-lab-ec2-walkthrough]]** — extra-credit Lab EC2 (LED + phototransistor feedback control with discrete-time integral controller; plant ID via exponential fit; closed-loop bandwidth $1$ rad/s and 10×). Due 2026-05-06.
 - [[eee-304-lab-4-walkthrough]] — full per-question Lab 4 walkthrough (AM modulation/demodulation in Simulink)
@@ -489,6 +491,8 @@ Standalone worked examples (one-off teaching examples, not full assignments). Fi
 - **NEW 2026-05-02:** [[lab-eee-404-project-2-fft-applications]] — Project 2 source summary: vowel analysis + real-time spectrum analyzer
 
 ### EEE 304
+- [[slides-2026-05-04-eee-304-final-exam]] — **The actual final exam** (1 pp, 8 problems with specific numbers, 350 pts) + open-book reference panel
+- [[slides-2026-05-04-eee-304-final-exam-preview]] — Final Exam Preview deck (8 pp, one slide/problem, May 4–6 exam window)
 - [[lab-eee-304-lab-4-am-modulation]] — Lab 4: AM modulation + coherent vs envelope demodulation (Simulink + tada.wav fill-in-the-blanks)
 - [[homework-2026-04-26-eee-304-hw7]] — HW7: cascaded modulation, TDM-PAM bandwidth, chopper-amplifier gain derivation
 

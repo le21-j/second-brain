@@ -13,6 +13,21 @@ Ops: `ingest` · `query` · `practice` · `walkthrough` · `lint` · `setup`
 
 ---
 
+## [2026-05-04] walkthrough | EEE 304 Final Exam — full numerical solutions (8 problems, 350 pts)
+- Ingested two new files into `raw/slides/eee-304/`: `304final-1.pdf` (1 pp, the actual final exam with specific numbers + Tsakalis transform sheet) and `fourier.pdf` (12 pp, Oppenheim-Willsky transform tables — open-book reference)
+- Wrote `wiki/summaries/slides-2026-05-04-eee-304-final-exam.md` — TL;DR + per-problem topic+numbers table + open-book reference panel inventory
+- Wrote `wiki/walkthroughs/eee-304-final-exam-walkthrough.md` — full per-problem **numerical** solutions for all 8 problems with: stability checks first (caught 2 of 4 unstable systems in P1 → DNE answers), boxed final answers, derivation drop-downs (P7 design-point verification), Nyquist sanity-check (P8), DC-component evaluation gotcha (P8 zero at $z=1$ kills constant), Master cheat sheet, and quick-reference numerical-answers table
+- **Verified answers:** P1.1 = $-1$, P1.2 = DNE, P1.3 = $-1/4$, P1.4 = DNE, P2: $\tau = 1/(14\pi)$, P3: $a = \pi/10$, P4: ROC $|z| > 0.5$, P5: $H = 1/(4z^2)$, P6: $N = 13$, P7: $K \approx 13.35$, $\tau_z \approx 0.181$, P8: $y(t) \approx 0.0333\cos(t + 88.4°)$
+- Updated `wiki/courses/eee-304.md` — promoted exam walkthrough to top of Walkthroughs (⭐⭐), added both new sources to Sources filed
+- Updated `index.md` — promoted exam walkthrough at top of EEE 304 Walkthroughs section (⭐⭐), added exam summary at top of EEE 304 Summaries
+
+## [2026-05-04] walkthrough | EEE 304 Final Exam (8 problems, 350 pts, 150 min — May 4–6 window)
+- Ingested `raw/slides/eee-304/Final_slides.pdf` (8 pp, "Final Exam Preview" deck dated 4/23/2026)
+- Wrote `wiki/summaries/slides-2026-05-04-eee-304-final-exam-preview.md` — TL;DR + per-problem source map (Modules 1/2/4 + HW1/4/7 + Lab 3)
+- Wrote `wiki/walkthroughs/eee-304-final-walkthrough.md` — full per-problem walkthrough of all 8 problems (steady-state response, CT/DT filtering, ROC, Euler/Tustin discretization, PAM TDM/FDM bandwidth, closed-loop control, sampled-data CT equivalents) with: example-first concept explanations, full LaTeX derivations, collapsible drop-downs for the messier algebra (Tustin substitution, Term A/B magnitude+phase decomposition), master cheat sheet, time budget table
+- Updated `wiki/courses/eee-304.md` — added "Final Exam arc" section to roadmap, promoted final walkthrough to top of Walkthroughs, added Final Exam Preview slides to Sources
+- Updated `index.md` — promoted `eee-304-final-walkthrough` to top of EEE 304 walkthroughs (bolded), added slides summary under EEE 304 Summaries
+
 ## [2026-05-03] walkthrough | EEE 335 Final Lecture-by-Lecture Review (Lectures 17–36, Units 4–6)
 - Pulled the EEE 335 Final Exam Canvas page (course id 245462; final on Tue May 5, 12:10–2:00 PM, SCOB 250; covers Units 4–6 = Lectures 17–36 + CCA + CCA-HFR; Sedra/Smith Ch 7, 8, 9, 10)
 - Downloaded `lecture-review-units-4-6-final-spring-2026-slides.pdf` (115 pp, McDonald Spring 2026 review deck), `practice-final-exam-spring-25.pdf` (8 pp), `practice-final-exam-spring-25-solutions.pdf` (9 pp) into `raw/slides/eee-335/`
