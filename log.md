@@ -13,6 +13,18 @@ Ops: `ingest` · `query` · `practice` · `walkthrough` · `lint` · `setup`
 
 ---
 
+## [2026-05-04] walkthrough | EEE 404 Lab Exam + ABET Quiz (Tue 5/5 9:50–11:40 AM)
+- Pulled scope from Canvas API (course 241591): announcement 7051419 from [[chao-wang]] dated 2026-04-23 spelled out exact format — Lab Exam = 5 MC (Lab 5 / Lab 6 / Project 1 / Project 2 / Assembly), 15 min, 50 pts, open book; ABET Quiz = comprehensive paper, 30 min, 50 pts, closed book + 2× 8.5×11 sheets
+- Auto-downloaded: `lab5_overview.pdf`, `lab6_overview.pdf`, `project1_overview.pdf` (into `raw/labs/eee-404/lab-exam-prep/`); `exam1_review.pdf`, `exam1_key.pdf`, `exam2_review.pdf` (into `raw/other/eee-404/`)
+- Wrote `wiki/walkthroughs/eee-404-final-quiz-walkthrough.md` — combined walkthrough (back-to-back same morning, content overlaps): §A Lab Exam study guide (5 topic blocks with framework + headline answers + memorize-vs-derive callouts) + §B ABET Quiz cheat-sheet skeleton (sampling/LTI/conv, Q-format/floating point, ARM ISA, image processing, music synthesis, memorize-cold list, short-essay rehearsal prompts, T/F + fill-in reflexes) + §C pre-exam routine
+- Updated `index.md` — promoted new walkthrough to top of EEE 404 walkthroughs
+
+## [2026-05-04] practice | EEE 335 Final Practice Set 01 (Tue 5/5 12:10–2:00 PM)
+- Pulled scope from Canvas API (course 245462): announcements confirmed Tue May 5 12:10–2:00 PM, SCOB 250, Units 4–6 (Lectures 17–36 + CCA + CCA-HFR); UGTA Diego's 4/30 correction noted ("diff pair is non-inverting" with the input convention used)
+- Wrote `wiki/practice/eee-335-final-set-01.md` — 11 problems mixed difficulty (~134 pts simulated, vs 110 real exam) covering all 10 problem types from [[eee-335-final-lecture-review]]: Q-point + small-signal extraction (P1), configuration choice + $G_v$ (P2), current-mirror biasing (P3), basic gain cell + swing (P4 ≈ Sedra Ex 8.3), CS HF first analysis (P5 ≈ Spring 2025 P1), OCTC on the same CS (P6), Cascode HF advantage (P7 ≈ Spring 2025 P2), CM-loaded diff amp full pipeline ($A_d, A_{cm}$, CMRR, L36 pole/zero — P8 ≈ Spring 2025 P4), T/F drill (P9), MC + short answer (P10), 2-stage cascode + diff amp bonus (P11)
+- Each solution invokes the 5 framework patterns from [[eee-335-final-lecture-review]]; What-to-memorize-vs-derive callouts on every problem; collapsible solution dropdowns; cross-links to existing concept pages and to [[eee-335-l36-cm-cl-set-01]] for difficulty calibration; master cheat-sheet anchor at end
+- Updated `index.md` — added new practice set to Practice section under existing EEE 335 set
+
 ## [2026-05-04] walkthrough | EEE 304 Final Exam — full numerical solutions (8 problems, 350 pts)
 - Ingested two new files into `raw/slides/eee-304/`: `304final-1.pdf` (1 pp, the actual final exam with specific numbers + Tsakalis transform sheet) and `fourier.pdf` (12 pp, Oppenheim-Willsky transform tables — open-book reference)
 - Wrote `wiki/summaries/slides-2026-05-04-eee-304-final-exam.md` — TL;DR + per-problem topic+numbers table + open-book reference panel inventory

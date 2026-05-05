@@ -362,6 +362,7 @@ Code living at [`aircomp-regret-pluto/`](../aircomp-regret-pluto/) — 4× Adalm
 Per-question lab/HW walkthroughs (concept-first, then steps). Filed under `wiki/walkthroughs/`. The headline teaching artifacts when ingesting an assignment.
 
 ### EEE 404
+- **[[eee-404-final-quiz-walkthrough]]** — **Lab Exam + ABET Quiz combined walkthrough** (Tue 5/5 9:50–11:40 AM). §A = 5 lab-exam topic blocks (Lab 5 digital filters, Lab 6 music synthesis, Project 1 image processing, Project 2 FFT, Assembly programming). §B = ABET quiz cheat-sheet skeleton + likely short-essay/T-F/fill-in items. Pre-exam routine + time strategy. ⭐
 - **[[eee-404-project-2-walkthrough]]** — Project 2 walkthrough: vowel analysis (`max_index`, autocorrelation pitch detection, formant reading) + real-time spectrum analyzer (4 FILL_IN_BLANKs + `apply_window`, window comparison). Due Mon 5/4.
 - **[[eee-404-exam-2-walkthrough]]** — full per-problem walkthrough of all 4 Exam 2 practice problems (MLP forward pass; Z-transform/ROC/DF-II; sampling/DFT/FFT sizing; 4-pt DFT direct + FFT butterfly + IFFT). Thursday 4/30 exam.
 - **[[eee-404-exam-2-study-guide]]** — companion topic checklist + master equation sheet for the 8.5×11 cheat sheet
@@ -423,6 +424,7 @@ Standalone worked examples (one-off teaching examples, not full assignments). Fi
 - [[asymptotics-set-01]] — EEE 350 Chebyshev / LLN / CLT
 - [[inference-set-01]] — EEE 350 Bayesian / MLE / hypothesis testing
 - [[eee-335-l36-cm-cl-set-01]] — EEE 335 L36: $C_M$ / $C_L$ at mirror + output nodes (diode-connected cap, parasitic enumeration, high-Z source Miller breakdown)
+- **[[eee-335-final-set-01]]** — **EEE 335 Final Practice Set 01** (Tue 5/5 12:10–2:00 PM). 11 problems mixed difficulty covering all 10 problem types from [[eee-335-final-lecture-review]]: Q-point/small-signal, configuration choice, current-mirror biasing, basic gain cell + swing, CS HF (Miller + OCTC), cascode HF advantage, CM-loaded diff amp full pipeline ($A_d$, $A_{cm}$, CMRR, L36 pole/zero), T/F drill, MC + short answer, 2-stage cascade bonus. Master cheat-sheet anchor at end. ⭐
 - [[generalization-set-01]] — **NEW 2026-05-01** — Zhang 2017 random-labels prediction (structured vs random data, train-test gap as diagnostic, mutual information $I(X;Y)$)
 
 ## Mistakes
