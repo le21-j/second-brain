@@ -39,7 +39,8 @@ cracked/
     ├── walkthroughs/            # per-question lab/HW walkthroughs (the headline teaching artifact for assignments)
     ├── practice/                # problems I generate for Jayden to attempt + his attempt logs
     ├── mistakes/                # gotchas, common confusions, Jayden's mistake log per topic
-    └── summaries/               # one summary page per ingested source
+    ├── summaries/               # one summary page per ingested source
+    └── tutor-sessions/          # one daily file per day; logs every Q&A; closing recap appended at end of teaching sessions
 ```
 
 ### Naming conventions
@@ -55,6 +56,7 @@ cracked/
 - Walkthroughs: `wiki/walkthroughs/<course-code>-<assignment>-walkthrough.md`, e.g. `eee-304-lab-4-walkthrough.md`. (Pre-2026-04-27 walkthroughs lived in `wiki/examples/`; wiki-links resolve by basename so old refs still work.)
 - Practice: `practice/{course-or-topic}-set-{NN}.md`.
 - Mistake logs: `mistakes/{topic}.md` — one running log per topic.
+- Tutor sessions: `wiki/tutor-sessions/tutor-YYYY-MM-DD.md` — one file per calendar day. Every question (quick lookup or full teaching session) is appended chronologically as a numbered Q-entry. Phase C closing recap from `.claude/agents/teacher.md` appends at the end of a teaching session. Concept pages, `wiki/mistakes/{topic}.md`, and `wiki/practice/` sets are still updated as separate artifacts — the daily file links to them, doesn't duplicate them.
 
 ### Links
 
@@ -69,7 +71,7 @@ Every wiki page has YAML frontmatter — Obsidian's Dataview plugin can query it
 ```yaml
 ---
 title: Chain Rule
-type: concept            # concept | course | person | formula | example | practice | mistake | summary
+type: concept            # concept | course | person | formula | example | practice | mistake | summary | tutor-session
 course: [[math-221]]     # which course(s) this belongs to, as wiki-links in an array
 tags: [calculus, derivatives, differentiation]
 sources: [[slides-2026-04-21-derivatives-intro]]   # which source summaries cite this
@@ -282,9 +284,77 @@ updated: YYYY-MM-DD
 - `YYYY-MM-DD` — {What went wrong, what the right answer was, what pattern to remember}.
 ```
 
+### Tutor session daily file
+
+```markdown
+---
+title: "Tutor Session — YYYY-MM-DD"
+type: tutor-session
+date: YYYY-MM-DD
+tags:
+  - tutor-session
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+---
+
+# Tutor Session — YYYY-MM-DD
+
+> Daily log of every question Jayden asks Teacher (or me) and the answer/dialogue. Quick lookups get short entries; full teaching sessions append a **Phase C closing recap** (per `.claude/agents/teacher.md` §C). Concept pages, [[mistakes/...]] logs, and [[practice/...]] sets are still updated separately — this file is the **chronological log**, those are the **thematic accumulators**.
+
+---
+
+## Sessions
+
+### Q1 — {one-line topic} ({HH:MM})
+
+**Question:** {Verbatim question.}
+
+**Answer / dialogue:** {Full LaTeX-rendered answer or the Socratic exchange. For Teacher sessions, this is the back-and-forth, not a summary.}
+
+**Concepts touched:** [[concept-a]], [[concept-b]]
+
+---
+
+### Q2 — ...
+
+---
+
+## ✅ Closing recap — {topic of the lesson}
+
+### Frameworks we used
+1. **{block name 1}** — {role this block played in the session}.
+2. ...
+(3–5 entries — exactly the blocks named in Phase A of the teaching session, no new ones.)
+
+### Thinking process — how the blocks combined
+{3–6 lines narrating how the blocks chained to reach the result. Reference Q-numbers and block names. Story of the derivation, not the algebra.}
+
+### Final equation
+$${headline result in display math — the equation Jayden was working toward, single line, no derivation}$$
+
+### What to internalize vs. memorize
+{2–4 lines — which named block(s) are load-bearing (recognize on sight) vs. which final number(s) are worth memorizing as a shortcut. Mirrors "Framework over formulas" in this CLAUDE.md.}
+
+### Mistakes flagged
+- See [[mistakes/{topic}]]: {one-line summary of what went wrong this session — the entry itself lives in the topic mistake log, this is just the pointer.}
+
+### Open questions
+- {Things raised this session that weren't fully resolved — feed into the relevant course page's "Open questions" too.}
+
+### Spaced revisit plan
+- **+1 day:** {5-min retrieval re-test on [[concept-page]]}.
+- **+3 days:** {new practice problem at the same Bloom level}.
+- **+1 week:** {novel-context application — "use this on a problem you haven't seen"}.
+```
+
+**Notes on the daily file:**
+- Multiple closing recaps in one daily file are allowed — one per separate teaching session within the same calendar day.
+- Quick fact lookups (Bloom level 1–2, e.g., "what's the formula for X") get a short Q-entry but **no closing recap** — the recap is reserved for sessions where the teacher persona ran the Phase A → B → C arc.
+- The daily file's `updated:` field bumps every time a Q-entry or recap is appended.
+
 ## Operations
 
-The LLM performs five operations. Each has required bookkeeping.
+The LLM performs six operations. Each has required bookkeeping.
 
 ### 1. Ingest — "I added a source, process it"
 
@@ -308,7 +378,8 @@ When Jayden says "I dropped a new source in" / "ingest this" / points at a file 
 3. **Answer**, citing pages with wiki-links.
 4. **Lead with an example.**
 5. **File the answer back** if substantial (comparison, analysis, synthesis): offer to save as a new page. Don't silently create — ask.
-6. **Append to `log.md`:** `## [YYYY-MM-DD] query | {one-line question}`.
+6. **Log the Q&A in today's tutor-session file** — `wiki/tutor-sessions/tutor-YYYY-MM-DD.md`. Create the file from the template if it doesn't exist yet. Append a numbered Q-entry (`### Q{N} — {topic} ({HH:MM})`) with the verbatim question, the full LaTeX-rendered answer (not a chat-truncated summary — Jayden reads this in Obsidian), and a `**Concepts touched:**` line linking the relevant `[[concept-pages]]`. Bump the file's `updated:` field. **This step applies to every question Jayden asks — quick lookups and full teaching sessions alike.**
+7. **Append to `log.md`:** `## [YYYY-MM-DD] query | {one-line question}`.
 
 ### 3. Practice — "Give me problems to try" / "Quiz me on X"
 
@@ -356,7 +427,27 @@ Run periodically. Produce a report covering:
 
 Propose fixes. Apply small ones (missing/broken wiki-links) directly; let Jayden approve big ones. Append `## [YYYY-MM-DD] lint | {one-line summary}` to `log.md`.
 
-Ops vocabulary for `log.md`: `setup` · `ingest` · `query` · `practice` · `walkthrough` · `lint`.
+### 6. Tutor session — "Teach me X" / "Tutor me on X" / "Quiz me on X"
+
+When Jayden invokes Teacher (via `/teacher`, `@agent-teacher`, or any "teach me / tutor me / quiz me" framing), Teacher's internal Phase A → B → C protocol is defined in `.claude/agents/teacher.md`. CLAUDE.md's job is the **artifact bookkeeping** around that protocol:
+
+1. **Per-question logging** (during the session, applies to every Q from Jayden):
+   - Append a numbered Q-entry to `wiki/tutor-sessions/tutor-YYYY-MM-DD.md` (create from template if missing).
+   - Format: `### Q{N} — {topic} ({HH:MM})` → `**Question:**` → `**Answer / dialogue:**` (full LaTeX, the Socratic exchange not a summary) → `**Concepts touched:**` (`[[concept-pages]]`).
+   - Bump `updated:` on the daily file.
+2. **Closing recap** (when the session ends — Jayden signals "got it" / "let's wrap" / after a successful Phase B Layer-4 answer):
+   - Append `## ✅ Closing recap — {topic}` to today's daily file with the four required sections from `.claude/agents/teacher.md` §C: **Frameworks we used** (the same 3–5 named blocks from Phase A — no new vocabulary at the close), **Thinking process** (3–6 line story of how Phase B chained the blocks, referencing Q-numbers and block names — narrative, not algebra), **Final equation** (single display-math line, the headline result), **What to internalize vs. memorize** (which blocks are load-bearing, which final numbers are worth memorizing).
+   - Then add **Mistakes flagged** (one-line pointer to each `[[mistakes/{topic}]]` entry created this session — the entry itself lives in the topic mistake log), **Open questions** (things raised but not resolved — also feed into the relevant course page's "Open questions"), and **Spaced revisit plan** (+1 day / +3 days / +1 week, anchored to existing wiki pages per teacher.md §"Suggest spaced revisits").
+3. **Auto-file companion artifacts** (per `.claude/agents/teacher.md` "Wiki integration" — these are separate pages, not duplicated in the daily file; the daily file links to them):
+   - Practice attempts → append to `wiki/practice/{topic}-set-{NN}.md`.
+   - Misconceptions → append to `wiki/mistakes/{topic}.md` (creating if missing): `- \`YYYY-MM-DD\` — *Brief description.* Right answer was X. Pattern to remember: Y.`
+   - New concept pages → if a session uncovered a topic with no concept page, offer at the end to create one *together* (Jayden writes the example-first section, you handle the structure).
+4. **Update `index.md`** — add entries for any new concept / practice / mistake pages created during the session. The daily tutor-session file itself is listed under the "Tutor sessions" section.
+5. **Append to `log.md`:** `## [YYYY-MM-DD] tutor | {one-line topic of the session}`.
+
+**Quick lookups vs. teaching sessions.** A pure fact lookup ("what's the formula for X") is a Query (Op #2), not a Tutor session — log the Q-entry to today's daily file but **skip the closing recap**. The recap is reserved for sessions where Teacher ran the Phase A → B → C arc.
+
+Ops vocabulary for `log.md`: `setup` · `ingest` · `query` · `practice` · `walkthrough` · `lint` · `tutor`.
 
 ## `index.md` — content catalog
 

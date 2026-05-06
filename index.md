@@ -539,6 +539,10 @@ Standalone worked examples (one-off teaching examples, not full assignments). Fi
 - [[daily-2026-04-23-sdr-toolchain-questions]] — ⏸️ in-progress: WSL2 / Pluto toolchain walkthrough (paused at Vivado install)
 - [[daily-2026-04-23-pluto-deployment-and-regret-learning]] — Pluto deployment architecture (Q1–Q5) + regret-learning deep dive (Q6–Q25)
 
+### Tutor sessions
+Daily Q&A log from `/teacher` invocations and any teaching/tutoring questions. One file per calendar day; closing recap (Phase C from `.claude/agents/teacher.md`) appends at the end of full teaching sessions. See [[CLAUDE]] → "Tutor session daily file" template.
+- [[tutor-2026-05-05]] — first session in this format (folder + workflow established 2026-05-05)
+
 ### Workload planning
 - [[daily-2026-04-28-workload]] — **Week of 4/28 → 5/12.** 24 items, 2 finals (EEE 404 Thu + EEE 304 Wed 5/6), Friday cliff with 11 items same day
 - [[daily-2026-04-28-finals-prep]] — **Master finals prep.** Per-course study plan, wiki coverage audit, gaps to fill in EEE 341 + EEE 335
