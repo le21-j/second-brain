@@ -380,6 +380,7 @@ Per-question lab/HW walkthroughs (concept-first, then steps). Filed under `wiki/
 - [[eee-304-hw7-walkthrough]] — full per-problem HW7 walkthrough (cascaded AM, TDM-PAM, chopper amplifier)
 
 ### EEE 350
+- **[[eee-350-final-walkthrough]] — Module-by-Module Final Review (cumulative).** Per-module breakdown of slides 1–49: building blocks, headline formulas, representative practice problems lifted from each lecture's "Worked examples" + the 3 practice sets + HW7. Master Cheat Sheet (6 tables) + pre-exam routine. ⭐
 - [[eee-350-hw7-walkthrough]] — full per-problem HW7 walkthrough (significance testing + MMSE/LMSE estimation)
 
 ### EEE 341

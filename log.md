@@ -13,6 +13,15 @@ Ops: `ingest` · `query` · `practice` · `walkthrough` · `lint` · `setup`
 
 ---
 
+## [2026-05-05] walkthrough | EEE 350 Final — Module-by-Module Review
+- Wrote `wiki/walkthroughs/eee-350-final-walkthrough.md` — cumulative final walkthrough following the user's request: "source from every lecture page" + "practice questions and things to look out for take the practice problems that he solves for on each module page"
+- Per-module structure (all modules at equal depth): each section names the 3–5 building blocks, lists headline formulas to memorize, then walks 1–4 representative practice problems lifted from the corresponding lecture summary's "Worked examples worth remembering" + the three EEE 350 practice sets ([[prob-fundamentals-set-01]], [[asymptotics-set-01]], [[inference-set-01]]) + HW7 worked examples
+- **2026-05-05 follow-up — Modules 1–5 deep dive**: per user request, expanded Modules 1–5 (slides 1–37.5) from a catalog stub to slide-by-slide deep treatment matching Modules 6–8. New subsections cover: Kolmogorov axioms + total prob + Bayes (M1), independence + counting + binomial + discrete-RV reference table + MGF-style derivations (M2), CDF + mixed distributions + memorylessness derivations (M3), joint marginalization + hat problem with indicator-variable trick + stick-breaking dual derivation + support-sketching gotcha (M4), Bayes for PDFs + derived-RV CDF method + Jacobian shortcut + sum-distribution table + MGF library + Gaussian-stays-Gaussian and chi-squared-from-squared-Gaussian collapsible derivations (M5)
+- Front-matter framework section: 5 patterns that generate every problem (bilinearity / cond.-exp.-as-RV / three CLT scalings / inference taxonomy / stochastic-process recognition); 6-formula memorize-vs-derive callout
+- Master Cheat Sheet at end (six tables: moments, conditional-exp toolkit, asymptotics, inference taxonomy, regression+descriptive, stochastic processes); pre-exam T-24h → T-1h routine + in-exam time strategy
+- Cross-links to all concept pages, worked examples, and source summaries; gotcha bank pulls from [[prob-gotchas]]
+- Updated `wiki/courses/eee-350.md` walkthrough section + `index.md` EEE 350 walkthrough section
+
 ## [2026-05-04] walkthrough | EEE 404 Lab Exam + ABET Quiz (Tue 5/5 9:50–11:40 AM)
 - Pulled scope from Canvas API (course 241591): announcement 7051419 from [[chao-wang]] dated 2026-04-23 spelled out exact format — Lab Exam = 5 MC (Lab 5 / Lab 6 / Project 1 / Project 2 / Assembly), 15 min, 50 pts, open book; ABET Quiz = comprehensive paper, 30 min, 50 pts, closed book + 2× 8.5×11 sheets
 - Auto-downloaded: `lab5_overview.pdf`, `lab6_overview.pdf`, `project1_overview.pdf` (into `raw/labs/eee-404/lab-exam-prep/`); `exam1_review.pdf`, `exam1_key.pdf`, `exam2_review.pdf` (into `raw/other/eee-404/`)
