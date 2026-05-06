@@ -9,7 +9,7 @@ Append-only chronological record of every operation on the wiki. One entry per o
 
 Greppable: `grep "^## \[" log.md | tail -10`
 
-Ops: `ingest` · `query` · `practice` · `walkthrough` · `lint` · `setup`
+Ops: `ingest` · `query` · `practice` · `walkthrough` · `lint` · `setup` · `tutor`
 
 ---
 
@@ -629,3 +629,17 @@ Big batch session. Three deliverables for the user, plus the wiki ingest.
 - **`.claude/agents/teacher.md`** — added Phase C subsection inside Section 2 (between Phase B and the "When to skip Phase A" exit rule). On session-close signals ("I'm good" / "got it" / successful L4 answer), the teacher now produces a structured artifact in this fixed order: `## ✅ Session recap` → `### Frameworks we used` (same 3-5 named blocks from Phase A) → `### Thinking process — how the blocks combined` (3-6 line story, not algebra) → `### Final equation` (single `$$...$$` display-math line so it renders + gets the copy/pin buttons in wt) → `### What to internalize vs. memorize`. Hard rules: reuse Phase A vocabulary, no new derivations, recap before productive-metrics check.
 - **Output format** — promoted Phase C to step 11; productive metrics moved to 12; spaced-revisit + file updates to 13.
 - No code changes; agent persona only. Takes effect on next chat (LLMSession re-reads system prompt on connect).
+
+## [2026-05-05] setup | wiki/tutor-sessions/ folder + workflow added
+
+- **New folder:** `wiki/tutor-sessions/` with the first daily file [[tutor-2026-05-05]] — one file per calendar day; every Q from Jayden (quick lookup or full teaching session) appends as a numbered Q-entry; Phase C closing recap from `.claude/agents/teacher.md` appends at the end of teaching sessions. Concept pages, [[mistakes/...]] logs, and [[practice/...]] sets are still updated as separate artifacts — the daily file links to them, does not duplicate them.
+- **CLAUDE.md schema updates:**
+  - Added `wiki/tutor-sessions/` to the directory tree.
+  - Added a naming-convention bullet (`tutor-YYYY-MM-DD.md`) describing closing-recap behavior.
+  - Added `tutor-session` to the frontmatter `type:` enum.
+  - Added a "Tutor session daily file" page template covering Q-entries, the four required Phase C sections (Frameworks used / Thinking process / Final equation in display math / What to internalize vs. memorize), Mistakes flagged, Open questions, and Spaced revisit plan.
+  - Modified Op #2 (Query) step 6 — every Q now logs to today's tutor-session file.
+  - Added Op #6 (Tutor session) — explicit bookkeeping around the teacher persona's Phase A → B → C protocol; defers Socratic mechanics to `.claude/agents/teacher.md`.
+  - Updated "five operations" → "six operations" and added `tutor` to the ops vocabulary.
+- **`index.md`:** added "Tutor sessions" subsection (between Daily research Q&A and Workload planning).
+- **`log.md`:** added `tutor` to the header ops list.
