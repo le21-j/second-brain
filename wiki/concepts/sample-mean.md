@@ -1,11 +1,15 @@
 ---
 title: Sample Mean
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [sample-mean, descriptive-statistics, estimator]
-sources: [[slides-42-wlln]], [[slides-44-mle-ci]], [[slides-46.5-descriptive-stats]]
+sources:
+  - "[[slides-42-wlln]]"
+  - "[[slides-44-mle-ci]]"
+  - "[[slides-46.5-descriptive-stats]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Sample Mean

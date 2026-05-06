@@ -1,11 +1,13 @@
 ---
 title: Likelihood Ratio Test (LRT)
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [hypothesis-testing, lrt]
-sources: [[slides-45-neyman-pearson]]
+sources:
+  - "[[slides-45-neyman-pearson]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Likelihood Ratio Test (LRT)

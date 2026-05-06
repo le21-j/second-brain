@@ -1,11 +1,13 @@
 ---
 title: Difference Equation
 type: concept
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [difference-equation, lti-system, dsp, eee-404]
-sources: [[summary-eee-404-m8-difference-equation]]
+sources:
+  - "[[summary-eee-404-m8-difference-equation]]"
 created: 2026-04-29
-updated: 2026-04-29
+updated: 2026-05-06
 ---
 
 # Difference Equation

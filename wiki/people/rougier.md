@@ -2,9 +2,10 @@
 title: Nicolas Rougier
 type: person
 tags: [teaching, numpy, matplotlib, scientific-python]
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-05-06
 ---
 
 # Nicolas Rougier

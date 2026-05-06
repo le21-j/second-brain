@@ -1,11 +1,12 @@
 ---
 title: Antenna Gain, Directivity, Radiation Resistance
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [eee-341, antennas, gain, directivity, efficiency]
 sources: [raw/slides/eee-341/lecture-6-1-overview-of-antennas-and-their-properties-17-19.pdf, raw/slides/eee-341/lecture-6-3-antenna-radiation-characteristics-15-19.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Antenna Gain, Directivity, Radiation Resistance

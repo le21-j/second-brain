@@ -4,10 +4,11 @@ type: summary
 source_type: article
 source_path: raw/articles/Non-Coherent OTA.pdf
 source_date: 2024-09
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [aircomp, decentralized, non-coherent, energy-superposition, dgd, federated-learning]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Non-Coherent Over-the-Air DGD (NCOTA-DGD)

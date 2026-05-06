@@ -3,10 +3,11 @@ title: Lab 7 — Fast Fourier Transform
 type: summary
 source_type: homework
 source_path: raw/labs/lab7.pdf
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [lab, fft, fixed-point, stm32, implementation]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Lab 7 — Fast Fourier Transform

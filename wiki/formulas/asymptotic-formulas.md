@@ -1,11 +1,15 @@
 ---
 title: Asymptotic Theorems (Formula)
 type: formula
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [chebyshev, lln, clt]
-sources: [[slides-41-lln-clt-intro]], [[slides-42-wlln]], [[slides-43-clt-apps]]
+sources:
+  - "[[slides-41-lln-clt-intro]]"
+  - "[[slides-42-wlln]]"
+  - "[[slides-43-clt-apps]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Asymptotic Theorems — Formula Sheet

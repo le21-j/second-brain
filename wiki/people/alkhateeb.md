@@ -2,9 +2,10 @@
 title: Ahmed Alkhateeb
 type: person
 tags: [wi-lab, asu, target-advisor, wireless-ml, deepmimo, deepsense, lwm]
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-05-06
 ---
 
 # Ahmed Alkhateeb

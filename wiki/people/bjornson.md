@@ -2,9 +2,10 @@
 title: Emil Björnson
 type: person
 tags: [wireless, massive-mimo, teaching, kth]
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-05-06
 ---
 
 # Emil Björnson

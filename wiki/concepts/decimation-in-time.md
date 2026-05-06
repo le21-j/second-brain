@@ -1,11 +1,13 @@
 ---
 title: Decimation In Time (DIT)
 type: concept
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [fft, algorithm, dit]
-sources: [[slides-fft-core-equations]]
+sources:
+  - "[[slides-fft-core-equations]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Decimation In Time (DIT)

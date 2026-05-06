@@ -1,12 +1,15 @@
 ---
 title: FFT Fundamentals — Practice Set 01
 type: practice
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [practice, fft]
-concept: [[fft]], [[dft]]
+concept:
+  - "[[fft]]"
+  - "[[dft]]"
 difficulty: mixed
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # FFT Fundamentals — Practice Set 01

@@ -3,10 +3,11 @@ title: Slides 43 — Central Limit Theorem and Applications
 type: summary
 source_type: slides
 source_path: raw/slides/eee-350/43 CLT and Apps.pptx
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [clt, binomial, continuity-correction, asymptotic]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Slides 43 — Central Limit Theorem

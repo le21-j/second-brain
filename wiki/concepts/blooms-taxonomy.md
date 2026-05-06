@@ -3,9 +3,11 @@ title: Bloom's Taxonomy
 type: concept
 course: []
 tags: [learning-meta, study-skills, ai-tutoring, cognitive-hierarchy]
-sources: [[article-2026-04-29-giles-oxford-ai-learning]], [[article-2026-04-29-sung-ai-learning-faster]]
+sources:
+  - "[[article-2026-04-29-giles-oxford-ai-learning]]"
+  - "[[article-2026-04-29-sung-ai-learning-faster]]"
 created: 2026-04-29
-updated: 2026-04-29
+updated: 2026-05-06
 ---
 
 # Bloom's Taxonomy

@@ -1,11 +1,13 @@
 ---
 title: Region of Convergence (ROC)
 type: concept
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [z-transform, roc, stability, causality, dsp, eee-404]
-sources: [[summary-eee-404-m7-frequency-domain]]
+sources:
+  - "[[summary-eee-404-m7-frequency-domain]]"
 created: 2026-04-29
-updated: 2026-04-29
+updated: 2026-05-06
 ---
 
 # Region of Convergence (ROC)

@@ -1,11 +1,14 @@
 ---
 title: Generative adversarial network (GAN)
 type: concept
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 tags: [gan, generative, dl, goodfellow]
-sources: [[paper-goodfellow-2014-gan]], [[article-2026-04-23-physical-layer-ml-roadmap]]
+sources:
+  - "[[paper-goodfellow-2014-gan]]"
+  - "[[article-2026-04-23-physical-layer-ml-roadmap]]"
 created: 2026-04-23
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Generative adversarial network (GAN)

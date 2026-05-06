@@ -3,10 +3,11 @@ title: Slides 45 — Neyman-Pearson Hypothesis Testing
 type: summary
 source_type: slides
 source_path: raw/slides/eee-350/45 Neyman-Pearson Hypothesis Testing.pptx
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [hypothesis-testing, neyman-pearson, lrt, type-i, type-ii, chi-squared]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Slides 45 — Neyman-Pearson Hypothesis Testing

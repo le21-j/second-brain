@@ -4,7 +4,8 @@ type: summary
 source_type: other
 source_path: raw/other/eee-404-exam-2-review.pdf
 source_date: 2026-04-29
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [eee-404, exam, practice-exam, review-handout]
 created: 2026-04-29
 ---

@@ -4,10 +4,11 @@ type: summary
 source_type: article
 source_path: raw/articles/6g-research/aircomp-6g-foundations.pdf
 source_date: 2022
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [aircomp, 6g, survey, multiple-antennas, foundations]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # 6G AirComp — Foundations, Technologies, Applications

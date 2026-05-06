@@ -1,11 +1,12 @@
 ---
 title: Open-Circuit Time Constants (OCTC) Method
 type: concept
-course: [[eee-335]]
+course:
+  - "[[eee-335]]"
 tags: [octc, bandwidth, frequency-response, sedra-smith]
 sources: [raw/slides/eee-335/unit-5-lecture-29-method-of-open-circuit-time-constants.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Open-Circuit Time Constants (OCTC) Method

@@ -1,11 +1,12 @@
 ---
 title: Cascode Amplifier
 type: concept
-course: [[eee-335]]
+course:
+  - "[[eee-335]]"
 tags: [amplifier, cascode, cs-cg, gain-boost, sedra-smith]
 sources: [raw/slides/eee-335/unit-6-lecture-cca-cascode-amplifier.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Cascode Amplifier

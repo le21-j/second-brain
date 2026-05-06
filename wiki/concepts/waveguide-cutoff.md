@@ -1,11 +1,12 @@
 ---
 title: Waveguide Cutoff Frequency
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [eee-341, waveguide, cutoff, evanescent]
 sources: [raw/slides/eee-341/lecture-5-4-guided-wave-modes-tem-te-and-tm-15-13.pdf, raw/slides/eee-341/lecture-5-7-propagation-velocities-12-07.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Waveguide Cutoff Frequency

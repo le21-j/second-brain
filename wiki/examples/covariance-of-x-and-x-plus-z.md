@@ -1,11 +1,13 @@
 ---
 title: Example — Cov(X, X + Z) when X and Z are independent
 type: example
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [covariance, bilinearity]
-sources: [[slides-38-covariance]]
+sources:
+  - "[[slides-38-covariance]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Example — $\text{Cov}(X, X+Z)$ when $X$ and $Z$ are independent

@@ -2,9 +2,10 @@
 title: Chao Wang
 type: person
 tags: [instructor, asu, dsp]
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-05-06
 ---
 
 # Dr. Chao Wang

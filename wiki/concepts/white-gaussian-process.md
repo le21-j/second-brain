@@ -1,11 +1,13 @@
 ---
 title: White Gaussian Process (WGN)
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [white-noise, gaussian, stochastic-process]
-sources: [[slides-47-stochastic-processes]]
+sources:
+  - "[[slides-47-stochastic-processes]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # White Gaussian Process / White Gaussian Noise (WGN)

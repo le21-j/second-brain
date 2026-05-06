@@ -1,11 +1,14 @@
 ---
 title: FFT Butterfly (Formula)
 type: formula
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [fft, butterfly]
-sources: [[slides-fft-core-equations]], [[slides-fft-implementation]]
+sources:
+  - "[[slides-fft-core-equations]]"
+  - "[[slides-fft-implementation]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # FFT Butterfly — Formula

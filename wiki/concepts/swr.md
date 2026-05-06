@@ -1,11 +1,12 @@
 ---
 title: Standing Wave Ratio (SWR)
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [transmission-lines, antennas, matching, swr]
 sources: raw/slides/eee-341/lecture-4-2-review-of-transmission-lines-part-2-14-57.pdf
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Standing Wave Ratio (SWR)

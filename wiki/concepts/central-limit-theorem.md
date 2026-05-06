@@ -1,11 +1,13 @@
 ---
 title: Central Limit Theorem (CLT)
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [clt, asymptotic, gaussian]
-sources: [[slides-43-clt-apps]]
+sources:
+  - "[[slides-43-clt-apps]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Central Limit Theorem (CLT)

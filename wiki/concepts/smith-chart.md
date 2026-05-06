@@ -1,11 +1,12 @@
 ---
 title: Smith Chart
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [eee-341, transmission-lines, smith-chart, impedance-matching]
 sources: [raw/slides/eee-341/lecture-4-4-introduction-to-the-smith-chart-12-25.pdf, raw/slides/eee-341/lecture-4-5-properties-of-the-smith-chart-15-44.pdf, raw/slides/eee-341/lecture-4-6-impedance-matching-part-1-10-50.pdf, raw/slides/eee-341/lecture-4-7-impedance-matching-part-2-12-08.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Smith Chart

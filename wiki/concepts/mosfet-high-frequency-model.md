@@ -1,11 +1,12 @@
 ---
 title: MOSFET High-Frequency Model
 type: concept
-course: [[eee-335]]
+course:
+  - "[[eee-335]]"
 tags: [mosfet, high-frequency, capacitances, ft, sedra-smith]
 sources: [raw/slides/eee-335/unit-5-lecture-24-high-frequency-mosfet-model.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # MOSFET High-Frequency Model

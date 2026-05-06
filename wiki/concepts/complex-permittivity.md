@@ -1,11 +1,12 @@
 ---
 title: Complex Permittivity & Loss Tangent
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [eee-341, electromagnetics, lossy-media, dielectric]
 sources: [raw/slides/eee-341/lecture-2-2-time-harmonic-fields-complex-permittivity-and-helmholtz-equations-15.pdf, raw/slides/eee-341/lecture-2-6-special-cases-of-lossy-media-12-02.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Complex Permittivity

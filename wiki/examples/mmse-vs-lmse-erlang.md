@@ -1,12 +1,16 @@
 ---
 title: MMSE vs LMSE with Erlang Prior (HW7 12.2.6)
 type: example
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [mmse, lmse, estimation, erlang, worked-example]
-concept: [[linear-mmse-estimation]], [[lms-estimation]]
-sources: [[homework-2026-04-23-eee-350-hw7]]
+concept:
+  - "[[linear-mmse-estimation]]"
+  - "[[lms-estimation]]"
+sources:
+  - "[[homework-2026-04-23-eee-350-hw7]]"
 created: 2026-04-24
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # MMSE vs LMSE with Erlang Prior — HW7 Problem 12.2.6

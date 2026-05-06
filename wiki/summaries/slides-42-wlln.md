@@ -3,10 +3,11 @@ title: Slides 42 — Weak Law of Large Numbers
 type: summary
 source_type: slides
 source_path: raw/slides/eee-350/42 WLLN.pptx
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [wlln, sample-mean, convergence]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Slides 42 — Weak Law of Large Numbers (WLLN)

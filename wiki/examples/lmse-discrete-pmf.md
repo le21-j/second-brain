@@ -1,12 +1,15 @@
 ---
 title: LMSE from a Discrete Joint PMF (HW7 12.2.3)
 type: example
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [lmse, estimation, joint-pmf, worked-example]
-concept: [[linear-mmse-estimation]]
-sources: [[homework-2026-04-23-eee-350-hw7]]
+concept:
+  - "[[linear-mmse-estimation]]"
+sources:
+  - "[[homework-2026-04-23-eee-350-hw7]]"
 created: 2026-04-24
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # LMSE from a Discrete Joint PMF — HW7 Problem 12.2.3

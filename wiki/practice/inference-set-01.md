@@ -1,12 +1,16 @@
 ---
 title: Inference — Practice Set 01
 type: practice
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [practice, bayesian, mle, hypothesis-testing]
-concept: [[bayesian-inference]], [[maximum-likelihood-estimation]], [[neyman-pearson-test]]
+concept:
+  - "[[bayesian-inference]]"
+  - "[[maximum-likelihood-estimation]]"
+  - "[[neyman-pearson-test]]"
 difficulty: mixed
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Inference — Practice Set 01

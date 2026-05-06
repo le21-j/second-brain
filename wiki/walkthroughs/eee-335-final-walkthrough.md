@@ -1,11 +1,12 @@
 ---
 title: EEE 335 Final Exam — Walkthrough & Cheat Sheet
 type: walkthrough
-course: [[eee-335]]
+course:
+  - "[[eee-335]]"
 tags: [eee-335, finals, walkthrough, mosfet, cmos, amplifier, sedra-smith]
 sources: [raw/slides/eee-335/]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # EEE 335 Final — Per-Unit Walkthrough

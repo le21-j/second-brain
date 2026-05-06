@@ -1,11 +1,12 @@
 ---
 title: Reflection Coefficient & VSWR on a Transmission Line
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [eee-341, transmission-lines, reflection-coefficient, vswr]
 sources: [raw/slides/eee-341/lecture-4-3-review-of-transmission-lines-part-3-12-24.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Reflection Coefficient on a Transmission Line

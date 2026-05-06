@@ -1,11 +1,14 @@
 ---
 title: Bivariate Gaussian
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [gaussian, bivariate, joint-distribution]
-sources: [[slides-38-covariance]], [[slides-39-multivariate-vectors]]
+sources:
+  - "[[slides-38-covariance]]"
+  - "[[slides-39-multivariate-vectors]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Bivariate Gaussian
@@ -55,8 +58,27 @@ Looks scary. Key things to read off:
   $$\Sigma = \begin{pmatrix}\sigma_X^2 & \rho\sigma_X\sigma_Y \\ \rho\sigma_X\sigma_Y & \sigma_Y^2\end{pmatrix}$$
 - Tilt angle = angle of the larger eigenvector.
 
+## Marginally Gaussian $\neq$ jointly Gaussian
+
+**Both marginals being Gaussian is NOT enough to make $(X, Y)$ bivariate Gaussian.** Joint Gaussianity is strictly stronger; all the clean bivariate-Gaussian properties (linear conditional mean, constant conditional variance, uncorrelated $\Rightarrow$ independent, LMSE $=$ MMSE) require it.
+
+**Canonical counterexample.** Let $X \sim \mathcal{N}(0, 1)$ and $Z$ be a fair sign coin ($P(Z = \pm 1) = 1/2$) with $Z \perp X$. Define $Y = ZX$. Then:
+
+- $Y \sim \mathcal{N}(0, 1)$ (because $-X \stackrel{d}{=} X$ for symmetric Gaussian, so a half-half mix of $X$ and $-X$ is still $\mathcal{N}(0,1)$). **Both marginals standard Gaussian.**
+- $E[XY] = E[ZX^2] = E[Z]E[X^2] = 0 \cdot 1 = 0$, so $\text{Cov}(X, Y) = 0$. **Uncorrelated.**
+- The joint $(X, Y)$ is supported on $\{y = x\} \cup \{y = -x\}$ — two lines, measure zero in $\mathbb{R}^2$. **NOT bivariate Gaussian** (true bivariate Gaussian has elliptical contours filling the plane).
+- $|Y| = |X|$ always: $X$ and $Y$ are wildly dependent, not independent.
+
+So the pair has Gaussian marginals, zero covariance, but is neither independent nor jointly Gaussian.
+
+**Exam tell.** "$X$ and $Y$ are both Gaussian" alone does NOT license bivariate-Gaussian formulas. Only "$(X, Y)$ is bivariate / jointly Gaussian" does.
+
+**LMSE consequence.** The identity $\hat{X}_{\text{LMSE}} = \hat{X}_{\text{MMSE}} = E[X \mid Y]$ requires JOINT Gaussianity, not just marginal — see [[linear-mmse-estimation]].
+
+See [[tutor-2026-05-06-live]] for full derivation; gotcha logged in [[prob-gotchas]].
+
 ## Common mistakes
-- **$X$ and $Y$ marginal-Gaussian $\Rightarrow$ jointly Gaussian.** False. They must be jointly Gaussian specifically (a stronger condition).
+- **$X$ and $Y$ marginal-Gaussian $\Rightarrow$ jointly Gaussian.** False. See "Marginally Gaussian $\neq$ jointly Gaussian" section above for the $Y = ZX$ counterexample.
 - Plugging $\rho = \pm 1$ into the density formula — you get $0/0$; the distribution degenerates onto a line and doesn't have a density in 2D.
 - Forgetting that the conditional **variance** is constant in $x$; people try to make it depend on $x$.
 

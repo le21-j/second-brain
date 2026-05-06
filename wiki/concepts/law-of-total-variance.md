@@ -1,11 +1,13 @@
 ---
 title: Law of Total Variance
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [variance, conditional-expectation, anova]
-sources: [[slides-40-conditional-expectation]]
+sources:
+  - "[[slides-40-conditional-expectation]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Law of Total Variance

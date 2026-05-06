@@ -1,11 +1,13 @@
 ---
 title: Stochastic (Random) Process
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [stochastic-process, random-process]
-sources: [[slides-47-stochastic-processes]]
+sources:
+  - "[[slides-47-stochastic-processes]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Stochastic (Random) Process

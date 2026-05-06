@@ -1,11 +1,12 @@
 ---
 title: Antenna Array
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [antennas, arrays, array-factor, beamforming, em]
 sources: raw/slides/eee-341/lecture-6-8-antenna-arrays-18-04.pdf
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Antenna Array

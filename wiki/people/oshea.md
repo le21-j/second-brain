@@ -2,9 +2,10 @@
 title: Tim O'Shea
 type: person
 tags: [deepsig, nvidia-adjacent, wireless-ml, seminal, radioml]
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-05-06
 ---
 
 # Tim O'Shea

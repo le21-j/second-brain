@@ -4,10 +4,11 @@ type: summary
 source_type: article
 source_path: raw/articles/6g-research/industrial-viewpoints-6g-ran.pdf
 source_date: 2025-08
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [6g, ran, industry, ericsson, 3gpp-release-20, ssb]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Industrial Viewpoints on RAN Technologies for 6G

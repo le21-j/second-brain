@@ -4,10 +4,11 @@ type: summary
 source_type: article
 source_path: raw/articles/A_Demonstration_of_Over-the-Air_Computation_for_Federated_Edge_Learning.pdf
 source_date: 2022
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [aircomp, sdr, fsk-majority-vote, ofdm, synchronization, polar-code, golay]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # A Demonstration of OAC for Federated Edge Learning

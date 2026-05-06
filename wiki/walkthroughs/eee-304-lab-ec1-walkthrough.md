@@ -1,11 +1,13 @@
 ---
 title: EEE 304 Lab EC1 — Filtering with an Arduino (Walkthrough)
 type: walkthrough
-course: [[eee-304]]
+course:
+  - "[[eee-304]]"
 tags: [eee-304, lab, walkthrough, extra-credit, arduino, simulink, butterworth, filter, embedded, pwm, dac]
-sources: [[lab-eee-304-lab-ec1-arduino-filter]]
+sources:
+  - "[[lab-eee-304-lab-ec1-arduino-filter]]"
 created: 2026-05-03
-updated: 2026-05-03
+updated: 2026-05-06
 ---
 
 # EEE 304 Lab EC1 — Filtering with an Arduino (Walkthrough)

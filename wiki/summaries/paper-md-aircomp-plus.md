@@ -4,10 +4,11 @@ type: summary
 source_type: article
 source_path: raw/articles/MD-AirComp+ (Iteration of Two's Compliment).pdf
 source_date: 2026-02
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [aircomp, massive-mimo, unsourced-access, quantization, lasso, channel-hardening]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # MD-AirComp+ — Adaptive Quantization for Blind Massive Digital AirComp

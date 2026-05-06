@@ -1,11 +1,12 @@
 ---
 title: MOSFET Small-Signal Model
 type: concept
-course: [[eee-335]]
+course:
+  - "[[eee-335]]"
 tags: [mosfet, small-signal, gm, ro, hybrid-pi, t-model, sedra-smith]
 sources: [raw/slides/eee-335/unit-4-lecture-18-small-signal-model.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # MOSFET Small-Signal Model

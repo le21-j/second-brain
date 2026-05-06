@@ -1,11 +1,13 @@
 ---
 title: Conditional Expectation Identities (Formula)
 type: formula
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [conditional-expectation, iterated-expectations]
-sources: [[slides-40-conditional-expectation]]
+sources:
+  - "[[slides-40-conditional-expectation]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Conditional Expectation — Formula Sheet

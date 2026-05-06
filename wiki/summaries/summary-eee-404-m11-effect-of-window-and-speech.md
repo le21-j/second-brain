@@ -4,7 +4,8 @@ type: summary
 source_type: slides
 source_path: raw/slides/eee-404/m11-effect-of-window.pdf
 source_date: 2026-04-29
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [eee-404, window-function, spectral-leakage, speech-analysis, time-frequency, stft]
 created: 2026-04-29
 ---

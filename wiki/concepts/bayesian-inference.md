@@ -1,11 +1,13 @@
 ---
 title: Bayesian Inference
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [bayesian, prior, posterior, inference]
-sources: [[slides-43.5-bayesian-inference]]
+sources:
+  - "[[slides-43.5-bayesian-inference]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Bayesian Inference

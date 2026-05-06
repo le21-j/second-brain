@@ -1,11 +1,14 @@
 ---
 title: AirComp Utility — $S_1$ (Gain) and $S_2$ (Penalty) Aggregates
 type: concept
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [research, aircomp, regret-learning, utility, feedback, bandwidth, privacy, hpsr]
-sources: [[daily-2026-04-23-pluto-deployment-and-regret-learning]], [[paper-unregrettable-hpsr]]
+sources:
+  - "[[daily-2026-04-23-pluto-deployment-and-regret-learning]]"
+  - "[[paper-unregrettable-hpsr]]"
 created: 2026-04-24
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # AirComp Utility — $S_1$ and $S_2$ Aggregates

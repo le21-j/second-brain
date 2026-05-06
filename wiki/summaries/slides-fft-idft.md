@@ -3,10 +3,11 @@ title: Slides — FFT IDFT
 type: summary
 source_type: slides
 source_path: raw/slides/eee-404/fft_idft.pdf
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [fft, idft, inverse]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Slides — FFT IDFT

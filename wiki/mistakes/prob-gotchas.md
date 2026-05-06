@@ -1,11 +1,15 @@
 ---
 title: Probability & Statistics — Common Mistakes
 type: mistake
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [mistakes, probability, statistics]
-concept: [[covariance]], [[bayesian-inference]], [[central-limit-theorem]]
+concept:
+  - "[[covariance]]"
+  - "[[bayesian-inference]]"
+  - "[[central-limit-theorem]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Probability & Statistics — Common Mistakes
@@ -67,4 +71,7 @@ updated: 2026-04-26
 
 _(Log dated entries here as you miss practice problems or catch yourself on a slip. The more specific, the more useful. Pattern > feeling.)_
 
-- _(no entries yet)_
+- `2026-05-06` — *Final-exam diagnostic, Q1: said "$\text{Cov} = 0$ means fully dependent."* Right answer was **uncorrelated** (no linear comovement); independence $\Rightarrow \text{Cov} = 0$, **never the reverse** except for jointly Gaussian. Counter-example to remember: $X \sim \text{Uniform}(-1,1)$, $Y = X^2$ — $Y$ is a **deterministic** function of $X$ yet $\text{Cov}(X,Y) = 0$. Pattern: "covariance = 0" is a statement about a **linear** trend, nothing more.
+- `2026-05-06` — *Final-exam diagnostic, Q2: tried to split $\text{Var}(X+Y)$ as $\text{Var}(X) + \text{Var}(Y)$ when $X, Y$ correlated.* Right answer was $\text{Var}(X+Y) = \text{Var}(X) + \text{Var}(Y) + 2\,\text{Cov}(X,Y)$. Pattern: the cross term is **the whole reason** the formula isn't trivial — drop it only when independence is **stated**, not assumed. Sanity check: $\text{Var}(X+X) = 4\text{Var}(X)$, not $2\text{Var}(X)$, exposes the missing $2\,\text{Cov}$.
+- `2026-05-06` — *Final-exam diagnostic, Q3: marked "$E[X \mid Y]$ is a number" as TRUE.* Right answer is **FALSE** — $E[X \mid Y]$ is a **random variable** (a function of $Y$); $E[X \mid Y = y]$ for a specific $y$ is a number. Pattern: capital $Y$ in the conditioning slot $\Rightarrow$ random variable; lowercase $y$ $\Rightarrow$ number. The tower rule $E[E[X \mid Y]] = E[X]$ only makes sense if the inner object is a random variable — that's the tell.
+- `2026-05-06` — *Marginally Gaussian doesn't imply jointly Gaussian.* Right answer: marginal Gaussian + joint Gaussian are different conditions; "both marginals Gaussian" is necessary but **not sufficient** for the pair to be bivariate Gaussian. Pattern to remember: bivariate Gaussian needs joint Gaussianity (covariance-matrix density on $\mathbb{R}^2$), not just two Gaussian marginals. Canonical counterexample: $X \sim \mathcal{N}(0,1)$, $Z = \pm 1$ fair coin independent of $X$, $Y = ZX$. Both marginals are $\mathcal{N}(0,1)$ and $\text{Cov}(X,Y) = E[Z]E[X^2] = 0$, but the joint is supported on the two lines $y = \pm x$ — NOT bivariate Gaussian, and $X, Y$ are dependent ($|Y| = |X|$). **Load-bearing consequence:** LMSE $=$ MMSE only under JOINT Gaussianity, not marginal.

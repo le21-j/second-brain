@@ -4,10 +4,11 @@ type: summary
 source_type: article
 source_path: raw/articles/BPSK Two's Compliment.pdf
 source_date: 2025-12
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [aircomp, digital-modulation, bpsk, twos-complement, ofdm, lmmse]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # BPSK Two's Complement AirComp

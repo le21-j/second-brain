@@ -1,11 +1,13 @@
 ---
 title: Linear Regression
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [regression, least-squares, mle]
-sources: [[slides-46-regression]]
+sources:
+  - "[[slides-46-regression]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Linear Regression

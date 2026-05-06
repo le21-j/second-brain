@@ -1,11 +1,13 @@
 ---
 title: Weak Law of Large Numbers (WLLN)
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [wlln, lln, sample-mean, asymptotic]
-sources: [[slides-42-wlln]]
+sources:
+  - "[[slides-42-wlln]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Weak Law of Large Numbers (WLLN)

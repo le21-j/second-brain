@@ -1,11 +1,14 @@
 ---
 title: Maximum Likelihood Estimation (MLE)
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [mle, estimator, classical-statistics]
-sources: [[slides-44-mle-ci]], [[slides-46-regression]]
+sources:
+  - "[[slides-44-mle-ci]]"
+  - "[[slides-46-regression]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Maximum Likelihood Estimation (MLE)

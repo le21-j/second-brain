@@ -3,10 +3,11 @@ title: Slides — FFT Core Equations
 type: summary
 source_type: slides
 source_path: raw/slides/eee-404/fft_core_equations.pdf
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [fft, dft, dit, derivation]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Slides — FFT Core Equations

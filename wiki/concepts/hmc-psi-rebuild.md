@@ -1,11 +1,14 @@
 ---
 title: HMC $\psi$ Rebuild (vs Hedge-Style Additive Update)
 type: concept
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [research, regret-learning, hart-mas-colell, hedge, no-regret, game-theory, aircomp]
-sources: [[daily-2026-04-23-pluto-deployment-and-regret-learning]], [[paper-unregrettable-hpsr]]
+sources:
+  - "[[daily-2026-04-23-pluto-deployment-and-regret-learning]]"
+  - "[[paper-unregrettable-hpsr]]"
 created: 2026-04-24
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # HMC $\psi$ Rebuild (vs Hedge Additive Update)

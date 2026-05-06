@@ -1,11 +1,12 @@
 ---
 title: Brewster Angle
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [eee-341, electromagnetics, oblique-incidence, polarization]
 sources: [raw/slides/eee-341/lecture-3-8-critical-angle-total-internal-reflection-and-brewster-angle-12-08.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Brewster Angle

@@ -2,9 +2,10 @@
 title: Christopher Bishop
 type: person
 tags: [ml, probabilistic, prml, microsoft]
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-05-06
 ---
 
 # Christopher Bishop

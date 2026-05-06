@@ -4,7 +4,8 @@ type: summary
 source_type: slides
 source_path: raw/slides/eee-304/304final-1.pdf
 source_date: 2026-05-04
-course: [[eee-304]]
+course:
+  - "[[eee-304]]"
 tags: [eee-304, final, exam, source, transfer-function, steady-state, butterworth, roc, forward-euler, pam, tdm, phase-margin, sampled-data]
 created: 2026-05-04
 ---

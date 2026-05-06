@@ -1,11 +1,12 @@
 ---
 title: Snell's Laws of Reflection & Refraction
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [eee-341, electromagnetics, oblique-incidence, refraction]
 sources: [raw/slides/eee-341/lecture-3-3-snell-s-laws-of-reflection-and-refraction-18-09.pdf, raw/slides/eee-341/lecture-3-4-wave-reflection-and-transmission-at-oblique-incidence-perpendicular-.pdf, raw/slides/eee-341/lecture-3-6-wave-reflection-and-transmission-at-oblique-incidence-parallel-polar.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Snell's Laws

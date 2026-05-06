@@ -1,11 +1,14 @@
 ---
 title: Robust Signaling Layer — Gold/Golay/FEC/Sync
 type: concept
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [signaling, golay, gold-codes, zadoff-chu, polar-code, crc, ppdu, wifi]
-sources: [[paper-aircomp-feel-demo]], [[paper-aircomp-survey]]
+sources:
+  - "[[paper-aircomp-feel-demo]]"
+  - "[[paper-aircomp-survey]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Robust Signaling Layer

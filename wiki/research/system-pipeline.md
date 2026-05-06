@@ -1,11 +1,16 @@
 ---
 title: System Pipeline — AirComp with Regret-Learning Power Control
 type: research
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [aircomp, regret-learning, system-design, protocol, ppdu, wifi-inspired]
-sources: [[paper-unregrettable-hpsr]], [[paper-aircomp-feel-demo]], [[paper-aircomp-survey]], [[daily-2026-04-23-pluto-deployment-and-regret-learning]]
+sources:
+  - "[[paper-unregrettable-hpsr]]"
+  - "[[paper-aircomp-feel-demo]]"
+  - "[[paper-aircomp-survey]]"
+  - "[[daily-2026-04-23-pluto-deployment-and-regret-learning]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # System Pipeline

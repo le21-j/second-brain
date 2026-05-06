@@ -4,7 +4,8 @@ type: summary
 source_type: slides
 source_path: raw/slides/eee-404/m6-nn-1-introduction.pdf
 source_date: 2026-04-29
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [eee-404, neural-network, mlp, perceptron, backpropagation, training]
 created: 2026-04-29
 ---

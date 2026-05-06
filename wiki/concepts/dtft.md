@@ -1,11 +1,13 @@
 ---
 title: Discrete-Time Fourier Transform (DTFT)
 type: concept
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [dtft, fourier, fundamentals]
-sources: [[homework-2026-04-27-eee-404-hw5]]
+sources:
+  - "[[homework-2026-04-27-eee-404-hw5]]"
 created: 2026-04-27
-updated: 2026-04-27
+updated: 2026-05-06
 ---
 
 # Discrete-Time Fourier Transform (DTFT)

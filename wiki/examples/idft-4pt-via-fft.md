@@ -1,11 +1,13 @@
 ---
 title: Example — 4-pt IDFT via Forward FFT
 type: example
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [idft, fft]
-sources: [[slides-fft-idft]]
+sources:
+  - "[[slides-fft-idft]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Example — 4-point IDFT via Forward FFT

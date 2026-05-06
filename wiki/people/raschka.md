@@ -2,9 +2,10 @@
 title: Sebastian Raschka
 type: person
 tags: [teaching, dl, pytorch, lightning, sklearn]
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-05-06
 ---
 
 # Sebastian Raschka

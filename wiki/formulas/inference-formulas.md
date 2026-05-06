@@ -1,11 +1,15 @@
 ---
 title: Inference (Formula)
 type: formula
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [inference, bayesian, mle, hypothesis-testing]
-sources: [[slides-43.5-bayesian-inference]], [[slides-44-mle-ci]], [[slides-45-neyman-pearson]]
+sources:
+  - "[[slides-43.5-bayesian-inference]]"
+  - "[[slides-44-mle-ci]]"
+  - "[[slides-45-neyman-pearson]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Inference — Formula Sheet

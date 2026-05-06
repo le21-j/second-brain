@@ -4,10 +4,11 @@ type: summary
 source_type: article
 source_path: raw/articles/Distributed_Learning_over_a_Wireless_Network_with_FSK-Based_Majority_Vote.pdf
 source_date: 2021
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [aircomp, fsk, majority-vote, signsgd, feel, non-coherent]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Distributed Learning with FSK-Based Majority Vote (FSK-MV)

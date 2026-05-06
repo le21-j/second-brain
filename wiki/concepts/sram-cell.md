@@ -1,11 +1,12 @@
 ---
 title: 6T SRAM Cell
 type: concept
-course: [[eee-335]]
+course:
+  - "[[eee-335]]"
 tags: [memory, sram, latch, sizing, sedra-smith]
 sources: [raw/slides/eee-335/unit-3-lecture-16-the-sram-cell.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # 6T SRAM Cell

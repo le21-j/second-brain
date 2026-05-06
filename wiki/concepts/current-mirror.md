@@ -1,11 +1,12 @@
 ---
 title: Current Mirror
 type: concept
-course: [[eee-335]]
+course:
+  - "[[eee-335]]"
 tags: [current-mirror, biasing, ic-design, sedra-smith]
 sources: [raw/slides/eee-335/unit-4-lecture-20-ic-biasing.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Current Mirror

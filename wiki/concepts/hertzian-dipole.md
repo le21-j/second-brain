@@ -1,11 +1,12 @@
 ---
 title: Hertzian Dipole
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [eee-341, antennas, dipole, radiation]
 sources: [raw/slides/eee-341/lecture-6-2-the-hertzian-dipole-12-19.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Hertzian Dipole

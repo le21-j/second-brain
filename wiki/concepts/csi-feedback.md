@@ -1,11 +1,13 @@
 ---
 title: CSI feedback (CsiNet and descendants)
 type: concept
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 tags: [phy-ml, massive-mimo, csi, compression, autoencoder, csinet]
-sources: [[article-2026-04-23-physical-layer-ml-roadmap]]
+sources:
+  - "[[article-2026-04-23-physical-layer-ml-roadmap]]"
 created: 2026-04-23
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # CSI feedback — CsiNet and descendants

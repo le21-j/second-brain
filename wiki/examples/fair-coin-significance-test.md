@@ -1,12 +1,15 @@
 ---
 title: Fair-Coin Significance Test (HW7 11.1.6)
 type: example
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [significance-test, clt, binomial, worked-example]
-concept: [[significance-test]]
-sources: [[homework-2026-04-23-eee-350-hw7]]
+concept:
+  - "[[significance-test]]"
+sources:
+  - "[[homework-2026-04-23-eee-350-hw7]]"
 created: 2026-04-24
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Fair-Coin Significance Test — HW7 Problem 11.1.6

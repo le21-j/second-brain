@@ -1,11 +1,12 @@
 ---
 title: Plane Wave in Lossy Media & Skin Depth
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [eee-341, electromagnetics, plane-wave, attenuation, skin-depth]
 sources: [raw/slides/eee-341/lecture-2-5-plane-wave-propagation-in-lossy-media-9-44.pdf, raw/slides/eee-341/lecture-2-6-special-cases-of-lossy-media-12-02.pdf, raw/slides/eee-341/lecture-2-7-current-flow-in-a-good-conductor-15-40.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Plane Wave in Lossy Media

@@ -1,11 +1,12 @@
 ---
 title: Waveguide Modes — TEM, TE, TM
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [eee-341, waveguide, te-mode, tm-mode, tem]
 sources: [raw/slides/eee-341/lecture-5-3-general-relations-for-electric-and-magnetic-fields-in-waveguides-8-0.pdf, raw/slides/eee-341/lecture-5-4-guided-wave-modes-tem-te-and-tm-15-13.pdf, raw/slides/eee-341/lecture-5-5-tm-modes-in-rectangular-waveguide-15-13.pdf, raw/slides/eee-341/lecture-5-6-te-modes-in-rectangular-waveguide-17-49.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Waveguide Modes

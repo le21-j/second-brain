@@ -2,9 +2,10 @@
 title: Jakob Hoydis
 type: person
 tags: [nvidia, sionna, wireless-ml, neural-receiver, target-researcher]
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-05-06
 ---
 
 # Jakob Hoydis

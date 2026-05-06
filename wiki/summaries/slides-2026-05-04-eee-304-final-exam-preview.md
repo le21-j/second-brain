@@ -4,7 +4,8 @@ type: summary
 source_type: slides
 source_path: raw/slides/eee-304/Final_slides.pdf
 source_date: 2026-04-23
-course: [[eee-304]]
+course:
+  - "[[eee-304]]"
 tags: [eee-304, final, exam, preview, slides, transfer-function, butterworth, roc, euler, tustin, pam, tdm, fdm, feedback, sampled-data]
 created: 2026-05-04
 ---

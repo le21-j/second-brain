@@ -1,11 +1,13 @@
 ---
 title: Time-Division Multiplexing (TDM)
 type: concept
-course: [[eee-304]]
+course:
+  - "[[eee-304]]"
 tags: [eee-304, communication, multiplexing, tdm, pam, sampling]
-sources: [[homework-2026-04-26-eee-304-hw7]]
+sources:
+  - "[[homework-2026-04-26-eee-304-hw7]]"
 created: 2026-04-26
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Time-Division Multiplexing (TDM)

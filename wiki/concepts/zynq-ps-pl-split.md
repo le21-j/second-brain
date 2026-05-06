@@ -1,11 +1,13 @@
 ---
 title: Zynq-7010 PS/PL Split
 type: concept
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [research, pluto, zynq, fpga, arm, systemverilog, embedded, architecture]
-sources: [[daily-2026-04-23-pluto-deployment-and-regret-learning]]
+sources:
+  - "[[daily-2026-04-23-pluto-deployment-and-regret-learning]]"
 created: 2026-04-24
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Zynq-7010 PS/PL Split

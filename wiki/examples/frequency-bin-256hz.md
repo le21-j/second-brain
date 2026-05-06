@@ -1,11 +1,13 @@
 ---
 title: Example — 256 Hz Sinusoid, fs=8192, N=64
 type: example
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [fft, interpretation, frequency]
-sources: [[slides-fft-interpretation]]
+sources:
+  - "[[slides-fft-interpretation]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Example — Which Bins Contain a 256 Hz Tone?

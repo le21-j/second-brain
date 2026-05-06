@@ -1,11 +1,13 @@
 ---
 title: I.I.D. Samples
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [iid, independence, identically-distributed]
-sources: [[slides-39-multivariate-vectors]]
+sources:
+  - "[[slides-39-multivariate-vectors]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # I.I.D. Samples (Independent and Identically Distributed)

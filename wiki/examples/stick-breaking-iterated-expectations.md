@@ -1,11 +1,13 @@
 ---
 title: Example — Stick-Breaking via Iterated Expectations
 type: example
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [iterated-expectations, conditional-expectation]
-sources: [[slides-40-conditional-expectation]]
+sources:
+  - "[[slides-40-conditional-expectation]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Example — Stick-Breaking via Iterated Expectations

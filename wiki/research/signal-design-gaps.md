@@ -1,11 +1,19 @@
 ---
 title: Signal-Design Gaps in the Pipeline (Beacon / Sync / Data / Feedback)
 type: research
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [signal-design, beacon, sync, feedback, 6g, gap-analysis]
-sources: [[paper-rethinking-edge-ai-spm]], [[paper-experimental-ota-fl]], [[paper-channel-aware-constellation]], [[paper-itu-r-m2516]], [[paper-industrial-6g-ran]], [[paper-signal-peak-power]], [[paper-aircomp-feel-demo]]
+sources:
+  - "[[paper-rethinking-edge-ai-spm]]"
+  - "[[paper-experimental-ota-fl]]"
+  - "[[paper-channel-aware-constellation]]"
+  - "[[paper-itu-r-m2516]]"
+  - "[[paper-industrial-6g-ran]]"
+  - "[[paper-signal-peak-power]]"
+  - "[[paper-aircomp-feel-demo]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Signal-Design Gaps — Beacon, Sync, Data, Feedback

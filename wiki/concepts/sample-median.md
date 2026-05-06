@@ -1,11 +1,13 @@
 ---
 title: Sample Median
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [median, robust-statistics, order-statistics]
-sources: [[slides-46.5-descriptive-stats]]
+sources:
+  - "[[slides-46.5-descriptive-stats]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Sample Median

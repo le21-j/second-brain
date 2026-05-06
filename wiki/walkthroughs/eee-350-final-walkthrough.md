@@ -1,7 +1,8 @@
 ---
 title: EEE 350 Final — Module-by-Module Review (Random Signal Analysis)
 type: walkthrough
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [eee-350, finals, walkthrough, lecture-review, probability, statistics, framework-over-formulas, asymptotics, bayesian, mle, hypothesis-testing, regression, stochastic-process]
 sources:
   - raw/slides/eee-350/
@@ -21,7 +22,7 @@ sources:
   - [[summary-eee-350-m8-bernoulli-poisson-gaussian-rp]]
   - [[homework-2026-04-23-eee-350-hw7]]
 created: 2026-05-05
-updated: 2026-05-05
+updated: 2026-05-06
 ---
 
 # EEE 350 Final — Module-by-Module Review
@@ -30,16 +31,21 @@ updated: 2026-05-05
 >
 > The companion piece [[eee-350-hw7-walkthrough]] has fully-worked HW7 problems (significance test + LMSE/MMSE) — use this lecture-review for **what to memorize and where it lives**, then use HW7 for **how to drive the algebra on a specific problem**.
 
-> [!warning] **Course coverage.** EEE 350 finals are typically cumulative — slides **1–49**. This walkthrough now treats slides **1–37.5** (Modules 1–5) at the same depth as Modules 6–8: every slide gets its own subsection with building blocks, headline formulas, derivations, and practice. The early-semester topics — probability spaces, counting, discrete/continuous RVs, joint distributions, derived RVs, MGFs — are the **load-bearing primitives** Modules 6–8 are built on. The inference + asymptotics + LMSE arc still carries most of the partial-credit weight, but losing easy points to a misplaced integration limit on a Module-4 sub-step is the most common way to bomb a Module-7 problem.
+> [!warning] **Session scope (2026-05-06 study session).** Per Jayden's request, **this study session is locked to the 6 active topics** — set theory & probability (topic 1), discrete/continuous RVs (topic 2), multiple RVs (topic 3), CLT (topic 4), LLN (topic 5), statistical inference (topic 6). **Stochastic processes (topic 7) is DEFERRED** — moved to the *Appendix — Deferred / optional* section at the end of this document. Pick up the appendix only if time remains after the 6 active topics are solid. The course page [[eee-350]] still lists all 7 topics as the canonical syllabus — the demotion below is a study-session priority decision, not a syllabus change.
+
+> [!warning] **Course coverage.** EEE 350 finals are typically cumulative — slides **1–49**. This walkthrough treats slides **1–37.5** (Modules 1–5) at the same depth as Modules 6–7 (the active 6-topic spine for this session): every slide gets its own subsection with building blocks, headline formulas, derivations, and practice. The early-semester topics — probability spaces, counting, discrete/continuous RVs, joint distributions, derived RVs, MGFs — are the **load-bearing primitives** Modules 6–7 are built on. The inference + asymptotics + LMSE arc carries most of the partial-credit weight in this session's primary scope, but losing easy points to a misplaced integration limit on a Module-4 sub-step is the most common way to bomb a Module-6/7 problem. **Stochastic-process material (slide 47, Modules 8 / slides 47.5–49) is preserved at the bottom of this document under the "Deferred / optional" appendix.**
 
 ---
 
 ## Quick study strategy (read once, then go)
 
-1. **Build the cheat sheet first.** Five anchor blocks: covariance + variance-of-sum, conditional-expectation toolkit (tower + total-variance + random sum), Chebyshev/WLLN/CLT three-scaling table, Bayesian-vs-classical inference table (MAP / LMS / LMSE / MLE / NP-LRT), stochastic-process zoo. See "Master Cheat Sheet" at the end.
-2. **Re-do the headline practice problems.** Six examples that cover 80% of the testable surface: HW7 11.1.6 ([[fair-coin-significance-test]]), HW7 12.2.3 ([[lmse-discrete-pmf]]), HW7 12.2.6 ([[mmse-vs-lmse-erlang]]), Polling sample size ([[polling-sample-size]]), MAP-detection antipodal ([[map-detection-antipodal]]), MLE for exponential rate ([[mle-for-exponential-rate]]).
+> [!note] **Scope reminder.** This study session targets the **6 active topics** (1–6). Stochastic-process content (block 6 of the cheat sheet, "process zoo") is the **deferred appendix** — fine to glance at if the cheat sheet asks for it, but not part of the primary review.
+
+1. **Build the cheat sheet first.** Four anchor blocks for active scope: covariance + variance-of-sum, conditional-expectation toolkit (tower + total-variance + random sum), Chebyshev/WLLN/CLT three-scaling table, Bayesian-vs-classical inference table (MAP / LMS / LMSE / MLE / NP-LRT). The **stochastic-process zoo** is on the cheat sheet too but is appendix-tier for this session. See "Master Cheat Sheet" at the end.
+2. **Re-do the headline practice problems.** Six examples that cover 80% of the active-topic testable surface: HW7 11.1.6 ([[fair-coin-significance-test]]), HW7 12.2.3 ([[lmse-discrete-pmf]]), HW7 12.2.6 ([[mmse-vs-lmse-erlang]]), Polling sample size ([[polling-sample-size]]), MAP-detection antipodal ([[map-detection-antipodal]]), MLE for exponential rate ([[mle-for-exponential-rate]]).
 3. **Drill the gotcha bank** ([[prob-gotchas]]) — 5 minutes, all easy points if internalized: uncorrelated $\neq$ independent; $E[X\mid Y]$ is a RV; CLT vs standardization; $\alpha$ refers to *experiments*, not flips; $\text{Var}(cX) = c^2\text{Var}(X)$.
 4. **Practice the variance-decomposition reflex.** Law of total variance and the random-sum two-term variance formula are the single biggest source of partial-credit losses — they always look "easy" until you forget the second term.
+5. **(Deferred — only if time.)** If the 6 active topics are solid and there's time before the exam, jump to the *Appendix — Deferred / optional* at the bottom for stochastic processes (Poisson process counts, Bernoulli interarrival, Gaussian RPs).
 
 ---
 
@@ -48,6 +54,8 @@ updated: 2026-05-05
 > [!warning] **Don't memorize 40 formulas. Memorize 5 patterns.** Every problem on this exam — joint moments, conditional expectation, asymptotic bounds, Bayesian estimation, hypothesis test, regression line, Poisson rate — is generated by the **same small set of building blocks**. Tepedelenlioglu writes problems that tweak the setup slightly (swap discrete/continuous; ask for $\hat X_L(Y)$ instead of $\hat Y_L(X)$; switch from MAP to LMS to LMSE; change the prior; use Chebyshev when CLT is tighter) specifically to catch students who pattern-match a memorized formula instead of deriving from the framework. The students who survive **draw the joint distribution, name the framework piece, then chug.** Five concepts beats forty formulas.
 
 ### The 5 patterns that generate every formula in EEE 350
+
+> [!note] **Active scope vs deferred.** Patterns 1–4 below are the **active study targets** for this session (topics 1–6). Pattern 5 (stochastic processes) is **deferred** for this session — keep it in the framework for completeness, but skip the deep dive unless time permits. See appendix at the bottom.
 
 1. **Bilinearity of expectation, covariance, and variance.** Every algebraic identity in Modules 6–7 reduces to:
    - **$E[\sum c_i X_i] = \sum c_i E[X_i]$** (linearity, no independence needed).
@@ -99,6 +107,8 @@ updated: 2026-05-05
 ---
 
 ## Module 1 — Probability spaces & conditional probability (slides 1–6)
+
+> [!example] **Module practice problems (from textbook video list).** Five problems from the Canvas Module 1 video list: 1.4.2 die roll conditional, 2.1.3 free-throw total prob, 2.1.5 HIV-test Bayes, 2.2.12 basketball lineup counting, 2.3.1 binary codeword. Full step-by-step solutions in [[eee-350-module-01-probability-set-theory-walkthrough]].
 
 ### Slide 1 + 2 — Intro examples + set theory review
 
@@ -169,6 +179,8 @@ $$P(B_i \mid A) = \frac{P(A \mid B_i)\,P(B_i)}{P(A)} = \frac{P(A \mid B_i)\,P(B_
 ---
 
 ## Module 2 — Independence, counting & discrete RVs (slides 7–14)
+
+> [!example] **Module practice problems (from textbook video list).** Eleven problems from Canvas Module 2: 3.2.2, 3.2.11, 3.3.3, 3.3.11, 3.3.14, 3.3.18, 3.4.1, 3.4.3, 3.5.15, 3.6.6, 3.8.5. Discrete-RV PMFs/CDFs, binomial/geometric/negative-binomial recipes. Full solutions in [[eee-350-module-02-discrete-rvs-walkthrough]].
 
 ### Slide 7 — Conditioning and independence
 
@@ -261,6 +273,8 @@ $$\text{Var}(X) = E[(X - \mu)^2] = E[X^2] - E[X]^2$$
 
 ## Module 3 — Continuous RVs, PDFs, CDFs, common distributions (slides 16–22)
 
+> [!example] **Module practice problems (from textbook video list).** Ten problems from Canvas Module 3: 4.2.4, 4.3.2, 4.4.6, 4.5.13, 4.5.10, 4.6.1, 4.7.2, 4.7.3, 6.3.4, 7.2.4. Continuous PDFs/CDFs, mixed RVs with delta functions, Gaussian probability via Q-table, clipper as derived-RV mixed output. Full solutions in [[eee-350-module-03-continuous-rvs-walkthrough]].
+
 ### Slide 16 — Conditioning a PMF on an event
 
 For $X$ discrete and event $A$ with $P(A) > 0$:
@@ -349,6 +363,8 @@ A RV can be **part discrete, part continuous** — e.g., a clipped signal $Y = \
 ---
 
 ## Module 4 — Joint distributions, marginals, conditioning, independence (slides 23–32)
+
+> [!example] **Module practice problems (from textbook video list).** Fifteen problems from Canvas Module 4 (one slot has no 3rd-ed equivalent): 5.1.1, 5.2.4, 5.3.5, 5.4.2, 5.5.5, 6.1.5, 6.4.4, 6.4.6, 7.3.5, 7.4.5, 7.5.6, 5.7.4, 5.7.7, 9.1.1. Joint CDF/PDF/PMF, marginals, conditional densities, max/min/ratio derived RVs. Full solutions in [[eee-350-module-04-multiple-rvs-walkthrough]].
 
 ### Slide 23 — Joint CDF / PDF / PMF
 
@@ -460,6 +476,8 @@ This is just integrating the joint $f_{X,Y} = f_{X\mid Y}\,f_Y$ over $y$ — but
 ---
 
 ## Module 5 — Bayes for RVs, derived RVs, sums (slides 33–37.5)
+
+> [!example] **Module practice problems (from textbook video list).** Three problems from Canvas Module 5: 9.1.5 (variance of $X+Y$ on triangle support — covariance trap), 6.5.6 (PDF of sum via CDF method), 9.2.1 (Laplace MGF). Full solutions in [[eee-350-module-05-derived-rvs-sums-walkthrough]].
 
 ### Slide 33 — Bayes' rule versions for PMF/PDF
 
@@ -611,6 +629,8 @@ Direct convolution proof (bypass MGFs):
 # Module 6 — Moments & dependence + asymptotic theorems (slides 38–43)
 
 > [!example] **Module 6 in one breath.** Two RVs become a vector; vectors get correlated; dependence is measured by **covariance** (raw) or **correlation** (normalized); summing many of them concentrates around the mean (**WLLN**) and fluctuates Gaussian (**CLT**). Conditional expectation is a *random variable* (function of $Y$) and the **tower** + **total-variance** + **random-sum** identities make everything tractable. Five anchor concepts: [[covariance]], [[bivariate-gaussian]], [[conditional-expectation]], [[chebyshev-inequality]], [[central-limit-theorem]].
+
+> [!example] **Module practice problems (from textbook video list).** Six problems from Canvas Module 6: 9.2.4 (Gaussian moments via MGF), 9.2.5 (discrete uniform — derive $\sum k$ and $\sum k^2$), 9.3.4 (chess tournament MGF), 9.4.1 (random sum: Geometric × Exponential), 9.5.1 (CLT for disk access time), 9.5.4 (improved CLT / continuity correction for Poisson). Full solutions in [[eee-350-module-06-clt-lln-mgf-walkthrough]].
 
 ## Slide 38 — Covariance & correlation coefficient
 
@@ -805,9 +825,13 @@ $$n \approx \left(\frac{z_{\alpha/2}}{\varepsilon}\right)^2\cdot p(1-p) \leq \le
 
 ---
 
-# Module 7 — Inference + descriptive stats + stochastic processes intro (slides 43.5–47)
+# Module 7 — Inference + descriptive stats (slides 43.5–46.5)
+
+> [!note] **Active scope.** This is the **headline review topic** for this study session — topic 6 (statistical inference) on the official syllabus. MAP / LMS / LMSE / MLE / Neyman-Pearson / regression / descriptive stats. Slide 47 (stochastic processes intro) is split out into the *Appendix — Deferred / optional* at the bottom of this document.
 
 > [!example] **Module 7 in one breath.** Two-column inference table — **Bayesian** (you have a prior on $\theta$) vs **classical** (you don't, $\theta$ is deterministic). Bayesian gives MAP / LMS / LMSE. Classical gives MLE / confidence interval / Neyman-Pearson LRT. Then the regression line falls out as MLE under Gaussian noise. Sample statistics estimate population moments via WLLN. Stochastic-process intro names the three families and Markov chains.
+
+> [!example] **Module practice problems (from textbook video list).** Eleven problems from Canvas Module 7 (one slot ✗ has no 3rd-ed equivalent): 10.1.2 (sample-mean variance + CLT), 10.3.1 (sample size: Chebyshev vs CLT), 10.1.4 (sample mean of differences), 11.1.1 (significance test for fair coin), 11.3.1 (MAP/ML decoding ternary ASK in AWGN), 12.1.3 (blind/conditional MMSE), 12.1.4 (MMSE estimates from joint $6(y-x)$), 12.1.5 (MMSE conditional MSE — uniform triangle), 12.2.6 (MMSE/LMSE — Erlang then conditional uniform), 12.3.3 (MMSE/MAP/ML for exponential rate from Poisson count). Full solutions with the LMSE-equals-MMSE-when-affine punchline in [[eee-350-module-07-statistical-inference-walkthrough]]. **⭐ highest-priority module — biggest gap zone for tomorrow's exam.**
 
 ## Slide 43.5 — Bayesian inference (MAP, LMS, antipodal example)
 
@@ -1050,89 +1074,13 @@ $$s_{xy} = \frac{1}{n-1}\sum(x_i - \bar x)(y_i - \bar y), \quad r_{xy} = s_{xy}/
 
 ---
 
-## Slide 47 — Stochastic processes intro
-
-### What's tested
-Recognize white Gaussian process, Poisson process, Markov chain; identify **stationary vs non-stationary**; compute Poisson interarrival / count probabilities.
-
-### Headline formulas to memorize
-
-**White Gaussian process (discrete-time):** $X[n] \sim N(0, \sigma^2)$ i.i.d.
-
-**Poisson process** (rate $\lambda$):
-- Inter-arrival $T_i \sim \text{Exp}(\lambda)$ i.i.d. $\Rightarrow E[T_i] = 1/\lambda$.
-- $N(t) \sim \text{Poisson}(\lambda t)$, so $E[N(t)] = \text{Var}(N(t)) = \lambda t$.
-- $N(t + \tau) - N(t) \sim \text{Poisson}(\lambda\tau)$, independent of past.
-- Memorylessness: $P(\text{wait} > s + t \mid \text{wait} > s) = P(\text{wait} > t)$.
-
-**Markov chain:** $P(s_{t+1}\mid s_t, s_{t-1}, \ldots) = P(s_{t+1}\mid s_t)$. Transition matrix $P_{ij}$.
-
-### Practice — what to drill
-
-> [!example] **Poisson process counts (slide 47 worked example).** Calls arrive at $\lambda = 3$ per minute. Find $P(\text{exactly 5 calls in 2 minutes})$.
->
-> $N(2) \sim \text{Poisson}(6)$. $P(N = 5) = e^{-6}\cdot 6^5/5! \approx 0.161$. **Answer:** $\approx 16\%$.
-
-> [!example] **Good/Bad channel Markov model (slide 47).** Two states $\{G, B\}$. $P_{GB} = 0.05$, $P_{BG} = 0.5$. Find stationary $\pi$.
->
-> Solve $\pi P = \pi$, $\pi_G + \pi_B = 1$: $\pi_G\cdot 0.05 = \pi_B\cdot 0.5 \Rightarrow \pi_G = 10\pi_B \Rightarrow \pi_G = 10/11$, $\pi_B = 1/11$. **Answer:** Stationary $\pi = (10/11, 1/11)$.
-
-> [!warning] **Gotcha — "Poisson" vs "Poisson process".** The first is a *distribution*; the second is a *process whose counts have* that distribution. Don't say "Poisson process of mean 5" when you mean "$N(t)$ with $\lambda t = 5$."
+> [!warning] **Slide 47 (Stochastic processes intro) — DEFERRED.** This slide's content (white Gaussian process, Poisson process, Markov chain, stationary vs non-stationary) has been **relocated to the *Appendix — Deferred / optional* at the bottom of this document**. Pick it up only if the 6 active topics are solid and time permits.
 
 ---
 
-# Module 8 — Stochastic process families (slides 47.5–49)
+# ~~Module 8~~ — DEFERRED (relocated to appendix)
 
-> [!example] **Module 8 in one breath.** Three workhorse process families: **Gaussian RPs** (continuous-time, second-order describes everything; WSS = SSS), **Bernoulli process** (discrete-time i.i.d. trials), **Poisson process** (continuous-time, exponential interarrivals). The final commonly asks for a numerical $P(\text{count} = k)$ or interarrival probability.
-
-## Slide 47.5 — Gaussian random processes
-
-### Building blocks
-- Any finite collection $X(t_1), \ldots, X(t_n)$ is jointly Gaussian.
-- Fully described by **mean function $\mu(t)$** and **autocovariance $K(s, t) = E[(X(s) - \mu(s))(X(t) - \mu(t))]$**.
-- **WSS Gaussian = SSS Gaussian** — only first two moments matter.
-
-### Practice — what to drill
-
-> [!example] **WGN: $X[n] \sim N(0, \sigma^2)$ i.i.d.** $K(m, n) = \sigma^2\delta_{mn}$. Filtering with a moving-average kernel produces **colored noise** — still Gaussian but correlated.
-
----
-
-## Slide 48 — Bernoulli process
-
-### Building blocks
-- Discrete time $\{X_n\}_{n \geq 1}$, each $X_n \sim \text{Bernoulli}(p)$ i.i.d.
-- **Successes in $n$ trials:** $S_n \sim \text{Binomial}(n, p)$.
-- **Inter-arrival** (gap to next success): $\sim \text{Geometric}(p)$ — memoryless.
-- **Time of $k$-th arrival:** $\sim \text{NegativeBinomial}(k, p)$.
-
-### Practice — what to drill
-
-> [!example] **Bernoulli process — geometric inter-arrival.** Coin flips with $p = 0.3$. Expected flips until first head?
->
-> $E[T_1] = 1/p = 1/0.3 \approx 3.33$. $\text{Var}(T_1) = (1-p)/p^2 \approx 7.78$. **Answer:** $\approx 3.33$ flips.
-
----
-
-## Slide 49 — Poisson process (full slide deck)
-
-### Building blocks (same as slide 47, deeper)
-- $N(t) \sim \text{Poisson}(\lambda t)$.
-- $T_i \sim \text{Exp}(\lambda)$ i.i.d. inter-arrivals.
-- **Independent increments** in disjoint intervals.
-- **Sum of independent Poisson processes** (rates $\lambda_1, \lambda_2$) is Poisson rate $\lambda_1 + \lambda_2$.
-
-### Practice — what to drill
-
-> [!example] **Poisson process — superposition.** Calls arrive from two cell sites at $\lambda_1 = 4$/min and $\lambda_2 = 6$/min, independently. Combined rate?
->
-> Combined process is Poisson with $\lambda = 10$/min. $E[N_\text{combined}(2)] = 20$, $\text{Var} = 20$. **Answer:** Poisson rate $\lambda_1 + \lambda_2 = 10$/min.
-
-> [!example] **Memoryless waiting.** A bus arrives Poisson at $\lambda = 1/10$ minute$^{-1}$. You've been waiting 5 minutes. Expected additional wait?
->
-> By memorylessness, expected additional wait is still $1/\lambda = 10$ min. **Answer:** $10$ minutes (the past 5 min give no information).
-
-> [!warning] **Gotcha.** Don't confuse $N(t)$ (count in $[0, t]$) with $T_i$ (inter-arrival time). $N$ is integer-valued Poisson; $T$ is continuous Exp.
+> [!warning] **Module 8 (slides 47.5–49) — DEFERRED.** The Gaussian RP / Bernoulli process / Poisson process material has been **relocated to the *Appendix — Deferred / optional* at the bottom of this document**. Skip unless time permits after the 6 active topics are solid.
 
 ---
 
@@ -1197,7 +1145,9 @@ Recognize white Gaussian process, Poisson process, Markov chain; identify **stat
 | Power law | $\log y = \log a + \alpha\log x + \varepsilon$ |
 | Sample variance | $s^2 = (1/(n-1))\sum(x_i - \bar x)^2$ — unbiased |
 
-## Block 6 — Stochastic processes
+## Block 6 — Stochastic processes (DEFERRED — appendix-tier)
+
+> [!note] **Deferred for this study session.** Pick up only if time permits — full coverage moved to *Appendix — Deferred / optional* below. Table retained on the cheat sheet for completeness.
 
 | Process | Inter-arrival | Count | Memoryless? |
 |---|---|---|---|
@@ -1229,3 +1179,101 @@ Recognize white Gaussian process, Poisson process, Markov chain; identify **stat
 5. **In the exam.** First pass: bag the easy computational sub-questions (binomial moments, normal-tail, Poisson count). Second pass: partial-credit problems — **always state the framework piece you're using before driving the algebra** (e.g., "by the law of total variance," "by the LMSE formula with denominator $\text{Var}(Y)$"). Third pass: hardest derivation. **Show work** — partial credit is huge.
 
 > [!tip] **Time strategy.** Roughly 1 minute per point. If a question is taking 2× its point-value in minutes, mark it and move on. Come back at the end.
+
+---
+
+# Appendix — Deferred / optional (Stochastic processes — topic 7)
+
+> [!warning] **DEFERRED for this study session — not in primary scope. Pick up only if time permits.** Per Jayden's 2026-05-06 update, stochastic processes is **parked, not dropped**. The course page [[eee-350]] still lists this as canonical syllabus topic 7; the demotion here is a session-priority decision. The full content is preserved below for whenever the active 6-topic spine is solid and there's time to circle back.
+
+> [!example] **What's in this appendix.** Slide 47 (Stochastic processes intro — white Gaussian process, Poisson process, Markov chain, stationarity) and Module 8 (slides 47.5–49 — Gaussian random processes, Bernoulli process, Poisson process deeper). All formulas, examples, and gotchas are intact — same depth as the primary review for the 6 active topics. Skip on first pass.
+
+---
+
+## A.1 — Slide 47 — Stochastic processes intro (DEFERRED)
+
+### What's tested
+Recognize white Gaussian process, Poisson process, Markov chain; identify **stationary vs non-stationary**; compute Poisson interarrival / count probabilities.
+
+### Headline formulas to memorize
+
+**White Gaussian process (discrete-time):** $X[n] \sim N(0, \sigma^2)$ i.i.d.
+
+**Poisson process** (rate $\lambda$):
+- Inter-arrival $T_i \sim \text{Exp}(\lambda)$ i.i.d. $\Rightarrow E[T_i] = 1/\lambda$.
+- $N(t) \sim \text{Poisson}(\lambda t)$, so $E[N(t)] = \text{Var}(N(t)) = \lambda t$.
+- $N(t + \tau) - N(t) \sim \text{Poisson}(\lambda\tau)$, independent of past.
+- Memorylessness: $P(\text{wait} > s + t \mid \text{wait} > s) = P(\text{wait} > t)$.
+
+**Markov chain:** $P(s_{t+1}\mid s_t, s_{t-1}, \ldots) = P(s_{t+1}\mid s_t)$. Transition matrix $P_{ij}$.
+
+### Practice — what to drill
+
+> [!example] **Poisson process counts (slide 47 worked example).** Calls arrive at $\lambda = 3$ per minute. Find $P(\text{exactly 5 calls in 2 minutes})$.
+>
+> $N(2) \sim \text{Poisson}(6)$. $P(N = 5) = e^{-6}\cdot 6^5/5! \approx 0.161$. **Answer:** $\approx 16\%$.
+
+> [!example] **Good/Bad channel Markov model (slide 47).** Two states $\{G, B\}$. $P_{GB} = 0.05$, $P_{BG} = 0.5$. Find stationary $\pi$.
+>
+> Solve $\pi P = \pi$, $\pi_G + \pi_B = 1$: $\pi_G\cdot 0.05 = \pi_B\cdot 0.5 \Rightarrow \pi_G = 10\pi_B \Rightarrow \pi_G = 10/11$, $\pi_B = 1/11$. **Answer:** Stationary $\pi = (10/11, 1/11)$.
+
+> [!warning] **Gotcha — "Poisson" vs "Poisson process".** The first is a *distribution*; the second is a *process whose counts have* that distribution. Don't say "Poisson process of mean 5" when you mean "$N(t)$ with $\lambda t = 5$."
+
+---
+
+## A.2 — Module 8 — Stochastic process families (slides 47.5–49) (DEFERRED)
+
+> [!example] **Module 8 in one breath.** Three workhorse process families: **Gaussian RPs** (continuous-time, second-order describes everything; WSS = SSS), **Bernoulli process** (discrete-time i.i.d. trials), **Poisson process** (continuous-time, exponential interarrivals). The final commonly asks for a numerical $P(\text{count} = k)$ or interarrival probability.
+
+### A.2.1 — Slide 47.5 — Gaussian random processes
+
+**Building blocks**
+- Any finite collection $X(t_1), \ldots, X(t_n)$ is jointly Gaussian.
+- Fully described by **mean function $\mu(t)$** and **autocovariance $K(s, t) = E[(X(s) - \mu(s))(X(t) - \mu(t))]$**.
+- **WSS Gaussian = SSS Gaussian** — only first two moments matter.
+
+**Practice — what to drill**
+
+> [!example] **WGN: $X[n] \sim N(0, \sigma^2)$ i.i.d.** $K(m, n) = \sigma^2\delta_{mn}$. Filtering with a moving-average kernel produces **colored noise** — still Gaussian but correlated.
+
+---
+
+### A.2.2 — Slide 48 — Bernoulli process
+
+**Building blocks**
+- Discrete time $\{X_n\}_{n \geq 1}$, each $X_n \sim \text{Bernoulli}(p)$ i.i.d.
+- **Successes in $n$ trials:** $S_n \sim \text{Binomial}(n, p)$.
+- **Inter-arrival** (gap to next success): $\sim \text{Geometric}(p)$ — memoryless.
+- **Time of $k$-th arrival:** $\sim \text{NegativeBinomial}(k, p)$.
+
+**Practice — what to drill**
+
+> [!example] **Bernoulli process — geometric inter-arrival.** Coin flips with $p = 0.3$. Expected flips until first head?
+>
+> $E[T_1] = 1/p = 1/0.3 \approx 3.33$. $\text{Var}(T_1) = (1-p)/p^2 \approx 7.78$. **Answer:** $\approx 3.33$ flips.
+
+---
+
+### A.2.3 — Slide 49 — Poisson process (full slide deck)
+
+**Building blocks (same as slide 47, deeper)**
+- $N(t) \sim \text{Poisson}(\lambda t)$.
+- $T_i \sim \text{Exp}(\lambda)$ i.i.d. inter-arrivals.
+- **Independent increments** in disjoint intervals.
+- **Sum of independent Poisson processes** (rates $\lambda_1, \lambda_2$) is Poisson rate $\lambda_1 + \lambda_2$.
+
+**Practice — what to drill**
+
+> [!example] **Poisson process — superposition.** Calls arrive from two cell sites at $\lambda_1 = 4$/min and $\lambda_2 = 6$/min, independently. Combined rate?
+>
+> Combined process is Poisson with $\lambda = 10$/min. $E[N_\text{combined}(2)] = 20$, $\text{Var} = 20$. **Answer:** Poisson rate $\lambda_1 + \lambda_2 = 10$/min.
+
+> [!example] **Memoryless waiting.** A bus arrives Poisson at $\lambda = 1/10$ minute$^{-1}$. You've been waiting 5 minutes. Expected additional wait?
+>
+> By memorylessness, expected additional wait is still $1/\lambda = 10$ min. **Answer:** $10$ minutes (the past 5 min give no information).
+
+> [!warning] **Gotcha.** Don't confuse $N(t)$ (count in $[0, t]$) with $T_i$ (inter-arrival time). $N$ is integer-valued Poisson; $T$ is continuous Exp.
+
+---
+
+> [!tip] **Re-entry signal.** When Jayden says "ok let's pick up stochastic" — start at A.1 above (Slide 47 intro), then walk A.2.1 → A.2.2 → A.2.3 in order. The Poisson process pieces (A.1 + A.2.3) are the highest-yield drill targets — Tepedelenlioglu's exam questions on this topic are almost always Poisson interarrival or count probabilities.

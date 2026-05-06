@@ -1,11 +1,13 @@
 ---
 title: Chi-Squared Test (for Variance)
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [chi-squared, hypothesis-testing, variance]
-sources: [[slides-45-neyman-pearson]]
+sources:
+  - "[[slides-45-neyman-pearson]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Chi-Squared Test (for Variance)

@@ -1,11 +1,14 @@
 ---
 title: Conjugate Symmetry (Real-Valued DFT)
 type: concept
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [fft, real-valued, symmetry]
-sources: [[slides-fft-interpretation]], [[slides-fft-real-valued-signal]]
+sources:
+  - "[[slides-fft-interpretation]]"
+  - "[[slides-fft-real-valued-signal]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Conjugate Symmetry

@@ -2,9 +2,10 @@
 title: Kevin Murphy
 type: person
 tags: [ml, probabilistic, pml, google-deepmind]
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-05-06
 ---
 
 # Kevin Murphy

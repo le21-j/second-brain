@@ -1,11 +1,12 @@
 ---
 title: Friis Transmission Formula
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [eee-341, antennas, link-budget, path-loss]
 sources: [raw/slides/eee-341/lecture-6-6-friis-transmission-formula-4-07.pdf, raw/slides/eee-341/lecture-6-5-effective-area-of-a-receiving-antenna-2-47.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Friis Transmission Formula

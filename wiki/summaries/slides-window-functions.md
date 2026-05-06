@@ -3,10 +3,11 @@ title: Slides — Window Functions
 type: summary
 source_type: slides
 source_path: raw/slides/eee-404/window_functions.pdf
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [dsp, stft, window, leakage]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Slides — Window Functions

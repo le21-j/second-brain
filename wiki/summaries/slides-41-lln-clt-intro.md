@@ -3,10 +3,11 @@ title: Slides 41 — LLN/CLT Intro, Convergence
 type: summary
 source_type: slides
 source_path: raw/slides/eee-350/41 LLN CLT Intro, Convergence.pptx
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [asymptotic, chebyshev, convergence]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Slides 41 — LLN/CLT Intro, Convergence

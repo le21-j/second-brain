@@ -4,10 +4,11 @@ type: summary
 source_type: labs
 source_path: raw/labs/eee-404/project-2-lab-manual.pdf
 source_date: 2026-05-02
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [eee-404, project, fft, stft, windowing, vowel-analysis, pitch-detection, formant, stm32, cmsis]
 created: 2026-05-02
-updated: 2026-05-02
+updated: 2026-05-06
 ---
 
 # EEE 404 Project 2 — Applications of Fast Fourier Transform

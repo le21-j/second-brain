@@ -4,10 +4,11 @@ type: summary
 source_type: article
 source_path: raw/articles/A_Survey_on_Over-the-Air_Computation.pdf
 source_date: 2023
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [aircomp, survey, nomographic-functions, csi, synchronization]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # A Survey on Over-the-Air Computation

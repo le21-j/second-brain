@@ -4,10 +4,11 @@ type: summary
 source_type: homework
 source_path: raw/homework/hw5.pdf
 source_date: 2026-04-27
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [eee-404, homework, dtft, dft, fft, windowing, hamming, rectangular, frequency-resolution, butterfly, stm32]
 created: 2026-04-27
-updated: 2026-04-27
+updated: 2026-05-06
 ---
 
 # EEE 404 HW5 — Windowing, Resolution & FFT Compute Budget

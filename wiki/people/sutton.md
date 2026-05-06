@@ -2,9 +2,10 @@
 title: Richard Sutton
 type: person
 tags: [rl, canon, alberta, deepmind]
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-05-06
 ---
 
 # Richard Sutton

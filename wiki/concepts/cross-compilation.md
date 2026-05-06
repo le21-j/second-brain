@@ -1,11 +1,13 @@
 ---
 title: Cross-Compilation
 type: concept
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [toolchain, embedded, arm, gcc, build]
-sources: [[daily-2026-04-23-sdr-toolchain-questions]]
+sources:
+  - "[[daily-2026-04-23-sdr-toolchain-questions]]"
 created: 2026-04-24
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Cross-Compilation

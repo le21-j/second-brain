@@ -4,7 +4,8 @@ type: summary
 source_type: slides
 source_path: raw/slides/eee-350/
 source_date: 2026-04-29
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [eee-350, slides, backfill, probability-foundations, discrete-rv, continuous-rv, joint-distributions, derived-rv, bayes]
 created: 2026-04-29
 ---

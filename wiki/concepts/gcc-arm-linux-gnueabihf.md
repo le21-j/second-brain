@@ -1,11 +1,13 @@
 ---
 title: gcc-arm-linux-gnueabihf (Pluto Cross-Compiler)
 type: concept
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [toolchain, gcc, arm, pluto, embedded]
-sources: [[daily-2026-04-23-sdr-toolchain-questions]]
+sources:
+  - "[[daily-2026-04-23-sdr-toolchain-questions]]"
 created: 2026-04-24
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # gcc-arm-linux-gnueabihf

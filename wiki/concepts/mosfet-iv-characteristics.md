@@ -1,11 +1,12 @@
 ---
 title: MOSFET I–V Characteristics
 type: concept
-course: [[eee-335]]
+course:
+  - "[[eee-335]]"
 tags: [mosfet, nmos, pmos, triode, saturation, sedra-smith]
 sources: [raw/slides/eee-335/unit-1-lecture-1-mos-transistor-structure-and-operation.pdf, raw/slides/eee-335/unit-1-lecture-2-current-voltage-characteristics.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # MOSFET I–V Characteristics

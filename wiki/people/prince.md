@@ -2,9 +2,10 @@
 title: Simon Prince
 type: person
 tags: [teaching, dl, understanding-deep-learning, computer-vision]
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-05-06
 ---
 
 # Simon Prince

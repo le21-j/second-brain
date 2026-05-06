@@ -13,6 +13,26 @@ Ops: `ingest` · `query` · `practice` · `walkthrough` · `lint` · `setup` · 
 
 ---
 
+## [2026-05-06] walkthrough | EEE 350 per-module problem walkthroughs (Modules 1–7) from Canvas video lists
+- Wrote 7 per-module walkthrough pages — one per active module — solving every problem from the "Videos Containing Problems" lists on each Canvas Module Lecture-Materials page, mapped from 2nd-ed to 3rd-ed numbering using the instructor's parenthetical mapping on Canvas.
+- **Module 7 (statistical inference)** — `eee-350-module-07-statistical-inference-walkthrough.md`. 11 problems: 10.1.2, 10.3.1, 10.1.4, 11.1.1, 11.3.1, 12.1.3, 12.1.4, 12.1.5, 12.2.6, 12.3.3 (one slot has no 3rd-ed equiv — placeholder noted). MLE / MAP / LMSE / Neyman-Pearson + significance test. **Highest priority — biggest gap zone.**
+- **Module 6 (MGFs / Sums / CLT-LLN)** — `eee-350-module-06-clt-lln-mgf-walkthrough.md`. 6 problems: 9.2.4, 9.2.5, 9.3.4, 9.4.1, 9.5.1, 9.5.4. Gaussian moments via MGF, random-sum substitution identity, continuity correction.
+- **Module 5 (Derived RVs / Sums)** — `eee-350-module-05-derived-rvs-sums-walkthrough.md`. 3 problems: 9.1.5, 6.5.6, 9.2.1. Variance-of-sum with covariance trap, CDF method for non-independent sum, Laplace MGF.
+- **Module 4 (Multiple RVs)** — `eee-350-module-04-multiple-rvs-walkthrough.md`. 15 problems (one slot ✗ no 3rd-ed equiv): joint CDF, marginals, conditionals, independence, max/min/ratio. Biggest module.
+- **Module 3 (Continuous RVs)** — `eee-350-module-03-continuous-rvs-walkthrough.md`. 10 problems: continuous PMFs/CDFs, mixed RVs with delta-function PDFs, Gaussian probability via Q-table, clipper as derived-RV mixed output.
+- **Module 2 (Discrete RVs)** — `eee-350-module-02-discrete-rvs-walkthrough.md`. 11 problems: PMF normalization, Bernoulli/binomial/geometric/negative-binomial recipes, doubling-strategy gambling.
+- **Module 1 (Set theory + conditional prob)** — `eee-350-module-01-probability-set-theory-walkthrough.md`. 5 problems: conditional prob from die rolls, total prob (free throws), Bayes (HIV test), counting (basketball lineup), Bernoulli sequences.
+- **Stochastic-processes Module 8 deferred** per Jayden's request — not built.
+- All walkthroughs use the vault's framework-over-formulas style: building blocks named, "what to internalize vs memorize" tip callouts, gotcha warnings on every problem. LaTeX throughout.
+- Planning doc + progress log: [[daily-2026-05-06-eee-350-walkthrough-plan]].
+- Index + log + final-walkthrough cross-links updated; tutor-session files left untouched per task constraints.
+
+## [2026-05-06] tutor | MAP lecture (homework-driven, fallback to canonical examples)
+- Lecture 2 of EEE 350 final-prep tutor sequence — Maximum A Posteriori (Topic 6, statistical inference). Rendered to [[tutor-2026-05-06-live]] (Obsidian primary surface) and mirrored as Q6 in [[tutor-2026-05-06]] daily log.
+- **No EEE 350 HW problems on MAP exist in `raw/homework/`** (only EEE350_HW7 covers significance + MMSE/LMSE; HW7.pdf is EEE 304 AM-modulation). Used the canonical antipodal-AWGN MAP detector from [[slides-43.5-bayesian-inference]] as Section 1, plus a binary-symmetric-channel + Bernoulli-prior problem as Section 3. Flagged the fallback to Jayden in the live file.
+- Synced 5-block framework + likelihood-ratio direction gotcha to [[map-detection]]; added recognition cue + dropped-log-prior gotcha to [[map-estimation]]. Both pages already had `updated: 2026-05-06`.
+- Awaiting Jayden's "ready for LMSE" / "give me a problem" / "got it" signal before advancing.
+
 ## [2026-05-05] walkthrough | EEE 350 Final — Module-by-Module Review
 - Wrote `wiki/walkthroughs/eee-350-final-walkthrough.md` — cumulative final walkthrough following the user's request: "source from every lecture page" + "practice questions and things to look out for take the practice problems that he solves for on each module page"
 - Per-module structure (all modules at equal depth): each section names the 3–5 building blocks, lists headline formulas to memorize, then walks 1–4 representative practice problems lifted from the corresponding lecture summary's "Worked examples worth remembering" + the three EEE 350 practice sets ([[prob-fundamentals-set-01]], [[asymptotics-set-01]], [[inference-set-01]]) + HW7 worked examples
@@ -652,3 +672,11 @@ Big batch session. Three deliverables for the user, plus the wiki ingest.
   - Updated "five operations" → "six operations" and added `tutor` to the ops vocabulary.
 - **`index.md`:** added "Tutor sessions" subsection (between Daily research Q&A and Workload planning).
 - **`log.md`:** added `tutor` to the header ops list.
+
+## [2026-05-06] lint | Wiki frontmatter audit + repair
+
+- 435 files scanned across all `wiki/` subfolders (concepts, summaries, walkthroughs, examples, practice, formulas, research, courses, mistakes, people, tutor-sessions, notes).
+- 317 files repaired (sources/course/concept normalized to quoted-wiki-link block lists). 472 unquoted-single-wikilink fixes (mostly `course: [[xxx]]`) + 42 inline-comma-wikilink-list fixes (mostly `sources: [[a]], [[b]]`). All 317 had `updated:` bumped to 2026-05-06.
+- 118 files already clean — no changes.
+- 0 files with no frontmatter; 0 anomalies (BOM / tabs / missing close / etc.).
+- Re-audit after repair confirms 435/435 clean. See [[daily-2026-05-06-frontmatter-audit]] for the full report with before/after examples.

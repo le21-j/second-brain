@@ -1,11 +1,13 @@
 ---
 title: EEE 341 — Final Exam Walkthrough & Study Guide
 type: walkthrough
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [eee-341, walkthrough, final-exam, electromagnetics]
-sources: [[eee-341]]
+sources:
+  - "[[eee-341]]"
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # EEE 341 — Final Exam Walkthrough

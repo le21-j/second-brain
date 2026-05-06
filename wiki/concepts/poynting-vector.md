@@ -1,11 +1,12 @@
 ---
 title: Poynting Vector & EM Power Density
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [eee-341, electromagnetics, power, poynting]
 sources: [raw/slides/eee-341/lecture-2-8-electromagnetic-power-density-9-58.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Poynting Vector

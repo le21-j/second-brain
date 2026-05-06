@@ -2,9 +2,10 @@
 title: Andrew Ng
 type: person
 tags: [teaching, coursera, deeplearning-ai, stanford, ml-specialization]
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-05-06
 ---
 
 # Andrew Ng

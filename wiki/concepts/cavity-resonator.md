@@ -1,11 +1,12 @@
 ---
 title: Cavity Resonator
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [eee-341, waveguide, cavity, resonator, q-factor]
 sources: [raw/slides/eee-341/lecture-5-8-cavity-resonators-11-16.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Cavity Resonator

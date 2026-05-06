@@ -4,10 +4,11 @@ type: summary
 source_type: article
 source_path: raw/articles/6g-research/itu-r-m2516-imt2030.pdf
 source_date: 2022-11
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [itu, imt-2030, 6g, standardization, reference-signal]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # ITU-R M.2516-0 — IMT-2030 (6G) Framework

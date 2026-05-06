@@ -3,10 +3,11 @@ title: Slides 38 — Covariance and Correlation Coefficient
 type: summary
 source_type: slides
 source_path: raw/slides/eee-350/38 Covariance and Correlation Coeff.pptx
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [covariance, correlation, bivariate]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Slides 38 — Covariance & Correlation Coefficient

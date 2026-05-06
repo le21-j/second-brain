@@ -1,11 +1,13 @@
 ---
 title: EEE 304 HW7 — Cascaded Modulation, TDM-PAM, Chopper Amplifier (Walkthrough)
 type: walkthrough
-course: [[eee-304]]
+course:
+  - "[[eee-304]]"
 tags: [eee-304, homework, walkthrough, am, modulation, demodulation, pam, tdm, chopper-amplifier, fourier]
-sources: [[homework-2026-04-26-eee-304-hw7]]
+sources:
+  - "[[homework-2026-04-26-eee-304-hw7]]"
 created: 2026-04-26
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # EEE 304 HW7 — Walkthrough

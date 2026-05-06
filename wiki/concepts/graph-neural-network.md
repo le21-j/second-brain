@@ -1,11 +1,13 @@
 ---
 title: Graph neural network (GNN)
 type: concept
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 tags: [gnn, dl, graphs, message-passing, wireless-graphs]
-sources: [[article-2026-04-23-physical-layer-ml-roadmap]]
+sources:
+  - "[[article-2026-04-23-physical-layer-ml-roadmap]]"
 created: 2026-04-23
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Graph neural network (GNN)

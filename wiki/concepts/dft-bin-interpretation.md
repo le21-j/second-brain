@@ -1,11 +1,13 @@
 ---
 title: DFT Bin Interpretation (Which Bin = Which Frequency)
 type: concept
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [fft, interpretation, frequency]
-sources: [[slides-fft-interpretation]]
+sources:
+  - "[[slides-fft-interpretation]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # DFT Bin Interpretation

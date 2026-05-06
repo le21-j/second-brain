@@ -4,10 +4,11 @@ type: summary
 source_type: homework
 source_path: raw/homework/HW7.pdf
 source_date: 2026-04-26
-course: [[eee-304]]
+course:
+  - "[[eee-304]]"
 tags: [eee-304, homework, am, modulation, demodulation, pam, tdm, chopper-amplifier, fourier]
 created: 2026-04-26
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # EEE 304 HW7 — Cascaded AM, TDM-PAM, Chopper Amplifier

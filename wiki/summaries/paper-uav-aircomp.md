@@ -4,10 +4,11 @@ type: summary
 source_type: article
 source_path: raw/articles/UAV-Assisted_Over-the-Air_Computation.pdf
 source_date: 2021
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [aircomp, uav, trajectory-optimization, mse-minimization]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # UAV-Assisted Over-the-Air Computation

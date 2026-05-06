@@ -1,11 +1,13 @@
 ---
 title: Example — MAP Detection of Antipodal Signal
 type: example
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [map-detection, awgn, communications]
-sources: [[slides-43.5-bayesian-inference]]
+sources:
+  - "[[slides-43.5-bayesian-inference]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Example — MAP Detection of Antipodal Signal under AWGN

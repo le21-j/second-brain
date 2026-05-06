@@ -1,11 +1,14 @@
 ---
 title: Linear MMSE Estimation (LMSE / LLS)
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [estimation, lmse, lls, linear, moments]
-sources: [[homework-2026-04-23-eee-350-hw7]], [[slides-43.5-bayesian-inference]]
+sources:
+  - "[[homework-2026-04-23-eee-350-hw7]]"
+  - "[[slides-43.5-bayesian-inference]]"
 created: 2026-04-24
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Linear MMSE Estimation (LMSE / LLS)

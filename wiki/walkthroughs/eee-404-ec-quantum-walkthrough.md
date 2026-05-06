@@ -1,11 +1,13 @@
 ---
 title: EEE 404 Extra-Credit Lab — QFT vs DFT Speech Compression — Walkthrough + Report Skeleton
 type: walkthrough
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [eee-404, lab, extra-credit, walkthrough, quantum-computing, qft, dft, speech, compression, peak-picking, j-dsp]
-sources: [[summary-eee-404-ec-quantum-lab]]
+sources:
+  - "[[summary-eee-404-ec-quantum-lab]]"
 created: 2026-04-29
-updated: 2026-04-29
+updated: 2026-05-06
 ---
 
 # EEE 404 Extra-Credit Lab: QFT vs DFT Speech Compression — Walkthrough

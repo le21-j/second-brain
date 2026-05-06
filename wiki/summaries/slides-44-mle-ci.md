@@ -3,10 +3,11 @@ title: Slides 44 — MLE and Interval Estimation
 type: summary
 source_type: slides
 source_path: raw/slides/eee-350/44 MLE and Interval Estimation.pptx
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [mle, estimator, confidence-interval, classical-statistics]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Slides 44 — MLE and Interval Estimation

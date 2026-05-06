@@ -1,11 +1,13 @@
 ---
 title: Formant
 type: concept
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [eee-404, dsp, speech, vocal-tract, fft, spectral-envelope]
-sources: [[lab-eee-404-project-2-fft-applications]]
+sources:
+  - "[[lab-eee-404-project-2-fft-applications]]"
 created: 2026-05-02
-updated: 2026-05-02
+updated: 2026-05-06
 ---
 
 # Formant

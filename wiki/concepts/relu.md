@@ -1,11 +1,13 @@
 ---
 title: ReLU — Rectified Linear Unit
 type: concept
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [activation-function, neural-network, mlp, eee-404]
-sources: [[summary-eee-404-m6-neural-networks]]
+sources:
+  - "[[summary-eee-404-m6-neural-networks]]"
 created: 2026-04-29
-updated: 2026-04-29
+updated: 2026-05-06
 ---
 
 # ReLU — Rectified Linear Unit

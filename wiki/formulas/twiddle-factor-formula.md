@@ -1,11 +1,13 @@
 ---
 title: Twiddle Factor (Formula)
 type: formula
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [fft, twiddle]
-sources: [[slides-fft-core-equations]]
+sources:
+  - "[[slides-fft-core-equations]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Twiddle Factor — Formula

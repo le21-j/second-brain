@@ -1,2 +1,5 @@
 .obsidian/workspace.json
 Claude OAuth Token.md
+
+# Large binaries — exceeds GitHub 100 MB limit
+raw/textbook/*.pdf

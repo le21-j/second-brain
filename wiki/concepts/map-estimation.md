@@ -1,11 +1,13 @@
 ---
 title: MAP Estimation
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [bayesian, estimation, map]
-sources: [[slides-43.5-bayesian-inference]]
+sources:
+  - "[[slides-43.5-bayesian-inference]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # MAP Estimation (Maximum A Posteriori)
@@ -56,6 +58,10 @@ So pick your estimator based on what kind of error you care about.
 ## Common mistakes
 - **"MAP is optimal for estimation."** Only under 0–1 loss. Under MSE, LMS is optimal.
 - **Using MAP when the posterior is multimodal.** You get just one mode — may miss the other. Reporting the full posterior is safer.
+- **Dropping the $\log p(\theta)$ term in the derivative.** Continuous-$\theta$ MAP needs $\arg\max[\log p(x\mid\theta) + \log p(\theta)]$; differentiating drops the $+\log p(\theta)$ contribution if you forget. Without it you're silently doing MLE.
+
+## Recognition cue
+The word **"prior"** in the problem statement triggers MAP. No prior $\to$ MLE. Uniform/flat prior $\to$ MAP collapses to MLE. The word **"posterior"** or **"posterior mode"** in the requested estimator confirms it's MAP (vs LMS = posterior mean).
 
 ## Related
 - [[bayesian-inference]]

@@ -4,10 +4,11 @@ type: summary
 source_type: article
 source_path: raw/articles/HPSR_2026____Srini__Aruzhan__EET_Camera_Ready.pdf
 source_date: 2026
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [aircomp, regret-learning, game-theory, power-control, correlated-equilibrium]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Unregrettable Distributed Power Control in AirComp

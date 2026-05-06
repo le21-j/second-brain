@@ -1,11 +1,13 @@
 ---
 title: MAP Detection
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [bayesian, detection, map]
-sources: [[slides-43.5-bayesian-inference]]
+sources:
+  - "[[slides-43.5-bayesian-inference]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # MAP Detection (Maximum A Posteriori)
@@ -32,6 +34,18 @@ $$\hat\theta_{MAP}(x) = \arg\max_\theta p(\theta | x) = \arg\max_\theta p(x | \t
 
 (The denominator $p(x)$ doesn't depend on $\theta$, so it drops out of the argmax.)
 
+## Framework — 5 building blocks
+
+Every MAP detection problem decomposes into the same five blocks:
+
+1. **Posterior $\propto$ likelihood $\times$ prior.** $P(\theta \mid x) \propto p(x \mid \theta)\,P(\theta)$. Drop the normalizer $p(x)$ — it doesn't affect the argmax.
+2. **Argmax over $\theta$.** Compare unnormalized posteriors of each hypothesis; pick the largest.
+3. **Likelihood ratio test (binary form).** $\Lambda(x) = p(x \mid H_1)/p(x \mid H_0) \;\overset{H_1}{\underset{H_0}{\gtrless}}\; P(H_0)/P(H_1)$. **Note the flipped ratio direction** — likelihood numerator $H_1$, threshold numerator $P(H_0)$.
+4. **MAP = MLE under equal priors.** When $P(H_0) = P(H_1)$, the prior ratio drops to 1 and MAP collapses to maximum-likelihood detection. This is the "**threshold at zero**" sign-detector special case.
+5. **Log-domain trick.** For Gaussian / exponential likelihoods, take $\log$ on both sides of the LRT to convert products to sums (and quadratics in $x$). Argmax is preserved.
+
+**Recognition cue for the exam:** the word "**prior**" or any explicit numerical $P(\theta)$ in the problem statement is your MAP signal. No prior $\to$ MLE. Equal priors $\to$ MAP collapses to MLE.
+
 ## Why MAP minimizes P(error)
 
 $P(\text{error} \mid X = x) = 1 - P(\text{correct} \mid x) = 1 - p(\hat\theta \mid x)$.
@@ -49,6 +63,7 @@ Since MAP is best for every $x$, averaging (integration over $x$) preserves opti
 
 ## Common mistakes
 - **Forgetting the prior** — using MLE when MAP is called for. If priors differ, MAP's threshold shift can change answers a lot.
+- **Likelihood ratio direction (the most-blown step on the exam).** $\Lambda$ has $H_1$ on top; the threshold has $P(H_0)$ on top. They are **flipped**. Re-derive from $p(x\mid H_1)P(H_1) > p(x\mid H_0)P(H_0)$ if you forget which is on top.
 - **Taking argmax of the likelihood $\times$ prior without normalizing...** wait, actually that's fine. You can argmax the unnormalized posterior; normalization doesn't change the argmax.
 - **Computing $p(\text{error})$ by integrating over $\theta$ instead of $x$.** The data integration is what matters for frequency-of-error.
 

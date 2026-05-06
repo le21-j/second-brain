@@ -1,11 +1,13 @@
 ---
 title: EEE 304 Final Exam — Per-Problem Walkthrough (8 problems, 350 pts, 150 min)
 type: walkthrough
-course: [[eee-304]]
+course:
+  - "[[eee-304]]"
 tags: [eee-304, final, walkthrough, exam, transfer-function, steady-state, butterworth, roc, euler, tustin, bilinear, pam, tdm, fdm, feedback, sampled-data, sampling]
-sources: [[slides-2026-05-04-eee-304-final-exam-preview]]
+sources:
+  - "[[slides-2026-05-04-eee-304-final-exam-preview]]"
 created: 2026-05-04
-updated: 2026-05-04
+updated: 2026-05-06
 ---
 
 # EEE 304 Final Exam — Walkthrough

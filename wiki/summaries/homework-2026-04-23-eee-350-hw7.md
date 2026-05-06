@@ -4,10 +4,11 @@ type: summary
 source_type: homework
 source_path: raw/homework/EEE350_HW7.md
 source_date: 2026-04-23
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [eee-350, homework, probability, statistics, estimation-theory, hypothesis-testing]
 created: 2026-04-24
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # EEE 350 HW7 — Significance Testing & MMSE/LMSE Estimation

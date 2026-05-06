@@ -1,11 +1,13 @@
 ---
 title: OFDM (orthogonal frequency-division multiplexing)
 type: concept
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 tags: [wireless, waveform, ofdm, 5g-nr, phy, dft, fft]
-sources: [[article-2026-04-23-physical-layer-ml-roadmap]]
+sources:
+  - "[[article-2026-04-23-physical-layer-ml-roadmap]]"
 created: 2026-04-23
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # OFDM — orthogonal frequency-division multiplexing

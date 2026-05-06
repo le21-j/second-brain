@@ -382,6 +382,15 @@ Per-question lab/HW walkthroughs (concept-first, then steps). Filed under `wiki/
 ### EEE 350
 - **[[eee-350-final-walkthrough]] — Module-by-Module Final Review (cumulative).** Per-module breakdown of slides 1–49: building blocks, headline formulas, representative practice problems lifted from each lecture's "Worked examples" + the 3 practice sets + HW7. Master Cheat Sheet (6 tables) + pre-exam routine. ⭐
 - [[eee-350-hw7-walkthrough]] — full per-problem HW7 walkthrough (significance testing + MMSE/LMSE estimation)
+- **NEW 2026-05-06 (per-module problem walkthroughs from Canvas video lists, mapped to 3rd-ed):**
+  - **[[eee-350-module-07-statistical-inference-walkthrough]]** — Bayesian / MLE / NP / regression. 11 problems (Yates 3rd-ed Ch 10–12). ⭐ highest priority
+  - [[eee-350-module-06-clt-lln-mgf-walkthrough]] — MGFs, sums of RVs, CLT/LLN. 6 problems (Yates 3rd-ed Ch 9).
+  - [[eee-350-module-05-derived-rvs-sums-walkthrough]] — derived RVs, sums, MGFs. 3 problems.
+  - [[eee-350-module-04-multiple-rvs-walkthrough]] — joint distributions, conditioning, independence. 15 problems (Yates 3rd-ed Ch 5–7).
+  - [[eee-350-module-03-continuous-rvs-walkthrough]] — continuous RVs, CDF, mixed RVs, normal. 10 problems (Yates 3rd-ed Ch 4–7).
+  - [[eee-350-module-02-discrete-rvs-walkthrough]] — counting, discrete RVs, expectation, variance. 11 problems (Yates 3rd-ed Ch 3).
+  - [[eee-350-module-01-probability-set-theory-walkthrough]] — set theory, probability axioms, conditional probability. 5 problems (Yates 3rd-ed Ch 1–2).
+- [[daily-2026-05-06-eee-350-walkthrough-plan]] — planning doc with per-module problem inventory + Canvas mappings (2nd ed → 3rd ed)
 
 ### EEE 341
 - [[eee-341-lab-5-walkthrough]] — Lab 5 (EZNEC antenna sims: SWR, radiation pattern, two-stacked array, cardioid, Friis link). Due Thu 4/30.

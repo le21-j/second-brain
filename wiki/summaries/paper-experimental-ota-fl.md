@@ -4,10 +4,11 @@ type: summary
 source_type: article
 source_path: raw/articles/6g-research/experimental-ota-fl.pdf
 source_date: 2025-03
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [aircomp, ota-fl, 5g-nr, ptp, octoclock, gold-sequences, usrp, testbed, orbit]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Experimental Demonstration of OTA-FL for Cellular Networks

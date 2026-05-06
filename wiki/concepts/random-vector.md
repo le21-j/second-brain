@@ -1,11 +1,13 @@
 ---
 title: Random Vector
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [multivariate, random-vector]
-sources: [[slides-39-multivariate-vectors]]
+sources:
+  - "[[slides-39-multivariate-vectors]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Random Vector

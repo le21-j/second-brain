@@ -4,7 +4,8 @@ type: summary
 source_type: lab
 source_path: raw/labs/eee-404/ec-ml-lab_machine_learning.pdf
 source_date: 2026-04-29
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [eee-404, lab, extra-credit, neural-network, mlp, embedded-ml, stm32]
 created: 2026-04-29
 ---

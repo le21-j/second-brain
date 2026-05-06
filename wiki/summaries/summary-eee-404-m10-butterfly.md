@@ -4,7 +4,8 @@ type: summary
 source_type: slides
 source_path: raw/slides/eee-404/m10-fft-2-butterfly-structure.pdf
 source_date: 2026-04-29
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [eee-404, fft, butterfly, decimation-in-time, dit]
 created: 2026-04-29
 ---

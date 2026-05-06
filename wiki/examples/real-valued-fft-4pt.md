@@ -1,11 +1,13 @@
 ---
 title: Example — Real-Input 4-pt FFT via Complex 2-pt FFT
 type: example
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [fft, real-valued]
-sources: [[slides-fft-real-valued-signal]]
+sources:
+  - "[[slides-fft-real-valued-signal]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Example — Real-Input 4-pt FFT via Complex 2-pt FFT

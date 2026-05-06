@@ -3,10 +3,11 @@ title: Slides 40 — Conditional Expectation of One RV Given Another
 type: summary
 source_type: slides
 source_path: raw/slides/eee-350/40 Conditional Expectation of one RV given another.pptx
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [conditional-expectation, iterated-expectations, law-of-total-variance]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Slides 40 — Conditional Expectation

@@ -4,10 +4,11 @@ type: summary
 source_type: article
 source_path: raw/articles/6g-research/signal-peak-power-ota-fl.pdf
 source_date: 2025-12
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [aircomp, papr, peak-power, instantaneous-power, ofdm-airfl]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Signal Peak Power Constraint in OTA-FL

@@ -1,11 +1,13 @@
 ---
 title: Confidence Interval
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [confidence-interval, estimation, classical-statistics]
-sources: [[slides-44-mle-ci]]
+sources:
+  - "[[slides-44-mle-ci]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Confidence Interval

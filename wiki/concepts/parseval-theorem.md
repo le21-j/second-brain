@@ -1,11 +1,13 @@
 ---
 title: Parseval's Theorem (DFT)
 type: concept
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [parseval, energy, dft, dsp, eee-404]
-sources: [[summary-eee-404-m7-frequency-domain]]
+sources:
+  - "[[summary-eee-404-m7-frequency-domain]]"
 created: 2026-04-29
-updated: 2026-04-29
+updated: 2026-05-06
 ---
 
 # Parseval's Theorem (DFT)

@@ -1,11 +1,12 @@
 ---
 title: Fresnel Reflection & Transmission Coefficients
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [eee-341, electromagnetics, reflection, transmission, normal-incidence]
 sources: [raw/slides/eee-341/lecture-3-1-wave-reflection-and-transmission-at-normal-incidence-part-1-12-27.pdf, raw/slides/eee-341/lecture-3-2-wave-reflection-and-transmission-at-normal-incidence-part-2-18-14.pdf, raw/slides/eee-341/lecture-3-9-reflectivity-and-transmissivity-9-36.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Fresnel Coefficients (Normal Incidence)

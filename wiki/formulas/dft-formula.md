@@ -1,11 +1,13 @@
 ---
 title: DFT (Formula)
 type: formula
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [dft, fft]
-sources: [[slides-fft-core-equations]]
+sources:
+  - "[[slides-fft-core-equations]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # DFT — Formula

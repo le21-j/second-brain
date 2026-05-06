@@ -4,10 +4,15 @@ type: summary
 source_type: daily
 source_path: canvas API + wiki audit
 source_date: 2026-04-28
-course: [[eee-404]], [[eee-304]], [[eee-350]], [[eee-341]], [[eee-335]]
+course:
+  - "[[eee-404]]"
+  - "[[eee-304]]"
+  - "[[eee-350]]"
+  - "[[eee-341]]"
+  - "[[eee-335]]"
 tags: [finals, planning, study-guide, prep]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Finals Prep — All 5 Active Courses (2026 Spring C)

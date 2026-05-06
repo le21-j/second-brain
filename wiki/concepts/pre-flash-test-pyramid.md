@@ -1,11 +1,13 @@
 ---
 title: Pre-Flash Test Pyramid — De-risking Before a Pluto Reflash
 type: concept
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [research, pluto, testing, dev-loop, pytest, vivado, wsl, cross-compile]
-sources: [[daily-2026-04-23-pluto-deployment-and-regret-learning]]
+sources:
+  - "[[daily-2026-04-23-pluto-deployment-and-regret-learning]]"
 created: 2026-04-24
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Pre-Flash Test Pyramid

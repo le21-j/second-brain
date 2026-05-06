@@ -1,11 +1,13 @@
 ---
 title: EEE 404 Extra-Credit Lab — Neural Network Training (XOR-XOR) — Walkthrough + Report Skeleton
 type: walkthrough
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [eee-404, lab, extra-credit, walkthrough, neural-network, mlp, embedded-ml, stm32, training, backpropagation]
-sources: [[summary-eee-404-ec-ml-lab]]
+sources:
+  - "[[summary-eee-404-ec-ml-lab]]"
 created: 2026-04-29
-updated: 2026-04-29
+updated: 2026-05-06
 ---
 
 # EEE 404 Extra-Credit Lab: Neural Network Training — Walkthrough

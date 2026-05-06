@@ -3,10 +3,11 @@ title: Slides 43.5 — Bayesian Inference
 type: summary
 source_type: slides
 source_path: raw/slides/eee-350/43.5 Bayesian Inference.pptx
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [bayesian, map, lms, estimation, detection]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Slides 43.5 — Bayesian Inference

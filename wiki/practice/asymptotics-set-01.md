@@ -1,12 +1,15 @@
 ---
 title: Asymptotics — Practice Set 01
 type: practice
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [practice, chebyshev, lln, clt]
-concept: [[central-limit-theorem]], [[weak-law-of-large-numbers]]
+concept:
+  - "[[central-limit-theorem]]"
+  - "[[weak-law-of-large-numbers]]"
 difficulty: mixed
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Asymptotics — Practice Set 01

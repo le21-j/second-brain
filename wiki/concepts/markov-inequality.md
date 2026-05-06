@@ -1,11 +1,13 @@
 ---
 title: Markov's Inequality
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [inequalities, tail-bound]
-sources: [[slides-41-lln-clt-intro]]
+sources:
+  - "[[slides-41-lln-clt-intro]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Markov's Inequality

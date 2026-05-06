@@ -4,10 +4,11 @@ type: summary
 source_type: daily
 source_path: raw/daily/2026-04-23_pluto-sdr-deployment-architecture.md
 source_date: 2026-04-23
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [research, pluto-sdr, zynq, fpga, aircomp, regret-learning, hart-mas-colell, deployment, ofdm, wsl2, pytest, sessions]
 created: 2026-04-24
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Daily — Pluto Deployment Architecture + Regret-Learning Deep Dive (2026-04-23)

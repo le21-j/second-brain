@@ -4,7 +4,8 @@ type: summary
 source_type: slides
 source_path: raw/slides/eee-350/47.5 Gaussian Random Processes.pptx
 source_date: 2026-04-29
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [eee-350, stochastic-process, gaussian-rp, bernoulli-process, poisson-process, week-15]
 created: 2026-04-29
 ---

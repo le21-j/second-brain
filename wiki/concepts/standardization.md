@@ -1,11 +1,13 @@
 ---
 title: Standardization (Z-Score)
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [gaussian, z-score, standardization, transformation]
-sources: [[homework-2026-04-23-eee-350-hw7]]
+sources:
+  - "[[homework-2026-04-23-eee-350-hw7]]"
 created: 2026-04-24
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Standardization (Z-Score)

@@ -1,12 +1,15 @@
 ---
 title: Probability Fundamentals — Practice Set 01
 type: practice
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [practice, covariance, multivariate, conditional-expectation]
-concept: [[covariance]], [[conditional-expectation]]
+concept:
+  - "[[covariance]]"
+  - "[[conditional-expectation]]"
 difficulty: mixed
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Probability Fundamentals — Practice Set 01

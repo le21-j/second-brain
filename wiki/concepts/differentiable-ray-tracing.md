@@ -1,11 +1,13 @@
 ---
 title: Differentiable ray tracing for wireless
 type: concept
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 tags: [sionna, ray-tracing, mitsuba, digital-twin, calibration, nvidia]
-sources: [[article-2026-04-23-physical-layer-ml-roadmap]]
+sources:
+  - "[[article-2026-04-23-physical-layer-ml-roadmap]]"
 created: 2026-04-23
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Differentiable ray tracing for wireless

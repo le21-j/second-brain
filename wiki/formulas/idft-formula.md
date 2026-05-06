@@ -1,11 +1,13 @@
 ---
 title: IDFT (Formula)
 type: formula
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [idft, fft]
-sources: [[slides-fft-idft]]
+sources:
+  - "[[slides-fft-idft]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # IDFT — Formula

@@ -3,10 +3,11 @@ title: Slides 47 — Stochastic (Random) Processes Intro
 type: summary
 source_type: slides
 source_path: raw/slides/eee-350/47 Stochastic (Random) Processes Intro.pptx
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [stochastic-process, random-process, markov-chain, poisson, white-noise]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Slides 47 — Stochastic Processes Intro

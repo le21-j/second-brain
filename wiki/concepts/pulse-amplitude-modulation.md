@@ -1,11 +1,13 @@
 ---
 title: Pulse Amplitude Modulation (PAM)
 type: concept
-course: [[eee-304]]
+course:
+  - "[[eee-304]]"
 tags: [eee-304, communication, modulation, pam, pulse, sampling, tdm]
-sources: [[homework-2026-04-26-eee-304-hw7]]
+sources:
+  - "[[homework-2026-04-26-eee-304-hw7]]"
 created: 2026-04-26
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Pulse Amplitude Modulation (PAM)

@@ -1,11 +1,14 @@
 ---
 title: Variational autoencoder (VAE)
 type: concept
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 tags: [vae, generative, dl, latent, kingma]
-sources: [[paper-kingma-2013-vae]], [[article-2026-04-23-physical-layer-ml-roadmap]]
+sources:
+  - "[[paper-kingma-2013-vae]]"
+  - "[[article-2026-04-23-physical-layer-ml-roadmap]]"
 created: 2026-04-23
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Variational autoencoder (VAE)

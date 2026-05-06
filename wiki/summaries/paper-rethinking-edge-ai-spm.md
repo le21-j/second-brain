@@ -4,10 +4,11 @@ type: summary
 source_type: article
 source_path: raw/articles/6g-research/rethinking-edge-ai-spm.pdf
 source_date: 2025-12
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [aircomp, feel, signal-processing, 6g, csit-aware, blind, weighted, synchronization]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Rethinking Edge AI Through Signal Processing

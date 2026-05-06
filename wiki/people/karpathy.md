@@ -2,9 +2,10 @@
 title: Andrej Karpathy
 type: person
 tags: [teaching, dl, openai, tesla, nano-gpt, zero-to-hero]
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-05-06
 ---
 
 # Andrej Karpathy

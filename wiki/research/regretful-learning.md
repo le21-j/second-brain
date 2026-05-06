@@ -1,11 +1,14 @@
 ---
 title: Regret-Learning Distributed Power Control
 type: concept
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [aircomp, regret-learning, game-theory, correlated-equilibrium, hart-mas-colell]
-sources: [[paper-unregrettable-hpsr]], [[daily-2026-04-23-pluto-deployment-and-regret-learning]]
+sources:
+  - "[[paper-unregrettable-hpsr]]"
+  - "[[daily-2026-04-23-pluto-deployment-and-regret-learning]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Regret-Learning Distributed Power Control

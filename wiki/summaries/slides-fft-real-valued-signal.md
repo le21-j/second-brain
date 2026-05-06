@@ -3,10 +3,11 @@ title: Slides — FFT for Real-Valued Signal
 type: summary
 source_type: slides
 source_path: raw/slides/eee-404/fft_real_valued_signal.pdf
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [fft, real-valued, conjugate-symmetry, optimization]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Slides — FFT for Real-Valued Signal

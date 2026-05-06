@@ -2,9 +2,10 @@
 title: João Morais
 type: person
 tags: [wi-lab, nvidia, target-preparatory-contact, bridge-person]
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-05-06
 ---
 
 # João Morais

@@ -1,11 +1,12 @@
 ---
 title: CMOS Transistor Sizing
 type: concept
-course: [[eee-335]]
+course:
+  - "[[eee-335]]"
 tags: [cmos, sizing, propagation-delay, fan-out, sedra-smith]
 sources: [raw/slides/eee-335/unit-2-lecture-10-transistor-sizing.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # CMOS Transistor Sizing

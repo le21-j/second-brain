@@ -1,11 +1,14 @@
 ---
 title: AirComp — System Model and MSE
 type: concept
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [aircomp, system-model, mse, denoising]
-sources: [[paper-unregrettable-hpsr]], [[paper-aircomp-survey]]
+sources:
+  - "[[paper-unregrettable-hpsr]]"
+  - "[[paper-aircomp-survey]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # AirComp — System Model and MSE

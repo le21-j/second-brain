@@ -3,10 +3,11 @@ title: Slides 46 — Regression
 type: summary
 source_type: slides
 source_path: raw/slides/eee-350/46 Regression.pptx
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [regression, least-squares, power-law, mle]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Slides 46 — Regression

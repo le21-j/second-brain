@@ -3,10 +3,11 @@ title: Slides 46.5 — Sample Mean, Median, Mode, Histogram
 type: summary
 source_type: slides
 source_path: raw/slides/eee-350/46.5 Sample Mean Median Mode Histogram.pptx
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [descriptive-statistics, sample-mean, median, histogram]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Slides 46.5 — Descriptive Statistics

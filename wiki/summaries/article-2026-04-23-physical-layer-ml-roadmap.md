@@ -4,10 +4,11 @@ type: summary
 source_type: other
 source_path: raw/other/python learning roadmap.md
 source_date: 2026-04-23
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 tags: [roadmap, curriculum, sionna, deepmimo, nvidia, wi-lab, ml, wireless]
 created: 2026-04-23
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Physical-Layer ML Roadmap — 14 months to NVIDIA and Wi-Lab

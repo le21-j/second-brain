@@ -1,11 +1,13 @@
 ---
 title: Neural receiver
 type: concept
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 tags: [phy-ml, 5g-nr, receiver, sionna, nvidia, nrx]
-sources: [[article-2026-04-23-physical-layer-ml-roadmap]]
+sources:
+  - "[[article-2026-04-23-physical-layer-ml-roadmap]]"
 created: 2026-04-23
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Neural receiver

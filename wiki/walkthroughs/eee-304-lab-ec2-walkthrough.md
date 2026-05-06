@@ -1,11 +1,13 @@
 ---
 title: EEE 304 Lab EC2 — Feedback Control with an Arduino (Walkthrough)
 type: walkthrough
-course: [[eee-304]]
+course:
+  - "[[eee-304]]"
 tags: [eee-304, lab, walkthrough, extra-credit, arduino, simulink, feedback-control, integral-controller, plant-identification, linearization]
-sources: [[lab-eee-304-lab-ec2-feedback-control]]
+sources:
+  - "[[lab-eee-304-lab-ec2-feedback-control]]"
 created: 2026-05-03
-updated: 2026-05-03
+updated: 2026-05-06
 ---
 
 # EEE 304 Lab EC2 — Feedback Control with an Arduino (Walkthrough)

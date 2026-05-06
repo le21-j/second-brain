@@ -1,11 +1,12 @@
 ---
 title: Displacement Current
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [eee-341, electromagnetics, maxwell, amperes-law]
 sources: [raw/slides/eee-341/lecture-1-4-displacement-current-9-30.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Displacement Current

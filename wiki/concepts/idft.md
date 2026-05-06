@@ -1,11 +1,13 @@
 ---
 title: Inverse DFT (IDFT)
 type: concept
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [idft, fft, inverse]
-sources: [[slides-fft-idft]]
+sources:
+  - "[[slides-fft-idft]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Inverse DFT (IDFT)

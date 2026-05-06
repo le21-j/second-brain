@@ -1,11 +1,13 @@
 ---
 title: Gambler's Fallacy
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [gotcha, independence, lln]
-sources: [[slides-42-wlln]]
+sources:
+  - "[[slides-42-wlln]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Gambler's Fallacy

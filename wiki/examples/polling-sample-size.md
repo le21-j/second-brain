@@ -1,11 +1,14 @@
 ---
 title: Example — How Many Voters to Poll?
 type: example
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [polling, clt, chebyshev, sample-size]
-sources: [[slides-42-wlln]], [[slides-43-clt-apps]]
+sources:
+  - "[[slides-42-wlln]]"
+  - "[[slides-43-clt-apps]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Example — Sample Size for Polling

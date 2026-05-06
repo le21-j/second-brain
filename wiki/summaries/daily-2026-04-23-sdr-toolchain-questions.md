@@ -4,10 +4,11 @@ type: summary
 source_type: daily
 source_path: raw/daily/2026-04-23_Research_Questions.md
 source_date: 2026-04-23
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [research, embedded, sdr, toolchain, arm, cross-compilation, wsl2, vivado, in-progress]
 created: 2026-04-24
-updated: 2026-04-26
+updated: 2026-05-06
 status: in-progress
 resume_at: "Q5 Step 5 — Install full Vivado 2022.2"
 ---

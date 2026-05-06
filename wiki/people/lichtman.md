@@ -2,9 +2,10 @@
 title: Marc Lichtman
 type: person
 tags: [teaching, sdr, dsp, pysdr, umd]
-course: [[python-ml-wireless]]
+course:
+  - "[[python-ml-wireless]]"
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-05-06
 ---
 
 # Marc Lichtman

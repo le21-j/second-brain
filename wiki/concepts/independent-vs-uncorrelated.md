@@ -1,11 +1,13 @@
 ---
 title: Independent vs Uncorrelated
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [independence, covariance, gotcha]
-sources: [[slides-38-covariance]]
+sources:
+  - "[[slides-38-covariance]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Independent vs Uncorrelated

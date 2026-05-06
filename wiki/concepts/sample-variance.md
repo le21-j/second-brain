@@ -1,11 +1,14 @@
 ---
 title: Sample Variance
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [sample-variance, descriptive-statistics, n-minus-1]
-sources: [[slides-46.5-descriptive-stats]], [[slides-44-mle-ci]]
+sources:
+  - "[[slides-46.5-descriptive-stats]]"
+  - "[[slides-44-mle-ci]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Sample Variance

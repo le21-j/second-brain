@@ -1,11 +1,12 @@
 ---
 title: Boundary Conditions for Electromagnetic Fields
 type: concept
-course: [[eee-341]]
+course:
+  - "[[eee-341]]"
 tags: [eee-341, electromagnetics, boundary-conditions, interfaces]
 sources: [raw/slides/eee-341/lecture-1-5-boundary-conditions-for-electromagnetics-11-37.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Boundary Conditions for EM Fields

@@ -3,10 +3,11 @@ title: Slides 39 — Multivariate Random Vectors
 type: summary
 source_type: slides
 source_path: raw/slides/eee-350/39 Multivariate Random Vectors.pptx
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [multivariate, random-vector, iid, gaussian]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Slides 39 — Multivariate Random Vectors

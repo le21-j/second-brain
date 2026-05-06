@@ -1,11 +1,13 @@
 ---
 title: EEE 404 Project 2 — Applications of FFT (Walkthrough)
 type: walkthrough
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [eee-404, project, fft, stft, windowing, vowel-analysis, pitch-detection, formant, stm32, cmsis, walkthrough]
-sources: [[lab-eee-404-project-2-fft-applications]]
+sources:
+  - "[[lab-eee-404-project-2-fft-applications]]"
 created: 2026-05-02
-updated: 2026-05-02
+updated: 2026-05-06
 ---
 
 # EEE 404 Project 2 — Applications of FFT (Walkthrough)

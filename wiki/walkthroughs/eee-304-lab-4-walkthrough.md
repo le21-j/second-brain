@@ -1,11 +1,13 @@
 ---
 title: EEE 304 Lab 4 — AM Modulation/Demodulation Walkthrough
 type: walkthrough
-course: [[eee-304]]
+course:
+  - "[[eee-304]]"
 tags: [eee-304, lab, walkthrough, am, modulation, demodulation, simulink, butterworth, communication]
-sources: [[lab-eee-304-lab-4-am-modulation]]
+sources:
+  - "[[lab-eee-304-lab-4-am-modulation]]"
 created: 2026-04-25
-updated: 2026-04-26
+updated: 2026-05-06
 revisions:
   - 2026-04-26 — corrected #3 missing-block identification: blocks are CARRIER SOURCE + LPF (not Product + LPF). Added simulation-Nyquist analysis and the $f_c = 5$ kHz derivation. Original walkthrough mis-identified the Product as missing — verified by inspecting `AM_Mod_coherent_tada_inc.slx` XML directly.
 ---

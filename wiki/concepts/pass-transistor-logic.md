@@ -1,11 +1,12 @@
 ---
 title: Pass Transistor Logic and Transistors as Switches
 type: concept
-course: [[eee-335]]
+course:
+  - "[[eee-335]]"
 tags: [cmos, pass-transistor, switch, transmission-gate, sedra-smith]
 sources: [raw/slides/eee-335/unit-3-lecture-12-transistors-as-switches.pdf]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Pass Transistor Logic and Transistors as Switches

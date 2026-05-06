@@ -1,11 +1,14 @@
 ---
 title: Channel Estimation via Least Squares (Beacon-based)
 type: concept
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [channel-estimation, least-squares, beacon, aircomp]
-sources: [[paper-unregrettable-hpsr]], [[paper-aircomp-feel-demo]]
+sources:
+  - "[[paper-unregrettable-hpsr]]"
+  - "[[paper-aircomp-feel-demo]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Channel Estimation via Least Squares

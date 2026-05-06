@@ -1,11 +1,13 @@
 ---
 title: CMSIS-DSP FFT API (arm_rfft_fast_f32)
 type: concept
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [eee-404, cmsis, fft, real-valued-fft, stm32, embedded, arm]
-sources: [[lab-eee-404-project-2-fft-applications]]
+sources:
+  - "[[lab-eee-404-project-2-fft-applications]]"
 created: 2026-05-02
-updated: 2026-05-02
+updated: 2026-05-06
 ---
 
 # CMSIS-DSP FFT API (`arm_rfft_fast_f32`)

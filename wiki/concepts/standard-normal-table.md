@@ -1,11 +1,14 @@
 ---
 title: Standard Normal Table (Φ)
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [gaussian, table, clt]
-sources: [[slides-43-clt-apps]], [[slides-44-mle-ci]]
+sources:
+  - "[[slides-43-clt-apps]]"
+  - "[[slides-44-mle-ci]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Standard Normal Table ($\Phi$)

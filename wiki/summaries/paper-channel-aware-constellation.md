@@ -4,10 +4,11 @@ type: summary
 source_type: article
 source_path: raw/articles/6g-research/channel-aware-constellation.pdf
 source_date: 2025-01
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [aircomp, digital, constellation-design, cell-free-mimo, asymmetric-functions]
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Channel-Aware Constellation Design for Digital OTA

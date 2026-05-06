@@ -1,11 +1,13 @@
 ---
 title: EEE 404 HW5 — DTFT, Windowing, Resolution & FFT Compute Budget (Walkthrough)
 type: walkthrough
-course: [[eee-404]]
+course:
+  - "[[eee-404]]"
 tags: [eee-404, homework, walkthrough, dtft, dft, fft, hamming, rectangular, butterfly, stm32]
-sources: [[homework-2026-04-27-eee-404-hw5]]
+sources:
+  - "[[homework-2026-04-27-eee-404-hw5]]"
 created: 2026-04-27
-updated: 2026-04-27
+updated: 2026-05-06
 ---
 
 # EEE 404 HW5 — Walkthrough

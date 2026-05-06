@@ -1,11 +1,13 @@
 ---
 title: Modulation Index ($\mu$)
 type: concept
-course: [[eee-304]]
+course:
+  - "[[eee-304]]"
 tags: [eee-304, communication, modulation, am, modulation-index, over-modulation]
-sources: [[lab-eee-304-lab-4-am-modulation]]
+sources:
+  - "[[lab-eee-304-lab-4-am-modulation]]"
 created: 2026-04-25
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Modulation Index ($\mu$)

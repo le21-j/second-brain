@@ -4,10 +4,11 @@ type: summary
 source_type: labs
 source_path: raw/labs/EEE 304 Lab4.pdf
 source_date: 2026-04-25
-course: [[eee-304]]
+course:
+  - "[[eee-304]]"
 tags: [eee-304, lab, am, modulation, demodulation, simulink, butterworth, communication, audio]
 created: 2026-04-25
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # EEE 304 Lab 4 — AM Modulation/Demodulation in Simulink

@@ -4,10 +4,13 @@ type: summary
 source_type: daily
 source_path: canvas API (canvas.asu.edu, fetched 2026-04-28)
 source_date: 2026-04-28
-course: [[eee-404]], [[eee-350]], [[eee-304]]
+course:
+  - "[[eee-404]]"
+  - "[[eee-350]]"
+  - "[[eee-304]]"
 tags: [workload, planning, daily, finals-week]
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-05-06
 ---
 
 # Weekly Workload Plan — Week of 2026-04-28

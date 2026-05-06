@@ -1,11 +1,13 @@
 ---
 title: Antipodal Signaling (AWGN)
 type: concept
-course: [[eee-350]]
+course:
+  - "[[eee-350]]"
 tags: [communications, detection, awgn, bpsk]
-sources: [[slides-43.5-bayesian-inference]]
+sources:
+  - "[[slides-43.5-bayesian-inference]]"
 created: 2026-04-21
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # Antipodal Signaling (under AWGN)

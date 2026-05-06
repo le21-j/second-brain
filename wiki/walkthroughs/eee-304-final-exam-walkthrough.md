@@ -1,11 +1,13 @@
 ---
 title: EEE 304 Final Exam — Full Solutions Walkthrough (8 problems, 350 pts)
 type: walkthrough
-course: [[eee-304]]
+course:
+  - "[[eee-304]]"
 tags: [eee-304, final, exam, walkthrough, solutions, steady-state, butterworth, roc, forward-euler, pam, tdm, bode, phase-margin, sampled-data]
-sources: [[slides-2026-05-04-eee-304-final-exam]]
+sources:
+  - "[[slides-2026-05-04-eee-304-final-exam]]"
 created: 2026-05-04
-updated: 2026-05-04
+updated: 2026-05-06
 ---
 
 # EEE 304 Final Exam — Full Solutions Walkthrough

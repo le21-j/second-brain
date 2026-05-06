@@ -1,11 +1,14 @@
 ---
 title: WSL2 for Embedded / SDR Development
 type: concept
-course: [[research]]
+course:
+  - "[[research]]"
 tags: [toolchain, wsl2, windows, linux, embedded, vivado, antivirus]
-sources: [[daily-2026-04-23-sdr-toolchain-questions]], [[daily-2026-04-23-pluto-deployment-and-regret-learning]]
+sources:
+  - "[[daily-2026-04-23-sdr-toolchain-questions]]"
+  - "[[daily-2026-04-23-pluto-deployment-and-regret-learning]]"
 created: 2026-04-24
-updated: 2026-04-26
+updated: 2026-05-06
 ---
 
 # WSL2 for Embedded / SDR Development
