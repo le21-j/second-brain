@@ -30,6 +30,7 @@ concept:
   - "[[cs-amplifier-frequency-response]]"
 difficulty: mixed
 created: 2026-05-04
+updated: 2026-05-05
 ---
 
 # EEE 335 — Final Exam Practice Set 01
@@ -72,29 +73,27 @@ A common-source amplifier uses an NMOS with $k_n' = 0.4 \text{ mA/V}^2$, $W/L = 
 (d) Find the open-circuit voltage gain $A_{vo}$ when $r_o$ is **neglected**.
 (e) Find $A_{vo}$ with $r_o$ included.
 
-<details><summary>Solution</summary>
-
-**(a) $V_{OV}$:** From $I_D = \tfrac{1}{2} k_n' (W/L) V_{OV}^2$ → $V_{OV} = \sqrt{2 I_D / [k_n' (W/L)]} = \sqrt{2 \cdot 0.5 / (0.4 \cdot 25)} = \sqrt{0.1} = \mathbf{0.316\text{ V}}$.
-
-**(b) $g_m$ and $r_o$:**
-$$g_m = \sqrt{2 k_n' (W/L) I_D} = \sqrt{2 \cdot 0.4 \cdot 25 \cdot 0.5} = \sqrt{10} = \mathbf{3.16\text{ mA/V}}$$
-$$r_o = V_A / I_D = 20 / 0.5 = \mathbf{40\text{ k}\Omega}$$
-
-Sanity check via the second formula: $g_m = 2 I_D / V_{OV} = 2(0.5) / 0.316 = 3.16$ mA/V. ✓
-
-**(c) Saturation check:** Need $V_{DS} \geq V_{OV}$. $0.8 \geq 0.316$ ✓ — **in saturation.**
-
-**(d) $A_{vo}$ neglecting $r_o$:** From Table 7.4, $A_{vo} = -g_m R_D = -3.16 \cdot 20 = \mathbf{-63.2\text{ V/V}}$.
-
-**(e) $A_{vo}$ with $r_o$:** $R_\text{out} = R_D \| r_o = 20 \| 40 = (20 \cdot 40)/(20+40) = 800/60 = 13.33$ k$\Omega$. So $A_{vo} = -g_m (R_D \| r_o) = -3.16 \cdot 13.33 = \mathbf{-42.1\text{ V/V}}$.
-
-**Answer:** Including $r_o$ drops the gain by ~33%. **Always check whether the problem says "neglect $r_o$" or not** — the gap is 20 V/V here.
-
-> [!tip] **What to memorize vs. derive.**
-> **Memorize:** $g_m = \sqrt{2 k_n' (W/L) I_D} = 2 I_D / V_{OV}$ ; $r_o = V_A / I_D$ ; $A_{vo,\text{CS}} = -g_m R_\text{out}$.
-> **Derive at the moment:** $V_{OV}$ from $I_D$ ; $R_\text{out} = R_D \| r_o$ vs. $R_D$ alone (depends on whether $r_o$ matters).
-
-</details>
+> [!example]- Solution
+>
+> **(a) $V_{OV}$:** From $I_D = \tfrac{1}{2} k_n' (W/L) V_{OV}^2$ → $V_{OV} = \sqrt{2 I_D / [k_n' (W/L)]} = \sqrt{2 \cdot 0.5 / (0.4 \cdot 25)} = \sqrt{0.1} = \mathbf{0.316\text{ V}}$.
+>
+> **(b) $g_m$ and $r_o$:**
+> $$g_m = \sqrt{2 k_n' (W/L) I_D} = \sqrt{2 \cdot 0.4 \cdot 25 \cdot 0.5} = \sqrt{10} = \mathbf{3.16\text{ mA/V}}$$
+> $$r_o = V_A / I_D = 20 / 0.5 = \mathbf{40\text{ k}\Omega}$$
+>
+> Sanity check via the second formula: $g_m = 2 I_D / V_{OV} = 2(0.5) / 0.316 = 3.16$ mA/V. ✓
+>
+> **(c) Saturation check:** Need $V_{DS} \geq V_{OV}$. $0.8 \geq 0.316$ ✓ — **in saturation.**
+>
+> **(d) $A_{vo}$ neglecting $r_o$:** From Table 7.4, $A_{vo} = -g_m R_D = -3.16 \cdot 20 = \mathbf{-63.2\text{ V/V}}$.
+>
+> **(e) $A_{vo}$ with $r_o$:** $R_\text{out} = R_D \| r_o = 20 \| 40 = (20 \cdot 40)/(20+40) = 800/60 = 13.33$ k$\Omega$. So $A_{vo} = -g_m (R_D \| r_o) = -3.16 \cdot 13.33 = \mathbf{-42.1\text{ V/V}}$.
+>
+> **Answer:** Including $r_o$ drops the gain by ~33%. **Always check whether the problem says "neglect $r_o$" or not** — the gap is 20 V/V here.
+>
+> > [!tip] **What to memorize vs. derive.**
+> > **Memorize:** $g_m = \sqrt{2 k_n' (W/L) I_D} = 2 I_D / V_{OV}$ ; $r_o = V_A / I_D$ ; $A_{vo,\text{CS}} = -g_m R_\text{out}$.
+> > **Derive at the moment:** $V_{OV}$ from $I_D$ ; $R_\text{out} = R_D \| r_o$ vs. $R_D$ alone (depends on whether $r_o$ matters).
 
 **Same framework as:** Spring 2025 practice final P1(a) ; [[eee-335-final-walkthrough]] §Unit 4 ; [[mosfet-small-signal-model]] ; [[common-source-amplifier]].
 
@@ -111,25 +110,23 @@ You need to drive a $R_L = 1$ k$\Omega$ load from a source with $R_\text{sig} = 
 (a) For each of CS, CG, SF, compute $G_v = v_o / v_\text{sig}$ (use $r_o$).
 (b) Which configuration is best for this driver scenario? Justify in one sentence.
 
-<details><summary>Solution</summary>
-
-**Set up.** $G_v = \dfrac{R_\text{in}}{R_\text{in} + R_\text{sig}} \cdot A_{vo} \cdot \dfrac{R_L}{R_L + R_o}$.
-
-**(a) Compute each:**
-
-**CS:** $R_\text{in} = \infty$ → input divider = 1. $A_{vo} = -g_m(R_D \| r_o)$. With no $R_D$ given, assume $R_D \to \infty$ so $R_o = r_o = 50$ k$\Omega$ and $A_{vo} = -g_m r_o = -5 \cdot 50 = -250$ V/V. Output divider: $R_L / (R_L + R_o) = 1/(1+50) = 0.0196$. **$G_v = 1 \cdot (-250) \cdot 0.0196 = \mathbf{-4.9\text{ V/V}}$.**
-
-**CG:** $R_\text{in} = 1/g_m = 0.2$ k$\Omega$ → input divider = $0.2/(0.2 + 100) = 0.002$. $A_{vo} = +g_m r_o = +250$ V/V. Output divider: $1/(1+50) = 0.0196$. **$G_v = 0.002 \cdot 250 \cdot 0.0196 = \mathbf{+0.0098\text{ V/V}}$ (negligible).**
-
-**SF:** $R_\text{in} = \infty$ → input divider = 1. $A_{vo} \approx 1$. $R_o = 1/g_m = 0.2$ k$\Omega$. Output divider: $1/(1+0.2) = 0.833$. **$G_v = 1 \cdot 1 \cdot 0.833 = \mathbf{+0.833\text{ V/V}}$.**
-
-**(b) Best choice: CS.** It has the highest $|G_v|$ (≈5 V/V) — the only one that provides voltage gain in this scenario. Both CS and SF benefit from infinite $R_\text{in}$ to absorb the 100 k$\Omega$ source; only CS provides voltage amplification. SF would be the right answer if the goal were *unity-gain buffering* (e.g., feeding a smaller load impedance after a gain stage), but here the load is small (1 k$\Omega$) and the CS amp's high $R_o$ kills the output divider — so CS still wins on $|G_v|$ but the output transfer is poor. **A two-stage CS+SF cascade would beat single-CS** by giving full $|A_{vo}| = 250$ on the first stage, then SF buffering the 1 k$\Omega$ load.
-
-> [!tip] **What to memorize vs. derive.**
-> **Memorize:** the matchups — **CS for voltage gain**, **CG for current buffering** ($R_\text{in}$ low, $R_o$ high), **SF for low-impedance load driving** ($R_o = 1/g_m$).
-> **Derive:** the $G_v$ end-to-end with both dividers — easy to forget the input divider when $R_\text{in}$ is finite (CG case).
-
-</details>
+> [!example]- Solution
+>
+> **Set up.** $G_v = \dfrac{R_\text{in}}{R_\text{in} + R_\text{sig}} \cdot A_{vo} \cdot \dfrac{R_L}{R_L + R_o}$.
+>
+> **(a) Compute each:**
+>
+> **CS:** $R_\text{in} = \infty$ → input divider = 1. $A_{vo} = -g_m(R_D \| r_o)$. With no $R_D$ given, assume $R_D \to \infty$ so $R_o = r_o = 50$ k$\Omega$ and $A_{vo} = -g_m r_o = -5 \cdot 50 = -250$ V/V. Output divider: $R_L / (R_L + R_o) = 1/(1+50) = 0.0196$. **$G_v = 1 \cdot (-250) \cdot 0.0196 = \mathbf{-4.9\text{ V/V}}$.**
+>
+> **CG:** $R_\text{in} = 1/g_m = 0.2$ k$\Omega$ → input divider = $0.2/(0.2 + 100) = 0.002$. $A_{vo} = +g_m r_o = +250$ V/V. Output divider: $1/(1+50) = 0.0196$. **$G_v = 0.002 \cdot 250 \cdot 0.0196 = \mathbf{+0.0098\text{ V/V}}$ (negligible).**
+>
+> **SF:** $R_\text{in} = \infty$ → input divider = 1. $A_{vo} \approx 1$. $R_o = 1/g_m = 0.2$ k$\Omega$. Output divider: $1/(1+0.2) = 0.833$. **$G_v = 1 \cdot 1 \cdot 0.833 = \mathbf{+0.833\text{ V/V}}$.**
+>
+> **(b) Best choice: CS.** It has the highest $|G_v|$ (≈5 V/V) — the only one that provides voltage gain in this scenario. Both CS and SF benefit from infinite $R_\text{in}$ to absorb the 100 k$\Omega$ source; only CS provides voltage amplification. SF would be the right answer if the goal were *unity-gain buffering* (e.g., feeding a smaller load impedance after a gain stage), but here the load is small (1 k$\Omega$) and the CS amp's high $R_o$ kills the output divider — so CS still wins on $|G_v|$ but the output transfer is poor. **A two-stage CS+SF cascade would beat single-CS** by giving full $|A_{vo}| = 250$ on the first stage, then SF buffering the 1 k$\Omega$ load.
+>
+> > [!tip] **What to memorize vs. derive.**
+> > **Memorize:** the matchups — **CS for voltage gain**, **CG for current buffering** ($R_\text{in}$ low, $R_o$ high), **SF for low-impedance load driving** ($R_o = 1/g_m$).
+> > **Derive:** the $G_v$ end-to-end with both dividers — easy to forget the input divider when $R_\text{in}$ is finite (CG case).
 
 **Same framework as:** Lecture 19 problems ; [[common-source-amplifier]] ; [[common-gate-amplifier]] ; [[source-follower]].
 
@@ -148,35 +145,33 @@ A simple NMOS current mirror has $Q_1$ diode-connected with $(W/L)_1 = 10$, and 
 (c) What is the **minimum allowed $V_O$** at the drain of $Q_2$ to keep it in saturation?
 (d) Find the output resistance $R_o$ of $Q_2$ at the operating point.
 
-<details><summary>Solution</summary>
-
-**(a) $I_\text{REF}$:** Self-consistent — need $V_{GS}$ at $Q_1$ first. From $I_\text{REF} = \tfrac{1}{2} k_n' (W/L)_1 V_{OV}^2$ and $V_{GS} = V_{OV} + V_{tn}$:
-
-Try $V_{OV} = 0.5$ V → $I_\text{REF} = \tfrac{1}{2}(0.4)(10)(0.25) = 0.5$ mA → $V_{GS} = 1$ V → $I_\text{REF} = (1.8 - 1)/100 = 0.008$ mA. Inconsistent.
-
-Iterate. Set $I_\text{REF} = (1.8 - V_{GS})/R = (1.8 - V_{tn} - V_{OV})/R$ and $I_\text{REF} = \tfrac{1}{2} k_n'(W/L)_1 V_{OV}^2$:
-$$\tfrac{1}{2}(0.4)(10)V_{OV}^2 = (1.3 - V_{OV})/100$$
-$$2 V_{OV}^2 = (1.3 - V_{OV})/100 \to 200 V_{OV}^2 + V_{OV} - 1.3 = 0$$
-
-Quadratic: $V_{OV} = [-1 + \sqrt{1 + 4(200)(1.3)}] / (2 \cdot 200) = [-1 + \sqrt{1041}] / 400 = (-1 + 32.26)/400 = \mathbf{0.0782\text{ V}}$.
-
-Then $I_\text{REF} = \tfrac{1}{2}(0.4)(10)(0.0782)^2 = 2 \cdot 0.00611 = \mathbf{0.0122\text{ mA} \approx 12.2\,\mu\text{A}}$.
-
-(Sanity: $V_{GS} = 0.5 + 0.0782 = 0.578$ V → $I_\text{REF} = (1.8 - 0.578)/100 = 0.01222$ mA ✓.)
-
-**(b) $I_O$:** $I_O = I_\text{REF} \cdot (W/L)_2 / (W/L)_1 = 12.2 \cdot (30/10) = \mathbf{36.6\,\mu\text{A}}$.
-
-**(c) Minimum $V_O$:** $Q_2$ stays in saturation as long as $V_{DS2} \geq V_{OV2}$. Since $Q_2$ has the same $V_{OV}$ as $Q_1$ (both have $V_{GS} = 0.578$ V because gates are connected and sources are both at ground), $V_{O,\min} = V_{OV} = \mathbf{0.078\text{ V}}$.
-
-**(d) $R_o$ at $Q_2$:** $r_{o2} = V_A / I_O = 25 / 0.0366 = \mathbf{683\text{ k}\Omega}$.
-
-> [!warning] **The trap.** Naive students plug $V_{OV} = 0.5$ V or some other guess into the formula without realizing the mirror's $V_{GS}$ is set by $V_{DD}, R$, and $(W/L)_1$ self-consistently. **Either iterate or solve the quadratic.** McDonald's 2025 exam used $V_{DD} = 1.8$ V and $V_{tn} = 0.5$ V — the $V_{OV}$ ends up small (~50–100 mV) because $R$ is big.
-
-> [!tip] **What to memorize vs. derive.**
-> **Memorize:** $I_O = I_\text{REF} \cdot (W/L)_2/(W/L)_1$, mirror saturation requires $V_O \geq V_{OV}$, $r_o = V_A/I_D$.
-> **Derive:** $V_{OV}$ self-consistently (iterate or quadratic).
-
-</details>
+> [!example]- Solution
+>
+> **(a) $I_\text{REF}$:** Self-consistent — need $V_{GS}$ at $Q_1$ first. From $I_\text{REF} = \tfrac{1}{2} k_n' (W/L)_1 V_{OV}^2$ and $V_{GS} = V_{OV} + V_{tn}$:
+>
+> Try $V_{OV} = 0.5$ V → $I_\text{REF} = \tfrac{1}{2}(0.4)(10)(0.25) = 0.5$ mA → $V_{GS} = 1$ V → $I_\text{REF} = (1.8 - 1)/100 = 0.008$ mA. Inconsistent.
+>
+> Iterate. Set $I_\text{REF} = (1.8 - V_{GS})/R = (1.8 - V_{tn} - V_{OV})/R$ and $I_\text{REF} = \tfrac{1}{2} k_n'(W/L)_1 V_{OV}^2$:
+> $$\tfrac{1}{2}(0.4)(10)V_{OV}^2 = (1.3 - V_{OV})/100$$
+> $$2 V_{OV}^2 = (1.3 - V_{OV})/100 \to 200 V_{OV}^2 + V_{OV} - 1.3 = 0$$
+>
+> Quadratic: $V_{OV} = [-1 + \sqrt{1 + 4(200)(1.3)}] / (2 \cdot 200) = [-1 + \sqrt{1041}] / 400 = (-1 + 32.26)/400 = \mathbf{0.0782\text{ V}}$.
+>
+> Then $I_\text{REF} = \tfrac{1}{2}(0.4)(10)(0.0782)^2 = 2 \cdot 0.00611 = \mathbf{0.0122\text{ mA} \approx 12.2\,\mu\text{A}}$.
+>
+> (Sanity: $V_{GS} = 0.5 + 0.0782 = 0.578$ V → $I_\text{REF} = (1.8 - 0.578)/100 = 0.01222$ mA ✓.)
+>
+> **(b) $I_O$:** $I_O = I_\text{REF} \cdot (W/L)_2 / (W/L)_1 = 12.2 \cdot (30/10) = \mathbf{36.6\,\mu\text{A}}$.
+>
+> **(c) Minimum $V_O$:** $Q_2$ stays in saturation as long as $V_{DS2} \geq V_{OV2}$. Since $Q_2$ has the same $V_{OV}$ as $Q_1$ (both have $V_{GS} = 0.578$ V because gates are connected and sources are both at ground), $V_{O,\min} = V_{OV} = \mathbf{0.078\text{ V}}$.
+>
+> **(d) $R_o$ at $Q_2$:** $r_{o2} = V_A / I_O = 25 / 0.0366 = \mathbf{683\text{ k}\Omega}$.
+>
+> > [!warning] **The trap.** Naive students plug $V_{OV} = 0.5$ V or some other guess into the formula without realizing the mirror's $V_{GS}$ is set by $V_{DD}, R$, and $(W/L)_1$ self-consistently. **Either iterate or solve the quadratic.** McDonald's 2025 exam used $V_{DD} = 1.8$ V and $V_{tn} = 0.5$ V — the $V_{OV}$ ends up small (~50–100 mV) because $R$ is big.
+>
+> > [!tip] **What to memorize vs. derive.**
+> > **Memorize:** $I_O = I_\text{REF} \cdot (W/L)_2/(W/L)_1$, mirror saturation requires $V_O \geq V_{OV}$, $r_o = V_A/I_D$.
+> > **Derive:** $V_{OV}$ self-consistently (iterate or quadratic).
 
 **Same framework as:** Lecture 20 problems ; HW5 problem 8.2/8.3/8.6 ; [[current-mirror]].
 
@@ -196,38 +191,36 @@ An NMOS basic gain cell has $V_{DD} = 1.8$ V, $V_{tn} = 0.4$ V, $|V_{tp}| = 0.4$
 (d) Find the small-signal voltage gain $A_v$.
 (e) Find the allowable range of $v_O$ at the output (the swing limits set by saturation).
 
-<details><summary>Solution</summary>
-
-**(a) $V_{GS,n}$ and $V_I$:** $V_{GS,n} = V_{tn} + V_{OV,n} = 0.4 + 0.2 = \mathbf{0.6\text{ V}}$. The DC input voltage at the gate is $V_I = V_{GS,n} = \mathbf{0.6\text{ V}}$ (assuming the source is at ground).
-
-**(b) Aspect ratios:** From $I_D = \tfrac{1}{2} k' (W/L) V_{OV}^2$:
-$$(W/L)_n = \frac{2 I_D}{k_n' V_{OV,n}^2} = \frac{2(0.1)}{0.4 \cdot 0.04} = \frac{0.2}{0.016} = \mathbf{12.5}$$
-$$(W/L)_p = \frac{2 I_D}{|k_p'| V_{OV,p}^2} = \frac{2(0.1)}{0.1 \cdot 0.04} = \frac{0.2}{0.004} = \mathbf{50}$$
-
-(PMOS needs $4\times$ wider because $|k_p'|$ is $4\times$ smaller than $k_n'$.)
-
-**(c) Small-signal parameters:**
-$$g_{m,n} = 2 I_D / V_{OV,n} = 2(0.1) / 0.2 = \mathbf{1\text{ mA/V}}$$
-$$r_{o,n} = V_{An} / I_D = 12.5 / 0.1 = \mathbf{125\text{ k}\Omega}$$
-$$r_{o,p} = |V_{Ap}| / I_D = 9 / 0.1 = \mathbf{90\text{ k}\Omega}$$
-
-**(d) Voltage gain:**
-$$R_\text{out} = r_{o,n} \| r_{o,p} = (125 \cdot 90)/(125 + 90) = 11250 / 215 = 52.3\text{ k}\Omega$$
-$$\boxed{A_v = -g_{m,n} \cdot (r_{o,n} \| r_{o,p}) = -1 \cdot 52.3 = \mathbf{-52.3\text{ V/V}}}$$
-
-**(e) Output swing range:**
-
-**Upper limit** (PMOS stays in saturation): $V_O \leq V_{DD} - |V_{OV,p}| = 1.8 - 0.2 = \mathbf{1.6\text{ V}}$.
-
-**Lower limit** (NMOS stays in saturation, $V_{DS,n} \geq V_{OV,n}$): $V_O \geq V_{OV,n} = \mathbf{0.2\text{ V}}$.
-
-**Answer: $0.2 \leq v_O \leq 1.6$ V** → swing range = **1.4 V peak-to-peak**, centered at 0.9 V.
-
-> [!tip] **What to memorize vs. derive.**
-> **Memorize:** intrinsic-gain skeleton $A_{v0} = -g_m r_o$ ; with active load $A_v = -g_m (r_{on} \| r_{op})$. **Memorize the swing-range bounds** $V_{O,\max} = V_{DD} - |V_{OV,p}|$ and $V_{O,\min} = V_{OV,n}$ — they're trivial to derive but trivial to forget on exam day.
-> **Derive:** $W/L$ from $I_D$ and $V_{OV}$ ; the parallel combination of $r_o$'s.
-
-</details>
+> [!example]- Solution
+>
+> **(a) $V_{GS,n}$ and $V_I$:** $V_{GS,n} = V_{tn} + V_{OV,n} = 0.4 + 0.2 = \mathbf{0.6\text{ V}}$. The DC input voltage at the gate is $V_I = V_{GS,n} = \mathbf{0.6\text{ V}}$ (assuming the source is at ground).
+>
+> **(b) Aspect ratios:** From $I_D = \tfrac{1}{2} k' (W/L) V_{OV}^2$:
+> $$(W/L)_n = \frac{2 I_D}{k_n' V_{OV,n}^2} = \frac{2(0.1)}{0.4 \cdot 0.04} = \frac{0.2}{0.016} = \mathbf{12.5}$$
+> $$(W/L)_p = \frac{2 I_D}{|k_p'| V_{OV,p}^2} = \frac{2(0.1)}{0.1 \cdot 0.04} = \frac{0.2}{0.004} = \mathbf{50}$$
+>
+> (PMOS needs $4\times$ wider because $|k_p'|$ is $4\times$ smaller than $k_n'$.)
+>
+> **(c) Small-signal parameters:**
+> $$g_{m,n} = 2 I_D / V_{OV,n} = 2(0.1) / 0.2 = \mathbf{1\text{ mA/V}}$$
+> $$r_{o,n} = V_{An} / I_D = 12.5 / 0.1 = \mathbf{125\text{ k}\Omega}$$
+> $$r_{o,p} = |V_{Ap}| / I_D = 9 / 0.1 = \mathbf{90\text{ k}\Omega}$$
+>
+> **(d) Voltage gain:**
+> $$R_\text{out} = r_{o,n} \| r_{o,p} = (125 \cdot 90)/(125 + 90) = 11250 / 215 = 52.3\text{ k}\Omega$$
+> $$\boxed{A_v = -g_{m,n} \cdot (r_{o,n} \| r_{o,p}) = -1 \cdot 52.3 = \mathbf{-52.3\text{ V/V}}}$$
+>
+> **(e) Output swing range:**
+>
+> **Upper limit** (PMOS stays in saturation): $V_O \leq V_{DD} - |V_{OV,p}| = 1.8 - 0.2 = \mathbf{1.6\text{ V}}$.
+>
+> **Lower limit** (NMOS stays in saturation, $V_{DS,n} \geq V_{OV,n}$): $V_O \geq V_{OV,n} = \mathbf{0.2\text{ V}}$.
+>
+> **Answer: $0.2 \leq v_O \leq 1.6$ V** → swing range = **1.4 V peak-to-peak**, centered at 0.9 V.
+>
+> > [!tip] **What to memorize vs. derive.**
+> > **Memorize:** intrinsic-gain skeleton $A_{v0} = -g_m r_o$ ; with active load $A_v = -g_m (r_{on} \| r_{op})$. **Memorize the swing-range bounds** $V_{O,\max} = V_{DD} - |V_{OV,p}|$ and $V_{O,\min} = V_{OV,n}$ — they're trivial to derive but trivial to forget on exam day.
+> > **Derive:** $W/L$ from $I_D$ and $V_{OV}$ ; the parallel combination of $r_o$'s.
 
 **Same framework as:** Sedra Example 8.3 (worked in [the review deck](../../raw/slides/eee-335/lecture-review-units-4-6-final-spring-2026-slides.pdf)) ; HW 8.46 ; [[cascode-amplifier]] (next-step extension of this problem).
 
@@ -246,31 +239,29 @@ A common-source amplifier has $g_m = 2$ mA/V, $r_o = 100$ k$\Omega$, $R_D = 50$ 
 (c) Find the upper 3-dB frequency $f_H$ using the first (single-pole) analysis. Treat $C_L$ as part of $R_L'$ — i.e., for this part neglect $C_L$.
 (d) State why this single-pole approximation works here.
 
-<details><summary>Solution</summary>
-
-**(a) Mid-band gain:**
-$$R_L' = r_o \| R_D \| R_L = 100 \| 50 \| 50$$
-
-$50 \| 50 = 25$ k$\Omega$ ; $100 \| 25 = 2500/125 = 20$ k$\Omega$. So $R_L' = 20$ k$\Omega$.
-
-$$\boxed{A_M = -g_m R_L' = -2 \cdot 20 = \mathbf{-40\text{ V/V}}}$$
-
-**(b) Miller-multiplied input capacitance:**
-$$C_\text{eq} = C_{gd}(1 + g_m R_L') = 30 \text{ fF} \cdot (1 + 2 \cdot 20) = 30 \cdot 41 = \mathbf{1230\text{ fF}}$$
-$$C_\text{in} = C_{gs} + C_\text{eq} = 100 + 1230 = \mathbf{1330\text{ fF}}$$
-
-**(c) $f_H$ (single-pole approximation):** With $R_G \to \infty$, $R_\text{sig}' = R_\text{sig} = 5$ k$\Omega$.
-$$\boxed{f_H = \frac{1}{2\pi R_\text{sig}' C_\text{in}} = \frac{1}{2\pi \cdot 5\times 10^3 \cdot 1330 \times 10^{-15}} = \frac{1}{2\pi \cdot 6.65 \times 10^{-9}} = \mathbf{23.9\text{ MHz}}}$$
-
-**(d) Why the approximation works:** The Miller-multiplied $C_\text{eq}$ at the gate side is **41× larger** than $C_{gd}$ alone, dominating $C_{gs}$ (1230 fF vs. 100 fF). The pole at the gate side has $\tau = R_\text{sig}' \cdot 1330$ fF $\approx 6.65$ ns. The pole at the output side is set by $R_L' \cdot C_L = 20\text{ k} \cdot 50\text{ fF} = 1$ ns — about **6.6× faster**. So the gate pole **dominates** and a single-pole estimate is accurate.
-
-> [!warning] **Common mistake.** Forgetting the "+1" in $C_{gd}(1 + g_m R_L')$. Miller multiplies by $(1 - K)$ where $K$ is the **inverting** gain, so $1 - (-g_m R_L') = 1 + g_m R_L'$. **Including the +1 is small here** ($1/41 \approx 2.4\%$) but it's what makes the formula dimensionally consistent.
-
-> [!tip] **What to memorize vs. derive.**
-> **Memorize:** Miller's theorem $Z_1 = Z/(1-K)$, $Z_2 = Z/(1 - 1/K)$. The Miller-multiplied input cap formula $C_\text{eq} = C_{gd}(1 + g_m R_L')$ is the most-used result in Unit 5.
-> **Derive:** $R_L'$ as the parallel of three resistors. The dominance argument (compare RC at gate vs. output).
-
-</details>
+> [!example]- Solution
+>
+> **(a) Mid-band gain:**
+> $$R_L' = r_o \| R_D \| R_L = 100 \| 50 \| 50$$
+>
+> $50 \| 50 = 25$ k$\Omega$ ; $100 \| 25 = 2500/125 = 20$ k$\Omega$. So $R_L' = 20$ k$\Omega$.
+>
+> $$\boxed{A_M = -g_m R_L' = -2 \cdot 20 = \mathbf{-40\text{ V/V}}}$$
+>
+> **(b) Miller-multiplied input capacitance:**
+> $$C_\text{eq} = C_{gd}(1 + g_m R_L') = 30 \text{ fF} \cdot (1 + 2 \cdot 20) = 30 \cdot 41 = \mathbf{1230\text{ fF}}$$
+> $$C_\text{in} = C_{gs} + C_\text{eq} = 100 + 1230 = \mathbf{1330\text{ fF}}$$
+>
+> **(c) $f_H$ (single-pole approximation):** With $R_G \to \infty$, $R_\text{sig}' = R_\text{sig} = 5$ k$\Omega$.
+> $$\boxed{f_H = \frac{1}{2\pi R_\text{sig}' C_\text{in}} = \frac{1}{2\pi \cdot 5\times 10^3 \cdot 1330 \times 10^{-15}} = \frac{1}{2\pi \cdot 6.65 \times 10^{-9}} = \mathbf{23.9\text{ MHz}}}$$
+>
+> **(d) Why the approximation works:** The Miller-multiplied $C_\text{eq}$ at the gate side is **41× larger** than $C_{gd}$ alone, dominating $C_{gs}$ (1230 fF vs. 100 fF). The pole at the gate side has $\tau = R_\text{sig}' \cdot 1330$ fF $\approx 6.65$ ns. The pole at the output side is set by $R_L' \cdot C_L = 20\text{ k} \cdot 50\text{ fF} = 1$ ns — about **6.6× faster**. So the gate pole **dominates** and a single-pole estimate is accurate.
+>
+> > [!warning] **Common mistake.** Forgetting the "+1" in $C_{gd}(1 + g_m R_L')$. Miller multiplies by $(1 - K)$ where $K$ is the **inverting** gain, so $1 - (-g_m R_L') = 1 + g_m R_L'$. **Including the +1 is small here** ($1/41 \approx 2.4\%$) but it's what makes the formula dimensionally consistent.
+>
+> > [!tip] **What to memorize vs. derive.**
+> > **Memorize:** Miller's theorem $Z_1 = Z/(1-K)$, $Z_2 = Z/(1 - 1/K)$. The Miller-multiplied input cap formula $C_\text{eq} = C_{gd}(1 + g_m R_L')$ is the most-used result in Unit 5.
+> > **Derive:** $R_L'$ as the parallel of three resistors. The dominance argument (compare RC at gate vs. output).
 
 **Same framework as:** Sedra Example 10.1 ; Spring 2025 practice final P1 ; [[millers-theorem]] ; [[cs-amplifier-frequency-response]].
 
@@ -289,33 +280,31 @@ Reuse the parameters from Problem 5. Now compute $f_H$ using the **method of ope
 (c) Compute $f_H$ from the OCTC sum.
 (d) Compare with the first-analysis answer from Problem 5(c) and explain the difference.
 
-<details><summary>Solution</summary>
-
-**(a) Resistances seen by each cap.** From Lecture 29 (CS three-cap formulas):
-- $R_{gs} = R_\text{sig}' = 5\text{ k}\Omega$.
-- $R_{gd} = R_\text{sig}'(1 + g_m R_L') + R_L' = 5(1 + 40) + 20 = 5 \cdot 41 + 20 = 205 + 20 = 225\text{ k}\Omega$.
-- $R_{C_L} = R_L' = 20\text{ k}\Omega$.
-
-**(b) Time constants:**
-- $\tau_{gs} = C_{gs} R_{gs} = 100 \text{ fF} \cdot 5 \text{ k}\Omega = 500 \text{ ps}$.
-- $\tau_{gd} = C_{gd} R_{gd} = 30 \text{ fF} \cdot 225 \text{ k}\Omega = 6750 \text{ ps}$.
-- $\tau_{C_L} = C_L R_{C_L} = 50 \text{ fF} \cdot 20 \text{ k}\Omega = 1000 \text{ ps}$.
-- **Total $\tau_H = 500 + 6750 + 1000 = 8250 \text{ ps} = 8.25 \text{ ns}$.**
-
-**(c) $f_H$ from OCTC:**
-$$\boxed{f_H = \frac{1}{2\pi \tau_H} = \frac{1}{2\pi \cdot 8.25 \times 10^{-9}} = \mathbf{19.3\text{ MHz}}}$$
-
-**(d) Comparison with first analysis.** First analysis gave $f_H = 23.9$ MHz; OCTC gives $f_H = 19.3$ MHz. **OCTC is lower by about 19%** because it includes:
-- The **$R_L'$ added to $R_{gd}$** (was missing in the first analysis — only $R_\text{sig}'(1 + g_m R_L')$).
-- **$C_L$ at the output node** (entirely missed by the first analysis, which assumed $R_L'$ was capacitor-free).
-
-OCTC is the **conservative / pessimistic** estimate; it correctly accounts for the second pole that the first-analysis approximation hand-waves away.
-
-> [!tip] **What to memorize vs. derive.**
-> **Memorize:** the three OCTC resistances for CS — $R_{gs} = R_\text{sig}'$, $R_{gd} = R_\text{sig}'(1 + g_m R_L') + R_L'$, $R_{C_L} = R_L'$. These appear on the formula sheet next to $f_H = 1/(2\pi \sum C_k R_k)$.
-> **Derive:** the time constants ; the comparison with first analysis (ratio depends on which cap dominates).
-
-</details>
+> [!example]- Solution
+>
+> **(a) Resistances seen by each cap.** From Lecture 29 (CS three-cap formulas):
+> - $R_{gs} = R_\text{sig}' = 5\text{ k}\Omega$.
+> - $R_{gd} = R_\text{sig}'(1 + g_m R_L') + R_L' = 5(1 + 40) + 20 = 5 \cdot 41 + 20 = 205 + 20 = 225\text{ k}\Omega$.
+> - $R_{C_L} = R_L' = 20\text{ k}\Omega$.
+>
+> **(b) Time constants:**
+> - $\tau_{gs} = C_{gs} R_{gs} = 100 \text{ fF} \cdot 5 \text{ k}\Omega = 500 \text{ ps}$.
+> - $\tau_{gd} = C_{gd} R_{gd} = 30 \text{ fF} \cdot 225 \text{ k}\Omega = 6750 \text{ ps}$.
+> - $\tau_{C_L} = C_L R_{C_L} = 50 \text{ fF} \cdot 20 \text{ k}\Omega = 1000 \text{ ps}$.
+> - **Total $\tau_H = 500 + 6750 + 1000 = 8250 \text{ ps} = 8.25 \text{ ns}$.**
+>
+> **(c) $f_H$ from OCTC:**
+> $$\boxed{f_H = \frac{1}{2\pi \tau_H} = \frac{1}{2\pi \cdot 8.25 \times 10^{-9}} = \mathbf{19.3\text{ MHz}}}$$
+>
+> **(d) Comparison with first analysis.** First analysis gave $f_H = 23.9$ MHz; OCTC gives $f_H = 19.3$ MHz. **OCTC is lower by about 19%** because it includes:
+> - The **$R_L'$ added to $R_{gd}$** (was missing in the first analysis — only $R_\text{sig}'(1 + g_m R_L')$).
+> - **$C_L$ at the output node** (entirely missed by the first analysis, which assumed $R_L'$ was capacitor-free).
+>
+> OCTC is the **conservative / pessimistic** estimate; it correctly accounts for the second pole that the first-analysis approximation hand-waves away.
+>
+> > [!tip] **What to memorize vs. derive.**
+> > **Memorize:** the three OCTC resistances for CS — $R_{gs} = R_\text{sig}'$, $R_{gd} = R_\text{sig}'(1 + g_m R_L') + R_L'$, $R_{C_L} = R_L'$. These appear on the formula sheet next to $f_H = 1/(2\pi \sum C_k R_k)$.
+> > **Derive:** the time constants ; the comparison with first analysis (ratio depends on which cap dominates).
 
 **Same framework as:** Sedra Example 10.5 ; Spring 2025 practice final P1 ; [[octc-method]].
 
@@ -335,56 +324,54 @@ A cascode amplifier is built from two NMOS transistors. $Q_1$ (CS at the bottom)
 (d) Compute $f_H$ for the cascode.
 (e) **Compare** with the CS amplifier from Problem 5/6: report the gain ratio and bandwidth ratio.
 
-<details><summary>Solution</summary>
-
-**(a) $R_{d1}$.** $Q_2$ is a common-gate stage with its source seeing $r_{o1}$ as a "tail" and its drain seeing $R_L$ above. Looking into $Q_2$'s source (which IS $Q_1$'s drain):
-$$R_{\text{in},2} = \frac{r_{o2} + R_L}{1 + g_{m2} r_{o2}}$$
-
-With $r_{o2} = 100$ k$\Omega$ and $R_L = 50$ k$\Omega$: $R_{\text{in},2} = (100 + 50)/(1 + 200) = 150/201 = \mathbf{0.746\text{ k}\Omega}$.
-
-So $R_{d1} \approx 1/g_{m2} = 0.5$ k$\Omega$ to a rough approximation, or **0.746 k$\Omega$** with the load-up correction.
-
-**(b) Cascode $R_o$ and $A_M$.**
-$$R_o \approx (g_{m2} r_{o2}) r_{o1} = (2 \cdot 100) \cdot 100 = 20{,}000\text{ k}\Omega = 20\text{ M}\Omega$$
-$$R_o \| R_L = 20{,}000 \| 50 \approx \mathbf{49.9\text{ k}\Omega}$$
-$$A_M = -g_{m1}(R_o \| R_L) = -2 \cdot 49.9 = \mathbf{-99.8\text{ V/V}}$$
-
-(Note: when $R_L = 50$ k$\Omega$ is **finite**, $R_o \| R_L \approx R_L$ because $R_o \gg R_L$. The cascode's huge $R_o$ is wasted unless the load is also huge (e.g., a cascoded current source above). **Compare to CS Problem 5: $A_M = -40$ V/V; cascode here is $-99.8$ V/V — ~2.5× better gain.**)
-
-**(c) Three time constants** (Lecture CCA-HFR):
-
-$$\tau_1 = R_\text{sig}\bigl[C_{gs1} + C_{gd1}(1 + g_{m1} R_{d1})\bigr]$$
-
-The Miller multiplier on $C_{gd1}$ is now $(1 + g_{m1} R_{d1}) = (1 + 2 \cdot 0.746) = 2.49$ — **MUCH smaller than the CS case (was 41)**. Plug:
-$$\tau_1 = 5 \text{ k}\Omega \cdot [100 + 30 \cdot 2.49] = 5 \cdot [100 + 74.7] = 5 \cdot 174.7 = 873.5 \text{ ps}$$
-
-$$\tau_2 = R_{d1}(C_{db1} + C_{gs2} + C_{gd1})$$
-$$\tau_2 = 0.746 \text{ k}\Omega \cdot (20 + 100 + 30) \text{ fF} = 0.746 \cdot 150 = 112 \text{ ps}$$
-
-$$\tau_3 = (R_o \| R_L)(C_{gd2} + C_L) = 49.9 \cdot (30 + 50) = 49.9 \cdot 80 = 3992 \text{ ps}$$
-
-**Total $\tau_H = 873.5 + 112 + 3992 = 4977.5 \text{ ps} \approx 5.0 \text{ ns}$.**
-
-**(d) $f_H$ for cascode:**
-$$\boxed{f_H = \frac{1}{2\pi \cdot 5.0 \times 10^{-9}} = \mathbf{31.8\text{ MHz}}}$$
-
-**(e) Comparison with CS:**
-
-| | CS (Problem 5/6) | Cascode (this problem) | Ratio |
-|---|---|---|---|
-| $\|A_M\|$ | 40 V/V | 99.8 V/V | **2.5×** more gain |
-| $f_H$ | 19.3 MHz (OCTC) | 31.8 MHz | **1.65×** more bandwidth |
-| $\|A_M\| \cdot f_H$ (gain-bandwidth) | 772 MHz | 3174 MHz | **4.1×** more GBW |
-
-**Cascode wins on both axes** — gain (because $R_o \gg R_D$, even though limited by $R_L$ here) AND bandwidth (because Miller multiplication on $C_{gd1}$ is killed: factor of 2.49 instead of 41). **The bandwidth advantage is dramatic when $R_\text{sig}$ is large.**
-
-> [!warning] **The exam will test the qualitative reasoning.** Why does cascode have a bandwidth advantage? **Because the CG above presents low impedance ($\approx 1/g_{m2}$) at $Q_1$'s drain, killing the Miller multiplication on $C_{gd1}$.** That's the full story in one sentence. Students who memorize formulas without this story can't answer "explain why" questions.
-
-> [!tip] **What to memorize vs. derive.**
-> **Memorize:** cascode $R_o = g_m r_o^2$ ; $R_{\text{in,CG}} = (r_o + R_L)/(1 + g_m r_o) \approx 1/g_m$ when $r_o, R_L$ similar magnitude.
-> **Derive:** the three OCTC time constants ; the comparison ratios. The bandwidth-advantage mechanism (no Miller multiplication on $C_{gd1}$).
-
-</details>
+> [!example]- Solution
+>
+> **(a) $R_{d1}$.** $Q_2$ is a common-gate stage with its source seeing $r_{o1}$ as a "tail" and its drain seeing $R_L$ above. Looking into $Q_2$'s source (which IS $Q_1$'s drain):
+> $$R_{\text{in},2} = \frac{r_{o2} + R_L}{1 + g_{m2} r_{o2}}$$
+>
+> With $r_{o2} = 100$ k$\Omega$ and $R_L = 50$ k$\Omega$: $R_{\text{in},2} = (100 + 50)/(1 + 200) = 150/201 = \mathbf{0.746\text{ k}\Omega}$.
+>
+> So $R_{d1} \approx 1/g_{m2} = 0.5$ k$\Omega$ to a rough approximation, or **0.746 k$\Omega$** with the load-up correction.
+>
+> **(b) Cascode $R_o$ and $A_M$.**
+> $$R_o \approx (g_{m2} r_{o2}) r_{o1} = (2 \cdot 100) \cdot 100 = 20{,}000\text{ k}\Omega = 20\text{ M}\Omega$$
+> $$R_o \| R_L = 20{,}000 \| 50 \approx \mathbf{49.9\text{ k}\Omega}$$
+> $$A_M = -g_{m1}(R_o \| R_L) = -2 \cdot 49.9 = \mathbf{-99.8\text{ V/V}}$$
+>
+> (Note: when $R_L = 50$ k$\Omega$ is **finite**, $R_o \| R_L \approx R_L$ because $R_o \gg R_L$. The cascode's huge $R_o$ is wasted unless the load is also huge (e.g., a cascoded current source above). **Compare to CS Problem 5: $A_M = -40$ V/V; cascode here is $-99.8$ V/V — ~2.5× better gain.**)
+>
+> **(c) Three time constants** (Lecture CCA-HFR):
+>
+> $$\tau_1 = R_\text{sig}\bigl[C_{gs1} + C_{gd1}(1 + g_{m1} R_{d1})\bigr]$$
+>
+> The Miller multiplier on $C_{gd1}$ is now $(1 + g_{m1} R_{d1}) = (1 + 2 \cdot 0.746) = 2.49$ — **MUCH smaller than the CS case (was 41)**. Plug:
+> $$\tau_1 = 5 \text{ k}\Omega \cdot [100 + 30 \cdot 2.49] = 5 \cdot [100 + 74.7] = 5 \cdot 174.7 = 873.5 \text{ ps}$$
+>
+> $$\tau_2 = R_{d1}(C_{db1} + C_{gs2} + C_{gd1})$$
+> $$\tau_2 = 0.746 \text{ k}\Omega \cdot (20 + 100 + 30) \text{ fF} = 0.746 \cdot 150 = 112 \text{ ps}$$
+>
+> $$\tau_3 = (R_o \| R_L)(C_{gd2} + C_L) = 49.9 \cdot (30 + 50) = 49.9 \cdot 80 = 3992 \text{ ps}$$
+>
+> **Total $\tau_H = 873.5 + 112 + 3992 = 4977.5 \text{ ps} \approx 5.0 \text{ ns}$.**
+>
+> **(d) $f_H$ for cascode:**
+> $$\boxed{f_H = \frac{1}{2\pi \cdot 5.0 \times 10^{-9}} = \mathbf{31.8\text{ MHz}}}$$
+>
+> **(e) Comparison with CS:**
+>
+> | | CS (Problem 5/6) | Cascode (this problem) | Ratio |
+> |---|---|---|---|
+> | $\|A_M\|$ | 40 V/V | 99.8 V/V | **2.5×** more gain |
+> | $f_H$ | 19.3 MHz (OCTC) | 31.8 MHz | **1.65×** more bandwidth |
+> | $\|A_M\| \cdot f_H$ (gain-bandwidth) | 772 MHz | 3174 MHz | **4.1×** more GBW |
+>
+> **Cascode wins on both axes** — gain (because $R_o \gg R_D$, even though limited by $R_L$ here) AND bandwidth (because Miller multiplication on $C_{gd1}$ is killed: factor of 2.49 instead of 41). **The bandwidth advantage is dramatic when $R_\text{sig}$ is large.**
+>
+> > [!warning] **The exam will test the qualitative reasoning.** Why does cascode have a bandwidth advantage? **Because the CG above presents low impedance ($\approx 1/g_{m2}$) at $Q_1$'s drain, killing the Miller multiplication on $C_{gd1}$.** That's the full story in one sentence. Students who memorize formulas without this story can't answer "explain why" questions.
+>
+> > [!tip] **What to memorize vs. derive.**
+> > **Memorize:** cascode $R_o = g_m r_o^2$ ; $R_{\text{in,CG}} = (r_o + R_L)/(1 + g_m r_o) \approx 1/g_m$ when $r_o, R_L$ similar magnitude.
+> > **Derive:** the three OCTC time constants ; the comparison ratios. The bandwidth-advantage mechanism (no Miller multiplication on $C_{gd1}$).
 
 **Same framework as:** Spring 2025 practice final P2 ; [[cascode-amplifier]] ; Lecture CCA-HFR slides.
 
@@ -406,59 +393,70 @@ A CM-loaded MOS diff amp uses NMOS input pair $Q_1, Q_2$ and PMOS current-mirror
 (f) **By what factor must $R_{SS}$ change to increase CMRR by 6 dB?** What's the equivalent change in $L$ (channel length of the tail bias transistor)?
 (g) Find the load pole $\omega_{p1}$, the mirror pole $\omega_{p2}$, and the mirror zero $\omega_z$. Express in Hz.
 
-<details><summary>Solution</summary>
-
-**(a) $g_m$ values:**
-$$g_{m1} = I/V_{OV,n} = 200\,\mu\text{A} / 0.2\text{ V} = \mathbf{1\text{ mA/V}}$$
-$$g_{m3} = 2 I_{D3} / |V_{OV,p}| = 2 \cdot 100\,\mu\text{A} / 0.2\text{ V} = \mathbf{1\text{ mA/V}}$$
-
-**(b) $r_o$ values:**
-$$r_{o1} = r_{o2} = V_{An} / (I/2) = 10 / 0.1 = \mathbf{100\text{ k}\Omega}$$
-$$r_{o4} = |V_{Ap}| / (I/2) = 7.5 / 0.1 = \mathbf{75\text{ k}\Omega}$$
-
-**(c) Differential gain (single-ended output):**
-$$R_o = r_{o2} \| r_{o4} = 100 \| 75 = (100 \cdot 75)/(175) = 7500/175 = 42.86\text{ k}\Omega$$
-$$\boxed{A_d = g_{m1} \cdot R_o = 1 \cdot 42.86 = \mathbf{42.86\text{ V/V}}}$$
-
-(Sign convention: with $V_\text{in+}$ at $Q_2$ — UGTA Diego's correction from Apr 30 — the gain is **non-inverting**, i.e., positive.)
-
-**(d) Common-mode gain:**
-$$\boxed{A_{cm} \approx -\frac{1}{2 g_{m3} R_{SS}} = -\frac{1}{2 \cdot 1 \times 10^{-3} \cdot 500 \times 10^3} = -\frac{1}{1000} = \mathbf{-10^{-3}\text{ V/V}}}$$
-
-**(e) CMRR:**
-$$\text{CMRR} = |A_d / A_{cm}| = 42.86 / 10^{-3} = \mathbf{42{,}860}$$
-$$\text{CMRR (dB)} = 20 \log_{10}(42{,}860) = 20 \cdot 4.632 = \mathbf{92.6\text{ dB}}$$
-
-**(f) +6 dB CMRR:** 6 dB = factor of 2 in linear (since $20\log 2 = 6.02$). CMRR ∝ $R_{SS}$ for the s.e.-output formula, so **$R_{SS}$ must double**. Since $R_{SS}$ comes from $r_o$ of the bias transistor, and $r_o = V_A L / (I \cdot \text{scaling})$ at fixed $W/L$ (because $V_A \propto L$ in a fixed-process technology), **doubling $R_{SS}$ requires doubling $L$**.
-
-**(g) Pole and zero locations:**
-$$\omega_{p1} = \frac{1}{R_o C_L} = \frac{1}{42.86 \times 10^3 \cdot 60 \times 10^{-15}} = \frac{1}{2.57 \times 10^{-9}} = 3.89 \times 10^8\text{ rad/s}$$
-$$\boxed{f_{p1} = \omega_{p1} / (2\pi) = \mathbf{61.9\text{ MHz}}}$$
-
-$$\omega_{p2} = \frac{g_{m3}}{C_M} = \frac{1 \times 10^{-3}}{80 \times 10^{-15}} = 1.25 \times 10^{10}\text{ rad/s}$$
-$$\boxed{f_{p2} = \omega_{p2}/(2\pi) = \mathbf{1.99\text{ GHz}}}$$
-
-$$\omega_z = \frac{2 g_{m3}}{C_M} = 2 \omega_{p2}$$
-$$\boxed{f_z = \mathbf{3.98\text{ GHz}}}$$
-
-**Pole-zero ordering:** $f_{p1} (62\text{ MHz}) \ll f_{p2} (1.99\text{ GHz}) < f_z (3.98\text{ GHz})$. The **load pole dominates** by ~30×, so $f_H \approx f_{p1} = 62$ MHz. The mirror pole/zero pair is a 6-dB/oct dip but at frequencies far above the dominant pole, so it has minimal effect on the in-band response.
-
-> [!warning] **The four traps on Problem 4-style questions.**
-> 1. **$g_m$ for diff pair: $g_m = I/V_{OV}$** (tail current, NOT $I/2$). Half the students use the wrong formula.
-> 2. **Single-ended $A_{cm}$ has a "1/2" factor in the denominator** because of how the CM signal splits across the pair. With matched mirror it doesn't go to zero.
-> 3. **CMRR units:** if you compute the ratio $|A_d/A_{cm}|$ and convert to dB, double-check whether you used $20 \log$ (voltage ratio) — not $10 \log$ (power).
-> 4. **Channel-length scaling:** $V_A \propto L$ at fixed $W/L$ → $r_o \propto L$ → $R_{SS} \propto L$ → CMRR(s.e.) $\propto L$. Doubling $L$ adds 6 dB.
-
-> [!tip] **What to memorize vs. derive.**
-> **Memorize (high-priority):**
-> 1. $A_d = g_m(r_{o2} \| r_{o4})$.
-> 2. $g_m = I/V_{OV}$ for the diff pair (where $I$ = tail current).
-> 3. CMRR(s.e.) = $g_m R_{SS}$ for matched mirror.
-> 4. The three frequencies: $\omega_{p1} = 1/(R_o C_L)$, $\omega_{p2} = g_{m3}/C_M$, $\omega_z = 2 g_{m3}/C_M$.
+> [!example]- Solution
 >
-> **Derive:** $r_{o1}, r_{o2}, r_{o4}$ from $V_A$ and $I_D$ ; the parallel combination ; the CMRR-vs-$L$ scaling.
-
-</details>
+> **(a) $g_m$ values.**
+>
+> $$g_{m1} = \frac{I}{V_{OV,n}} = \frac{200\,\mu\text{A}}{0.2\text{ V}} = 1\text{ mA/V}$$
+>
+> $$g_{m3} = \frac{2 I_{D3}}{|V_{OV,p}|} = \frac{2 \cdot 100\,\mu\text{A}}{0.2\text{ V}} = 1\text{ mA/V}$$
+>
+> **(b) $r_o$ values.**
+>
+> $$r_{o1} = r_{o2} = \frac{V_{An}}{I/2} = \frac{10}{0.1} = 100\text{ k}\Omega$$
+>
+> $$r_{o4} = \frac{|V_{Ap}|}{I/2} = \frac{7.5}{0.1} = 75\text{ k}\Omega$$
+>
+> **(c) Differential gain (single-ended output).**
+>
+> $$R_o = r_{o2} \,\|\, r_{o4} = 100 \,\|\, 75 = \frac{100 \cdot 75}{175} = 42.86\text{ k}\Omega$$
+>
+> $$\boxed{\,A_d = g_{m1} \cdot R_o = 1 \cdot 42.86 = 42.86\text{ V/V}\,}$$
+>
+> (Sign convention: with $V_{\text{in}+}$ at $Q_2$ — UGTA Diego's correction from Apr 30 — the gain is **non-inverting**, i.e., positive.)
+>
+> **(d) Common-mode gain.**
+>
+> $$\boxed{\,A_{cm} \approx -\frac{1}{2 g_{m3} R_{SS}} = -\frac{1}{2 \cdot (1\times 10^{-3}) \cdot (500\times 10^{3})} = -10^{-3}\text{ V/V}\,}$$
+>
+> **(e) CMRR.**
+>
+> $$\text{CMRR} = \left|\frac{A_d}{A_{cm}}\right| = \frac{42.86}{10^{-3}} = 42{,}860$$
+>
+> $$\text{CMRR (dB)} = 20 \log_{10}(42{,}860) = 20 \cdot 4.632 = 92.6\text{ dB}$$
+>
+> **(f) +6 dB CMRR.** A $+6$ dB increase corresponds to a linear factor of $2$ (since $20\log_{10}(2) \approx 6.02$). Because CMRR is proportional to $R_{SS}$ in the single-ended-output formula, **$R_{SS}$ must double**. Since $R_{SS}$ is the output resistance $r_o$ of the bias transistor and $r_o \propto L$ at fixed $W/L$ (because $V_A \propto L$), **doubling $R_{SS}$ means doubling $L$**.
+>
+> **(g) Pole and zero locations.**
+>
+> $$\omega_{p1} = \frac{1}{R_o C_L} = \frac{1}{(42.86\times 10^{3})(60\times 10^{-15})} = 3.89\times 10^{8}\text{ rad/s}$$
+>
+> $$\boxed{\,f_{p1} = \frac{\omega_{p1}}{2\pi} = 61.9\text{ MHz}\,}$$
+>
+> $$\omega_{p2} = \frac{g_{m3}}{C_M} = \frac{1\times 10^{-3}}{80\times 10^{-15}} = 1.25\times 10^{10}\text{ rad/s}$$
+>
+> $$\boxed{\,f_{p2} = \frac{\omega_{p2}}{2\pi} = 1.99\text{ GHz}\,}$$
+>
+> $$\omega_z = \frac{2 g_{m3}}{C_M} = 2\,\omega_{p2}$$
+>
+> $$\boxed{\,f_z = 3.98\text{ GHz}\,}$$
+>
+> **Pole-zero ordering:** $f_{p1}\,(62\text{ MHz}) \ll f_{p2}\,(1.99\text{ GHz}) < f_z\,(3.98\text{ GHz})$. The **load pole dominates** by ${\sim}30\times$, so $f_H \approx f_{p1} = 62$ MHz. The mirror pole/zero pair is a 6 dB/oct dip but at frequencies far above the dominant pole, so it has minimal effect on the in-band response.
+>
+> > [!warning] **The four traps on Problem 4-style questions.**
+> > 1. **$g_m$ for the diff pair:** $g_m = I/V_{OV}$ (tail current, NOT $I/2$). Half the students use the wrong formula.
+> > 2. **Single-ended $A_{cm}$ has a $1/2$ factor in the denominator** because of how the CM signal splits across the pair. With matched mirror it doesn't go to zero.
+> > 3. **CMRR units:** if you compute $|A_d/A_{cm}|$ and convert to dB, double-check that you used $20\log_{10}$ (voltage ratio), NOT $10\log_{10}$ (power).
+> > 4. **Channel-length scaling:** $V_A \propto L$ at fixed $W/L$ implies $r_o \propto L$ implies $R_{SS} \propto L$ implies $\text{CMRR}_{\text{s.e.}} \propto L$. Doubling $L$ adds $6$ dB.
+>
+> > [!tip] **What to memorize vs. derive.**
+> > **Memorize (high-priority):**
+> > 1. $A_d = g_m(r_{o2} \| r_{o4})$.
+> > 2. $g_m = I/V_{OV}$ for the diff pair (where $I$ = tail current).
+> > 3. CMRR(s.e.) = $g_m R_{SS}$ for matched mirror.
+> > 4. The three frequencies: $\omega_{p1} = 1/(R_o C_L)$, $\omega_{p2} = g_{m3}/C_M$, $\omega_z = 2 g_{m3}/C_M$.
+> >
+> > **Derive:** $r_{o1}, r_{o2}, r_{o4}$ from $V_A$ and $I_D$ ; the parallel combination ; the CMRR-vs-$L$ scaling.
 
 **Same framework as:** Spring 2025 practice final P4 (verbatim) ; in-class Example 9.11 ; HW 9.85, 9.88, 10.70, 10.76 ; [[differential-pair]] ; [[cmrr]] ; [[eee-335-l36-cm-cl-set-01]].
 
@@ -476,17 +474,17 @@ $$\boxed{f_z = \mathbf{3.98\text{ GHz}}}$$
 (f) The Miller effect causes $C_{gd}$ to appear larger at the input of an inverting amplifier.
 (g) In a CM-loaded diff amp, the mirror zero is exactly twice the mirror pole.
 
-<details><summary>Solution</summary>
-
-| (a) | F | FIR has no feedback — always stable. |
-| (b) | T | $R_o = g_{m2} r_{o2} \cdot r_{o1}$ ≈ $g_m r_o^2$. |
-| (c) | T | (EEE 404 cross-check — Nyquist needs ≥ 10 Hz.) |
-| (d) | T | $A_{cm} \approx -1/(2 g_{m3} R_{SS})$ — bigger $R_{SS}$, smaller $\|A_{cm}\|$. |
-| (e) | F | When $R_L$ is small, cascode and CS have similar bandwidth. Cascode wins on BW only when $R_L$ is large enough that the Miller effect dominates the CS amp. |
-| (f) | T | Miller multiplies $C_{gd}$ by $(1 + g_m R_L')$ at the input. |
-| (g) | T | $\omega_z = 2 g_{m3}/C_M = 2 \omega_{p2}$ exactly. |
-
-</details>
+> [!example]- Solution
+>
+> | Q   | T/F | Reason |
+> |-----|-----|--------|
+> | (a) | F   | FIR has no feedback — always stable. |
+> | (b) | T   | $R_o = g_{m2} r_{o2} \cdot r_{o1} \approx g_m r_o^2$. |
+> | (c) | T   | (EEE 404 cross-check — Nyquist needs $\geq 10$ Hz.) |
+> | (d) | T   | $A_{cm} \approx -1/(2 g_{m3} R_{SS})$ — bigger $R_{SS}$, smaller $\lvert A_{cm}\rvert$. |
+> | (e) | F   | When $R_L$ is small, cascode and CS have similar bandwidth. Cascode wins on BW only when $R_L$ is large enough that the Miller effect dominates the CS amp. |
+> | (f) | T   | Miller multiplies $C_{gd}$ by $(1 + g_m R_L')$ at the input. |
+> | (g) | T   | $\omega_z = 2 g_{m3}/C_M = 2 \omega_{p2}$ exactly. |
 
 **Same framework as:** [[eee-335-final-lecture-review]] §"T/F + MC quick-fire"; UGTA Diego's drill bank.
 
@@ -504,17 +502,15 @@ $$\boxed{f_z = \mathbf{3.98\text{ GHz}}}$$
 
 (d) **(3 pts) Short.** Source follower with body effect: state the mid-band gain in terms of $g_m, g_{mb}, R_L, r_o$.
 
-<details><summary>Solution</summary>
-
-**(a) (iii) 2 poles, 1 zero.** Load pole + mirror pole + mirror zero (Lecture 36).
-
-**(b) (iii) $C_{gd}$ at the output and $C_L$ at the output.** When $R_\text{sig} \to 0$, the gate-side pole vanishes and the output-side pole dominates: $f_H = 1/[2\pi(C_L + C_{gd}) R_L']$. (Lecture 27.)
-
-**(c) $A_{vo} = -\dfrac{g_m R_D}{1 + g_m R_s}$** (Table 7.4).
-
-**(d) $G_{V\max} = \dfrac{g_m R_L'}{1 + g_m R_L'}$** where $R_L' = R_L \| r_o \| (1/g_{mb})$. The $1/g_{mb}$ in parallel is the body-effect contribution: it lowers $R_L'$ and pulls the gain below unity. (Lecture 31.)
-
-</details>
+> [!example]- Solution
+>
+> **(a) (iii) 2 poles, 1 zero.** Load pole + mirror pole + mirror zero (Lecture 36).
+>
+> **(b) (iii) $C_{gd}$ at the output and $C_L$ at the output.** When $R_\text{sig} \to 0$, the gate-side pole vanishes and the output-side pole dominates: $f_H = 1/[2\pi(C_L + C_{gd}) R_L']$. (Lecture 27.)
+>
+> **(c) $A_{vo} = -\dfrac{g_m R_D}{1 + g_m R_s}$** (Table 7.4).
+>
+> **(d) $G_{V\max} = \dfrac{g_m R_L'}{1 + g_m R_L'}$** where $R_L' = R_L \| r_o \| (1/g_{mb})$. The $1/g_{mb}$ in parallel is the body-effect contribution: it lowers $R_L'$ and pulls the gain below unity. (Lecture 31.)
 
 **Same framework as:** Spring 2025 practice final P5 ; Lecture 27, 31, 36.
 
@@ -524,19 +520,17 @@ $$\boxed{f_z = \mathbf{3.98\text{ GHz}}}$$
 
 A CMOS op-amp first stage is a CM-loaded diff amp identical to Problem 8 (single-ended output, $A_d = 42.86$ V/V). The second stage is a single-transistor common-source with $g_{m,5} = 0.8$ mA/V, $r_{o,5} = 90$ k$\Omega$, loaded by an ideal current source. What is the **mid-band differential gain end-to-end** (single-ended input → single-ended output)?
 
-<details><summary>Solution</summary>
-
-**Stage 1:** $A_{d,1} = +42.86$ V/V (single-ended output, non-inverting per UGTA correction).
-
-**Stage 2** (CS with ideal current-source load): $A_{v,2} = -g_{m,5} r_{o,5} = -0.8 \cdot 90 = -72$ V/V.
-
-**Total:** $A_d = A_{d,1} \cdot A_{v,2} = 42.86 \cdot (-72) = \mathbf{-3{,}086\text{ V/V}} \approx -70\text{ dB}$.
-
-**Sign:** negative because Stage 2 is inverting; Stage 1 is non-inverting.
-
-> [!tip] **Why this matters.** Real op-amps cascade a CM-loaded diff amp (high gain, modest BW) with a CS amp (more gain, modest BW) to build up to the ~$10^5$ open-loop gain you see in spec sheets. Frequency compensation (Miller cap across Stage 2) usually sets the dominant pole — but that's a Sedra Ch. 12 topic, not on this final.
-
-</details>
+> [!example]- Solution
+>
+> **Stage 1:** $A_{d,1} = +42.86$ V/V (single-ended output, non-inverting per UGTA correction).
+>
+> **Stage 2** (CS with ideal current-source load): $A_{v,2} = -g_{m,5} r_{o,5} = -0.8 \cdot 90 = -72$ V/V.
+>
+> **Total:** $A_d = A_{d,1} \cdot A_{v,2} = 42.86 \cdot (-72) = \mathbf{-3{,}086\text{ V/V}} \approx -70\text{ dB}$.
+>
+> **Sign:** negative because Stage 2 is inverting; Stage 1 is non-inverting.
+>
+> > [!tip] **Why this matters.** Real op-amps cascade a CM-loaded diff amp (high gain, modest BW) with a CS amp (more gain, modest BW) to build up to the ~$10^5$ open-loop gain you see in spec sheets. Frequency compensation (Miller cap across Stage 2) usually sets the dominant pole — but that's a Sedra Ch. 12 topic, not on this final.
 
 **Same framework as:** Op-amp two-stage architecture (Sedra Ch. 12) ; [[differential-pair]] + [[common-source-amplifier]] cascade.
 

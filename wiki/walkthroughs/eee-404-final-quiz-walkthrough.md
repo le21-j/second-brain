@@ -1,11 +1,16 @@
 ---
-title: EEE 404 — Lab Exam + ABET Quiz Walkthrough (2026-05-05)
+title: "EEE 404 — Lab Exam + ABET Quiz Walkthrough (2026-05-05)"
 type: walkthrough
-course: [[eee-404]]
+course: "[[eee-404]]"
 tags: [eee-404, lab-exam, abet-quiz, study-guide, finals, lab-5, lab-6, project-1, project-2, assembly, dsp, fft, mlp, fixed-point]
-sources: [[eee-404]], [[eee-404-exam-2-walkthrough]], [[eee-404-exam-2-study-guide]], [[eee-404-project-2-walkthrough]], [[lab-eee-404-project-2-fft-applications]]
+sources:
+  - "[[eee-404]]"
+  - "[[eee-404-exam-2-walkthrough]]"
+  - "[[eee-404-exam-2-study-guide]]"
+  - "[[eee-404-project-2-walkthrough]]"
+  - "[[lab-eee-404-project-2-fft-applications]]"
 created: 2026-05-04
-updated: 2026-05-04
+updated: 2026-05-05
 ---
 
 # EEE 404 — Lab Exam + ABET Quiz Walkthrough
